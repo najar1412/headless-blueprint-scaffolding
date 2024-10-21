@@ -1,23 +1,21 @@
 # Faust Scaffold
 
-This repository contains a starter scaffolding to get you up and running quickly on [WP Engine's Headless Platform](https://wpengine.com/atlas/) with a WordPress site skeleton for more advanced developers.
+### Pre Reqs
 
-## For more information
+1. backend host - currently using wp-engine headless wordpress
+2. frontend host - currently use netlify
 
-For more information on this Blueprint please check out the following sources:
+### Dev
 
-- [WP Engine's Headless Platform](https://wpengine.com/atlas/)
-- [Faust.js](https://faustjs.org)
-- [WPGraphQL](https://www.wpgraphql.com)
-- [Atlas Content Modeler](https://wordpress.org/plugins/atlas-content-modeler/)
-- [WP Engine's Headless Platform developer community](https://developers.wpengine.com)
+1. set up pre reqs
+2. cp .env.local.sample to .env.local and fill out
 
-### Contributor License Agreement
+### TODO
 
-All external contributors to WP Engine products must have a signed Contributor License Agreement (CLA) in place before the contribution may be accepted into any WP Engine codebase.
+1. No local wp environment set up
+2. grok graphQL for db queries
 
-1. [Submit your name and email](https://wpeng.in/cla/)
-2. 📝 Sign the CLA emailed to you
-3. 📥 Receive copy of signed CLA
+### Current limiations
 
-❤️ Thank you for helping us fulfill our legal obligations in order to continue empowering builders through headless WordPress.
+1. No live link between headless wordpress and faust prod site? After make edits to headless wp, the frontend needs to be rebuild as its a static site.
+2. Doc recommend using Atlas Content Modeler, but support is getting dropped end of 2024, look into SCF (secure custom fields), ACF (advanced custom fields)

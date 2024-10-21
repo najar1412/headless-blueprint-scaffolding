@@ -1,5 +1,5 @@
 import "@mantine/core/styles.css";
-import "../faust.config";
+import "../../faust.config";
 
 import React from "react";
 import { useRouter } from "next/router";

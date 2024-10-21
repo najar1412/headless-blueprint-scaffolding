@@ -1,6 +1,6 @@
 import { setConfig } from "@faustwp/core";
-import templates from "./wp-templates";
-import possibleTypes from "./possibleTypes.json";
+import templates from "./src/wp-templates";
+import possibleTypes from "./src/possibleTypes.json";
 
 /**
  * @type {import('@faustwp/core').FaustConfig}
