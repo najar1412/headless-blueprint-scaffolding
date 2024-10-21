@@ -10,6 +10,7 @@ import {
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { Cta1 } from "../components/Cta1";
 
 export default function PagePublication(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
@@ -22,6 +23,13 @@ export default function PagePublication(props) {
   return (
     <>
       <Header menuItems={primaryMenuItems.nodes} />
+
+      <Cta1
+        image={page.acf.cta1.image}
+        title={page.acf.cta1.title}
+        tag={page.acf.cta1.tag}
+        copy={page.acf.cta1.copy}
+      />
 
       <Container component={"main"} className="container">
         <Title>{page.title}</Title>
@@ -49,20 +57,32 @@ PagePublication.variables = ({ databaseId }, ctx) => {
     databaseId,
     asPreview: ctx?.asPreview,
     uri: "/publications",
-    id: 35,
   };
 };
 
 PagePublication.query = gql`
   ${Header.fragments.entry}
-  
-  query GetPage($databaseId: ID!, $asPreview: Boolean = false) {
+
+  query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
+    ...HeaderFragment
+    ...${Footer.fragments.entry}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      acf: publicationPage {
+        cta1{
+        image {
+          node {
+            sourceUrl
+          }
+        }
+        tag
+        title
+        copy
+        }
+      }
     }
-    ...HeaderFragment
-    ...${Footer.fragments.entry}
+    
     publications {
       nodes {
         databaseId
