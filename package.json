@@ -5,8 +5,6 @@
     "dev": "faust dev",
     "build": "faust build",
     "generate": "faust generatePossibleTypes",
-    "deploy": "dev-deploy ./dist SLN102 --clean",
-    "publish": "npm run build && npm run deploy",
     "start": "faust start"
   },
   "dependencies": {
