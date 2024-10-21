@@ -14,6 +14,7 @@ export default function Page() {
   const { title: siteTitle, description: siteDescription } =
     data.generalSettings;
   const menuItems = data.primaryMenuItems.nodes;
+  const footer = data.footer;
 
   return (
     <>
@@ -32,7 +33,7 @@ export default function Page() {
         <p>Next.js pages are still supported!</p>
       </main>
 
-      <Footer />
+      <Footer node={footer} />
     </>
   );
 }
@@ -41,6 +42,7 @@ Page.query = gql`
   ${Header.fragments.entry}
   query GetHomePage {
     ...HeaderFragment
+    ...${Footer.fragments.entry}
   }
 `;
 
