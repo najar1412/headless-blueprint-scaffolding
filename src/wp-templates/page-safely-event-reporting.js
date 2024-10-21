@@ -5,8 +5,8 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 export default function PageSafetyEventreporting(props) {
-  const menuItems = props.data.primaryMenuItems.nodes;
-  const { title, content } = props.data.page;
+  const { footer, page, primaryMenuItems } = props.data;
+
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -14,14 +14,14 @@ export default function PageSafetyEventreporting(props) {
 
   return (
     <>
-      <Header menuItems={menuItems} />
+      <Header menuItems={primaryMenuItems.nodes} />
 
       <Container component={"main"} className="container">
-        <Title>{title}</Title>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <Title>{page.title}</Title>
+        <div dangerouslySetInnerHTML={{ __html: page.content }} />
       </Container>
 
-      <Footer />
+      <Footer node={footer} />
     </>
   );
 }
@@ -41,5 +41,6 @@ PageSafetyEventreporting.query = gql`
       content
     }
     ...HeaderFragment
+    ...${Footer.fragments.entry}
   }
 `;

@@ -7,9 +7,7 @@ import Footer from "../components/footer";
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
-  const menuItems = props.data.primaryMenuItems.nodes;
-
-  console.log(props.data);
+  const { footer, primaryMenuItems } = props.data;
 
   return (
     <>
@@ -17,13 +15,13 @@ export default function Component(props) {
         <title>{siteTitle}</title>
       </Head>
 
-      <Header menuItems={menuItems} />
+      <Header menuItems={primaryMenuItems.nodes} />
 
       <Container component={"main"}>
         <Title tt="capitalize">home</Title>
       </Container>
 
-      <Footer />
+      <Footer node={footer} />
     </>
   );
 }
@@ -32,5 +30,6 @@ Component.query = gql`
   ${Header.fragments.entry}
   query GetHomePage {
     ...HeaderFragment
+    ...${Footer.fragments.entry}
   }
 `;

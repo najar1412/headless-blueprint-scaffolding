@@ -12,9 +12,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 export default function PagePublication(props) {
-  const menuItems = props.data.primaryMenuItems.nodes;
-  const { title, content } = props.data.page;
-  const { publications } = props.data;
+  const { publications, footer, page, primaryMenuItems } = props.data;
 
   // Loading state for previews
   if (props.loading) {
@@ -23,11 +21,11 @@ export default function PagePublication(props) {
 
   return (
     <>
-      <Header menuItems={menuItems} />
+      <Header menuItems={primaryMenuItems.nodes} />
 
       <Container component={"main"} className="container">
-        <Title>{title}</Title>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <Title>{page.title}</Title>
+        <div dangerouslySetInnerHTML={{ __html: page.content }} />
         <Stack>
           {publications.nodes.map((node) => (
             <>
@@ -41,7 +39,7 @@ export default function PagePublication(props) {
         </Stack>
       </Container>
 
-      <Footer />
+      <Footer node={footer} />
     </>
   );
 }
@@ -51,17 +49,20 @@ PagePublication.variables = ({ databaseId }, ctx) => {
     databaseId,
     asPreview: ctx?.asPreview,
     uri: "/publications",
+    id: 35,
   };
 };
 
 PagePublication.query = gql`
   ${Header.fragments.entry}
+  
   query GetPage($databaseId: ID!, $asPreview: Boolean = false) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
     }
     ...HeaderFragment
+    ...${Footer.fragments.entry}
     publications {
       nodes {
         databaseId

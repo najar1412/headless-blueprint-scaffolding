@@ -1,3 +1,4 @@
+import { gql } from "@apollo/client";
 import {
   Container,
   Divider,
@@ -9,10 +10,11 @@ import {
 
 import styles from "./footer.module.css";
 
-export default function Footer() {
+export default function Footer(props) {
   return (
     <Container component={"footer"} className={styles.footer}>
-      <SimpleGrid cols={2}>
+      <div dangerouslySetInnerHTML={{ __html: props.node.content }} />
+      {/* <SimpleGrid cols={2}>
         <Stack>
           <Text>address</Text>
           <Text>contact</Text>
@@ -34,7 +36,24 @@ export default function Footer() {
           <Text>privary policy</Text>
           <Text>terms of service</Text>
         </Group>
-      </SimpleGrid>
+      </SimpleGrid> */}
     </Container>
   );
 }
+
+/* Footer.variables = ({ databaseId }, ctx) => {
+  return {
+    id: 35,
+  };
+}; */
+
+Footer.fragments = {
+  entry: gql`
+    {
+      footer: page(id: 35, idType: DATABASE_ID) {
+        title
+        content
+      }
+    }
+  `,
+};
