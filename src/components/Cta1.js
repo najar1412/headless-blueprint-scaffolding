@@ -12,9 +12,7 @@ export const Cta1 = ({ image, tag, title, copy }) => {
       <Stack align="center">
         <Text fw="bold">{tag}</Text>
         <Title>{title}</Title>
-        <Text ta={"center"} fw="bold">
-          {copy}
-        </Text>
+        <div dangerouslySetInnerHTML={{ __html: copy }}></div>
       </Stack>
     </Container>
   );

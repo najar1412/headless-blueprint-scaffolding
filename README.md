@@ -13,9 +13,10 @@ initial plugins
 
 Faust.js
 WPGraphQL
+WPGraphQL for ACF
+ACF
 Custom Post TypeUi
 Clear Cache For Me
-Atlas Content Modeler
 
 #### faustjs
 
@@ -25,10 +26,7 @@ Atlas Content Modeler
 ### TODO
 
 1. No local wp environment set up
-2. grok graphQL for db queries
-3. remapping images from frontend to wp domain, or vise versa?
 
 ### Current limiations
 
 1. No live link between headless wordpress and faust prod site? After make edits to headless wp, the frontend needs to be rebuild as its a static site.
-2. Doc recommend using Atlas Content Modeler, but support is getting dropped end of 2024, look into SCF (secure custom fields), ACF (advanced custom fields)
