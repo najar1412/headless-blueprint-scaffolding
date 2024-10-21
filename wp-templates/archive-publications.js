@@ -56,6 +56,17 @@ ArchivePublications.variables = ({ uri }) => {
   return { uri };
 };
 
+/* ArchivePublications.fragments = {
+  entry: gql`
+    fragment PublicationsFragment on Items {
+      items {
+        name
+        description
+      }
+    }
+  `,
+}; */
+
 ArchivePublications.query = gql`
   ${Header.fragments.entry}
   query PublicationsArchive($uri: String!) {
