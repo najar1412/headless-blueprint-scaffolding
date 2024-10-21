@@ -19,11 +19,6 @@ export default function Header({ menuItems }) {
                 </Link>
               </li>
             ))}
-            <li key={"publications"}>
-              <Link href={"/publications"}>
-                <Text>publications</Text>
-              </Link>
-            </li>
           </ul>
         </nav>
       </div>

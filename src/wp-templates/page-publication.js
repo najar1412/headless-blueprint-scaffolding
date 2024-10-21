@@ -1,43 +1,21 @@
 import { gql } from "@apollo/client";
-import { Title, Container } from "@mantine/core";
-import { useQuery } from "@apollo/client";
-// import { client } from 'client';
+import {
+  Title,
+  Container,
+  Divider,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@mantine/core";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
-import ArchivePublications from "./archive-publications";
 
 export default function PagePublication(props) {
-  // const { data } = useQuery(Page.query);
-  // console.log(props);
   const menuItems = props.data.primaryMenuItems.nodes;
-
   const { title, content } = props.data.page;
-  console.log(content);
-  const {data} = useQuery(gql`
-    query GetArchives($uri: String!) {
-      nodeByUri(uri: $uri) {
-        ... on ContentType {
-          label
-          description
+  const { publications } = props.data;
 
-          contentNodes {
-            nodes {
-              databaseId
-              uri
-              ... on NodeWithTitle {
-                title
-              }
-              ... on NodeWithContentEditor {
-                content
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-  console.log(data);
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -50,6 +28,17 @@ export default function PagePublication(props) {
       <Container component={"main"} className="container">
         <Title>{title}</Title>
         <div dangerouslySetInnerHTML={{ __html: content }} />
+        <Stack>
+          {publications.nodes.map((node) => (
+            <>
+              <SimpleGrid key={node.title} cols={2}>
+                <Text fw="bold">{node.title}</Text>
+                <div dangerouslySetInnerHTML={{ __html: node.content }} />
+              </SimpleGrid>
+              <Divider />
+            </>
+          ))}
+        </Stack>
       </Container>
 
       <Footer />
@@ -73,5 +62,17 @@ PagePublication.query = gql`
       content
     }
     ...HeaderFragment
+    publications {
+      nodes {
+        databaseId
+        uri
+        ... on NodeWithTitle {
+          title
+        }
+        ... on NodeWithContentEditor {
+          content
+        }
+      }
+    }
   }
 `;

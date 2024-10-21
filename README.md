@@ -7,6 +7,18 @@
 
 ### Dev
 
+#### wordpress
+
+initial plugins
+
+Faust.js
+WPGraphQL
+Custom Post TypeUi
+Clear Cache For Me
+Atlas Content Modeler
+
+#### faustjs
+
 1. set up pre reqs
 2. cp .env.local.sample to .env.local and fill out
 
@@ -14,6 +26,7 @@
 
 1. No local wp environment set up
 2. grok graphQL for db queries
+3. remapping images from frontend to wp domain, or vise versa?
 
 ### Current limiations
 
