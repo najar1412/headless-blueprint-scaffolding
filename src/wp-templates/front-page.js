@@ -107,18 +107,6 @@ export default function Component(props) {
             ))}
           </Stack>
         </Container>
-        <Container
-          id="contact"
-          component={"section"}
-          py={"5rem"}
-          w="100%"
-          maw={"unset"}
-        >
-          <Title>Get in touch</Title>
-        </Container>
-        <Container component={"section"} py={"5rem"} w="100%" maw={"unset"}>
-          <Title order={3}>Subscribe to our Newsletter</Title>
-        </Container>
       </Container>
 
       <Footer node={footer} />

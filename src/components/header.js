@@ -16,11 +16,17 @@ export default function Header({ menuItems }) {
         <Link href="/">home</Link>
 
         <Group>
-          {menuItems.map((item) => (
-            <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
-              <Text>{item.label}</Text>
-            </Link>
-          ))}
+          {menuItems.map((item) =>
+            item.label === "Publications" ? (
+              <Link href={`publications`}>
+                <Text>{item.label}</Text>
+              </Link>
+            ) : (
+              <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
+                <Text>{item.label}</Text>
+              </Link>
+            )
+          )}
         </Group>
       </Group>
     </Container>

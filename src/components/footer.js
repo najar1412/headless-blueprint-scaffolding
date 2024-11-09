@@ -1,43 +1,43 @@
 import { gql } from "@apollo/client";
-import {
-  Container,
-  Divider,
-  SimpleGrid,
-  Stack,
-  Text,
-  Group,
-} from "@mantine/core";
+import { Container, Title, SimpleGrid, Text } from "@mantine/core";
 
+import { GetInTouchForm } from "./forms/GetInTouchForm";
+import { NewsletterForm } from "./forms/NewsletterForm";
 import styles from "./footer.module.css";
 
 export default function Footer(props) {
   return (
-    <Container component={"footer"} className={styles.footer}>
-      <div dangerouslySetInnerHTML={{ __html: props.node.content }} />
-      {/* <SimpleGrid cols={2}>
-        <Stack>
-          <Text>address</Text>
-          <Text>contact</Text>
-        </Stack>
-        <Stack>
-          <Text>link 1</Text>
-          <Text>link 1</Text>
-          <Text>link 1</Text>
-          <Text>link 1</Text>
-          <Text>link 1</Text>
-          <Text>link 1</Text>
-          <Text>link 1</Text>
-        </Stack>
+    <>
+      {/* <div dangerouslySetInnerHTML={{ __html: props.node.content }} /> */}
+
+      <SimpleGrid
+        id="contact"
+        component={"section"}
+        py={"5rem"}
+        w="100%"
+        maw={"unset"}
+        cols={2}
+      >
+        <Container maw={"unset"} m={0}>
+          <Title>Get in touch</Title>
+          <Text>
+            Lorem ipsum dolor sit amet consec tetur. Nulla ultrices feugiat et
+            nullam.
+          </Text>
+        </Container>
+        <Container maw={"unset"} m={0}>
+          <GetInTouchForm />
+        </Container>
       </SimpleGrid>
-      <Divider />
-      <SimpleGrid cols={2}>
-        <Text>copyright</Text>
-        <Group>
-          <Text>privary policy</Text>
-          <Text>terms of service</Text>
-        </Group>
-      </SimpleGrid> */}
-    </Container>
+      <Container component={"section"} py={"5rem"} w="100%" maw={"unset"}>
+        <Title order={3}>Subscribe to our Newsletter</Title>
+        <Text>
+          Join our email list to receive news and updates from Nexus Health
+          Group.
+        </Text>
+        <NewsletterForm />
+      </Container>
+    </>
   );
 }
 
