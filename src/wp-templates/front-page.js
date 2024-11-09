@@ -1,16 +1,31 @@
 import { gql } from "@apollo/client";
 import Head from "next/head";
-import { Container, Title, Badge, Text, Button } from "@mantine/core";
+import {
+  Container,
+  Title,
+  Badge,
+  Text,
+  Button,
+  SimpleGrid,
+  Divider,
+  Stack,
+} from "@mantine/core";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { Box } from "../components/Box";
+
+gsap.registerPlugin(useGSAP);
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
-  const { footer, primaryMenuItems } = props.data;
+  const { publications, footer, primaryMenuItems } = props.data;
 
   const testDataFetching = () => {
     console.log("clicked");
+    console.log(publications.nodes);
   };
 
   return (
@@ -31,6 +46,7 @@ export default function Component(props) {
         >
           <Title>Shaping the future of Market Access</Title>
           <Button onClick={() => testDataFetching()}>Test data fetching</Button>
+          <Box />
         </Container>
         <Container
           id="services"
@@ -85,6 +101,16 @@ export default function Component(props) {
             <Text>thought leadership</Text>
           </Badge>
           <Title order={2}>What’s Happening at Nexus Health</Title>
+          <Stack mt={'xl'}>
+            {publications.nodes.map((node) => (
+              <>
+                <Stack key={node.title} gap={0}>
+                  <Text fw="bold">{node.title}</Text>
+                  <div dangerouslySetInnerHTML={{ __html: node.content }} />
+                </Stack>
+              </>
+            ))}
+          </Stack>
         </Container>
         <Container
           id="contact"
@@ -105,10 +131,56 @@ export default function Component(props) {
   );
 }
 
-Component.query = gql`
+/* Component.query = gql`
   ${Header.fragments.entry}
   query GetHomePage {
     ...HeaderFragment
     ...${Footer.fragments.entry}
+  }
+`; */
+
+Component.variables = ({ databaseId }, ctx) => {
+  return {
+    databaseId,
+    asPreview: ctx?.asPreview,
+    uri: "/publications",
+  };
+};
+
+Component.query = gql`
+  ${Header.fragments.entry}
+
+  query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
+    ...HeaderFragment
+    ...${Footer.fragments.entry}
+    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+      title
+      content
+      acf: publicationPage {
+        cta1{
+        image {
+          node {
+            sourceUrl
+          }
+        }
+        tag
+        title
+        copy
+        }
+      }
+    }
+    
+    publications {
+      nodes {
+        databaseId
+        uri
+        ... on NodeWithTitle {
+          title
+        }
+        ... on NodeWithContentEditor {
+          content
+        }
+      }
+    }
   }
 `;
