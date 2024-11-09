@@ -2,10 +2,6 @@ import { gql } from "@apollo/client";
 import {
   Title,
   Container,
-  Divider,
-  SimpleGrid,
-  Stack,
-  Text,
 } from "@mantine/core";
 
 import Header from "../components/header";
@@ -13,7 +9,6 @@ import Footer from "../components/footer";
 
 export default function PagePublication(props) {
   const { footer, page, primaryMenuItems } = props.data;
-  console.log(props.data);
 
   // Loading state for previews
   if (props.loading) {

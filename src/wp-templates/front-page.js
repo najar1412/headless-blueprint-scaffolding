@@ -1,9 +1,10 @@
-import { gql } from "@apollo/client";
+import { gql, useLazyQuery, query } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Title, Badge, Text, Button, Stack } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useEffect } from "react";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -11,13 +12,37 @@ import { Box } from "../components/Box";
 
 gsap.registerPlugin(useGSAP);
 
+const GET_PUBLICATIONS = gql`
+  query GetPublications {
+    publications {
+      nodes {
+        databaseId
+        uri
+        ... on NodeWithTitle {
+          title
+        }
+        ... on NodeWithContentEditor {
+          content
+        }
+      }
+    }
+  }
+`;
+
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { publications, footer, primaryMenuItems } = props.data;
+  const [getPublications, { loading, error, data }] =
+    useLazyQuery(GET_PUBLICATIONS);
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+  }, [data]);
 
   const testDataFetching = () => {
-    console.log("clicked");
-    console.log(publications.nodes);
+    getPublications();
   };
 
   return (

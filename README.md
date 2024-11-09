@@ -22,6 +22,7 @@ Clear Cache For Me
 
 1. set up pre reqs
 2. cp .env.local.sample to .env.local and fill out
+3. making scheme changes in WP requires `npm run generate` this rebuilds possible types for apollo.
 
 ### TODO
 
