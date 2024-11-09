@@ -35,12 +35,14 @@ export default function Component(props) {
   const [getPublications, { loading, error, data }] = useLazyQuery(
     GET_PUBLICATIONS,
     {
+      server: false,
       fetchPolicy: "network-only", // Doesn't check cache before making a network request
     }
   );
 
   useEffect(() => {
     if (data) {
+      console.log(error);
       console.log(data);
     }
   }, [data]);
