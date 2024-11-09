@@ -32,8 +32,12 @@ const GET_PUBLICATIONS = gql`
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { publications, footer, primaryMenuItems } = props.data;
-  const [getPublications, { loading, error, data }] =
-    useLazyQuery(GET_PUBLICATIONS);
+  const [getPublications, { loading, error, data }] = useLazyQuery(
+    GET_PUBLICATIONS,
+    {
+      fetchPolicy: "network-only", // Doesn't check cache before making a network request
+    }
+  );
 
   useEffect(() => {
     if (data) {
