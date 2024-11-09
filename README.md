@@ -26,6 +26,7 @@ Clear Cache For Me
 ### TODO
 
 1. No local wp environment set up
+2. look into WP Engine Smart Search
 
 ### Current limiations
 

@@ -1,28 +1,29 @@
 import { gql } from "@apollo/client";
 import Link from "next/link";
-import { Text } from "@mantine/core";
+import { Text, Container, Group } from "@mantine/core";
 
 import style from "./header.module.css";
 
 export default function Header({ menuItems }) {
   return (
-    <header className={style.header}>
-      <div className="container">
+    <Container
+      component={"header"}
+      maw={"unset"}
+      w="100%"
+      className={style.header}
+    >
+      <Group w={"100%"} justify="between">
         <Link href="/">home</Link>
 
-        <nav className={style.nav}>
-          <ul>
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <Link href={item.uri}>
-                  <Text>{item.label}</Text>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </header>
+        <Group>
+          {menuItems.map((item) => (
+            <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
+              <Text>{item.label}</Text>
+            </Link>
+          ))}
+        </Group>
+      </Group>
+    </Container>
   );
 }
 
