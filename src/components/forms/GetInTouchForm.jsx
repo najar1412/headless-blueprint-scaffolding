@@ -27,7 +27,7 @@ export const GetInTouchForm = () => {
         {/* errors will return when field validation fails  */}
         {errors.exampleRequired && <span>This field is required</span>}
 
-        <Button type="submit">submit</Button>
+        <Button type="submit">Contact</Button>
       </Stack>
     </form>
   );

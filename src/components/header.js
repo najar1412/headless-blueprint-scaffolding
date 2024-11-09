@@ -10,9 +10,12 @@ export default function Header({ menuItems }) {
       component={"header"}
       maw={"unset"}
       w="100%"
+      h="5rem"
+      px={"5rem"}
+      bg={"white"}
       className={style.header}
     >
-      <Group w={"100%"} justify="between">
+      <Group w={"100%"} h="100%" justify="space-between" my="auto">
         <Link href="/">home</Link>
 
         <Group>

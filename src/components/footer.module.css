@@ -4,6 +4,9 @@
   border-top: 1px solid #e1e1e1;
   margin-top: auto;
 }
+.contact-form-container {
+  border-radius: 3rem 0 3rem 3rem;
+}
 
 .footer a {
   color: royalblue;
