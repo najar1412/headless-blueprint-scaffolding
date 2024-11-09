@@ -1,15 +1,7 @@
 import { gql } from "@apollo/client";
 import Head from "next/head";
-import {
-  Container,
-  Title,
-  Badge,
-  Text,
-  Button,
-  SimpleGrid,
-  Divider,
-  Stack,
-} from "@mantine/core";
+import Link from "next/link";
+import { Container, Title, Badge, Text, Button, Stack } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -101,14 +93,17 @@ export default function Component(props) {
             <Text>thought leadership</Text>
           </Badge>
           <Title order={2}>What’s Happening at Nexus Health</Title>
-          <Stack mt={'xl'}>
+          <Link href={"publications"}>
+            <Text fw="bold">explore</Text>
+          </Link>
+          <Stack mt={"xl"}>
             {publications.nodes.map((node) => (
-              <>
-                <Stack key={node.title} gap={0}>
+              <Stack key={node.title} gap={0}>
+                <Link href={node.uri}>
                   <Text fw="bold">{node.title}</Text>
-                  <div dangerouslySetInnerHTML={{ __html: node.content }} />
-                </Stack>
-              </>
+                </Link>
+                <div dangerouslySetInnerHTML={{ __html: node.content }} />
+              </Stack>
             ))}
           </Stack>
         </Container>
@@ -130,14 +125,6 @@ export default function Component(props) {
     </>
   );
 }
-
-/* Component.query = gql`
-  ${Header.fragments.entry}
-  query GetHomePage {
-    ...HeaderFragment
-    ...${Footer.fragments.entry}
-  }
-`; */
 
 Component.variables = ({ databaseId }, ctx) => {
   return {

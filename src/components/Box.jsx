@@ -9,7 +9,7 @@ export const Box = () => {
 
   useGSAP(() => {
     // gsap code here...
-    gsap.to(container.current, { x: 260 }); // <-- automatically reverted
+    gsap.to(container.current, { x: 260, yoyo: true, repeat: -1 }); // <-- automatically reverted
   }); // <-- scope is for selector text (optional)
 
   return <div ref={container} className={styles.box}></div>;
