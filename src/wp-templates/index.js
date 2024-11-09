@@ -12,7 +12,7 @@ import PageSafetyEventreporting from "./page-safely-event-reporting";
 export default {
   "front-page": frontPage,
   "page-publications": PagePublications,
-  "page-publication": PagePublication,
+  "single-publications": PagePublication,
   "page-hcp-resources": PageHcpResources,
   "page-find-my-msl": PageFindMyMsl,
   "page-request-medical-information": PageRequestMedicalInformation,
