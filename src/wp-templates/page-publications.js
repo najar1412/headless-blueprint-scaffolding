@@ -7,7 +7,6 @@ import {
   Divider,
   Stack,
   Text,
-  Badge,
   Avatar,
   Group,
 } from "@mantine/core";

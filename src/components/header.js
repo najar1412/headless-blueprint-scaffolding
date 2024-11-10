@@ -1,11 +1,20 @@
 import { gql } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
-import { Text, Container, Group, Burger, Badge } from "@mantine/core";
+import {
+  Text,
+  Container,
+  Group,
+  Burger,
+  Badge,
+  Stack,
+  Divider,
+} from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
 import style from "./header.module.css";
 import logo from "../assets/logo.svg?href";
+import linkedinIcon from "../assets/linkedin.svg?href";
 
 export default function Header({ menuItems }) {
   const [opened, { toggle }] = useDisclosure();
@@ -16,13 +25,26 @@ export default function Header({ menuItems }) {
       case "Contact":
         return (
           <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
-            <Badge>Contact</Badge>
+            <Badge
+              pt="xs"
+              pb="sm"
+              px="md"
+              color="brand.2"
+              style={{ cursor: "pointer" }}
+            >
+              <Text size="sm" c="brand.0" fw="600" tt={"capitalize"}>
+                Contact
+              </Text>
+            </Badge>
           </Link>
         );
       default:
         return (
           <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
-            <Text>{item.label}</Text>
+            <Stack gap={0}>
+              <Divider size={"sm"} color="brand.2" />
+              <Text size="sm">{item.label}</Text>
+            </Stack>
           </Link>
         );
     }
@@ -53,7 +75,15 @@ export default function Header({ menuItems }) {
             aria-label="Toggle navigation"
           />
         ) : (
-          <Group>{menuItems.map((item) => menuItem(item))}</Group>
+          <Group>
+            {menuItems.map((item) => menuItem(item))}
+            <Link href="https://www.linkedin.com" target="_blank">
+              <Image
+                src={linkedinIcon}
+                style={{ cursor: "pointer", transform: "translateY(.25rem)" }}
+              />
+            </Link>
+          </Group>
         )}
       </Group>
     </Container>
