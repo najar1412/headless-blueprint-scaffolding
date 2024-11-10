@@ -10,6 +10,7 @@ import {
   Stack,
   Grid,
   Divider,
+  Group,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -22,12 +23,16 @@ import { PostCard } from "../components/PostCard";
 import { Landing } from "../components/Landing";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 import { Eyebrow } from "../components/Eyebrow";
+import { ServicesCard } from "../components/ServicesCard";
 
 import styles from "./front-page.module.css";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 import cardGrayImage from "../assets/card_gray.jpg";
 import logoSymbolIcon from "../assets/logo-symbol.svg";
+import arrowBrGreen from "../assets/arrow-br-green.svg";
+import patientIcon from "../assets/icon_patient.svg";
+import valueIcon from "../assets/icon_value_comm.svg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -118,12 +123,12 @@ export default function Component(props) {
                 Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
                 eiusm od tempor incididunt.
               </Text>
-              <Stack w={"fit-content"} gap={"0.25rem"}>
-                <Text tt={"capitalize"} fw="500">
-                  discover more
-                </Text>
-                <Divider size={"md"} color="brand.2" />
-              </Stack>
+              <Link href={"#services"} style={{ width: "fit-content" }}>
+                <Group>
+                  <Text fw="500">Discover more</Text>
+                  <Image src={arrowBrGreen} />
+                </Group>
+              </Link>
               <Button maw="fit-content" onClick={() => testDataFetching()}>
                 Test data fetching
               </Button>
@@ -151,10 +156,51 @@ export default function Component(props) {
           >
             <Stack>
               <Eyebrow label={"services"} variant={1} />
-              <Title order={2} maw={"32rem"}>
+              <Title order={2} maw={"32rem"} mb="2rem">
                 Lorem ipsum dolor sit amet consectetur sed interdum semper sed
                 gravida urna.
               </Title>
+              <Grid>
+                <Grid.Col span={4}>
+                  <ServicesCard
+                    icon={patientIcon}
+                    title={"title"}
+                    items={[
+                      "Commercial strategic planning",
+                      "Reimbursement, pricing,​ & contracting",
+                      "Market research​ & insights",
+                      "HEOR",
+                      "Policy impact ​& forecasting",
+                    ]}
+                  />
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <ServicesCard
+                    icon={valueIcon}
+                    title={"value communications"}
+                    items={[
+                      "Commercial strategic planning",
+                      "Reimbursement, pricing,​ & contracting",
+                      "Market research​ & insights",
+                      "HEOR",
+                      "Policy impact ​& forecasting",
+                    ]}
+                  />
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <ServicesCard
+                    icon={patientIcon}
+                    title={"patient access & affordability"}
+                    items={[
+                      "Commercial strategic planning",
+                      "Reimbursement, pricing,​ & contracting",
+                      "Market research​ & insights",
+                      "HEOR",
+                      "Policy impact ​& forecasting",
+                    ]}
+                  />
+                </Grid.Col>
+              </Grid>
             </Stack>
           </Container>
         </Container>
