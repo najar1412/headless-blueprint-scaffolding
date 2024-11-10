@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
-import style from "./header.module.css";
+import styles from "./header.module.css";
 import logo from "../assets/logo.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
@@ -41,8 +41,12 @@ export default function Header({ menuItems }) {
       default:
         return (
           <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
-            <Stack gap={0}>
-              <Divider size={"sm"} color="brand.2" />
+            <Stack
+              gap={0}
+              className={styles.link}
+              style={{ overflow: "hidden" }}
+            >
+              <div className={styles["link-bar"]} />
               <Text size="sm">{item.label}</Text>
             </Stack>
           </Link>
@@ -58,7 +62,7 @@ export default function Header({ menuItems }) {
       h="5rem"
       px={"5rem"}
       bg={"white"}
-      className={style.header}
+      className={styles.header}
     >
       <Group w={"100%"} h="100%" justify="space-between" my="auto">
         <Link href="/">
