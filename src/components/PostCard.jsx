@@ -5,7 +5,15 @@ import styles from "./PostCard.module.css";
 
 import arrow from "../assets/arrow-br.svg";
 
-export const PostCard = ({ category, title, footer, link, colour, image }) => {
+export const PostCard = ({
+  category,
+  title,
+  footer,
+  link,
+  colour,
+  image,
+  gradient,
+}) => {
   const cardLayout = (category) => {
     switch (category) {
       case "announcement":
@@ -47,9 +55,11 @@ export const PostCard = ({ category, title, footer, link, colour, image }) => {
       w="100%"
       h="100%"
       mih={"15rem"}
-      className={`${layout.shell} ${styles["bg-image"]}`}
+      className={`${layout.shell} ${styles["bg-image"]} ${
+        gradient ? styles.gradient : ""
+      }`}
       style={{
-        backgroundImage: image ? `url(${image.src})!important` : "none",
+        backgroundImage: image ? `url(${image.src})` : "",
         backgroundColor: colour && !image ? colour : "transparent",
       }}
     >

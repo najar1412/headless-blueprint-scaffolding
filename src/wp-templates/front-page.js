@@ -25,6 +25,7 @@ import { Eyebrow } from "../components/Eyebrow";
 import styles from "./front-page.module.css";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
+import cardGrayImage from "../assets/card_gray.jpg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -304,7 +305,7 @@ export default function Component(props) {
                   />
                 </Grid.Col>
                 <Grid.Col span={3}>
-                  <PostCard colour={"red"} />
+                  <PostCard gradient />
                 </Grid.Col>
               </Grid>
               <Grid gutter={"xs"}>
@@ -318,7 +319,7 @@ export default function Component(props) {
                   />
                 </Grid.Col>
                 <Grid.Col span={3}>
-                  <PostCard colour={"var(--mantine-color-brand-5)"} />
+                  <PostCard image={cardGrayImage} />
                 </Grid.Col>
                 <Grid.Col span={4}>
                   <PostCard
@@ -326,7 +327,6 @@ export default function Component(props) {
                     title={"Navigating Market Access in Emerging Markets"}
                     image={placeholderThumbImage}
                     link={"/"}
-                    colour={"red"}
                   />
                 </Grid.Col>
               </Grid>

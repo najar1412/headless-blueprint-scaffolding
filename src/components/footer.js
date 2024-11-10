@@ -58,7 +58,7 @@ export default function Footer(props) {
         </Container>
         <Container w="100%" maw={"unset"}>
           <Divider />
-          <Text size="xs" mt="1.5rem">
+          <Text size="0.5rem" mt="1.5rem" opacity={0.5}>
             Copyright (c) 2024, Nexus Health Group, All rights reserved.
           </Text>
         </Container>
