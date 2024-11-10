@@ -29,7 +29,7 @@
 }
 .inner-1 {
   width: 100%;
-  background-color: #0a404a;
+  background-color: var(--mantine-color-brand-0);
   padding-left: 1.5rem;
   padding-right: 4rem;
   padding-top: 1.5rem;

@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   Container,
   Title,
-  Badge,
   Text,
   Button,
   Stack,
@@ -21,6 +20,7 @@ import Footer from "../components/footer";
 import { PostCard } from "../components/PostCard";
 import { Landing } from "../components/Landing";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
+import { Eyebrow } from "../components/Eyebrow";
 
 import styles from "./front-page.module.css";
 
@@ -119,7 +119,7 @@ export default function Component(props) {
                 <Text tt={"capitalize"} fw="500">
                   discover more
                 </Text>
-                <Divider size={"md"} color="#BCDC49" />
+                <Divider size={"md"} color="brand.2" />
               </Stack>
               <Button maw="fit-content" onClick={() => testDataFetching()}>
                 Test data fetching
@@ -137,7 +137,7 @@ export default function Component(props) {
           px={"5rem"}
           w="100%"
           maw={"unset"}
-          bg={"#D0EBE8"}
+          bg={"var(--mantine-color-brand-1)"}
           className={styles.section}
         >
           <Container
@@ -147,9 +147,7 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack>
-              <Badge mb={"2rem"}>
-                <Text>services</Text>
-              </Badge>
+              <Eyebrow label={"services"} />
               <Title order={2} maw={"32rem"}>
                 Lorem ipsum dolor sit amet consectetur sed interdum semper sed
                 gravida urna.
@@ -165,7 +163,7 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           mih={"100vh"}
-          bg={"#0A404A"}
+          bg={"var(--mantine-color-brand-0)"}
           className={`${styles.section} ${styles.black}`}
         >
           <Container
@@ -176,13 +174,11 @@ export default function Component(props) {
             className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
           >
             <Stack>
-              <Badge mb={"2rem"}>
-                <Text>who are we</Text>
-              </Badge>
-              <Title c='white' order={3} maw={"16rem"}>
+              <Eyebrow label={"who are we"} />
+              <Title c="white" order={3} maw={"16rem"}>
                 Meeting the needs of today and tomorrow
               </Title>
-              <Text c='white' maw={"21rem"}>
+              <Text c="white" maw={"21rem"}>
                 With the growing complexity of the healthcare system and a shift
                 toward value-based care, there is increasing pressure to
                 demonstrate the impact of a product in more innovative ways.
@@ -197,7 +193,7 @@ export default function Component(props) {
           px={"5rem"}
           w="100%"
           maw={"unset"}
-          bg={"#FAFAFA"}
+          bg={"brand.5"}
           className={styles.section}
         >
           <Container
@@ -219,7 +215,7 @@ export default function Component(props) {
                     marginRight: "auto",
                     width: "1px",
                     height: "20rem",
-                    backgroundColor: "#BCDC49",
+                    backgroundColor: "brand.2",
                   }}
                 ></div>
               </Grid.Col>
@@ -227,25 +223,25 @@ export default function Component(props) {
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <Grid>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                      <Text size={"2.5rem"} fw="500" c="brand.2">
                         50+
                       </Text>
                       <Text>Lorem ipsum dolor sit amet consecte</Text>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                      <Text size={"2.5rem"} fw="500" c="brand.2">
                         25
                       </Text>
                       <Text>Lorem ipsum dolor sit amet consecte</Text>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                      <Text size={"2.5rem"} fw="500" c="brand.2">
                         57%
                       </Text>
                       <Text>Lorem ipsum dolor sit amet consecte</Text>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                      <Text size={"2.5rem"} fw="500" c="brand.2">
                         11+
                       </Text>
                       <Text>Lorem ipsum dolor sit amet consecte</Text>
@@ -273,9 +269,7 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack gap={"xs"}>
-              <Badge mb={"2rem"}>
-                <Text>thought leadership</Text>
-              </Badge>
+              <Eyebrow label={"thought leadership"} />
               <Grid gutter={"xs"}>
                 <Grid.Col span={5}>
                   <Stack>
@@ -295,7 +289,7 @@ export default function Component(props) {
                         <Text tt={"capitalize"} fw="500">
                           discover more
                         </Text>
-                        <Divider size={"md"} color="#BCDC49" />
+                        <Divider size={"md"} color="brand.2" />
                       </Stack>
                     </Link>
                   </Stack>
@@ -306,7 +300,7 @@ export default function Component(props) {
                     title={"Catch Nexus Health at NGPX 2024"}
                     footer={"December 2-4 | Palm Springs, CA"}
                     link={"/"}
-                    colour={"#C0E4E0"}
+                    colour={"var(--mantine-color-brand-3)"}
                   />
                 </Grid.Col>
                 <Grid.Col span={3}>
@@ -320,11 +314,11 @@ export default function Component(props) {
                     category={"journal"}
                     title={"Read a Letter from our CEO Andrew Gottfried"}
                     link={"/"}
-                    colour={"#D2E393"}
+                    colour={"var(--mantine-color-brand-4)"}
                   />
                 </Grid.Col>
                 <Grid.Col span={3}>
-                  <PostCard colour={"#FAFAFA"} />
+                  <PostCard colour={"var(--mantine-color-brand-5)"} />
                 </Grid.Col>
                 <Grid.Col span={4}>
                   <PostCard

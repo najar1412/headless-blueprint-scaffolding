@@ -21,12 +21,12 @@ const theme = createTheme({
   },
   colors: {
     brand: [
-      "#ffffff",
-      "#ffffff",
-      "#ffffff",
-      "#ffffff",
-      "#ffffff",
-      "#ffffff",
+      "#0A404A",
+      "#D0EBE8",
+      "#BCDC49",
+      "#C0E4E0",
+      "#D2E393",
+      "#FAFAFA",
       "#ffffff",
       "#ffffff",
       "#ffffff",

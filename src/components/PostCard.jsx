@@ -12,14 +12,14 @@ export const PostCard = ({ category, title, footer, link, colour, image }) => {
         return {
           shell: styles["shell-1"],
           inner: styles["inner-2"],
-          fontColour: "#0A404A",
+          fontColour: "var(--mantine-color-brand-0)",
           arrow: styles.arrow,
         };
       case "journal":
         return {
           shell: styles["shell-3"],
           inner: styles["inner-2"],
-          fontColour: "#0A404A",
+          fontColour: "var(--mantine-color-brand-0)",
           arrow: styles.arrow,
         };
       case "featured":
@@ -33,7 +33,7 @@ export const PostCard = ({ category, title, footer, link, colour, image }) => {
         return {
           shell: styles["shell-2"],
           inner: styles["inner-2"],
-          fontColour: "#0A404A",
+          fontColour: "var(--mantine-color-brand-0)",
           arrow: styles.arrow,
         };
     }

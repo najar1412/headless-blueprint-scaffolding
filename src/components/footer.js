@@ -32,7 +32,7 @@ export default function Footer(props) {
           w="100%"
           maw={"unset"}
           cols={2}
-          bg="#0A404A"
+          bg="var(--mantine-color-brand-0)"
           className={styles["contact-form-container"]}
         >
           <Container maw={"unset"} m={0}>
