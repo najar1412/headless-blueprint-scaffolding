@@ -18,8 +18,6 @@ export const FeatureCarousel = () => {
       navigation
       spaceBetween={5}
       slidesPerView={2.5}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
     >
       <SwiperSlide className={styles["swiper-slide"]}>
         <PostCard

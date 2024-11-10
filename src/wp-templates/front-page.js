@@ -78,7 +78,10 @@ export default function Component(props) {
   useGSAP(() => {
     // TODO: imp timelines for more granular section animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
-    let sections = gsap.utils.toArray('[class*="front-page_section"]');
+    const sections = gsap.utils.toArray('[class*="front-page_section"]');
+    const serviceCards = gsap.utils.toArray(
+      '[class*="ServicesCard_service-card"]'
+    );
 
     gsap.to('[class*="front-page_section-content-trigger"]', {
       x: 260,
@@ -95,18 +98,21 @@ export default function Component(props) {
     });
 
     sections.forEach((section, i) => {
-      gsap.to(section, {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: section,
-          start: () => "top bottom",
-          end: () => "bottom top+=80%",
-          scrub: 0.9,
-          toggleActions: "play none reverse none",
-          invalidateOnRefresh: true,
-          /* markers: true, */
-        },
-      });
+      if (i !== 2) {
+        gsap.to(section, {
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: () => "top bottom",
+            end: () => "bottom top+=80%",
+            scrub: true,
+            toggleActions: "play none reverse none",
+            invalidateOnRefresh: true,
+            /* markers: true, */
+          },
+        });
+      }
     });
   });
 

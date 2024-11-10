@@ -2,6 +2,7 @@
   overflow: hidden;
 }
 .section-content {
+  scale: 0.92;
   opacity: 0;
 }
 .section-content-trigger {

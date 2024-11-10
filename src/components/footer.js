@@ -25,33 +25,41 @@ export default function Footer(props) {
         w="100%"
         id="contact"
       >
-        <SimpleGrid
-          component={"section"}
-          py="4rem"
-          px="4rem"
+        <Container maw={"unset"} m={0} className={styles["section-content"]}>
+          <SimpleGrid
+            component={"section"}
+            py="4rem"
+            px="4rem"
+            w="100%"
+            maw={"unset"}
+            cols={2}
+            bg="var(--mantine-color-brand-0)"
+            className={styles["contact-form-container"]}
+          >
+            <Container maw={"unset"} m={0}>
+              <Stack>
+                <Title order={1} size="2.5rem" c="white">
+                  Get in Touch
+                </Title>
+                <Text c="white">
+                  Lorem ipsum dolor sit amet consec tetur. Nulla ultrices
+                  feugiat et nullam.
+                </Text>
+              </Stack>
+            </Container>
+            <Container maw={"unset"} m={0}>
+              <GetInTouchForm />
+            </Container>
+          </SimpleGrid>
+        </Container>
+
+        <Container
+          className={styles["section-content"]}
+          py={"5rem"}
           w="100%"
           maw={"unset"}
-          cols={2}
-          bg="var(--mantine-color-brand-0)"
-          className={styles["contact-form-container"]}
         >
-          <Container maw={"unset"} m={0} className={styles["section-content"]}>
-            <Stack>
-              <Title order={1} size="2.5rem" c="white">
-                Get in Touch
-              </Title>
-              <Text c="white">
-                Lorem ipsum dolor sit amet consec tetur. Nulla ultrices feugiat
-                et nullam.
-              </Text>
-            </Stack>
-          </Container>
-          <Container maw={"unset"} m={0} className={styles["section-content"]}>
-            <GetInTouchForm />
-          </Container>
-        </SimpleGrid>
-        <Container component={"section"} py={"5rem"} w="100%" maw={"unset"}>
-          <Stack className={styles["section-content"]}>
+          <Stack>
             <Title order={3}>Subscribe to our Newsletter</Title>
             <Text maw={"22rem"}>
               Join our email list to receive news and updates from Nexus Health

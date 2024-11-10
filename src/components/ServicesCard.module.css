@@ -1,4 +1,4 @@
-.container {
+.service-card {
   position: relative;
   aspect-ratio: 1/1;
   width: 100%;
@@ -8,15 +8,15 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-.container:hover {
+.service-card:hover {
   background-color: white;
   aspect-ratio: 1/1.3;
   height: "fit-content";
 }
-.container:hover > .content-1 {
+.service-card:hover > .content-1 {
   opacity: 0;
 }
-.container:hover > .content-2 {
+.service-card:hover > .content-2 {
   opacity: 1;
 }
 .arrow {
