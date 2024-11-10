@@ -10,6 +10,7 @@ import {
   Stack,
   SimpleGrid,
   Grid,
+  Divider,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -18,9 +19,12 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { Box } from "../components/Box";
+import { Card } from "../components/Card";
+import { Landing } from "../components/Landing";
 
 import styles from "./front-page.module.css";
+
+import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +59,6 @@ export default function Component(props) {
 
   useEffect(() => {
     if (data) {
-      console.log(error);
       console.log(data);
     }
   }, [data]);
@@ -66,7 +69,7 @@ export default function Component(props) {
 
   useGSAP(() => {
     // gsap code here...
-    gsap.to('[class*="front-page_section-content"]', {
+    gsap.to('[class*="front-page_section-content-trigger"]', {
       x: 260,
       scrollTrigger: {
         trigger: '[class*="front-page_black"]',
@@ -75,7 +78,7 @@ export default function Component(props) {
         scrub: true,
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
-        markers: true,
+        /* markers: true, */
         pin: true,
       },
     }); // <-- automatically reverted
@@ -98,6 +101,7 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           className={styles.section}
+          style={{ position: "relative" }}
         >
           <Container
             maw={"unset"}
@@ -111,14 +115,20 @@ export default function Component(props) {
                 Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
                 eiusm od tempor incididunt.
               </Text>
-              <Button maw="fit">Discover more</Button>
-              <Button maw="fit" onClick={() => testDataFetching()}>
+              <Stack w={"fit-content"} gap={"0.25rem"}>
+                <Text tt={"capitalize"} fw="500">
+                  discover more
+                </Text>
+                <Divider size={"md"} color="#BCDC49" />
+              </Stack>
+              <Button maw="fit-content" onClick={() => testDataFetching()}>
                 Test data fetching
               </Button>
             </Stack>
-
-            <Box />
           </Container>
+          <div className={styles.landing}>
+            <Landing />
+          </div>
         </Container>
         <Container
           id="services"
@@ -137,7 +147,7 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack>
-              <Badge>
+              <Badge mb={"2rem"}>
                 <Text>services</Text>
               </Badge>
               <Title order={2} maw={"32rem"}>
@@ -163,10 +173,10 @@ export default function Component(props) {
             w="100%"
             h={"100%"}
             p={0}
-            className={styles["section-content"]}
+            className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
           >
             <Stack>
-              <Badge>
+              <Badge mb={"2rem"}>
                 <Text>who are we</Text>
               </Badge>
               <Title order={3} maw={"16rem"}>
@@ -226,7 +236,8 @@ export default function Component(props) {
         <Container
           id="thought-leadership"
           component={"section"}
-          py={"8rem"}
+          pt={"8rem"}
+          pb={0}
           px={"5rem"}
           w="100%"
           maw={"unset"}
@@ -238,32 +249,71 @@ export default function Component(props) {
             p={0}
             className={styles["section-content"]}
           >
-            <Grid>
-              <Grid.Col span={4}>
-                <Stack>
-                  <Badge>
-                    <Text>thought leadership</Text>
-                  </Badge>
-                  <Title order={2}>What’s Happening at Nexus Health</Title>
-                  <Text>
-                    Lorem ipsum dolor sit amet consectetur. Nulla ultrices
-                    feugiat et nullam. Dolor libero commodo lectus aliquet.
-                    Nulla venenatis at nulla mi at.
-                  </Text>
-                  <Link href={"publications"}>
-                    <Text fw="bold">explore</Text>
-                  </Link>
-                </Stack>
-              </Grid.Col>
-              <Grid.Col span={4}>2</Grid.Col>
-              <Grid.Col span={4}>3</Grid.Col>
-            </Grid>
-            <Grid>
-            <Grid.Col span={2}>1</Grid.Col>
-              <Grid.Col span={4}>1</Grid.Col>
-              <Grid.Col span={2}>2</Grid.Col>
-              <Grid.Col span={4}>3</Grid.Col>
-            </Grid>
+            <Stack gap={"xs"}>
+              <Badge mb={"2rem"}>
+                <Text>thought leadership</Text>
+              </Badge>
+              <Grid gutter={"xs"}>
+                <Grid.Col span={5}>
+                  <Stack>
+                    <Title order={2} maw={"20rem"}>
+                      What’s Happening at Nexus Health
+                    </Title>
+                    <Text size="sm">
+                      Lorem ipsum dolor sit amet consectetur. Nulla ultrices
+                      feugiat et nullam. Dolor libero commodo lectus aliquet.
+                      Nulla venenatis at nulla mi at.
+                    </Text>
+                    <Link
+                      href={"publications"}
+                      style={{ width: "fit-content" }}
+                    >
+                      <Stack w={"fit-content"} gap={"0.25rem"}>
+                        <Text tt={"capitalize"} fw="500">
+                          discover more
+                        </Text>
+                        <Divider size={"md"} color="#BCDC49" />
+                      </Stack>
+                    </Link>
+                  </Stack>
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <Card
+                    category={"announcement"}
+                    title={"Catch Nexus Health at NGPX 2024"}
+                    footer={"December 2-4 | Palm Springs, CA"}
+                    link={"/"}
+                    colour={"#C0E4E0"}
+                  />
+                </Grid.Col>
+                <Grid.Col span={3}>
+                  <Card colour={"red"} />
+                </Grid.Col>
+              </Grid>
+              <Grid gutter={"xs"}>
+                <Grid.Col span={1}>1</Grid.Col>
+                <Grid.Col span={4}>
+                  <Card
+                    category={"journal"}
+                    title={"Read a Letter from our CEO Andrew Gottfried"}
+                    link={"/"}
+                    colour={"#D2E393"}
+                  />
+                </Grid.Col>
+                <Grid.Col span={3}>
+                  <Card colour={"#FAFAFA"} />
+                </Grid.Col>
+                <Grid.Col span={4}>
+                  <Card
+                    category={"featured"}
+                    title={"Navigating Market Access in Emerging Markets"}
+                    image={placeholderThumbImage}
+                    link={"/"}
+                    colour={"red"}
+                  />
+                </Grid.Col>
+              </Grid>
+            </Stack>
             {/* <Stack mt={"xl"}>
               {publications.nodes.map((node) => (
                 <Stack key={node.title} gap={0}>

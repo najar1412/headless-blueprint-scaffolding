@@ -1,5 +1,12 @@
 import { gql } from "@apollo/client";
-import { Container, Title, SimpleGrid, Text, Stack } from "@mantine/core";
+import {
+  Container,
+  Title,
+  SimpleGrid,
+  Text,
+  Stack,
+  Divider,
+} from "@mantine/core";
 
 import { GetInTouchForm } from "./forms/GetInTouchForm";
 import { NewsletterForm } from "./forms/NewsletterForm";
@@ -29,8 +36,8 @@ export default function Footer(props) {
           className={styles["contact-form-container"]}
         >
           <Container maw={"unset"} m={0}>
-            <Title order={2}>Get in touch</Title>
-            <Text>
+            <Title order={2} c='white'>Get in touch</Title>
+            <Text c='white'>
               Lorem ipsum dolor sit amet consec tetur. Nulla ultrices feugiat et
               nullam.
             </Text>
@@ -48,6 +55,12 @@ export default function Footer(props) {
             </Text>
           </Stack>
           <NewsletterForm />
+        </Container>
+        <Container w="100%" maw={"unset"}>
+          <Divider />
+          <Text size="xs" mt="1.5rem">
+            Copyright (c) 2024, Nexus Health Group, All rights reserved.
+          </Text>
         </Container>
       </Container>
     </>

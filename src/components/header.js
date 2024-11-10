@@ -1,10 +1,33 @@
 import { gql } from "@apollo/client";
 import Link from "next/link";
-import { Text, Container, Group } from "@mantine/core";
+import Image from "next/image";
+import { Text, Container, Group, Burger, Badge } from "@mantine/core";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
 import style from "./header.module.css";
+import logo from "../assets/logo.svg?href";
 
 export default function Header({ menuItems }) {
+  const [opened, { toggle }] = useDisclosure();
+  const showBurger = useMediaQuery(`(max-width: 62em)`);
+
+  const menuItem = (item) => {
+    switch (item.label) {
+      case "Contact":
+        return (
+          <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
+            <Badge>Contact</Badge>
+          </Link>
+        );
+      default:
+        return (
+          <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
+            <Text>{item.label}</Text>
+          </Link>
+        );
+    }
+  };
+
   return (
     <Container
       component={"header"}
@@ -16,21 +39,22 @@ export default function Header({ menuItems }) {
       className={style.header}
     >
       <Group w={"100%"} h="100%" justify="space-between" my="auto">
-        <Link href="/">home</Link>
-
-        <Group>
-          {menuItems.map((item) =>
-            item.label === "Publications" ? (
-              <Link href={`publications`}>
-                <Text>{item.label}</Text>
-              </Link>
-            ) : (
-              <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
-                <Text>{item.label}</Text>
-              </Link>
-            )
-          )}
-        </Group>
+        <Link href="/">
+          <Image
+            width={200}
+            src={logo}
+            style={{ transform: "translateY(0.25rem)" }}
+          />
+        </Link>
+        {showBurger ? (
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            aria-label="Toggle navigation"
+          />
+        ) : (
+          <Group>{menuItems.map((item) => menuItem(item))}</Group>
+        )}
       </Group>
     </Container>
   );

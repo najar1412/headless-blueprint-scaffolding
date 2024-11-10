@@ -1,0 +1,56 @@
+.shell-1 {
+  border-radius: 2rem 2rem 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+.shell-2 {
+  border-radius: 0 2rem 2rem 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+.shell-3 {
+  display: flex;
+  align-items: end;
+  border-radius: 2rem 2rem 0 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+.shell-4 {
+  display: flex;
+  align-items: end;
+  border-radius: 2rem 2rem 0 2rem;
+  padding: 0;
+}
+.inner-1 {
+  width: 100%;
+  background-color: #0a404a;
+  padding-left: 1.5rem;
+  padding-right: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 2rem 2rem 0 2rem;
+}
+.inner-2 {
+  border-radius: 0;
+}
+.arrow {
+  padding-top: 1rem;
+  transform: translateX(0.5rem);
+  margin-left: auto;
+  margin-top: auto;
+}
+.arrow-absolute {
+  transform: translate(2.5rem, 0.5rem);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.bg-image {
+  background-size: cover;
+}
