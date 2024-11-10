@@ -1,12 +1,12 @@
-import style from "./entry-header.module.css";
+import styles from "./entry-header.module.css";
 
 export default function EntryHeader({ title, date, author }) {
   return (
-    <div className={style.entry}>
-      {title && <h2 className={style.title}>{title}</h2>}
+    <div className={styles.entry}>
+      {title && <h2 className={styles.title}>{title}</h2>}
 
       {date && author && (
-        <div className={style.meta}>
+        <div className={styles.meta}>
           By {author} on <time>{new Date(date).toDateString()}</time>
         </div>
       )}

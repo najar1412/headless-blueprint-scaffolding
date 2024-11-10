@@ -82,7 +82,7 @@ export const PostCard = ({
           ) : null}
           {category ? (
             <div className={layout.arrow}>
-              <Image src={arrow} />
+              <Image alt="arrow" src={arrow} />
             </div>
           ) : null}
         </Stack>

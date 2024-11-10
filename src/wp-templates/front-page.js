@@ -9,7 +9,6 @@ import {
   Button,
   Stack,
   Grid,
-  Divider,
   Group,
 } from "@mantine/core";
 import gsap from "gsap";
@@ -152,7 +151,7 @@ export default function Component(props) {
         <title>{siteTitle}</title>
       </Head>
 
-      <Header menuItems={primaryMenuItems.nodes} />
+      <Header menuItems={primaryMenuItems.nodes} page={props.data.page} />
 
       <Container
         component={"main"}
@@ -184,10 +183,17 @@ export default function Component(props) {
                 eiusm od tempor incididunt.
               </Text>
               <Link href={"#services"} style={{ width: "fit-content" }}>
-                <Group>
-                  <Text fw="500">Discover more</Text>
-                  <Image src={arrowBrGreen} />
-                </Group>
+                <Stack
+                  gap={0}
+                  className={styles.link}
+                  style={{ overflow: "hidden" }}
+                >
+                  <Group>
+                    <Text fw="500">Discover more</Text>
+                    <Image alt="arrow" src={arrowBrGreen} />
+                  </Group>
+                  <div className={styles["link-bar"]} />
+                </Stack>
               </Link>
               <Button maw="fit-content" onClick={() => testDataFetching()}>
                 Test data fetching
@@ -410,11 +416,13 @@ export default function Component(props) {
                       href={"publications"}
                       style={{ width: "fit-content" }}
                     >
-                      <Stack w={"fit-content"} gap={"0.25rem"}>
-                        <Text tt={"capitalize"} fw="500">
-                          discover more
-                        </Text>
-                        <Divider size={"md"} color="brand.2" />
+                      <Stack
+                        gap={0}
+                        className={styles.link}
+                        style={{ overflow: "hidden" }}
+                      >
+                        <Text fw="500">Discover more</Text>
+                        <div className={styles["link-bar"]} />
                       </Stack>
                     </Link>
                   </Stack>
@@ -435,7 +443,7 @@ export default function Component(props) {
               <Grid gutter={"xs"}>
                 <Grid.Col span={1}>
                   <div className={styles["box-element-1"]}>
-                    <Image src={logoSymbolIcon} />
+                    <Image alt="nexus logo" src={logoSymbolIcon} />
                   </div>
                   <div className={styles["box-element-2"]}></div>
                 </Grid.Col>

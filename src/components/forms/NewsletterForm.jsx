@@ -22,7 +22,7 @@ export const NewsletterForm = () => {
       <Stack mt="1rem">
         <div className={styles["input-container"]}>
           <UnstyledButton type="submit">
-            <Image src={arrow} className={styles.arrow} />
+            <Image alt="arrow" src={arrow} className={styles.arrow} />
           </UnstyledButton>
           <input
             className={styles.input}

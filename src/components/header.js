@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import { gql } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +10,7 @@ import styles from "./header.module.css";
 import logo from "../assets/logo.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
-export default function Header({ menuItems }) {
+export default function Header({ menuItems, page }) {
   const [opened, { toggle }] = useDisclosure();
   const showBurger = useMediaQuery(`(max-width: 62em)`);
 
@@ -59,6 +61,7 @@ export default function Header({ menuItems }) {
       <Group w={"100%"} h="100%" justify="space-between" my="auto">
         <Link href="/">
           <Image
+            alt="nexus logo"
             width={200}
             src={logo}
             style={{ transform: "translateY(0.25rem)" }}
@@ -72,9 +75,12 @@ export default function Header({ menuItems }) {
           />
         ) : (
           <Group>
-            {menuItems.map((item) => menuItem(item))}
+            {menuItems.map((item) => (
+              <Fragment key={item.label}>{menuItem(item)}</Fragment>
+            ))}
             <Link href="https://www.linkedin.com" target="_blank">
               <Image
+                alt="linkedin logo"
                 src={linkedinIcon}
                 style={{ cursor: "pointer", transform: "translateY(.25rem)" }}
               />
