@@ -147,7 +147,7 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack>
-              <Eyebrow label={"services"} />
+              <Eyebrow label={"services"} variant={1} />
               <Title order={2} maw={"32rem"}>
                 Lorem ipsum dolor sit amet consectetur sed interdum semper sed
                 gravida urna.
@@ -174,7 +174,7 @@ export default function Component(props) {
             className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
           >
             <Stack>
-              <Eyebrow label={"who are we"} />
+              <Eyebrow label={"who are we"} variant={2} />
               <Title c="white" order={3} maw={"16rem"}>
                 Meeting the needs of today and tomorrow
               </Title>
@@ -269,7 +269,7 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack gap={"xs"}>
-              <Eyebrow label={"thought leadership"} />
+              <Eyebrow label={"thought leadership"} variant={3} />
               <Grid gutter={"xs"}>
                 <Grid.Col span={5}>
                   <Stack>

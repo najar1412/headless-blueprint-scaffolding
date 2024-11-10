@@ -15,6 +15,7 @@ import {
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
+import { Eyebrow } from "../components/Eyebrow";
 import { Cta1 } from "../components/Cta1";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
@@ -44,13 +45,13 @@ export default function PagePublications(props) {
           <Stack my="5rem">
             <Title>Thought Leadership</Title>
             <Group justify="space-between">
-              <Badge>featured</Badge>
+              <Eyebrow label={"featured"} variant={3} />
               <Group pr="5rem">
                 <Avatar />
                 <Avatar />
               </Group>
             </Group>
-            <Container p={0} maw={'100%'}>
+            <Container p={0} maw={"100%"}>
               <FeatureCarousel />
             </Container>
 
@@ -74,7 +75,11 @@ export default function PagePublications(props) {
             {publications.nodes.map((node) => (
               <>
                 <Group wrap="no-wrap">
-                  <Image src={placeholderThumbImage} width={200} style={{borderRadius: '1rem'}} />
+                  <Image
+                    src={placeholderThumbImage}
+                    width={200}
+                    style={{ borderRadius: "1rem" }}
+                  />
                   <Stack key={node.title} gap={0}>
                     <Link href={node.uri}>
                       <Text fw="bold">{node.title}</Text>
