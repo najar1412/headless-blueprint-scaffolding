@@ -2,12 +2,15 @@
   overflow: hidden;
 }
 .section-content {
-  scale: 0.92;
+  scale: 1.08;
   opacity: 0;
+  filter: blur(2px);
 }
 .section-content-trigger {
 }
 .black {
+}
+.numbers {
 }
 .landing {
   position: absolute;

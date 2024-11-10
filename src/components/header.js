@@ -1,15 +1,7 @@
 import { gql } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Text,
-  Container,
-  Group,
-  Burger,
-  Badge,
-  Stack,
-  Divider,
-} from "@mantine/core";
+import { Text, Container, Group, Burger, Badge, Stack } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 
 import styles from "./header.module.css";

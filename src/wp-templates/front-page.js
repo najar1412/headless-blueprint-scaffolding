@@ -76,13 +76,31 @@ export default function Component(props) {
   };
 
   useGSAP(() => {
-    // TODO: imp timelines for more granular section animation
+    // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
     const sections = gsap.utils.toArray('[class*="front-page_section"]');
-    const serviceCards = gsap.utils.toArray(
-      '[class*="ServicesCard_service-card"]'
-    );
 
+    // animate numbers
+    // TODO: imp in scrolltrigger
+    gsap.from('[class*="front-page_numbers"]', {
+      textContent: 0, // start from 0
+      duration: 10,
+      snap: { textContent: 1 }, // increment by 1
+      /* scrollTrigger: {
+        trigger: triggerSection, // trigger section
+        start: 'top center', // "start when the top of the element reaches the top of the screen"
+      }, */
+    });
+
+    // initial page animation
+    gsap.set(['[class*="main"]', '[class*="header"]'], { autoAlpha: 0 });
+    gsap.to(['[class*="main"]', '[class*="header"]'], {
+      autoAlpha: 1,
+      delay: 1,
+      duration: 2,
+    });
+
+    // pinned section animation
     gsap.to('[class*="front-page_section-content-trigger"]', {
       x: 260,
       scrollTrigger: {
@@ -97,15 +115,27 @@ export default function Component(props) {
       },
     });
 
+    // sectional animation
     sections.forEach((section, i) => {
+      gsap.set('[class*="front-page_section-content"]', { autoAlpha: 0 });
+      if (!i) {
+        gsap.to('[class*="front-page_section-content"]', {
+          filter: "blur(0px)",
+          y: "-2%",
+          autoAlpha: 1,
+          delay: 2,
+          scale: 1,
+        });
+      }
       if (i !== 2) {
         gsap.to(section, {
+          filter: "blur(0px)",
           opacity: 1,
           scale: 1,
           scrollTrigger: {
             trigger: section,
             start: () => "top bottom",
-            end: () => "bottom top+=80%",
+            end: () => "bottom-=30% bottom",
             scrub: true,
             toggleActions: "play none reverse none",
             invalidateOnRefresh: true,
@@ -124,7 +154,13 @@ export default function Component(props) {
 
       <Header menuItems={primaryMenuItems.nodes} />
 
-      <Container component={"main"} maw={"unset"} w="100%" p={0}>
+      <Container
+        component={"main"}
+        className={"main"}
+        maw={"unset"}
+        w="100%"
+        p={0}
+      >
         <Container
           component={"section"}
           h="100dvh"
@@ -298,7 +334,7 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          50+
+                          <span className={styles.numbers}>50</span>+
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte
@@ -308,7 +344,7 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          25
+                          <span className={styles.numbers}>25</span>
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte
@@ -318,7 +354,7 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          57%
+                          <span className={styles.numbers}>57</span>%
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte
@@ -328,7 +364,7 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          11+
+                          <span className={styles.numbers}>11</span>+
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte

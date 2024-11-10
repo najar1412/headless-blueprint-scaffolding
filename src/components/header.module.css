@@ -1,6 +1,7 @@
 .header {
   position: fixed;
   z-index: 100;
+  opacity: 0;
 }
 
 .siteTitle {
