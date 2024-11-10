@@ -179,10 +179,10 @@ export default function Component(props) {
               <Badge mb={"2rem"}>
                 <Text>who are we</Text>
               </Badge>
-              <Title order={3} maw={"16rem"}>
+              <Title c='white' order={3} maw={"16rem"}>
                 Meeting the needs of today and tomorrow
               </Title>
-              <Text maw={"21rem"}>
+              <Text c='white' maw={"21rem"}>
                 With the growing complexity of the healthcare system and a shift
                 toward value-based care, there is increasing pressure to
                 demonstrate the impact of a product in more innovative ways.
