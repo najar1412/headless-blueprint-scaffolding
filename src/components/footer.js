@@ -27,7 +27,7 @@ export default function Footer(props) {
       >
         <SimpleGrid
           py="4rem"
-          px="2.5rem"
+          px="4rem"
           component={"section"}
           w="100%"
           maw={"unset"}
@@ -36,11 +36,15 @@ export default function Footer(props) {
           className={styles["contact-form-container"]}
         >
           <Container maw={"unset"} m={0}>
-            <Title order={2} c='white'>Get in touch</Title>
-            <Text c='white'>
-              Lorem ipsum dolor sit amet consec tetur. Nulla ultrices feugiat et
-              nullam.
-            </Text>
+            <Stack>
+              <Title order={1} size="2.5rem" c="white">
+                Get in Touch
+              </Title>
+              <Text c="white">
+                Lorem ipsum dolor sit amet consec tetur. Nulla ultrices feugiat
+                et nullam.
+              </Text>
+            </Stack>
           </Container>
           <Container maw={"unset"} m={0}>
             <GetInTouchForm />

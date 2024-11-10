@@ -1,0 +1,31 @@
+.input-container {
+  position: relative;
+  max-width: 22rem;
+}
+.arrow {
+  position: absolute;
+  right: 0;
+  transform: translate(-1rem, -0.8rem);
+}
+.input {
+  color: transparent;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--mantine-color-brand-0);
+  padding-bottom: 0.5rem;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.input::placeholder {
+  color: var(--mantine-color-brand-0);
+  text-transform: capitalize;
+  opacity: 1; /* Firefox */
+}
+
+.input::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: var(--mantine-color-brand-0);
+  text-transform: capitalize;
+}

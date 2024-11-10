@@ -1,0 +1,19 @@
+.input {
+  color: white;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.5rem;
+}
+
+.input::placeholder {
+  color: white;
+  text-transform: capitalize;
+  opacity: 1; /* Firefox */
+}
+
+.input::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: white;
+  text-transform: capitalize;
+}

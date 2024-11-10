@@ -1,5 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Button, Stack } from "@mantine/core";
+import { Button, Stack, UnstyledButton, Text } from "@mantine/core";
+import Image from "next/image";
+
+import styles from "./NewsletterForm.module.css";
+
+import arrow from "../../assets/arrow-tr-green.svg";
 
 export const NewsletterForm = () => {
   const {
@@ -14,13 +19,24 @@ export const NewsletterForm = () => {
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack>
-        <input placeholder="email" {...register("email", { required: true })} />
+      <Stack mt="1rem">
+        <div className={styles["input-container"]}>
+          <UnstyledButton type="submit">
+            <Image src={arrow} className={styles.arrow} />
+          </UnstyledButton>
+          <input
+            className={styles.input}
+            placeholder="Your email"
+            {...register("email", { required: true })}
+          />
+        </div>
 
         {/* errors will return when field validation fails  */}
-        {errors.email && <span>This field is required</span>}
-
-        <Button type="submit">submit</Button>
+        {errors.email && (
+          <Text size="xs" c={"red"}>
+            An Email address is required
+          </Text>
+        )}
       </Stack>
     </form>
   );
