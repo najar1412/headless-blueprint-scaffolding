@@ -8,7 +8,6 @@ import {
   Text,
   Button,
   Stack,
-  SimpleGrid,
   Grid,
   Divider,
 } from "@mantine/core";
@@ -21,6 +20,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { Card } from "../components/Card";
 import { Landing } from "../components/Landing";
+import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 
 import styles from "./front-page.module.css";
 
@@ -206,31 +206,54 @@ export default function Component(props) {
             p={0}
             className={styles["section-content"]}
           >
-            <SimpleGrid cols={2}>
-              <Container maw={"unset"} p={0} w={"100%"}>
-                <Text>carousel</Text>
-              </Container>
-              <Container maw={"unset"} p={0} w={"100%"}>
-                <Grid>
-                  <Grid.Col span={6}>
-                    <Text size={"xl"}>50+</Text>
-                    <Text>Lorem ipsum dolor sit amet consecte</Text>
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <Text size={"xl"}>50+</Text>
-                    <Text>Lorem ipsum dolor sit amet consecte</Text>
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <Text size={"xl"}>50+</Text>
-                    <Text>Lorem ipsum dolor sit amet consecte</Text>
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <Text size={"xl"}>50+</Text>
-                    <Text>Lorem ipsum dolor sit amet consecte</Text>
-                  </Grid.Col>
-                </Grid>
-              </Container>
-            </SimpleGrid>
+            <Grid cols={2} justify="center" align="center">
+              <Grid.Col span={5}>
+                <Container maw={"unset"} p={0} w={"100%"}>
+                  <QuoteCarousel />
+                </Container>
+              </Grid.Col>
+              <Grid.Col span={2}>
+                <div
+                  style={{
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    width: "1px",
+                    height: "20rem",
+                    backgroundColor: "#BCDC49",
+                  }}
+                ></div>
+              </Grid.Col>
+              <Grid.Col span={5}>
+                <Container maw={"unset"} p={0} w={"100%"}>
+                  <Grid>
+                    <Grid.Col span={6}>
+                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                        50+
+                      </Text>
+                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                        25
+                      </Text>
+                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                        57%
+                      </Text>
+                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                      <Text size={"2.5rem"} fw="500" c="#BCDC49">
+                        11+
+                      </Text>
+                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                    </Grid.Col>
+                  </Grid>
+                </Container>
+              </Grid.Col>
+            </Grid>
           </Container>
         </Container>
         <Container

@@ -61,7 +61,7 @@ export const Card = ({ category, title, footer, link, colour, image }) => {
             </Text>
           ) : null}
           {title ? (
-            <Text size="lg" fw={500} lh={"1.25rem"} c={layout.fontColour}>
+            <Text size="md" fw={500} lh={"1.25rem"} c={layout.fontColour}>
               {title}
             </Text>
           ) : null}
