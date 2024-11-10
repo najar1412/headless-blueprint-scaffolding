@@ -216,7 +216,7 @@ export default function Component(props) {
                     marginRight: "auto",
                     width: "1px",
                     height: "20rem",
-                    backgroundColor: "brand.2",
+                    backgroundColor: "var(--mantine-color-brand-2)",
                   }}
                 ></div>
               </Grid.Col>
@@ -224,28 +224,36 @@ export default function Component(props) {
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <Grid>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="brand.2">
-                        50+
-                      </Text>
-                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                      <Stack gap='0.25rem'>
+                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                          50+
+                        </Text>
+                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                      </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="brand.2">
-                        25
-                      </Text>
-                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                      <Stack gap='0.25rem'>
+                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                          25
+                        </Text>
+                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                      </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="brand.2">
-                        57%
-                      </Text>
-                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                      <Stack gap='0.25rem'>
+                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                          57%
+                        </Text>
+                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                      </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Text size={"2.5rem"} fw="500" c="brand.2">
-                        11+
-                      </Text>
-                      <Text>Lorem ipsum dolor sit amet consecte</Text>
+                      <Stack gap='0.25rem'>
+                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                          11+
+                        </Text>
+                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                      </Stack>
                     </Grid.Col>
                   </Grid>
                 </Container>
