@@ -1,5 +1,6 @@
 import { gql, useLazyQuery, query } from "@apollo/client";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Container,
@@ -26,6 +27,7 @@ import styles from "./front-page.module.css";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 import cardGrayImage from "../assets/card_gray.jpg";
+import logoSymbolIcon from "../assets/logo-symbol.svg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -224,35 +226,43 @@ export default function Component(props) {
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <Grid>
                     <Grid.Col span={6}>
-                      <Stack gap='0.25rem'>
+                      <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
                           50+
                         </Text>
-                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                        <Text lh="1rem">
+                          Lorem ipsum dolor sit amet consecte
+                        </Text>
                       </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Stack gap='0.25rem'>
+                      <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
                           25
                         </Text>
-                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                        <Text lh="1rem">
+                          Lorem ipsum dolor sit amet consecte
+                        </Text>
                       </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Stack gap='0.25rem'>
+                      <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
                           57%
                         </Text>
-                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                        <Text lh="1rem">
+                          Lorem ipsum dolor sit amet consecte
+                        </Text>
                       </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Stack gap='0.25rem'>
+                      <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
                           11+
                         </Text>
-                        <Text lh='1rem'>Lorem ipsum dolor sit amet consecte</Text>
+                        <Text lh="1rem">
+                          Lorem ipsum dolor sit amet consecte
+                        </Text>
                       </Stack>
                     </Grid.Col>
                   </Grid>
@@ -317,7 +327,12 @@ export default function Component(props) {
                 </Grid.Col>
               </Grid>
               <Grid gutter={"xs"}>
-                <Grid.Col span={1}>1</Grid.Col>
+                <Grid.Col span={1}>
+                  <div className={styles["box-element-1"]}>
+                    <Image src={logoSymbolIcon} />
+                  </div>
+                  <div className={styles["box-element-2"]}></div>
+                </Grid.Col>
                 <Grid.Col span={4}>
                   <PostCard
                     category={"journal"}
