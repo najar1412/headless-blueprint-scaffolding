@@ -18,7 +18,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { Card } from "../components/Card";
+import { PostCard } from "../components/PostCard";
 import { Landing } from "../components/Landing";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 
@@ -301,7 +301,7 @@ export default function Component(props) {
                   </Stack>
                 </Grid.Col>
                 <Grid.Col span={4}>
-                  <Card
+                  <PostCard
                     category={"announcement"}
                     title={"Catch Nexus Health at NGPX 2024"}
                     footer={"December 2-4 | Palm Springs, CA"}
@@ -310,13 +310,13 @@ export default function Component(props) {
                   />
                 </Grid.Col>
                 <Grid.Col span={3}>
-                  <Card colour={"red"} />
+                  <PostCard colour={"red"} />
                 </Grid.Col>
               </Grid>
               <Grid gutter={"xs"}>
                 <Grid.Col span={1}>1</Grid.Col>
                 <Grid.Col span={4}>
-                  <Card
+                  <PostCard
                     category={"journal"}
                     title={"Read a Letter from our CEO Andrew Gottfried"}
                     link={"/"}
@@ -324,10 +324,10 @@ export default function Component(props) {
                   />
                 </Grid.Col>
                 <Grid.Col span={3}>
-                  <Card colour={"#FAFAFA"} />
+                  <PostCard colour={"#FAFAFA"} />
                 </Grid.Col>
                 <Grid.Col span={4}>
-                  <Card
+                  <PostCard
                     category={"featured"}
                     title={"Navigating Market Access in Emerging Markets"}
                     image={placeholderThumbImage}

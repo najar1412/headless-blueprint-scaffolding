@@ -1,11 +1,11 @@
 import { Box, Text, Stack } from "@mantine/core";
 import Image from "next/image";
 
-import styles from "./Card.module.css";
+import styles from "./PostCard.module.css";
 
 import arrow from "../assets/arrow-br.svg";
 
-export const Card = ({ category, title, footer, link, colour, image }) => {
+export const PostCard = ({ category, title, footer, link, colour, image }) => {
   const cardLayout = (category) => {
     switch (category) {
       case "announcement":

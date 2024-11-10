@@ -14,6 +14,7 @@ import {
 
 import Header from "../components/header";
 import Footer from "../components/footer";
+import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
 import { Cta1 } from "../components/Cta1";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
@@ -34,7 +35,7 @@ export default function PagePublications(props) {
         <Container
           component={"section"}
           pt={"4rem"}
-          pb={"1rem"}
+          pb={"0"}
           pr={0}
           pl={"5rem"}
           w="100%"
@@ -49,8 +50,10 @@ export default function PagePublications(props) {
                 <Avatar />
               </Group>
             </Group>
+            <Container p={0} maw={'100%'}>
+              <FeatureCarousel />
+            </Container>
 
-            <Text mt="4rem">Carousel</Text>
             {/* <Cta1
             image={page.acf.cta1.image}
             title={page.acf.cta1.title}
@@ -61,7 +64,7 @@ export default function PagePublications(props) {
         </Container>
         <Container
           component={"section"}
-          pt={"1rem"}
+          pt={"0"}
           px={"8rem"}
           w="100%"
           maw={"unset"}
@@ -71,7 +74,7 @@ export default function PagePublications(props) {
             {publications.nodes.map((node) => (
               <>
                 <Group wrap="no-wrap">
-                  <Image src={placeholderThumbImage} width={200} />
+                  <Image src={placeholderThumbImage} width={200} style={{borderRadius: '1rem'}} />
                   <Stack key={node.title} gap={0}>
                     <Link href={node.uri}>
                       <Text fw="bold">{node.title}</Text>
