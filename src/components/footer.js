@@ -11,7 +11,7 @@ import {
 import { GetInTouchForm } from "./forms/GetInTouchForm";
 import { NewsletterForm } from "./forms/NewsletterForm";
 
-import styles from "./footer.module.css";
+import styles from "../wp-templates/front-page.module.css";
 
 export default function Footer(props) {
   return (
@@ -26,16 +26,16 @@ export default function Footer(props) {
         id="contact"
       >
         <SimpleGrid
+          component={"section"}
           py="4rem"
           px="4rem"
-          component={"section"}
           w="100%"
           maw={"unset"}
           cols={2}
           bg="var(--mantine-color-brand-0)"
           className={styles["contact-form-container"]}
         >
-          <Container maw={"unset"} m={0}>
+          <Container maw={"unset"} m={0} className={styles["section-content"]}>
             <Stack>
               <Title order={1} size="2.5rem" c="white">
                 Get in Touch
@@ -46,12 +46,12 @@ export default function Footer(props) {
               </Text>
             </Stack>
           </Container>
-          <Container maw={"unset"} m={0}>
+          <Container maw={"unset"} m={0} className={styles["section-content"]}>
             <GetInTouchForm />
           </Container>
         </SimpleGrid>
         <Container component={"section"} py={"5rem"} w="100%" maw={"unset"}>
-          <Stack>
+          <Stack className={styles["section-content"]}>
             <Title order={3}>Subscribe to our Newsletter</Title>
             <Text maw={"22rem"}>
               Join our email list to receive news and updates from Nexus Health

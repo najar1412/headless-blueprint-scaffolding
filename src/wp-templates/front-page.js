@@ -76,7 +76,10 @@ export default function Component(props) {
   };
 
   useGSAP(() => {
-    // gsap code here...
+    // TODO: imp timelines for more granular section animation
+    //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
+    let sections = gsap.utils.toArray('[class*="front-page_section"]');
+
     gsap.to('[class*="front-page_section-content-trigger"]', {
       x: 260,
       scrollTrigger: {
@@ -89,8 +92,23 @@ export default function Component(props) {
         /* markers: true, */
         pin: true,
       },
-    }); // <-- automatically reverted
-  }); // <-- scope is for selector text (optional)
+    });
+
+    sections.forEach((section, i) => {
+      gsap.to(section, {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: () => "top bottom",
+          end: () => "bottom top+=80%",
+          scrub: 0.9,
+          toggleActions: "play none reverse none",
+          invalidateOnRefresh: true,
+          /* markers: true, */
+        },
+      });
+    });
+  });
 
   return (
     <>
