@@ -1,5 +1,5 @@
 // import Swiper core and required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Flex, Group, Text } from "@mantine/core";
 
@@ -11,12 +11,16 @@ import styles from "./QuoteCarousel.module.css";
 export const QuoteCarousel = () => {
   return (
     <Swiper
-      modules={[Pagination]}
+      modules={[Pagination, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
       pagination={{ clickable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log("slide change")}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
     >
       <SwiperSlide className={styles["swiper-slide"]}>
         <Group wrap="no-wrap" align="flex-start">
@@ -33,7 +37,9 @@ export const QuoteCarousel = () => {
               to expand thinking and identify options to how our payer story
               evolves.”
             </Text>
-            <Text fw={300} size='sm'>—Jane Doe, Executive Director</Text>
+            <Text fw={300} size="sm">
+              —Jane Doe, Executive Director
+            </Text>
           </Flex>
         </Group>
       </SwiperSlide>
@@ -52,7 +58,9 @@ export const QuoteCarousel = () => {
               to expand thinking and identify options to how our payer story
               evolves.”
             </Text>
-            <Text fw={300} size='sm'>—Jane Doe, Executive Director</Text>
+            <Text fw={300} size="sm">
+              —Jane Doe, Executive Director
+            </Text>
           </Flex>
         </Group>
       </SwiperSlide>
@@ -71,7 +79,9 @@ export const QuoteCarousel = () => {
               to expand thinking and identify options to how our payer story
               evolves.”
             </Text>
-            <Text fw={300} size='sm'>—Jane Doe, Executive Director</Text>
+            <Text fw={300} size="sm">
+              —Jane Doe, Executive Director
+            </Text>
           </Flex>
         </Group>
       </SwiperSlide>
@@ -90,7 +100,9 @@ export const QuoteCarousel = () => {
               to expand thinking and identify options to how our payer story
               evolves.”
             </Text>
-            <Text fw={300} size='sm'>—Jane Doe, Executive Director</Text>
+            <Text fw={300} size="sm">
+              —Jane Doe, Executive Director
+            </Text>
           </Flex>
         </Group>
       </SwiperSlide>
