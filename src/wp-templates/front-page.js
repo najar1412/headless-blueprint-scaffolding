@@ -32,6 +32,7 @@ import logoSymbolIcon from "../assets/logo-symbol.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
+import Typewriter from "../components/Typewriter";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -177,7 +178,17 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack>
-              <Title maw={"20rem"}>Shaping the future of Market Access</Title>
+
+            <Title maw={"20rem"}>
+        Shaping{" "}
+        <Typewriter 
+          text="the future"
+          className="text-2xl text-primary font-bold bg-transparent inline-block mix-blend-difference"
+        />
+        {" "}of Market Access
+      </Title>
+
+
               <Text maw={"15rem"}>
                 Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
                 eiusm od tempor incididunt.
