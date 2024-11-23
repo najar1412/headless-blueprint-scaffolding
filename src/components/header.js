@@ -55,7 +55,7 @@ export default function Header({ menuItems, page }) {
       w="100%"
       h="5rem"
       px={"5rem"}
-      bg={"white"}
+      bg={"transparent"}
       className={styles.header}
     >
       <Group w={"100%"} h="100%" justify="space-between" my="auto">

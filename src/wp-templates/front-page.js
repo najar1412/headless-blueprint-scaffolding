@@ -13,13 +13,15 @@ import {
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { PostCard } from "../components/PostCard";
 import { Landing } from "../components/Landing";
+import { Landing as Landing2 } from "../components/Landing2";
+import { Landing as Landing3 } from "../components/Landing3";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import { ServicesCard } from "../components/ServicesCard";
@@ -53,9 +55,12 @@ const GET_PUBLICATIONS = gql`
   }
 `;
 
+const bgs = [<Landing />, <Landing2 />, <Landing3 />];
+
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { publications, footer, primaryMenuItems } = props.data;
+  const [background, setBackground] = useState(0);
   const [getPublications, { loading, error, data }] = useLazyQuery(
     GET_PUBLICATIONS,
     {
@@ -72,6 +77,10 @@ export default function Component(props) {
 
   const testDataFetching = () => {
     getPublications();
+  };
+
+  const nextBackground = () => {
+    setBackground(background === bgs.length - 1 ? 0 : background + 1);
   };
 
   useGSAP(() => {
@@ -198,11 +207,12 @@ export default function Component(props) {
               <Button maw="fit-content" onClick={() => testDataFetching()}>
                 Test data fetching
               </Button>
+              <Button maw="fit-content" onClick={() => nextBackground()}>
+                Change background
+              </Button>
             </Stack>
           </Container>
-          <div className={styles.landing}>
-            <Landing />
-          </div>
+          <div className={styles.landing}>{bgs[background]}</div>
         </Container>
         <Container
           id="services"
