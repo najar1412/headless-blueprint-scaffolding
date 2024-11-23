@@ -41,12 +41,12 @@ export const Landing = () => {
         ref={mesh}
         position={[0, 0, 0]}
         /* scale={1.5} */
-        scale={[2, 0.5, 2]}
-        rotation= {[MathUtils.degToRad(35), 0, 0]}
+        scale={[3, 0.5, 3]}
+        rotation={[MathUtils.degToRad(35), 0, 0]}
         // onPointerOver={() => (hover.current = true)}
         // onPointerOut={() => (hover.current = false)}
       >
-        <icosahedronGeometry args={[2, 20]} />
+        <icosahedronGeometry args={[2, 60]} />
         <shaderMaterial
           fragmentShader={fragmentShader}
           vertexShader={vertexShader}
@@ -59,10 +59,11 @@ export const Landing = () => {
 
   return (
     <Canvas
+      orthographic
       camera={{
-        position: [0.0, 0, 5.0],
+        position: [0.0, 2.0, 8.0],
         rotation: [MathUtils.degToRad(-15), 0, 0],
-        zoom: 1.5
+        zoom: 270,
       }}
     >
       {/* <ambientLight intensity={Math.PI / 2} />

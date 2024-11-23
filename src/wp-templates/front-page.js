@@ -55,7 +55,7 @@ const GET_PUBLICATIONS = gql`
   }
 `;
 
-const bgs = [<Landing />, <Landing2 />, <Landing3 />];
+const bgs = [<Landing2 />, <Landing />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
