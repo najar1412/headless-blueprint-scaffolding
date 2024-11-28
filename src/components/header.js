@@ -10,7 +10,7 @@ import styles from "./header.module.css";
 import logo from "../assets/logo.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
-export default function Header({ menuItems, page }) {
+export default function Header({ menuItems, page, frontPage }) {
   const [opened, { toggle }] = useDisclosure();
   const showBurger = useMediaQuery(`(max-width: 62em)`);
 
@@ -55,8 +55,9 @@ export default function Header({ menuItems, page }) {
       w="100%"
       h="5rem"
       px={"5rem"}
-      bg={"transparent"}
-      className={styles.header}
+      className={`${styles.header} ${
+        !frontPage ? styles["opaque-header"] : ""
+      }`}
     >
       <Group w={"100%"} h="100%" justify="space-between" my="auto">
         <Link href="/">

@@ -160,7 +160,7 @@ export default function Component(props) {
         <title>{siteTitle}</title>
       </Head>
 
-      <Header menuItems={primaryMenuItems.nodes} page={props.data.page} />
+      <Header menuItems={primaryMenuItems.nodes} page={props.data.page} frontPage />
 
       <Container
         component={"main"}

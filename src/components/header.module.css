@@ -2,6 +2,7 @@
   position: fixed;
   z-index: 100;
   opacity: 0;
+  background-color: transparent;
 }
 
 .siteTitle {
@@ -25,4 +26,8 @@
   background: linear-gradient(90deg, #bcdc49 0%, #9fd3ce 100%);
   transform: translateX(-101%);
   transition: all 0.5s;
+}
+.opaque-header {
+  background-color: white;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .03));
 }
