@@ -16,7 +16,6 @@ import styles from "../wp-templates/front-page.module.css";
 export default function Footer(props) {
   return (
     <>
-      {/* <div dangerouslySetInnerHTML={{ __html: props.node.content }} /> */}
       <Container
         pt={"8rem"}
         pb={"2rem"}
@@ -25,7 +24,7 @@ export default function Footer(props) {
         w="100%"
         id="contact"
       >
-        <Container maw={"unset"} m={0} className={styles["section-content"]}>
+        <Container maw={"1512px"} className={styles["section-content"]}>
           <SimpleGrid
             component={"section"}
             py="4rem"
@@ -36,7 +35,7 @@ export default function Footer(props) {
             bg="var(--mantine-color-brand-0)"
             className={styles["contact-form-container"]}
           >
-            <Container maw={"unset"} m={0}>
+            <Container maw={"unset"} mx={'auto'}>
               <Stack>
                 <Title order={1} size="2.5rem" c="white">
                   Get in Touch
@@ -57,7 +56,7 @@ export default function Footer(props) {
           className={styles["section-content"]}
           py={"5rem"}
           w="100%"
-          maw={"unset"}
+          maw={"1512px"}
         >
           <Stack>
             <Title order={3}>Subscribe to our Newsletter</Title>
@@ -70,9 +69,17 @@ export default function Footer(props) {
         </Container>
         <Container w="100%" maw={"unset"}>
           <Divider />
-          <Text size="0.5rem" mt="1.5rem" opacity={0.5}>
+          <Container
+          w="100%"
+          maw={"1512px"}
+        >
+
+<Text size="0.5rem" mt="1.5rem" opacity={0.5}>
             Copyright (c) 2024, Nexus Health Group, All rights reserved.
           </Text>
+
+        </Container>
+          
         </Container>
       </Container>
     </>

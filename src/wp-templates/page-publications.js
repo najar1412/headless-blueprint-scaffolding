@@ -80,7 +80,7 @@ export default function PagePublications(props) {
           pr={0}
           pl={"5rem"}
           w="100%"
-          maw={"unset"}
+          maw={"1512px"}
         >
           <Stack my="5rem">
             <Title>Thought Leadership</Title>
@@ -108,7 +108,7 @@ export default function PagePublications(props) {
           pt={"0"}
           px={"8rem"}
           w="100%"
-          maw={"unset"}
+          maw={"1512px"}
         >
           <Stack>
             <Divider />

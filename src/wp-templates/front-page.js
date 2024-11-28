@@ -55,7 +55,7 @@ const GET_PUBLICATIONS = gql`
   }
 `;
 
-const bgs = [<Landing2 />, <Landing />, <Landing3 />];
+const bgs = [<Landing />, <Landing2 />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
@@ -180,7 +180,7 @@ export default function Component(props) {
           style={{ position: "relative" }}
         >
           <Container
-            maw={"unset"}
+            maw={"1512px"}
             w="100%"
             p={0}
             className={styles["section-content"]}
@@ -225,7 +225,7 @@ export default function Component(props) {
           className={styles.section}
         >
           <Container
-            maw={"unset"}
+            maw={"1512px"}
             w="100%"
             p={0}
             className={styles["section-content"]}
@@ -322,7 +322,7 @@ export default function Component(props) {
           className={styles.section}
         >
           <Container
-            maw={"unset"}
+            maw={"1512px"}
             w="100%"
             p={0}
             className={styles["section-content"]}
@@ -404,7 +404,7 @@ export default function Component(props) {
           className={styles.section}
         >
           <Container
-            maw={"unset"}
+            maw={"1512px"}
             w="100%"
             p={0}
             className={styles["section-content"]}
