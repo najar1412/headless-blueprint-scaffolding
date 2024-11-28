@@ -2,25 +2,113 @@ import { gql } from "@apollo/client";
 import {
   Title,
   Container,
+  Grid,
+  Image,
+  Flex,
+  Text,
+  UnstyledButton,
+  Stack,
+  Group,
 } from "@mantine/core";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
 
 export default function PagePublication(props) {
-  const { footer, page, primaryMenuItems } = props.data;
+  const { footer, primaryMenuItems, nodeByUri } = props.data;
+  console.log(nodeByUri.publicationMeta);
 
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
   }
 
+  useGSAP(() => {
+    // TODO: imp timelines for sectional animation
+    //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
+    const sections = gsap.utils.toArray('[class*="front-page_section"]');
+
+    // initial page animation
+    gsap.set(['[class*="main"]', '[class*="header"]'], { opacity: 1 });
+
+    // sectional animation
+    sections.forEach((section, i) => {
+      gsap.set('[class*="front-page_section-content"]', { autoAlpha: 0 });
+      if (!i) {
+        gsap.to('[class*="front-page_section-content"]', {
+          filter: "blur(0px)",
+          y: "-2%",
+          autoAlpha: 1,
+          delay: 2,
+          scale: 1,
+        });
+      }
+      if (i !== 2) {
+        gsap.to(section, {
+          filter: "blur(0px)",
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: section,
+            start: () => "top bottom",
+            end: () => "bottom-=30% bottom",
+            scrub: true,
+            toggleActions: "play none reverse none",
+            invalidateOnRefresh: true,
+            /* markers: true, */
+          },
+        });
+      }
+    });
+  });
+
   return (
     <>
       <Header menuItems={primaryMenuItems.nodes} />
 
-      <Container component={"main"} className="container" py={"5rem"}>
-        <Title>single post</Title>
+      <Container
+        component={"main"}
+        className={"main"}
+        maw={"unset"}
+        w="100%"
+        p={"5rem"}
+        pt={"12rem"}
+      >
+        <Container maw={"1512px"} w="100%" p={0}>
+          <Grid gutter="2rem">
+            <Grid.Col span={{ base: 12, lg: 5 }}>
+              <Stack gap={"xs"}>
+                {nodeByUri.featuredImage ? (
+                  <Image
+                    width={"100%"}
+                    mah={"15rem"}
+                    src={nodeByUri.featuredImage.node.sourceUrl}
+                    style={{ borderRadius: "1rem" }}
+                  />
+                ) : null}
+                <Group px={"1rem"}>
+                  <Text fw={600}>Share this post</Text>
+                </Group>
+              </Stack>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, lg: 7 }}>
+              <Stack>
+                <Text tt='uppercase' fw={'600'}>pub date</Text>
+                <Title order={2}>{nodeByUri.title}</Title>
+                <Text tt='capitalize' fw={'600'}>by pub author</Text>
+                <div dangerouslySetInnerHTML={{ __html: nodeByUri.content }} />
+              </Stack>
+            </Grid.Col>
+          </Grid>
+        </Container>
+        <Container maw={"1512px"} w="100%" p={0} py={"5rem"}>
+          <Flex justify={"space-between"}>
+            <UnstyledButton>Previous Post</UnstyledButton>
+            <UnstyledButton>Next Post</UnstyledButton>
+          </Flex>
+        </Container>
       </Container>
 
       <Footer node={footer} />
@@ -28,26 +116,44 @@ export default function PagePublication(props) {
   );
 }
 
-PagePublication.variables = ({ databaseId }, ctx) => {
+PagePublication.variables = ({ databaseId, uri }, ctx) => {
   return {
     databaseId,
+    uri,
     asPreview: ctx?.asPreview,
   };
 };
 
 PagePublication.query = gql`
   ${Header.fragments.entry}
-  query GetPost($databaseId: ID!, $asPreview: Boolean = false) {
-    post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+
+
+    query GetPublication($uri: String!) {
+      nodeByUri(uri: $uri) {
+    ... on NodeWithTitle {
       title
-      content
-      date
-      author {
+    }
+    ... on WithAcfPublicationMeta {
+      publicationMeta {
+        date
+        author
+      }
+    }
+    ... on NodeWithFeaturedImage {
+      featuredImage {
         node {
-          name
+          id
+          sourceUrl
         }
       }
     }
-    ...HeaderFragment
+    ... on NodeWithContentEditor {
+      content
+    }
   }
+      ...HeaderFragment
+      ...${Footer.fragments.entry}
+    }
+   
+
 `;

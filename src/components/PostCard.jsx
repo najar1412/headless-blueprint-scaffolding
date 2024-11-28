@@ -1,5 +1,6 @@
 import { Box, Text, Stack } from "@mantine/core";
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "./PostCard.module.css";
 
@@ -71,9 +72,12 @@ export const PostCard = ({
             </Text>
           ) : null}
           {title ? (
-            <Text size="md" fw={500} lh={"1.25rem"} c={layout.fontColour}>
+            <Link href={link}>
+              <Text size="md" fw={500} lh={"1.25rem"} c={layout.fontColour}>
               {title}
             </Text>
+            </Link>
+            
           ) : null}
           {footer ? (
             <Text mt="1rem" size="0.6rem" c={layout.fontColour}>

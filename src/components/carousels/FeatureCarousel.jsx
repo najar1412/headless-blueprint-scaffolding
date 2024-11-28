@@ -11,7 +11,8 @@ import styles from "./FeatureCarousel.module.css";
 
 import placeholderThumbImage from "../../assets/placeholder_thumb.jpg";
 
-export const FeatureCarousel = () => {
+export const FeatureCarousel = ({ items }) => {
+  console.log(items)
   return (
     <Swiper
       modules={[Navigation]}
@@ -19,69 +20,19 @@ export const FeatureCarousel = () => {
       spaceBetween={5}
       slidesPerView={2.5}
     >
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
-      <SwiperSlide className={styles["swiper-slide"]}>
-        <PostCard
-          category={"featured"}
-          title={"Navigating Market Access in Emerging Markets"}
-          image={placeholderThumbImage}
-          link={"/"}
-          colour={"red"}
-        />
-      </SwiperSlide>
+      {items
+        ? items.map((item) => (
+            <SwiperSlide className={styles["swiper-slide"]}>
+              <PostCard
+                category={"featured"}
+                title={item.title}
+                image={{src: item.featuredImage.node.sourceUrl}}
+                link={item.uri}
+                colour={"red"}
+              />
+            </SwiperSlide>
+          ))
+        : null}
     </Swiper>
   );
 };

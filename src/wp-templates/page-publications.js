@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 import Link from "next/link";
-import Image from "next/image";
+/* import Image from "next/image"; */
 import {
   Title,
   Container,
@@ -9,6 +9,7 @@ import {
   Text,
   Avatar,
   Group,
+  Image,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -23,6 +24,7 @@ import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 
 export default function PagePublications(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
+  console.log(publications.nodes);
 
   // Loading state for previews
   if (props.loading) {
@@ -83,7 +85,7 @@ export default function PagePublications(props) {
           maw={"1512px"}
         >
           <Stack my="5rem">
-            <Title>Thought Leadership</Title>
+            <Title size='3rem' mb='1rem'>Thought Leadership</Title>
             <Group justify="space-between">
               <Eyebrow label={"featured"} variant={3} />
               <Group pr="5rem">
@@ -92,7 +94,7 @@ export default function PagePublications(props) {
               </Group>
             </Group>
             <Container p={0} maw={"100%"}>
-              <FeatureCarousel />
+              <FeatureCarousel items={publications.nodes} />
             </Container>
 
             {/* <Cta1
@@ -110,29 +112,37 @@ export default function PagePublications(props) {
           w="100%"
           maw={"1512px"}
         >
-          <Stack>
-            <Divider />
+          <Stack gap={"lg"}>
+            <Divider color={"#0A404A"} />
             {publications.nodes.map((node) => (
               <>
-                <Group wrap="no-wrap">
+                <Group wrap="no-wrap" gap={"2rem"}>
                   <Image
                     alt="publication thumbnail"
-                    src={placeholderThumbImage}
-                    width={200}
+                    src={node.featuredImage.node.sourceUrl}
+                    w={"100%"}
+                    maw={"10rem"}
                     style={{ borderRadius: "1rem" }}
                   />
-                  <Stack key={node.title} gap={0}>
+                  <Stack key={node.title} gap="0.3rem">
                     <Link href={node.uri}>
                       <Text fw="bold">{node.title}</Text>
                     </Link>
-                    <div dangerouslySetInnerHTML={{ __html: node.content }} />
+                    <div
+                      style={{ fontSize: "0.8rem" }}
+                      dangerouslySetInnerHTML={{
+                        __html: `${node.content
+                          .replace(/<\/?[^>]+(>|$)/g, "")
+                          .substring(0, 200)}...`,
+                      }}
+                    />
                   </Stack>
                 </Group>
 
-                <Divider />
+                <Divider color={"#0A404A"} />
               </>
             ))}
-            <Text ta="right">Pagination</Text>
+            <Text size='xs' ta="right">Pagination</Text>
           </Stack>
         </Container>
       </Container>
@@ -180,6 +190,14 @@ PagePublications.query = gql`
         ... on NodeWithTitle {
           title
         }
+          
+          ... on NodeWithFeaturedImage {
+        featuredImage {
+      node {
+        id
+        sourceUrl
+      }
+    }}
         ... on NodeWithContentEditor {
           content
         }
