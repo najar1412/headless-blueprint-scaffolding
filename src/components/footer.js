@@ -35,7 +35,7 @@ export default function Footer(props) {
             bg="var(--mantine-color-brand-0)"
             className={styles["contact-form-container"]}
           >
-            <Container maw={"unset"} mx={'auto'}>
+            <Container maw={"unset"} mx={"auto"}>
               <Stack>
                 <Title order={1} size="2.5rem" c="white">
                   Get in Touch
@@ -69,17 +69,11 @@ export default function Footer(props) {
         </Container>
         <Container w="100%" maw={"unset"}>
           <Divider />
-          <Container
-          w="100%"
-          maw={"1512px"}
-        >
-
-<Text size="0.5rem" mt="1.5rem" opacity={0.5}>
-            Copyright (c) 2024, Nexus Health Group, All rights reserved.
-          </Text>
-
-        </Container>
-          
+          <Container w="100%" maw={"1512px"}>
+            <Text size="0.5rem" mt="1.5rem" opacity={0.5}>
+              Copyright (c) 2024, Nexus Health Group, All rights reserved.
+            </Text>
+          </Container>
         </Container>
       </Container>
     </>

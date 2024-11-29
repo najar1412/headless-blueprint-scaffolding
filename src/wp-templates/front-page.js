@@ -13,6 +13,7 @@ import {
   Grid,
   Group,
   List,
+  Space,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -213,7 +214,7 @@ export default function Component(props) {
                 gravida urna.
               </Title>
               <Grid>
-                <Grid.Col span={4}>
+                <Grid.Col span={{ base: 12, lg: 4 }}>
                   <ServicesCard
                     icon={patientIcon}
                     title={"title"}
@@ -226,7 +227,7 @@ export default function Component(props) {
                     ]}
                   />
                 </Grid.Col>
-                <Grid.Col span={4}>
+                <Grid.Col span={{ base: 12, lg: 4 }}>
                   <ServicesCard
                     icon={valueIcon}
                     title={"value communications"}
@@ -239,7 +240,7 @@ export default function Component(props) {
                     ]}
                   />
                 </Grid.Col>
-                <Grid.Col span={4}>
+                <Grid.Col span={{ base: 12, lg: 4 }}>
                   <ServicesCard
                     icon={patientIcon}
                     title={"patient access & affordability"}
@@ -286,12 +287,13 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Grid cols={2} justify="center" align="center">
-              <Grid.Col span={5}>
+              <Grid.Col span={{ base: 12, lg: 5 }}>
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <QuoteCarousel />
                 </Container>
+                <Space hiddenFrom="lg" h="5rem" />
               </Grid.Col>
-              <Grid.Col span={2}>
+              <Grid.Col visibleFrom="lg" span={2}>
                 <div
                   style={{
                     marginLeft: "auto",
@@ -302,7 +304,7 @@ export default function Component(props) {
                   }}
                 ></div>
               </Grid.Col>
-              <Grid.Col span={5}>
+              <Grid.Col span={{ base: 12, lg: 5 }}>
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <Grid>
                     <Grid.Col span={6}>
@@ -370,7 +372,7 @@ export default function Component(props) {
             <Stack gap={"xs"}>
               <Eyebrow label={"thought leadership"} variant={3} />
               <Grid gutter={"xs"}>
-                <Grid.Col span={5}>
+                <Grid.Col span={{ base: 12, lg: 5 }}>
                   <Stack>
                     <Title order={2} maw={"20rem"}>
                       What’s Happening at Nexus Health
@@ -395,7 +397,7 @@ export default function Component(props) {
                     </Link>
                   </Stack>
                 </Grid.Col>
-                <Grid.Col span={4}>
+                <Grid.Col span={{ base: 12, lg: 4 }}>
                   <PostCard
                     category={"announcement"}
                     title={"Catch Nexus Health at NGPX 2024"}
@@ -404,18 +406,18 @@ export default function Component(props) {
                     colour={"var(--mantine-color-brand-3)"}
                   />
                 </Grid.Col>
-                <Grid.Col span={3}>
+                <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
                   <PostCard gradient />
                 </Grid.Col>
               </Grid>
               <Grid gutter={"xs"}>
-                <Grid.Col span={1}>
+                <Grid.Col visibleFrom="lg" span={1}>
                   <div className={styles["box-element-1"]}>
                     <Image alt="nexus logo" src={logoSymbolIcon} />
                   </div>
                   <div className={styles["box-element-2"]}></div>
                 </Grid.Col>
-                <Grid.Col span={4}>
+                <Grid.Col span={{ base: 12, lg: 4 }}>
                   <PostCard
                     category={"journal"}
                     title={"Read a Letter from our CEO Andrew Gottfried"}
@@ -423,10 +425,10 @@ export default function Component(props) {
                     colour={"var(--mantine-color-brand-4)"}
                   />
                 </Grid.Col>
-                <Grid.Col span={3}>
+                <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
                   <PostCard image={cardGrayImage} />
                 </Grid.Col>
-                <Grid.Col span={4}>
+                <Grid.Col span={{ base: 12, lg: 4 }}>
                   <PostCard
                     category={"featured"}
                     title={"Navigating Market Access in Emerging Markets"}

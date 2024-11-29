@@ -84,7 +84,7 @@ export default function PagePublication(props) {
       >
         <Container maw={"1512px"} w="100%" p={0}>
           <Grid gutter="2rem">
-            <Grid.Col span={{ base: 12, lg: 5 }}>
+            <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 5 }}>
               <Stack gap={"xs"}>
                 {nodeByUri.featuredImage ? (
                   <Image
@@ -125,6 +125,24 @@ export default function PagePublication(props) {
                 <Text tt="capitalize" fw={"600"}>
                   by pub author
                 </Text>
+                <Group hiddenFrom="lg" gap={"1.5rem"}>
+                  <Text fw={600}>Share this post</Text>
+                  <Image
+                    src={linkedInIcon.src}
+                    alt="linkedIn Icon"
+                    style={{ transform: "scale(1.5)" }}
+                  />
+                  <Image
+                    src={xIcon.src}
+                    alt="x Icon"
+                    style={{ transform: "scale(1.5)" }}
+                  />
+                  <Image
+                    src={facebookIcon.src}
+                    alt="facebook Icon"
+                    style={{ transform: "scale(1.5)" }}
+                  />
+                </Group>
                 <div dangerouslySetInnerHTML={{ __html: nodeByUri.content }} />
               </Stack>
             </Grid.Col>

@@ -119,6 +119,7 @@ export default function PagePublications(props) {
               <>
                 <Group wrap="no-wrap" gap={"2rem"}>
                   <Image
+                  visibleFrom="md"
                     alt="publication thumbnail"
                     src={node.featuredImage.node.sourceUrl}
                     w={"100%"}
