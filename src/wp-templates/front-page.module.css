@@ -2,11 +2,14 @@
   overflow: hidden;
 }
 .section-content {
-  scale: 1.08;
-  opacity: 0;
-  filter: blur(2px);
+  position: relative;
 }
 .section-content-trigger {
+}
+.pinned-section {
+  opacity: 0;
+}
+.section-animation {
 }
 .black {
 }

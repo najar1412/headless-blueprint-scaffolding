@@ -87,7 +87,6 @@ export default function Component(props) {
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
-    const sections = gsap.utils.toArray('[class*="front-page_section"]');
 
     // animate numbers
     // TODO: imp in scrolltrigger
@@ -109,49 +108,44 @@ export default function Component(props) {
       duration: 2,
     });
 
-    // pinned section animation
+    // pinned section
     gsap.to('[class*="front-page_section-content-trigger"]', {
       /* x: 260, */
       scrollTrigger: {
         trigger: '[class*="front-page_black"]',
         start: () => "top top",
-        end: () => "bottom top",
+        end: () => "top+=125% top",
         scrub: true,
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
-        /* markers: true, */
+        markers: true,
         pin: true,
       },
     });
 
-    // sectional animation
-    sections.forEach((section, i) => {
-      gsap.set('[class*="front-page_section-content"]', { autoAlpha: 0 });
-      if (!i) {
-        gsap.to('[class*="front-page_section-content"]', {
-          filter: "blur(0px)",
-          y: "-2%",
-          autoAlpha: 1,
-          delay: 2,
-          scale: 1,
-        });
-      }
-      if (i !== 2) {
-        gsap.to(section, {
-          filter: "blur(0px)",
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: section,
-            start: () => "top bottom",
-            end: () => "bottom-=30% bottom",
-            scrub: true,
-            toggleActions: "play none reverse none",
-            invalidateOnRefresh: true,
-            /* markers: true, */
+    // pinned children animation
+    let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
+
+    blocks.forEach((block, i) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: block,
+          start: `${!i ? "top" : `top+=${50 * i}%`} top`,
+          end: `${!i ? "top+=50%" : `top+=${100 * i}%`}  bottom`,
+          /* scrub: true, */
+          markers: {
+            indent: 150 * i,
+            startColor: "green",
+            endColor: "green",
           },
-        });
-      }
+          id: i + 1,
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      tl.to(block, {
+        opacity: 1,
+      });
     });
   });
 
@@ -227,13 +221,13 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           bg={"var(--mantine-color-brand-1)"}
-          className={styles.section}
+          className={`${styles.section}`}
         >
           <Container
             maw={"1512px"}
             w="100%"
             p={0}
-            className={styles["section-content"]}
+            className={`${styles["section-content"]} ${styles["section-animation"]}}`}
           >
             <Stack>
               <Eyebrow label={"services"} variant={1} />
@@ -304,6 +298,7 @@ export default function Component(props) {
             className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
           >
             <Container
+              className={styles["pinned-section"]}
               maw={"unset"}
               w="100%"
               h={"100%"}
@@ -331,6 +326,7 @@ export default function Component(props) {
               </Grid>
             </Container>
             <Container
+              className={styles["pinned-section"]}
               maw={"unset"}
               w="100%"
               h={"100%"}
@@ -351,13 +347,23 @@ export default function Component(props) {
                 <Grid.Col span={6}>
                   <Stack>
                     <Title c="white" order={3} maw={"16rem"}>
-                      Second section
+                      A strong foundation built in science
                     </Title>
+                    <Text c="white" maw={"23rem"}>
+                      We noticed there was a blank spot in medical
+                      communications around the value narrative.
+                    </Text>
+                    <Text c="white" maw={"24rem"}>
+                      Joining with market access leaders, we sought to bring
+                      together a curated group of people to meet the needs of
+                      the evolving market access landscape.
+                    </Text>
                   </Stack>
                 </Grid.Col>
               </Grid>
             </Container>
             <Container
+              className={styles["pinned-section"]}
               maw={"unset"}
               w="100%"
               h={"100%"}
