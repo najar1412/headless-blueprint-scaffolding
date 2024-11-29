@@ -18,7 +18,11 @@ export default function Header({ menuItems, page, frontPage }) {
     switch (item.label) {
       case "Contact":
         return (
-          <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
+          <Link
+            href={`${frontPage ? "" : "/"}#${item.label
+              .toLowerCase()
+              .replace(/\s/g, "-")}`}
+          >
             <Badge
               pt="xs"
               pb="sm"
@@ -34,7 +38,11 @@ export default function Header({ menuItems, page, frontPage }) {
         );
       default:
         return (
-          <Link href={`#${item.label.toLowerCase().replace(/\s/g, "-")}`}>
+          <Link
+            href={`${frontPage ? "" : "/"}#${item.label
+              .toLowerCase()
+              .replace(/\s/g, "-")}`}
+          >
             <Stack
               gap={0}
               className={styles.link}
