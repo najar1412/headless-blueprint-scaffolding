@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+
 import {
   Title,
   Container,
@@ -16,9 +17,14 @@ import { useGSAP } from "@gsap/react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 
+import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
+import facebookIcon from "../assets/facebook.svg";
+import xIcon from "../assets/X_logo_2023_original 1.svg";
+import eastArrow from "../assets/east_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 (1).svg";
+import westArrow from "../assets/west_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg";
+
 export default function PagePublication(props) {
   const { footer, primaryMenuItems, nodeByUri } = props.data;
-  console.log(nodeByUri.publicationMeta);
 
   // Loading state for previews
   if (props.loading) {
@@ -88,16 +94,37 @@ export default function PagePublication(props) {
                     style={{ borderRadius: "1rem" }}
                   />
                 ) : null}
-                <Group px={"1rem"}>
+                <Group px={"1rem"} gap={"1.5rem"}>
                   <Text fw={600}>Share this post</Text>
+                  <Image
+                    src={linkedInIcon.src}
+                    alt="linkedIn Icon"
+                    style={{ transform: "scale(1.5)" }}
+                  />
+                  <Image
+                    src={xIcon.src}
+                    alt="x Icon"
+                    style={{ transform: "scale(1.5)" }}
+                  />
+                  <Image
+                    src={facebookIcon.src}
+                    alt="facebook Icon"
+                    style={{ transform: "scale(1.5)" }}
+                  />
                 </Group>
               </Stack>
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 7 }}>
               <Stack>
-                <Text tt='uppercase' fw={'600'}>pub date</Text>
-                <Title order={2}>{nodeByUri.title}</Title>
-                <Text tt='capitalize' fw={'600'}>by pub author</Text>
+                <Text tt="uppercase" fw={"600"}>
+                  pub date
+                </Text>
+                <Title order={1} lh={"2.5rem"}>
+                  {nodeByUri.title}
+                </Title>
+                <Text tt="capitalize" fw={"600"}>
+                  by pub author
+                </Text>
                 <div dangerouslySetInnerHTML={{ __html: nodeByUri.content }} />
               </Stack>
             </Grid.Col>
@@ -105,8 +132,26 @@ export default function PagePublication(props) {
         </Container>
         <Container maw={"1512px"} w="100%" p={0} py={"5rem"}>
           <Flex justify={"space-between"}>
-            <UnstyledButton>Previous Post</UnstyledButton>
-            <UnstyledButton>Next Post</UnstyledButton>
+            <UnstyledButton>
+              <Group>
+                <Image
+                  src={westArrow.src}
+                  alt="east arrow"
+                  style={{ transform: "scale(1.5)" }}
+                />
+                <Text fw="500">Previous Post</Text>
+              </Group>
+            </UnstyledButton>
+            <UnstyledButton>
+              <Group>
+                <Text fw="500">Next Post</Text>
+                <Image
+                  src={eastArrow.src}
+                  alt="east arrow"
+                  style={{ transform: "scale(1.5)" }}
+                />
+              </Group>
+            </UnstyledButton>
           </Flex>
         </Container>
       </Container>
