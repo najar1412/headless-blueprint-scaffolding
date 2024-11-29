@@ -26,6 +26,7 @@ import { Landing as Landing3 } from "../components/Landing3";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import { ServicesCard } from "../components/ServicesCard";
+import { PinnedSection } from "../components/pinnedSection/PinnedSection";
 
 import styles from "./front-page.module.css";
 
@@ -106,46 +107,6 @@ export default function Component(props) {
       autoAlpha: 1,
       delay: 1,
       duration: 2,
-    });
-
-    // pinned section
-    gsap.to('[class*="front-page_section-content-trigger"]', {
-      /* x: 260, */
-      scrollTrigger: {
-        trigger: '[class*="front-page_black"]',
-        start: () => "top top",
-        end: () => "top+=125% top",
-        scrub: true,
-        toggleActions: "play none reverse none",
-        invalidateOnRefresh: true,
-        markers: true,
-        pin: true,
-      },
-    });
-
-    // pinned children animation
-    let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
-
-    blocks.forEach((block, i) => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: block,
-          start: `${!i ? "top" : `top+=${50 * i}%`} top`,
-          end: `${!i ? "top+=50%" : `top+=${100 * i}%`}  bottom`,
-          /* scrub: true, */
-          markers: {
-            indent: 150 * i,
-            startColor: "green",
-            endColor: "green",
-          },
-          id: i + 1,
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      tl.to(block, {
-        opacity: 1,
-      });
     });
   });
 
@@ -279,147 +240,9 @@ export default function Component(props) {
             </Stack>
           </Container>
         </Container>
-        <Container
-          id="who-we-are"
-          component={"section"}
-          py={"8rem"}
-          px={"5rem"}
-          w="100%"
-          maw={"unset"}
-          mih={"100vh"}
-          bg={"var(--mantine-color-brand-0)"}
-          className={`${styles.section} ${styles.black}`}
-        >
-          <Container
-            maw={"unset"}
-            w="100%"
-            h={"100%"}
-            p={0}
-            className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
-          >
-            <Container
-              className={styles["pinned-section"]}
-              maw={"unset"}
-              w="100%"
-              h={"100%"}
-              style={{
-                position: "absolute",
-                top: "0",
-              }}
-            >
-              <Grid>
-                <Grid.Col span={6}>
-                  <Stack>
-                    <Eyebrow label={"who are we"} variant={2} />
-                    <Title c="white" order={3} maw={"16rem"}>
-                      Meeting the needs of today and tomorrow
-                    </Title>
-                    <Text c="white" maw={"21rem"}>
-                      With the growing complexity of the healthcare system and a
-                      shift toward value-based care, there is increasing
-                      pressure to demonstrate the impact of a product in more
-                      innovative ways.
-                    </Text>
-                  </Stack>
-                </Grid.Col>
-                <Grid.Col span={6}></Grid.Col>
-              </Grid>
-            </Container>
-            <Container
-              className={styles["pinned-section"]}
-              maw={"unset"}
-              w="100%"
-              h={"100%"}
-              style={{
-                position: "absolute",
-                top: "0",
-              }}
-            >
-              <Grid
-                style={{
-                  width: "100%",
-                  position: "absolute",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                }}
-              >
-                <Grid.Col span={6}></Grid.Col>
-                <Grid.Col span={6}>
-                  <Stack>
-                    <Title c="white" order={3} maw={"16rem"}>
-                      A strong foundation built in science
-                    </Title>
-                    <Text c="white" maw={"23rem"}>
-                      We noticed there was a blank spot in medical
-                      communications around the value narrative.
-                    </Text>
-                    <Text c="white" maw={"24rem"}>
-                      Joining with market access leaders, we sought to bring
-                      together a curated group of people to meet the needs of
-                      the evolving market access landscape.
-                    </Text>
-                  </Stack>
-                </Grid.Col>
-              </Grid>
-            </Container>
-            <Container
-              className={styles["pinned-section"]}
-              maw={"unset"}
-              w="100%"
-              h={"100%"}
-              style={{
-                position: "absolute",
-                top: "0",
-              }}
-            >
-              <Grid
-                style={{
-                  width: "100%",
-                  position: "absolute",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                }}
-              >
-                <Grid.Col span={6}></Grid.Col>
-                <Grid.Col span={6}>
-                  <Stack>
-                    <Title c="white" order={3} maw={"16rem"}>
-                      Ability to address all stakeholder types
-                    </Title>
-                    <Group wrap="no-wrap">
-                      <div>
-                        <List c="white">
-                          <List.Item>Payers</List.Item>
-                          <List.Item>Employers</List.Item>
-                          <List.Item>Physicians</List.Item>
-                          <List.Item>Pharmacies</List.Item>
-                          <List.Item>Patients</List.Item>
-                          <List.Item>Caregivers</List.Item>
-                          <List.Item>Hubs</List.Item>
-                          <List.Item>Office Staff</List.Item>
-                          <List.Item>GPOs</List.Item>
-                        </List>
-                      </div>
-                      <div>
-                        <List c="white">
-                          <List.Item>Hospitals</List.Item>
-                          <List.Item>IDNs</List.Item>
-                          <List.Item>Specialty</List.Item>
-                          <List.Item>Community Pharmacies</List.Item>
-                          <List.Item>Physician Assistants</List.Item>
-                          <List.Item>Distributors & 3PLs</List.Item>
-                          <List.Item>Infusion Centers</List.Item>
-                          <List.Item>Sites of Care</List.Item>
-                          <List.Item>Nurse Practitioners</List.Item>
-                        </List>
-                      </div>
-                    </Group>
-                  </Stack>
-                </Grid.Col>
-              </Grid>
-            </Container>
-          </Container>
-        </Container>
+
+        <PinnedSection />
+
         <Container
           id="the-nexus-advantage"
           component={"section"}
