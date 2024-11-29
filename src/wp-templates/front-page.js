@@ -1,4 +1,6 @@
-import { gql, useLazyQuery, query } from "@apollo/client";
+import { useEffect, useState } from "react";
+
+import { gql, useLazyQuery } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +16,6 @@ import {
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import Header from "../components/header";
@@ -107,6 +108,21 @@ export default function Component(props) {
       autoAlpha: 1,
       delay: 1,
       duration: 2,
+    });
+
+    // pinned section
+    gsap.to('[class*="front-page_section-content-trigger"]', {
+      /* x: 260, */
+      scrollTrigger: {
+        trigger: '[class*="front-page_black"]',
+        start: () => "top top",
+        end: () => "top+=125% top",
+        scrub: true,
+        toggleActions: "play none reverse none",
+        invalidateOnRefresh: true,
+        /* markers: true, */
+        pin: true,
+      },
     });
   });
 
@@ -240,9 +256,19 @@ export default function Component(props) {
             </Stack>
           </Container>
         </Container>
-
-        <PinnedSection />
-
+        <Container
+          id="who-we-are"
+          component={"section"}
+          py={"8rem"}
+          px={"5rem"}
+          w="100%"
+          maw={"unset"}
+          mih={"100vh"}
+          bg={"var(--mantine-color-brand-0)"}
+          className={`${styles.section} ${styles.black}`}
+        >
+          <PinnedSection />
+        </Container>
         <Container
           id="the-nexus-advantage"
           component={"section"}
