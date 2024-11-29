@@ -5,8 +5,11 @@
   position: relative;
 }
 .section-content-trigger {
+  position: relative;
 }
 .pinned-section {
+  position: absolute;
+  top: 0;
   opacity: 0;
 }
 .section-animation {

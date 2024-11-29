@@ -24,7 +24,6 @@ import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 
 export default function PagePublications(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
-  console.log(publications.nodes);
 
   // Loading state for previews
   if (props.loading) {
@@ -85,7 +84,9 @@ export default function PagePublications(props) {
           maw={"1512px"}
         >
           <Stack my="5rem">
-            <Title size='3rem' mb='1rem'>Thought Leadership</Title>
+            <Title size="3rem" mb="1rem">
+              Thought Leadership
+            </Title>
             <Group justify="space-between">
               <Eyebrow label={"featured"} variant={3} />
               <Group pr="5rem">
@@ -142,7 +143,9 @@ export default function PagePublications(props) {
                 <Divider color={"#0A404A"} />
               </>
             ))}
-            <Text size='xs' ta="right">Pagination</Text>
+            <Text size="xs" ta="right">
+              Pagination
+            </Text>
           </Stack>
         </Container>
       </Container>

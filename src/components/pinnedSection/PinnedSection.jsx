@@ -27,24 +27,33 @@ export const PinnedSection = () => {
     () => {
       // pinned children animation
       let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
-      console.log(blocks);
       const vh = (coef) => window.innerHeight * (coef / 100);
+
+      /* start: () => `${!i ? "top" : `top+=${50 * i}%`} top`,
+          end: () => `${!i ? "top+=50%" : `top+=${100 * i}%`}  bottom`, */
+
+      const calcPosition = (num, index, start) => {
+        if (start) {
+          if (index) {
+            return vh(num) * index;
+          }
+          return 0;
+        } else {
+          if (index) {
+            return vh(num) * index;
+          }
+          return vh(50);
+        }
+      };
 
       blocks.forEach((block, i) => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: block,
-
-            start: `${!i ? "top" : `top+=${50 * i}%`} top`,
-            end: `${!i ? "top+=50%" : `top+=${100 * i}%`}  bottom`,
-            invalidateOnRefresh: true,
-            markers: {
-              indent: 150 * i,
-              startColor: "yellow",
-              endColor: "yellow",
-            },
-            id: i + 1,
+            start: () => `top+=${calcPosition(60, i, true)}px top`,
+            end: () => `bottom+=${calcPosition(120, i)}px  bottom`,
             toggleActions: "play reverse play reverse",
+            invalidateOnRefresh: true,
           },
         });
 
@@ -70,10 +79,6 @@ export const PinnedSection = () => {
         maw={"unset"}
         w="100%"
         h={"100%"}
-        style={{
-          position: "absolute",
-          top: "0",
-        }}
       >
         <Grid>
           <Grid.Col span={6}>
@@ -97,10 +102,6 @@ export const PinnedSection = () => {
         maw={"unset"}
         w="100%"
         h={"100%"}
-        style={{
-          position: "absolute",
-          top: "0",
-        }}
       >
         <Grid
           style={{
@@ -134,10 +135,6 @@ export const PinnedSection = () => {
         maw={"unset"}
         w="100%"
         h={"100%"}
-        style={{
-          position: "absolute",
-          top: "0",
-        }}
       >
         <Grid
           style={{

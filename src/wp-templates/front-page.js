@@ -116,11 +116,11 @@ export default function Component(props) {
       scrollTrigger: {
         trigger: '[class*="front-page_black"]',
         start: () => "top top",
-        end: () => "top+=125% top",
+        end: () => "top+=200% top",
         scrub: true,
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
-        /* markers: true, */
+        markers: true,
         pin: true,
       },
     });
