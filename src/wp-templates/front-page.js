@@ -121,7 +121,7 @@ export default function Component(props) {
         scrub: true,
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
-        markers: true,
+        /* markers: true, */
         pin: true,
       },
     });

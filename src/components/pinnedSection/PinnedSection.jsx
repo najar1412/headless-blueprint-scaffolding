@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, forwardRef } from "react";
 
 import Image from "next/image";
 import {
@@ -24,6 +24,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const PinnedSection = () => {
   const container = useRef();
+  const shapeSvgRef = useRef();
 
   useGSAP(
     () => {
@@ -45,6 +46,40 @@ export const PinnedSection = () => {
         }
       };
 
+      const shapeTl = gsap.timeline({
+        defaults: { duration: 1 },
+        scrollTrigger: {
+          start: () => `top+=205% top`,
+          end: () => `bottom+=360% bottom`,
+          scrub: true,
+          toggleActions: "play reverse play reverse",
+          markers: {
+            startColor: "yellow",
+            endColor: "yellow",
+            fontSize: "12px",
+          },
+          invalidateOnRefresh: true,
+        },
+      });
+      shapeTl
+        .to(shapeSvgRef.current, {
+          opacity: 1,
+        })
+        .to(shapeSvgRef.current, {
+          rotation: 0,
+          xPercent: 0,
+        })
+        .to(shapeSvgRef.current, {
+          xPercent: -125,
+        })
+        .to(shapeSvgRef.current, {
+          rotation: -360,
+        })
+        .to(shapeSvgRef.current, {
+          rotation: -720,
+          xPercent: -125,
+        });
+
       blocks.forEach((block, i) => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -53,10 +88,12 @@ export const PinnedSection = () => {
             end: () => `bottom+=${calcPosition(120, i)}px  bottom`,
             toggleActions: "play reverse play reverse",
             invalidateOnRefresh: true,
+            markers: true,
           },
         });
 
         tl.to(block, {
+          duration: 0.2,
           opacity: 1,
         });
       });
@@ -66,19 +103,6 @@ export const PinnedSection = () => {
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          right: 0,
-          transform: "translateY(-50%)",
-          zIndex: 9999999,
-          width: "500px",
-          height: "500px",
-        }}
-      >
-        <NexusShape />
-      </div>
       <Container
         ref={container}
         maw={"unset"}
@@ -87,13 +111,36 @@ export const PinnedSection = () => {
         p={0}
         className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
       >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: "50%",
+            right: 0,
+            transform: "translateY(-50%)",
+            zIndex: 9999999,
+            width: "500px",
+            height: "500px",
+          }}
+        >
+          <NexusShape ref={shapeSvgRef} />
+        </div>
         <Container
           className={styles["pinned-section"]}
           maw={"unset"}
           w="100%"
           h={"100%"}
         >
-          <Grid>
+          <Grid
+            style={{
+              width: "100%",
+              position: "absolute",
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+          >
             <Grid.Col span={6}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
