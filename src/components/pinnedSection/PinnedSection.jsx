@@ -1,6 +1,5 @@
-import { useRef, forwardRef } from "react";
+import { useRef } from "react";
 
-import Image from "next/image";
 import {
   Container,
   Grid,
@@ -12,15 +11,11 @@ import {
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { Eyebrow } from "../Eyebrow";
 import { NexusShape } from "../animated/NexusShape";
 
 import styles from "../../wp-templates/front-page.module.css";
-
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
 
 export const PinnedSection = () => {
   const container = useRef();
@@ -54,19 +49,14 @@ export const PinnedSection = () => {
           end: () => `bottom+=360% bottom`,
           scrub: true,
           toggleActions: "play reverse play reverse",
-          markers: {
+          /* markers: {
             startColor: "yellow",
             endColor: "yellow",
             fontSize: "12px",
-          },
+          }, */
           invalidateOnRefresh: true,
         },
       });
-
-      console.log(shapeSvgRef.current);
-      /* gsap.set(shapeSvgRef.current, {
-        x: `+=${container.current.offsetWidth / 4}`,
-      }); */
 
       shapeTl
         .to(shapeSvgRef.current, {
@@ -94,7 +84,7 @@ export const PinnedSection = () => {
             end: () => `bottom+=${calcPosition(120, i)}px  bottom`,
             toggleActions: "play reverse play reverse",
             invalidateOnRefresh: true,
-            markers: true,
+            /* markers: true, */
           },
         });
 

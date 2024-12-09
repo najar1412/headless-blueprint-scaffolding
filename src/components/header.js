@@ -1,14 +1,17 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 
 import { gql } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
 import { Text, Container, Group, Burger, Badge, Stack } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-import styles from "./header.module.css";
 import logo from "../assets/logo.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
+
+import styles from "./header.module.css";
 
 export default function Header({ menuItems, page, frontPage }) {
   const [opened, { toggle }] = useDisclosure();
@@ -56,8 +59,27 @@ export default function Header({ menuItems, page, frontPage }) {
     }
   };
 
+  const container = useRef();
+
+  useGSAP(
+    () => {
+      gsap.from(container.current, {
+        backgroundColor: "rgba(255, 255, 255, 1)",
+        duration: 0.3,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          start: () => `top bottom`,
+          end: () => `bottom top`,
+          toggleActions: "play reverse play reverse",
+        },
+      });
+    },
+    { scope: container }
+  );
+
   return (
     <Container
+      ref={container}
       component={"header"}
       maw={"unset"}
       w="100%"
