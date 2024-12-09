@@ -69,7 +69,7 @@ export default function Header({ menuItems, page, frontPage }) {
         ease: "power1.inOut",
         scrollTrigger: {
           start: () => `top bottom`,
-          end: () => `bottom top`,
+          end: () => `bottom-=100px top`,
           toggleActions: "play reverse play reverse",
         },
       });
