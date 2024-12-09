@@ -59,7 +59,7 @@ const GET_PUBLICATIONS = gql`
   }
 `;
 
-const bgs = [null, <Landing />, <Landing2 />, <Landing3 />];
+const bgs = [<div />, <Landing />, <Landing2 />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
@@ -84,7 +84,7 @@ export default function Component(props) {
   };
 
   const nextBackground = () => {
-    setBackground(background === bgs.length - 1 ? 0 : background + 1);
+    setBackground(background === bgs.length - 1 ? 1 : background + 1);
   };
 
   useGSAP(() => {

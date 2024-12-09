@@ -31,6 +31,7 @@ export const PinnedSection = () => {
       // pinned children animation
       let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
       const vh = (coef) => window.innerHeight * (coef / 100);
+      const vw = (coef) => window.innerWidth * (coef / 100);
 
       const calcPosition = (num, index, start) => {
         if (start) {
@@ -49,7 +50,7 @@ export const PinnedSection = () => {
       const shapeTl = gsap.timeline({
         defaults: { duration: 1 },
         scrollTrigger: {
-          start: () => `top+=205% top`,
+          start: () => `top+=${calcPosition(60, 3, true)}px top`,
           end: () => `bottom+=360% bottom`,
           scrub: true,
           toggleActions: "play reverse play reverse",
@@ -61,23 +62,28 @@ export const PinnedSection = () => {
           invalidateOnRefresh: true,
         },
       });
+
+      console.log(shapeSvgRef.current);
+      /* gsap.set(shapeSvgRef.current, {
+        x: `+=${container.current.offsetWidth / 4}`,
+      }); */
+
       shapeTl
         .to(shapeSvgRef.current, {
           opacity: 1,
+          x: `+=${container.current.offsetWidth / 4}`,
         })
         .to(shapeSvgRef.current, {
           rotation: 0,
-          xPercent: 0,
         })
         .to(shapeSvgRef.current, {
-          xPercent: -125,
+          x: `-=${container.current.offsetWidth / 2}`,
         })
         .to(shapeSvgRef.current, {
           rotation: -360,
         })
         .to(shapeSvgRef.current, {
           rotation: -720,
-          xPercent: -125,
         });
 
       blocks.forEach((block, i) => {
@@ -105,24 +111,24 @@ export const PinnedSection = () => {
     <>
       <Container
         ref={container}
-        maw={"unset"}
+        maw={"1512px"}
+        /* bg={"red"} */
         w="100%"
         h={"100%"}
         p={0}
         className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
+        style={{ position: "relative" }}
       >
         <div
           style={{
+            position: "absolute",
+            top: 0,
+            zIndex: 9999999,
+            width: "100%",
+            height: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            position: "absolute",
-            top: "50%",
-            right: 0,
-            transform: "translateY(-50%)",
-            zIndex: 9999999,
-            width: "500px",
-            height: "500px",
           }}
         >
           <NexusShape ref={shapeSvgRef} />
@@ -147,7 +153,7 @@ export const PinnedSection = () => {
                 <Title c="white" order={3} maw={"16rem"}>
                   Meeting the needs of today and tomorrow
                 </Title>
-                <Text c="white" maw={"21rem"}>
+                <Text c="white" maw={"23rem"}>
                   With the growing complexity of the healthcare system and a
                   shift toward value-based care, there is increasing pressure to
                   demonstrate the impact of a product in more innovative ways.
