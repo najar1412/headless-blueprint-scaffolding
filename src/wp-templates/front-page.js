@@ -12,7 +12,6 @@ import {
   Stack,
   Grid,
   Group,
-  List,
   Space,
 } from "@mantine/core";
 import gsap from "gsap";
@@ -38,6 +37,7 @@ import logoSymbolIcon from "../assets/logo-symbol.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
+import bgImage from "../assets/bg.jpg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -59,7 +59,7 @@ const GET_PUBLICATIONS = gql`
   }
 `;
 
-const bgs = [<Landing />, <Landing2 />, <Landing3 />];
+const bgs = [null, <Landing />, <Landing2 />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
@@ -73,11 +73,11 @@ export default function Component(props) {
     }
   );
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (data) {
       console.log(data);
     }
-  }, [data]);
+  }, [data]); */
 
   const testDataFetching = () => {
     getPublications();
@@ -154,13 +154,19 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           className={styles.section}
-          style={{ position: "relative" }}
+          style={{
+            position: "relative",
+            backgroundImage: `url('${bgImage.src}')`,
+            backgroundSize: "cover",
+          }}
         >
           <Container
             maw={"1512px"}
             w="100%"
             p={0}
+            position={"relative"}
             className={styles["section-content"]}
+            style={{ zIndex: 10 }}
           >
             <Stack>
               <Title maw={"20rem"}>Shaping the future of Market Access</Title>
@@ -189,7 +195,12 @@ export default function Component(props) {
               </Button>
             </Stack>
           </Container>
-          <div className={styles.landing}>{bgs[background]}</div>
+          <div
+            className={styles.landing}
+            style={{ display: `${background ? "flex" : "none"}` }}
+          >
+            {bgs[background]}
+          </div>
         </Container>
         <Container
           id="services"
