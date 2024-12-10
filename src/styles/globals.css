@@ -64,3 +64,6 @@ canvas {
 .swiper-pagination-bullet {
   background-color: #bcdc49 !important;
 }
+li::marker {
+  color: #bcdc49;
+}
