@@ -75,12 +75,6 @@ export default function Component(props) {
     }
   );
 
-  /* useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]); */
-
   const testDataFetching = () => {
     getPublications();
   };
@@ -99,10 +93,6 @@ export default function Component(props) {
       textContent: 0, // start from 0
       duration: 10,
       snap: { textContent: 1 }, // increment by 1
-      /* scrollTrigger: {
-        trigger: triggerSection, // trigger section
-        start: 'top center', // "start when the top of the element reaches the top of the screen"
-      }, */
     });
 
     // initial page animation

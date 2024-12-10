@@ -82,7 +82,7 @@ export default function PagePublication(props) {
         p={"5rem"}
         pt={"12rem"}
       >
-        <Container maw={"1440px!important"} w="100%" p={0}>
+        <Container maw={"1440px!important"} w="100%">
           <Grid gutter="2rem">
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 5 }}>
               <Stack gap={"xs"}>

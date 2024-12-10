@@ -70,11 +70,10 @@ export default function PagePublications(props) {
     <>
       <Header menuItems={primaryMenuItems.nodes} page={props.data.page} />
 
-      <Container component={"main"} p={0} className="container">
+      <Container component={"main"} px={"5rem"} p={0} className="container">
         <Container
           component={"section"}
           pt={"4rem"}
-          px={"0"}
           pb={"0"}
           w="100%"
           maw={"1440px!important"}

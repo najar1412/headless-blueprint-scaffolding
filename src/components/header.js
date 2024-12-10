@@ -105,8 +105,8 @@ export default function Header({ menuItems, page, frontPage }) {
       }`}
     >
       <Group
-        w={"1440px!important"}
-        maw={"unset"}
+        w={"100%"}
+        maw={"1440px!important"}
         h="100%"
         justify="space-between"
         m="auto"
