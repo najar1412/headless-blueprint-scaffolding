@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import {
   Container,
@@ -13,7 +13,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { Eyebrow } from "../Eyebrow";
-import { NexusShape } from "../animated/NexusShape";
+import { NexusShape2 } from "../animated/NexusShape2";
 
 import styles from "../../wp-templates/front-page.module.css";
 
@@ -23,6 +23,48 @@ export const PinnedSection = () => {
 
   useGSAP(
     () => {
+      // selectors
+      const logo = shapeSvgRef.current.querySelector("#Logo");
+      gsap.set(logo, { opacity: 0 });
+
+      const text = shapeSvgRef.current.querySelector("#Text");
+      gsap.set(text, { opacity: 0 });
+
+      const allPills = shapeSvgRef.current.querySelectorAll('[id^="pill"]');
+      gsap.set(allPills, { opacity: 0 });
+      const pill1 = shapeSvgRef.current.querySelector("#pill1"); // green
+      gsap.set(pill1, {
+        transformOrigin: "center",
+        rotate: 75,
+      });
+      const pill2 = shapeSvgRef.current.querySelector("#pill2"); // white
+      gsap.set(pill2, {
+        transformOrigin: "center",
+        rotate: -90,
+      });
+      const pill3 = shapeSvgRef.current.querySelector("#pill3"); // baby blue
+      gsap.set(pill3, {
+        transformOrigin: "center",
+        rotate: -75,
+      });
+      const allCircles = shapeSvgRef.current.querySelectorAll('[id^="circle"]');
+      const circle1 = shapeSvgRef.current.querySelector("#circle1"); // green
+      gsap.set(circle1, {
+        transformOrigin: "center",
+        y: -70,
+        x: 110,
+      });
+      const circle2 = shapeSvgRef.current.querySelector("#circle2"); // white
+      gsap.set(circle2, {
+        transformOrigin: "center",
+        y: 110,
+      });
+      const circle3 = shapeSvgRef.current.querySelector("#circle3"); // blue
+      gsap.set(circle3, {
+        transformOrigin: "center",
+        y: -70,
+        x: -110,
+      });
       // pinned children animation
       let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
       const vh = (coef) => window.innerHeight * (coef / 100);
@@ -43,38 +85,102 @@ export const PinnedSection = () => {
       };
 
       const shapeTl = gsap.timeline({
-        defaults: { duration: 1 },
+        defaults: { ease: "power1.inOut" },
         scrollTrigger: {
           start: () => `top+=${calcPosition(60, 3, true)}px top`,
           end: () => `bottom+=360% bottom`,
           scrub: true,
           toggleActions: "play reverse play reverse",
-          /* markers: {
+          markers: {
             startColor: "yellow",
             endColor: "yellow",
             fontSize: "12px",
-          }, */
+          },
           invalidateOnRefresh: true,
         },
       });
 
       shapeTl
-        .to(shapeSvgRef.current, {
-          opacity: 1,
-          x: `+=${container.current.offsetWidth / 4}`,
-        })
-        .to(shapeSvgRef.current, {
-          rotation: 0,
-        })
-        .to(shapeSvgRef.current, {
-          x: `-=${container.current.offsetWidth / 2}`,
-        })
-        .to(shapeSvgRef.current, {
-          rotation: -360,
-        })
-        .to(shapeSvgRef.current, {
-          rotation: -720,
-        });
+        .to(
+          shapeSvgRef.current,
+          {
+            opacity: 1,
+            x: `+=${container.current.offsetWidth / 4}`,
+          },
+          "section0"
+        )
+        .to(
+          allCircles,
+          {
+            opacity: 0,
+            rotation: -75,
+            transformOrigin: "center center",
+            ease: "power4.out"
+          },
+          "section1"
+        )
+        .to(
+          shapeSvgRef.current,
+          {
+            x: `-=${container.current.offsetWidth / 2}`,
+          },
+          "section1"
+        )
+        .to(
+          [logo, text, allPills],
+          {
+            opacity: 1,
+          },
+          "section1"
+        )
+        .to(
+          pill1,
+          {
+            rotation: -75,
+            transformOrigin: "center",
+          },
+          "section1"
+        )
+        .to(
+          pill2,
+          {
+            rotation: 90,
+            transformOrigin: "center",
+          },
+          "section1"
+        )
+        .to(
+          pill3,
+          {
+            rotation: 75,
+            transformOrigin: "center",
+          },
+          "section1"
+        )
+        .to(
+          pill1,
+          {
+            rotation: 15,
+            transformOrigin: "center",
+          },
+          "section2"
+        )
+        .to(
+          pill2,
+          {
+            rotation: 0,
+            transformOrigin: "center",
+          },
+          "section2"
+        )
+        .to(
+          pill3,
+          {
+            rotation: -15,
+            transformOrigin: "center",
+          },
+          "section2"
+        );
 
       blocks.forEach((block, i) => {
         const tl = gsap.timeline({
@@ -120,7 +226,7 @@ export const PinnedSection = () => {
             alignItems: "center",
           }}
         >
-          <NexusShape ref={shapeSvgRef} />
+          <NexusShape2 ref={shapeSvgRef} />
         </div>
         <Container
           className={styles["pinned-section"]}
