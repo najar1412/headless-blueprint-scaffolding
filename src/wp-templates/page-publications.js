@@ -18,9 +18,6 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
 import { Eyebrow } from "../components/Eyebrow";
-import { Cta1 } from "../components/Cta1";
-
-import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 
 export default function PagePublications(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
@@ -77,11 +74,10 @@ export default function PagePublications(props) {
         <Container
           component={"section"}
           pt={"4rem"}
+          px={"0"}
           pb={"0"}
-          pr={0}
-          pl={"5rem"}
           w="100%"
-          maw={"1512px"}
+          maw={"1440px!important"}
         >
           <Stack my="5rem">
             <Title size="3rem" mb="1rem">
@@ -97,21 +93,14 @@ export default function PagePublications(props) {
             <Container p={0} maw={"100%"}>
               <FeatureCarousel items={publications.nodes} />
             </Container>
-
-            {/* <Cta1
-            image={page.acf.cta1.image}
-            title={page.acf.cta1.title}
-            tag={page.acf.cta1.tag}
-            copy={page.acf.cta1.copy}
-          /> */}
           </Stack>
         </Container>
         <Container
           component={"section"}
           pt={"0"}
-          px={"8rem"}
+          px={"4rem"}
           w="100%"
-          maw={"1512px"}
+          maw={"1440px!important"}
         >
           <Stack gap={"lg"}>
             <Divider color={"#0A404A"} />
@@ -119,7 +108,7 @@ export default function PagePublications(props) {
               <>
                 <Group wrap="no-wrap" gap={"2rem"}>
                   <Image
-                  visibleFrom="md"
+                    visibleFrom="md"
                     alt="publication thumbnail"
                     src={node.featuredImage.node.sourceUrl}
                     w={"100%"}

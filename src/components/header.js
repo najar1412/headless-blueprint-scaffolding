@@ -18,28 +18,36 @@ export default function Header({ menuItems, page, frontPage }) {
   const [opened, { toggle }] = useDisclosure();
   const router = useRouter();
   const showBurger = useMediaQuery(`(max-width: 62em)`);
+  const container = useRef();
 
   const menuItem = (item) => {
     switch (item.label) {
       case "Contact":
         return (
-          <Link
-            href={`${frontPage ? "" : "/"}#${item.label
-              .toLowerCase()
-              .replace(/\s/g, "-")}`}
+          <Badge
+            onClick={() =>
+              frontPage
+                ? gsap.to(window, {
+                    ease: "power1.in",
+                    scrollTo: `#${item.label
+                      .toLowerCase()
+                      .replace(/\s/g, "-")}`,
+                    duration: 0.2,
+                  })
+                : router.push(
+                    `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
+                  )
+            }
+            pt="xs"
+            pb="sm"
+            px="md"
+            color="brand.2"
+            style={{ cursor: "pointer" }}
           >
-            <Badge
-              pt="xs"
-              pb="sm"
-              px="md"
-              color="brand.2"
-              style={{ cursor: "pointer" }}
-            >
-              <Text size="sm" c="brand.0" fw="600" tt={"capitalize"}>
-                Contact
-              </Text>
-            </Badge>
-          </Link>
+            <Text size="sm" c="brand.0" fw="600" tt={"capitalize"}>
+              Contact
+            </Text>
+          </Badge>
         );
       default:
         return (
@@ -67,8 +75,6 @@ export default function Header({ menuItems, page, frontPage }) {
         );
     }
   };
-
-  const container = useRef();
 
   useGSAP(
     () => {
@@ -98,7 +104,13 @@ export default function Header({ menuItems, page, frontPage }) {
         !frontPage ? styles["opaque-header"] : ""
       }`}
     >
-      <Group w={"100%"} h="100%" justify="space-between" my="auto">
+      <Group
+        w={"1440px!important"}
+        maw={"unset"}
+        h="100%"
+        justify="space-between"
+        m="auto"
+      >
         <Image
           onClick={() =>
             frontPage

@@ -82,7 +82,7 @@ export default function PagePublication(props) {
         p={"5rem"}
         pt={"12rem"}
       >
-        <Container maw={"1512px"} w="100%" p={0}>
+        <Container maw={"1440px!important"} w="100%" p={0}>
           <Grid gutter="2rem">
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 5 }}>
               <Stack gap={"xs"}>
@@ -148,7 +148,7 @@ export default function PagePublication(props) {
             </Grid.Col>
           </Grid>
         </Container>
-        <Container maw={"1512px"} w="100%" p={0} py={"5rem"}>
+        <Container maw={"1440px!important"} w="100%" p={0} py={"5rem"}>
           <Flex justify={"space-between"}>
             <UnstyledButton>
               <Group>

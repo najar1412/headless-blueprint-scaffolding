@@ -24,15 +24,15 @@ export default function Footer(props) {
         w="100%"
         id="contact"
       >
-        <Container maw={"1512px"} className={styles["section-content"]}>
+        <Container maw={"1440px!important"} className={styles["section-content"]}>
           <SimpleGrid
             component={"section"}
             py="4rem"
             px="4rem"
             w="100%"
             maw={"unset"}
-            cols={2}
             bg="var(--mantine-color-brand-0)"
+            cols={{ base: 1, md: 2 }}
             className={styles["contact-form-container"]}
           >
             <Container maw={"unset"} mx={"auto"}>
@@ -56,7 +56,7 @@ export default function Footer(props) {
           className={styles["section-content"]}
           py={"5rem"}
           w="100%"
-          maw={"1512px"}
+          maw={"1440px!important"}
         >
           <Stack>
             <Title order={3}>Subscribe to our Newsletter</Title>
@@ -69,7 +69,7 @@ export default function Footer(props) {
         </Container>
         <Container w="100%" maw={"unset"}>
           <Divider />
-          <Container w="100%" maw={"1512px"}>
+          <Container w="100%" maw={"1440px!important"}>
             <Text size="0.5rem" mt="1.5rem" opacity={0.5}>
               Copyright (c) 2024, Nexus Health Group, All rights reserved.
             </Text>

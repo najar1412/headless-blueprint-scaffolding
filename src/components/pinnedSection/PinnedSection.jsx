@@ -101,8 +101,7 @@ export const PinnedSection = () => {
     <>
       <Container
         ref={container}
-        maw={"1512px"}
-        /* bg={"red"} */
+        maw={"1440px!important"}
         w="100%"
         h={"100%"}
         p={0}

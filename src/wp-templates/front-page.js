@@ -164,7 +164,6 @@ export default function Component(props) {
           }}
         >
           <Container
-            maw={"1512px"}
             w="100%"
             p={0}
             position={"relative"}
@@ -216,7 +215,7 @@ export default function Component(props) {
           className={`${styles.section}`}
         >
           <Container
-            maw={"1512px"}
+            maw={"1440px!important"}
             w="100%"
             p={0}
             className={`${styles["section-content"]} ${styles["section-animation"]}}`}
@@ -295,7 +294,7 @@ export default function Component(props) {
           className={styles.section}
         >
           <Container
-            maw={"1512px"}
+            maw={"!important"}
             w="100%"
             p={0}
             className={styles["section-content"]}
@@ -378,7 +377,7 @@ export default function Component(props) {
           className={styles.section}
         >
           <Container
-            maw={"1512px"}
+            maw={"1440px!important"}
             w="100%"
             p={0}
             className={styles["section-content"]}
@@ -452,16 +451,6 @@ export default function Component(props) {
                 </Grid.Col>
               </Grid>
             </Stack>
-            {/* <Stack mt={"xl"}>
-              {publications.nodes.map((node) => (
-                <Stack key={node.title} gap={0}>
-                  <Link href={node.uri}>
-                    <Text fw="bold">{node.title}</Text>
-                  </Link>
-                  <div dangerouslySetInnerHTML={{ __html: node.content }} />
-                </Stack>
-              ))}
-            </Stack> */}
           </Container>
         </Container>
       </Container>

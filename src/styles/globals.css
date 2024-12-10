@@ -61,3 +61,6 @@ canvas {
   height: auto;
   border-radius: 1rem;
 }
+.swiper-pagination-bullet {
+  background-color: #bcdc49 !important;
+}

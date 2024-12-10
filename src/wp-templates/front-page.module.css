@@ -3,6 +3,7 @@
 }
 .section-content {
   position: relative;
+  max-width: 1440px;
 }
 .section-content-trigger {
   position: relative;
