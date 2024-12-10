@@ -3,6 +3,7 @@ import { Fragment, useRef } from "react";
 import { gql } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Text, Container, Group, Burger, Badge, Stack } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import gsap from "gsap";
@@ -15,6 +16,7 @@ import styles from "./header.module.css";
 
 export default function Header({ menuItems, page, frontPage }) {
   const [opened, { toggle }] = useDisclosure();
+  const router = useRouter();
   const showBurger = useMediaQuery(`(max-width: 62em)`);
 
   const menuItem = (item) => {
@@ -41,20 +43,27 @@ export default function Header({ menuItems, page, frontPage }) {
         );
       default:
         return (
-          <Link
-            href={`${frontPage ? "" : "/"}#${item.label
-              .toLowerCase()
-              .replace(/\s/g, "-")}`}
+          <Stack
+            onClick={() =>
+              frontPage
+                ? gsap.to(window, {
+                    ease: "power1.in",
+                    scrollTo: `#${item.label
+                      .toLowerCase()
+                      .replace(/\s/g, "-")}`,
+                    duration: 0.2,
+                  })
+                : router.push(
+                    `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
+                  )
+            }
+            gap={0}
+            className={styles.link}
+            style={{ overflow: "hidden", cursor: "pointer" }}
           >
-            <Stack
-              gap={0}
-              className={styles.link}
-              style={{ overflow: "hidden" }}
-            >
-              <div className={styles["link-bar"]} />
-              <Text size="sm">{item.label}</Text>
-            </Stack>
-          </Link>
+            <div className={styles["link-bar"]} />
+            <Text size="sm">{item.label}</Text>
+          </Stack>
         );
     }
   };
@@ -90,14 +99,21 @@ export default function Header({ menuItems, page, frontPage }) {
       }`}
     >
       <Group w={"100%"} h="100%" justify="space-between" my="auto">
-        <Link href="/">
-          <Image
-            alt="nexus logo"
-            width={200}
-            src={logo}
-            style={{ transform: "translateY(0.25rem)" }}
-          />
-        </Link>
+        <Image
+          onClick={() =>
+            frontPage
+              ? gsap.to(window, {
+                  ease: "power1.in",
+                  scrollTo: `#landing`,
+                  duration: 0.2,
+                })
+              : router.push(`/`)
+          }
+          alt="nexus logo"
+          width={200}
+          src={logo}
+          style={{ cursor: "pointer" }}
+        />
         {showBurger ? (
           <Burger
             opened={opened}

@@ -17,6 +17,7 @@ import {
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -41,6 +42,7 @@ import bgImage from "../assets/bg.jpg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 const GET_PUBLICATIONS = gql`
   query GetPublications {
@@ -147,6 +149,7 @@ export default function Component(props) {
         p={0}
       >
         <Container
+          id="landing"
           component={"section"}
           h="100dvh"
           py={"8rem"}
