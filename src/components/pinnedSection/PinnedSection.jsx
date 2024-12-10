@@ -13,7 +13,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { Eyebrow } from "../Eyebrow";
-import { NexusShape2 } from "../animated/NexusShape2";
+import { NexusShape } from "../animated/NexusShape";
 
 import styles from "../../wp-templates/front-page.module.css";
 
@@ -226,7 +226,7 @@ export const PinnedSection = () => {
             alignItems: "center",
           }}
         >
-          <NexusShape2 ref={shapeSvgRef} />
+          <NexusShape ref={shapeSvgRef} />
         </div>
         <Container
           className={styles["pinned-section"]}
