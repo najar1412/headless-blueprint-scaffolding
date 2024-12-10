@@ -24,6 +24,7 @@ export const PinnedSection = () => {
   useGSAP(
     () => {
       // selectors
+      gsap.set(shapeSvgRef.current, { x: container.current.offsetWidth / 4 });
       const logo = shapeSvgRef.current.querySelector("#Logo");
       gsap.set(logo, { opacity: 0 });
 
@@ -48,6 +49,7 @@ export const PinnedSection = () => {
         rotate: -75,
       });
       const allCircles = shapeSvgRef.current.querySelectorAll('[id^="circle"]');
+      gsap.set(allCircles, { opacity: 1 });
       const circle1 = shapeSvgRef.current.querySelector("#circle1"); // green
       gsap.set(circle1, {
         transformOrigin: "center",
@@ -84,6 +86,7 @@ export const PinnedSection = () => {
         }
       };
 
+      // nexus shape timeline
       const shapeTl = gsap.timeline({
         defaults: { ease: "power1.inOut" },
         scrollTrigger: {
@@ -91,11 +94,11 @@ export const PinnedSection = () => {
           end: () => `bottom+=360% bottom`,
           scrub: true,
           toggleActions: "play reverse play reverse",
-          markers: {
+          /* markers: {
             startColor: "yellow",
             endColor: "yellow",
             fontSize: "12px",
-          },
+          }, */
           invalidateOnRefresh: true,
         },
       });
@@ -104,8 +107,8 @@ export const PinnedSection = () => {
         .to(
           shapeSvgRef.current,
           {
-            opacity: 1,
-            x: `+=${container.current.offsetWidth / 4}`,
+            /* x: `+=${container.current.offsetWidth / 4}`, */
+            ease: "power1.inOut",
           },
           "section0"
         )
@@ -115,7 +118,7 @@ export const PinnedSection = () => {
             opacity: 0,
             rotation: -75,
             transformOrigin: "center center",
-            ease: "power4.out"
+            ease: "power1.inOut",
           },
           "section1"
         )
@@ -123,6 +126,7 @@ export const PinnedSection = () => {
           shapeSvgRef.current,
           {
             x: `-=${container.current.offsetWidth / 2}`,
+            ease: "power1.inOut",
           },
           "section1"
         )
@@ -130,6 +134,7 @@ export const PinnedSection = () => {
           [logo, text, allPills],
           {
             opacity: 1,
+            ease: "power1.inOut",
           },
           "section1"
         )
@@ -138,6 +143,7 @@ export const PinnedSection = () => {
           {
             rotation: -75,
             transformOrigin: "center",
+            ease: "power1.inOut",
           },
           "section1"
         )
@@ -146,6 +152,7 @@ export const PinnedSection = () => {
           {
             rotation: 90,
             transformOrigin: "center",
+            ease: "power1.inOut",
           },
           "section1"
         )
@@ -154,6 +161,7 @@ export const PinnedSection = () => {
           {
             rotation: 75,
             transformOrigin: "center",
+            ease: "power1.inOut",
           },
           "section1"
         )
@@ -162,6 +170,7 @@ export const PinnedSection = () => {
           {
             rotation: 15,
             transformOrigin: "center",
+            ease: "power1.inOut",
           },
           "section2"
         )
@@ -170,6 +179,7 @@ export const PinnedSection = () => {
           {
             rotation: 0,
             transformOrigin: "center",
+            ease: "power1.inOut",
           },
           "section2"
         )
@@ -178,6 +188,7 @@ export const PinnedSection = () => {
           {
             rotation: -15,
             transformOrigin: "center",
+            ease: "power1.inOut",
           },
           "section2"
         );
@@ -195,7 +206,7 @@ export const PinnedSection = () => {
         });
 
         tl.to(block, {
-          duration: 0.2,
+          duration: 0.1,
           opacity: 1,
         });
       });

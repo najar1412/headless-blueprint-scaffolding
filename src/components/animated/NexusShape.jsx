@@ -8,7 +8,7 @@ export const NexusShape = forwardRef(function (props, ref) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 487.55 552.17"
       ref={ref}
-      style={{ opacity: 0, width: "500px", height: "500px" }}
+      style={{ width: "500px", height: "500px" }}
       /* {...props} */
     >
       <defs>
@@ -100,7 +100,7 @@ export const NexusShape = forwardRef(function (props, ref) {
         }}
       >
         <g>
-          <g id="circle_x5F_logo">
+          <g id="x5F_logo">
             <path
               d="M147.48,261.21h-.29v14.86h.29v-14.86Z"
               style={{
