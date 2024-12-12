@@ -27,7 +27,7 @@ html {
   --color3: 188, 220, 73;
   --color4: 159, 211, 206;
   --color5: 159, 211, 206;
-  --color-interactive: 159, 211, 206;
+  --color-interactive: 255, 0, 0;
   --circle-size: 200%;
   --blending: screen;
 }
