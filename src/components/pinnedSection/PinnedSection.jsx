@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import {
   Container,
@@ -28,10 +28,12 @@ export const PinnedSection = () => {
       const logo = shapeSvgRef.current.querySelector("#Logo");
       gsap.set(logo, { opacity: 0 });
 
-      const smallCircles = shapeSvgRef.current.querySelector("#small_x5F_circles");
+      const smallCircles =
+        shapeSvgRef.current.querySelector("#small_x5F_circles");
 
       const text = shapeSvgRef.current.querySelector("#Text");
       gsap.set(text, { opacity: 0 });
+      
       const textEvidence = shapeSvgRef.current.querySelector("#evidence");
       const textScience = shapeSvgRef.current.querySelector("#science");
       const textValue = shapeSvgRef.current.querySelector("#value");
@@ -56,25 +58,14 @@ export const PinnedSection = () => {
       });
       const allCircles = shapeSvgRef.current.querySelectorAll('[id^="circle"]');
       gsap.set(allCircles, { opacity: 1 });
+
       const circle1 = shapeSvgRef.current.querySelector("#circle1"); // green
-      /* gsap.set(circle1, {
-        transformOrigin: "center",
-        y: -70,
-        x: 110,
-      }); */
       const circle2 = shapeSvgRef.current.querySelector("#circle2"); // white
-      /* gsap.set(circle2, {
-        transformOrigin: "center",
-        y: 110,
-      }); */
       const circle3 = shapeSvgRef.current.querySelector("#circle3"); // blue
-      /* gsap.set(circle3, {
-        transformOrigin: "center",
-        y: -70,
-        x: -110,
-      }); */
-      // pinned children animation
+
       let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
+
+      // helpers
       const vh = (coef) => window.innerHeight * (coef / 100);
       const vw = (coef) => window.innerWidth * (coef / 100);
 

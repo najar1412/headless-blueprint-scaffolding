@@ -10,6 +10,7 @@ import {
 
 import { GetInTouchForm } from "./forms/GetInTouchForm";
 import { NewsletterForm } from "./forms/NewsletterForm";
+import { Gradient } from "./animated/gradient";
 
 import styles from "../wp-templates/front-page.module.css";
 
@@ -23,8 +24,14 @@ export default function Footer(props) {
         maw={"unset"}
         w="100%"
         id="contact"
+        style={{
+          position: "relative",
+        }}
       >
-        <Container maw={"1440px!important"} className={styles["section-content"]}>
+        <Container
+          maw={"1440px!important"}
+          className={styles["section-content"]}
+        >
           <SimpleGrid
             component={"section"}
             py="4rem"
@@ -67,14 +74,13 @@ export default function Footer(props) {
           </Stack>
           <NewsletterForm />
         </Container>
-        <Container w="100%" maw={"unset"}>
-          <Divider />
-          <Container w="100%" maw={"1440px!important"}>
-            <Text size="0.5rem" mt="1.5rem" opacity={0.5}>
-              Copyright (c) 2024, Nexus Health Group, All rights reserved.
-            </Text>
-          </Container>
+        <Container w="100%" maw={"1440px!important"}>
+          <Divider color="#5A5A5A" />
+          <Text size="0.5rem" mt="1.5rem" c={"#5A5A5A"}>
+            Copyright (c) 2024, Nexus Health Group, All rights reserved.
+          </Text>
         </Container>
+        <Gradient />
       </Container>
     </>
   );
