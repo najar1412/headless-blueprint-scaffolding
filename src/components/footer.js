@@ -10,7 +10,7 @@ import {
 
 import { GetInTouchForm } from "./forms/GetInTouchForm";
 import { NewsletterForm } from "./forms/NewsletterForm";
-import { Gradient } from "./animated/gradient";
+import { Gradient } from "./animated/Gradient";
 
 import styles from "../wp-templates/front-page.module.css";
 
