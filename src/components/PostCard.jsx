@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./PostCard.module.css";
 
 import arrow from "../assets/arrow-br.svg";
+import arrowGreen from "../assets/arrow-br-lg-green.svg";
 
 export const PostCard = ({
   category,
@@ -20,9 +21,10 @@ export const PostCard = ({
       case "announcement":
         return {
           shell: styles["shell-1"],
-          inner: styles["inner-2"],
+          inner: styles["inner-3"],
           fontColour: "var(--mantine-color-brand-0)",
-          arrow: styles.arrow,
+          arrow: styles["arrow-absolute-2"],
+          arrowIcon: arrowGreen,
         };
       case "journal":
         return {
@@ -30,6 +32,7 @@ export const PostCard = ({
           inner: styles["inner-2"],
           fontColour: "var(--mantine-color-brand-0)",
           arrow: styles.arrow,
+          arrowIcon: arrow,
         };
       case "featured":
         return {
@@ -37,6 +40,7 @@ export const PostCard = ({
           inner: styles["inner-1"],
           fontColour: "white",
           arrow: styles["arrow-absolute"],
+          arrowIcon: arrowGreen,
         };
       default:
         return {
@@ -44,6 +48,7 @@ export const PostCard = ({
           inner: styles["inner-2"],
           fontColour: "var(--mantine-color-brand-0)",
           arrow: styles.arrow,
+          arrowIcon: arrow,
         };
     }
   };
@@ -65,19 +70,23 @@ export const PostCard = ({
       }}
     >
       <Box className={`${layout.inner}`}>
-        <Stack gap={"0.25rem"} style={{ position: "relative" }}>
+        <Stack
+          gap={"0.25rem"}
+          style={{
+            position: category === "announcement" ? "static" : "relative",
+          }}
+        >
           {category ? (
-            <Text size="0.6rem" tt="uppercase" fw="500" c={layout.fontColour}>
+            <Text size="0.6rem" tt="uppercase" fw="700" c={layout.fontColour}>
               {category}
             </Text>
           ) : null}
           {title ? (
             <Link href={link}>
               <Text size="md" fw={500} lh={"1.25rem"} c={layout.fontColour}>
-              {title}
-            </Text>
+                {title}
+              </Text>
             </Link>
-            
           ) : null}
           {footer ? (
             <Text mt="1rem" size="0.6rem" c={layout.fontColour}>
@@ -86,7 +95,7 @@ export const PostCard = ({
           ) : null}
           {category ? (
             <div className={layout.arrow}>
-              <Image alt="arrow" src={arrow} />
+              <Image alt="arrow" src={layout.arrowIcon} />
             </div>
           ) : null}
         </Stack>

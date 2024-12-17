@@ -6,6 +6,7 @@ import {
   Text,
   Stack,
   Divider,
+  Image,
 } from "@mantine/core";
 
 import { GetInTouchForm } from "./forms/GetInTouchForm";
@@ -13,6 +14,8 @@ import { NewsletterForm } from "./forms/NewsletterForm";
 import { Gradient } from "./animated/Gradient";
 
 import styles from "../wp-templates/front-page.module.css";
+
+import arrowUpIcon from "../assets/arrow-up.svg";
 
 export default function Footer(props) {
   return (
@@ -64,6 +67,7 @@ export default function Footer(props) {
           py={"5rem"}
           w="100%"
           maw={"1440px!important"}
+          style={{ position: "relative" }}
         >
           <Stack>
             <Title order={3}>Subscribe to our Newsletter</Title>
@@ -72,6 +76,12 @@ export default function Footer(props) {
               Group.
             </Text>
           </Stack>
+          <div
+            className={styles["return-to-top"]}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <Image src={arrowUpIcon.src} w={"3rem"} />
+          </div>
           <NewsletterForm />
         </Container>
         <Container w="100%" maw={"1440px!important"}>

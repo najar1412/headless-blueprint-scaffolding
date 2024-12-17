@@ -50,10 +50,6 @@ a {
   width: 100%;
   max-width: unset;
 }
-sup {
-  color: red;
-  font-weight: bold;
-}
 canvas {
   position: absolute;
   top: 0;

@@ -21,11 +21,11 @@ export const QuoteCarousel = () => {
       }}
     >
       <SwiperSlide className={styles["swiper-slide"]}>
-        <Group wrap="no-wrap" align="flex-start">
+        <Group wrap="no-wrap" align="flex-start" gap={0}>
           <Text
             size="5rem"
             c="brand.4"
-            style={{ transform: "translateY(-1rem)" }}
+            style={{ transform: "translate(-1rem)" }}
           >
             “
           </Text>

@@ -39,6 +39,11 @@
 .inner-2 {
   border-radius: 0;
 }
+.inner-3 {
+  border-radius: 0;
+  height: 100%;
+  position: relative;
+}
 .arrow {
   padding-top: 1rem;
   transform: translateX(0.5rem);
@@ -51,10 +56,17 @@
   right: 0;
   bottom: 0;
 }
+.arrow-absolute-2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateX(0.5rem);
+}
 .bg-image {
   background-size: cover;
 }
 .gradient {
   background: #bcdc49;
   background: linear-gradient(180deg, #bcdc49 0%, #9fd3ce 100%);
+  opacity: 0.7;
 }

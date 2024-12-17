@@ -72,3 +72,20 @@
   transform: translateX(-101%);
   transition: all 0.5s;
 }
+.link-bar-active {
+  transform: unset !important;
+}
+.return-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  margin-bottom: 5rem;
+  margin-right: 1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid #0A404A;
+  border-radius: 100%;
+  cursor: pointer;
+}

@@ -33,7 +33,7 @@ export const PinnedSection = () => {
 
       const text = shapeSvgRef.current.querySelector("#Text");
       gsap.set(text, { opacity: 0 });
-      
+
       const textEvidence = shapeSvgRef.current.querySelector("#evidence");
       const textScience = shapeSvgRef.current.querySelector("#science");
       const textValue = shapeSvgRef.current.querySelector("#value");
@@ -286,11 +286,11 @@ export const PinnedSection = () => {
                 <Title c="white" order={3} maw={"16rem"}>
                   A strong foundation built in science
                 </Title>
-                <Text c="white" maw={"23rem"}>
+                <Text c="white" maw={"23rem"} fw={"100"}>
                   We noticed there was a blank spot in medical communications
                   around the value narrative.
                 </Text>
-                <Text c="white" maw={"24rem"}>
+                <Text c="white" maw={"24rem"} fw={"100"}>
                   Joining with market access leaders, we sought to bring
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
@@ -319,9 +319,9 @@ export const PinnedSection = () => {
                 <Title c="white" order={3} maw={"16rem"}>
                   Ability to address all stakeholder types
                 </Title>
-                <Group wrap="no-wrap">
+                <Group wrap="no-wrap" gap={"5rem"}>
                   <div>
-                    <List c="white">
+                    <List c="white" fw={"100"}>
                       <List.Item>Payers</List.Item>
                       <List.Item>Employers</List.Item>
                       <List.Item>Physicians</List.Item>
@@ -334,7 +334,7 @@ export const PinnedSection = () => {
                     </List>
                   </div>
                   <div>
-                    <List c="white">
+                    <List c="white" fw={"100"}>
                       <List.Item>Hospitals</List.Item>
                       <List.Item>IDNs</List.Item>
                       <List.Item>Specialty</List.Item>

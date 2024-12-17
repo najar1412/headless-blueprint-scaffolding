@@ -313,7 +313,15 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          <span className={styles.numbers}>50</span>+
+                          <span className={styles.numbers}>50</span>
+                          <sup
+                            style={{
+                              fontSize: "2rem",
+                              paddingLeft: "0.25rem",
+                            }}
+                          >
+                            +
+                          </sup>
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte
@@ -333,7 +341,15 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          <span className={styles.numbers}>57</span>%
+                          <span className={styles.numbers}>57</span>
+                          <span
+                            style={{
+                              fontSize: "1.5rem",
+                              paddingLeft: "0.5rem",
+                            }}
+                          >
+                            %
+                          </span>
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte
@@ -343,7 +359,15 @@ export default function Component(props) {
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="500" c="brand.2">
-                          <span className={styles.numbers}>11</span>+
+                          <span className={styles.numbers}>11</span>
+                          <sup
+                            style={{
+                              fontSize: "2rem",
+                              paddingLeft: "0.25rem",
+                            }}
+                          >
+                            +
+                          </sup>
                         </Text>
                         <Text lh="1rem">
                           Lorem ipsum dolor sit amet consecte
@@ -394,8 +418,12 @@ export default function Component(props) {
                         className={styles.link}
                         style={{ overflow: "hidden" }}
                       >
-                        <Text fw="500">Discover more</Text>
-                        <div className={styles["link-bar"]} />
+                        <Text fw="500" mb="0.25rem">
+                          Discover more
+                        </Text>
+                        <div
+                          className={`${styles["link-bar"]} ${styles["link-bar-active"]}`}
+                        />
                       </Stack>
                     </Link>
                   </Stack>
