@@ -15,6 +15,7 @@ export const PostCard = ({
   colour,
   image,
   gradient,
+  featureCarousel,
 }) => {
   const cardLayout = (category) => {
     switch (category) {
@@ -36,10 +37,12 @@ export const PostCard = ({
         };
       case "featured":
         return {
-          shell: styles["shell-4"],
-          inner: styles["inner-1"],
+          shell: featureCarousel ? styles["shell-5"] : styles["shell-4"],
+          inner: featureCarousel ? styles["inner-4"] : styles["inner-1"],
           fontColour: "white",
-          arrow: styles["arrow-absolute"],
+          arrow: featureCarousel
+            ? styles["arrow-absolute-top"]
+            : styles["arrow-absolute"],
           arrowIcon: arrowGreen,
         };
       default:

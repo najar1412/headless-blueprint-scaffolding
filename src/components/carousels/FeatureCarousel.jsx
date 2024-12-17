@@ -42,7 +42,7 @@ export const FeatureCarousel = ({ items }) => {
                   title={item.title}
                   image={{ src: item.featuredImage.node.sourceUrl }}
                   link={item.uri}
-                  colour={"red"}
+                  featureCarousel
                 />
               </SwiperSlide>
             ))

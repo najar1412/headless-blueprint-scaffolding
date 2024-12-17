@@ -27,6 +27,12 @@
   border-radius: 2rem 2rem 0 2rem;
   padding: 0;
 }
+.shell-5 {
+  display: flex;
+  align-items: end;
+  border-radius: 2rem 2rem 2rem 2rem;
+  padding: 0;
+}
 .inner-1 {
   width: 100%;
   background-color: var(--mantine-color-brand-0);
@@ -44,6 +50,15 @@
   height: 100%;
   position: relative;
 }
+.inner-4 {
+  width: 100%;
+  background-color: var(--mantine-color-brand-0);
+  padding-left: 1.5rem;
+  padding-right: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 2rem 0rem 2rem 2rem;
+}
 .arrow {
   padding-top: 1rem;
   transform: translateX(0.5rem);
@@ -54,7 +69,13 @@
   transform: translate(2.5rem, 0.5rem);
   position: absolute;
   right: 0;
-  bottom:0;
+  bottom: 0;
+}
+.arrow-absolute-top {
+  transform: translate(2.5rem, -0.5rem) rotate(-90deg);
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .arrow-absolute-2 {
   position: absolute;
