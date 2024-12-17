@@ -60,14 +60,17 @@ export default function LoadMorePost() {
           return (
             <Fragment key={databaseId}>
               <Group wrap="no-wrap" gap={"2rem"} mb={"1rem"}>
-                <Image
-                  visibleFrom="md"
-                  alt="publication thumbnail"
-                  src={featuredImage.node.sourceUrl}
-                  w={"100%"}
-                  maw={"10rem"}
-                  style={{ borderRadius: "1rem" }}
-                />
+                <div
+                  style={{
+                    width: "18rem",
+                    height: "6rem",
+                    borderRadius: "1rem",
+                    overflow: "hidden",
+                    backgroundImage: `url(${featuredImage.node.sourceUrl})`,
+                    backgroundSize: "cover",
+                  }}
+                ></div>
+
                 <Stack key={title} gap="0.3rem">
                   <Link href={`/publications/${slug}`}>
                     <Text fw="bold">{title}</Text>
