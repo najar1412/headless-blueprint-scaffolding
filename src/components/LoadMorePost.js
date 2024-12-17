@@ -1,8 +1,9 @@
+import { Fragment } from "react";
+
 import { useQuery, gql } from "@apollo/client";
 import Link from "next/link";
 
-import { Group, Image, Stack, Text, Divider, Button } from "@mantine/core";
-import { Fragment } from "react";
+import { Group, Stack, Text, Divider, Button } from "@mantine/core";
 
 const GET_POSTS = gql`
   query getPosts($first: Int!, $after: String) {
