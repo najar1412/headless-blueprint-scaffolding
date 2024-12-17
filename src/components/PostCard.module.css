@@ -54,7 +54,7 @@
   transform: translate(2.5rem, 0.5rem);
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom:0;
 }
 .arrow-absolute-2 {
   position: absolute;

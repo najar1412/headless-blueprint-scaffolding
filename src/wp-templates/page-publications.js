@@ -1,14 +1,5 @@
 import { gql } from "@apollo/client";
-import Link from "next/link";
-import {
-  Title,
-  Container,
-  Divider,
-  Stack,
-  Text,
-  Group,
-  Image,
-} from "@mantine/core";
+import { Title, Container, Divider, Stack, Text, Group } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -16,6 +7,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
 import { Eyebrow } from "../components/Eyebrow";
+import LoadMorePost from "../components/LoadMorePost";
 
 export default function PagePublications(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
@@ -97,38 +89,7 @@ export default function PagePublications(props) {
         >
           <Stack gap={"lg"}>
             <Divider color={"#0A404A"} />
-            {publications.nodes.map((node) => (
-              <>
-                <Group wrap="no-wrap" gap={"2rem"}>
-                  <Image
-                    visibleFrom="md"
-                    alt="publication thumbnail"
-                    src={node.featuredImage.node.sourceUrl}
-                    w={"100%"}
-                    maw={"10rem"}
-                    style={{ borderRadius: "1rem" }}
-                  />
-                  <Stack key={node.title} gap="0.3rem">
-                    <Link href={node.uri}>
-                      <Text fw="bold">{node.title}</Text>
-                    </Link>
-                    <div
-                      style={{ fontSize: "0.8rem" }}
-                      dangerouslySetInnerHTML={{
-                        __html: `${node.content
-                          .replace(/<\/?[^>]+(>|$)/g, "")
-                          .substring(0, 200)}...`,
-                      }}
-                    />
-                  </Stack>
-                </Group>
-
-                <Divider color={"#0A404A"} />
-              </>
-            ))}
-            <Text size="xs" ta="right">
-              Pagination
-            </Text>
+            <LoadMorePost />
           </Stack>
         </Container>
       </Container>
