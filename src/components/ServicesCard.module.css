@@ -13,6 +13,12 @@
   aspect-ratio: 1/1.3;
   height: "fit-content";
 }
+.service-card:hover > .arrow {
+  opacity: 0;
+}
+.service-card:hover > .close {
+  opacity: 1;
+}
 .service-card:hover > .content-1 {
   opacity: 0;
 }
@@ -22,9 +28,19 @@
 .arrow {
   position: absolute;
   right: 0;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   margin: 1rem;
+  transition: 0.2s all;
+}
+.close {
+  position: absolute;
+  right: 0;
+  width: 4rem;
+  height: 4rem;
+  margin: 0rem;
+  transition: 0.2s all;
+  opacity: 0;
 }
 .content-1 {
   display: flex;

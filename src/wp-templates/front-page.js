@@ -166,7 +166,17 @@ export default function Component(props) {
                 Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
                 eiusm od tempor incididunt.
               </Text>
-              <Link href={"#services"} style={{ width: "fit-content" }}>
+              <Link
+                href={"#services"}
+                onClick={() =>
+                  gsap.to(window, {
+                    ease: "power1.in",
+                    scrollTo: `#services`,
+                    duration: 0.2,
+                  })
+                }
+                style={{ width: "fit-content" }}
+              >
                 <Stack
                   gap={0}
                   className={styles.link}
