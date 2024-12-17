@@ -24,7 +24,7 @@ import eastArrow from "../assets/east_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 (1)
 import westArrow from "../assets/west_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg";
 
 export default function PagePublication(props) {
-  const { footer, primaryMenuItems, nodeByUri } = props.data;
+  const { footer, primaryMenuItems, publication: post } = props.data;
 
   // Loading state for previews
   if (props.loading) {
@@ -86,11 +86,11 @@ export default function PagePublication(props) {
           <Grid gutter="2rem">
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 5 }}>
               <Stack gap={"xs"}>
-                {nodeByUri.featuredImage ? (
+                {post.featuredImage ? (
                   <Image
                     width={"100%"}
                     mah={"15rem"}
-                    src={nodeByUri.featuredImage.node.sourceUrl}
+                    src={post.featuredImage.node.sourceUrl}
                     style={{ borderRadius: "1rem" }}
                   />
                 ) : null}
@@ -117,13 +117,13 @@ export default function PagePublication(props) {
             <Grid.Col span={{ base: 12, lg: 7 }}>
               <Stack>
                 <Text tt="uppercase" fw={"600"}>
-                  pub date
+                  {post.publicationMeta.date}
                 </Text>
                 <Title order={1} lh={"2.5rem"}>
-                  {nodeByUri.title}
+                  {post.title}
                 </Title>
                 <Text tt="capitalize" fw={"600"}>
-                  by pub author
+                  by {post.publicationMeta.author}
                 </Text>
                 <Group hiddenFrom="lg" gap={"1.5rem"}>
                   <Text fw={600}>Share this post</Text>
@@ -143,7 +143,7 @@ export default function PagePublication(props) {
                     style={{ transform: "scale(1.5)" }}
                   />
                 </Group>
-                <div dangerouslySetInnerHTML={{ __html: nodeByUri.content }} />
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
               </Stack>
             </Grid.Col>
           </Grid>
@@ -190,33 +190,23 @@ PagePublication.variables = ({ databaseId, uri }, ctx) => {
 PagePublication.query = gql`
   ${Header.fragments.entry}
 
-
-    query GetPublication($uri: String!) {
-      nodeByUri(uri: $uri) {
-    ... on NodeWithTitle {
+  query getPost($databaseId: ID!) {
+    publication(id: $databaseId, idType: DATABASE_ID) {
+      databaseId
       title
-    }
-    ... on WithAcfPublicationMeta {
-      publicationMeta {
+      slug
+      content
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      publicationMeta: publicationMeta {
         date
         author
       }
     }
-    ... on NodeWithFeaturedImage {
-      featuredImage {
-        node {
-          id
-          sourceUrl
-        }
-      }
-    }
-    ... on NodeWithContentEditor {
-      content
-    }
+    ...HeaderFragment
+    ...${Footer.fragments.entry}
   }
-      ...HeaderFragment
-      ...${Footer.fragments.entry}
-    }
-   
-
 `;
