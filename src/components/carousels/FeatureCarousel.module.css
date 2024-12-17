@@ -1,4 +1,24 @@
 .swiper-slide {
-    /* height: 14rem; */
-  }
-  
+  /* height: 14rem; */
+}
+.swiper-controls {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  transform: translateY(-5rem);
+}
+.arrow {
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #0a404a;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.arrow:hover {
+  border: 1px solid #bcdc49;
+}

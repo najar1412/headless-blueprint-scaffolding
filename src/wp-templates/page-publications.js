@@ -1,13 +1,11 @@
 import { gql } from "@apollo/client";
 import Link from "next/link";
-/* import Image from "next/image"; */
 import {
   Title,
   Container,
   Divider,
   Stack,
   Text,
-  Avatar,
   Group,
   Image,
 } from "@mantine/core";
@@ -84,10 +82,6 @@ export default function PagePublications(props) {
             </Title>
             <Group justify="space-between">
               <Eyebrow label={"featured"} variant={3} />
-              <Group pr="5rem">
-                <Avatar />
-                <Avatar />
-              </Group>
             </Group>
             <Container p={0} maw={"100%"}>
               <FeatureCarousel items={publications.nodes} />
