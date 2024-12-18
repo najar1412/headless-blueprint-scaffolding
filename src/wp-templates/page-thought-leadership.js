@@ -21,37 +21,7 @@ export default function PageThoughtLeadership(props) {
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
-    const sections = gsap.utils.toArray('[class*="front-page_section"]');
-
     // sectional animation
-    sections.forEach((section, i) => {
-      gsap.set('[class*="front-page_section-content"]', { autoAlpha: 0 });
-      if (!i) {
-        gsap.to('[class*="front-page_section-content"]', {
-          filter: "blur(0px)",
-          y: "-2%",
-          autoAlpha: 1,
-          delay: 2,
-          scale: 1,
-        });
-      }
-      if (i !== 2) {
-        gsap.to(section, {
-          filter: "blur(0px)",
-          opacity: 1,
-          scale: 1,
-          scrollTrigger: {
-            trigger: section,
-            start: () => "top bottom",
-            end: () => "bottom-=30% bottom",
-            scrub: true,
-            toggleActions: "play none reverse none",
-            invalidateOnRefresh: true,
-            /* markers: true, */
-          },
-        });
-      }
-    });
   });
 
   return (

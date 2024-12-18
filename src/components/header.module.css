@@ -15,10 +15,10 @@
   margin: 0;
 }
 
-.link:hover > .link-bar {
+.link:hover > .bar-link {
   transform: translateX(0);
 }
-.link-bar {
+.bar-link {
   width: 100%;
   height: 0.15rem;
   background: rgb(49, 122, 61);
@@ -26,7 +26,7 @@
   transform: translateX(-101%);
   transition: all 0.5s;
 }
-.link-bar-show {
+.bar-link-show {
   transform: translateY(0);
 }
 .opaque-header {

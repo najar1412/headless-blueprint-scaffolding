@@ -77,8 +77,8 @@ export default function Header({ menuItems, page, frontPage }) {
             }}
           >
             <div
-              className={`${styles["link-bar"]} ${
-                page.title === item.label ? styles["link-bar-show"] : ""
+              className={`${styles["bar-link"]} ${
+                page.title === item.label ? styles["bar-link-show"] : ""
               }`}
             />
             <Text size="sm">{item.label}</Text>

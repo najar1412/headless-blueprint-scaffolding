@@ -83,9 +83,36 @@ export default function Component(props) {
     setBackground(background === bgs.length - 1 ? 1 : background + 1);
   };
 
+  const setActive = () => {
+    console.log("what");
+  };
+
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
+
+    // sectional animation
+    const sections = gsap.utils.toArray('[class*="front-page_section"]');
+    const headerLinks = gsap.utils.toArray('[class*="header_link"]');
+    console.log(headerLinks);
+
+    sections.forEach((section, i) => {
+      gsap.to(section, {
+        filter: "blur(0px)",
+        opacity: 1,
+        scale: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: () => "top bottom",
+          end: () => "bottom-=30% bottom",
+          scrub: true,
+          toggleActions: "play none reverse none",
+          invalidateOnRefresh: true,
+          onToggle: (self) => self.isActive && setActive(),
+          /* markers: true, */
+        },
+      });
+    });
 
     // animate numbers
     // TODO: imp in scrolltrigger
@@ -173,7 +200,7 @@ export default function Component(props) {
                     <Text fw="500">Discover more</Text>
                     <Image alt="arrow" src={arrowBrGreen} />
                   </Group>
-                  <div className={styles["link-bar"]} />
+                  <div className={styles["bar-link"]} />
                 </Stack>
               </Link>
               <Button maw="fit-content" onClick={() => testDataFetching()}>
@@ -419,7 +446,7 @@ export default function Component(props) {
                           Discover more
                         </Text>
                         <div
-                          className={`${styles["link-bar"]} ${styles["link-bar-active"]}`}
+                          className={`${styles["bar-link"]} ${styles["bar-link-active"]}`}
                         />
                       </Stack>
                     </Link>
