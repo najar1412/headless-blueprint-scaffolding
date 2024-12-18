@@ -79,8 +79,9 @@ export default function PagePublication(props) {
         className={"main"}
         maw={"unset"}
         w="100%"
-        p={"5rem"}
+        px={"5rem"}
         pt={"12rem"}
+        pb={0}
       >
         <Container maw={"1440px!important"} w="100%">
           <Grid gutter="2rem">
