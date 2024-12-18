@@ -21,6 +21,7 @@ export default function Component(props) {
         siteTitle={siteTitle}
         siteDescription={siteDescription}
         menuItems={menuItems}
+        page={page}
       />
 
       <main className="container">

@@ -20,6 +20,8 @@ export default function Header({ menuItems, page, frontPage }) {
   const showBurger = useMediaQuery(`(max-width: 62em)`);
   const container = useRef();
 
+  console.log(page);
+
   const menuItem = (item) => {
     switch (item.label) {
       case "Contact":

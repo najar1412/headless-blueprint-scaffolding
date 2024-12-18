@@ -23,7 +23,7 @@ import xIcon from "../assets/X_logo_2023_original 1.svg";
 import arrowUpIcon from "../assets/arrow-up.svg";
 
 export default function PagePublication(props) {
-  const { footer, primaryMenuItems, publication: post } = props.data;
+  const { footer, primaryMenuItems, publication: post, page } = props.data;
 
   // Loading state for previews
   if (props.loading) {
@@ -71,7 +71,7 @@ export default function PagePublication(props) {
 
   return (
     <>
-      <Header menuItems={primaryMenuItems.nodes} />
+      <Header menuItems={primaryMenuItems.nodes} page={page} />
 
       <Container
         component={"main"}

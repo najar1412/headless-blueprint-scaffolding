@@ -13,23 +13,24 @@ export default function Component(props) {
   const { title: siteTitle, description: siteDescription } =
     props.data.generalSettings;
   const menuItems = props.data.primaryMenuItems.nodes;
-  const { title, content } = props.data.page;
+  const { page } = props.data;
 
   return (
     <>
       <Head>
-        <title>{`${title} - ${siteTitle}`}</title>
+        <title>{`${page.title} - ${siteTitle}`}</title>
       </Head>
 
       <Header
         siteTitle={siteTitle}
         siteDescription={siteDescription}
         menuItems={menuItems}
+        page={page}
       />
 
       <main className="container">
-        <EntryHeader title={title} />
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <EntryHeader title={page.title} />
+        <div dangerouslySetInnerHTML={{ __html: page.content }} />
       </main>
 
       <Footer />

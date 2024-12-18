@@ -74,7 +74,7 @@ export default function LoadMorePublications() {
                 ></div>
 
                 <Stack key={title} gap="0.3rem">
-                  <Link href={`/publications/${slug}`}>
+                  <Link href={`/thought-leadership/${slug}`}>
                     <Text fw="bold">{title}</Text>
                   </Link>
                   <div
@@ -148,7 +148,7 @@ export default function LoadMorePublications() {
           )}
         </form>
       ) : (
-        <Text size='xs' c="#0A404A" ta="center" opacity={0.5}>
+        <Text size="xs" c="#0A404A" ta="center" opacity={0.5}>
           Showing all posts
         </Text>
       )}

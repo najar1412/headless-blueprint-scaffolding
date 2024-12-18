@@ -65,7 +65,7 @@ const bgs = [<div />, <Landing />, <Landing2 />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
-  const { publications, footer, primaryMenuItems } = props.data;
+  const { footer, primaryMenuItems, page } = props.data;
   const [background, setBackground] = useState(0);
   const [getPublications, { loading, error, data }] = useLazyQuery(
     GET_PUBLICATIONS,
@@ -125,11 +125,7 @@ export default function Component(props) {
         <title>{siteTitle}</title>
       </Head>
 
-      <Header
-        menuItems={primaryMenuItems.nodes}
-        page={props.data.page}
-        frontPage
-      />
+      <Header menuItems={primaryMenuItems.nodes} page={page} frontPage />
 
       <Container
         component={"main"}

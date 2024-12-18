@@ -13,8 +13,6 @@ import { Loading } from "../components/animated/Loading";
 export default function PageThoughtLeadership(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
 
-  console.log(page);
-
   // Loading state for previews
   if (props.loading) {
     return <Loading />;
@@ -61,7 +59,7 @@ export default function PageThoughtLeadership(props) {
 
   return (
     <>
-      <Header menuItems={primaryMenuItems.nodes} page={props.data.page} />
+      <Header menuItems={primaryMenuItems.nodes} page={page} />
 
       <Container component={"main"} px={"5rem"} p={0} className="container">
         <Container
