@@ -71,7 +71,10 @@ export default function PagePublication(props) {
 
   return (
     <>
-      <Header menuItems={primaryMenuItems.nodes} page={page} />
+      <Header
+        menuItems={primaryMenuItems.nodes}
+        page={{ title: "Thought Leadership" }}
+      />
 
       <Container
         component={"main"}

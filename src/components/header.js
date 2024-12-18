@@ -20,9 +20,10 @@ export default function Header({ menuItems, page, frontPage }) {
   const showBurger = useMediaQuery(`(max-width: 62em)`);
   const container = useRef();
 
-  console.log(page);
+  console.log(page.title);
 
   const menuItem = (item) => {
+    console.log(item);
     switch (item.label) {
       case "Contact":
         return (
@@ -68,10 +69,18 @@ export default function Header({ menuItems, page, frontPage }) {
                   )
             }
             gap={0}
-            className={styles.link}
-            style={{ overflow: "hidden", cursor: "pointer" }}
+            className={`${styles.link}`}
+            style={{
+              overflow: "hidden",
+              cursor: "pointer",
+              /* color: page.title === item.label ? "red" : "blue", */
+            }}
           >
-            <div className={styles["link-bar"]} />
+            <div
+              className={`${styles["link-bar"]} ${
+                page.title === item.label ? styles["link-bar-show"] : ""
+              }`}
+            />
             <Text size="sm">{item.label}</Text>
           </Stack>
         );
