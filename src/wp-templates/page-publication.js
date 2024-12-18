@@ -20,8 +20,7 @@ import Footer from "../components/footer";
 import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
 import facebookIcon from "../assets/facebook.svg";
 import xIcon from "../assets/X_logo_2023_original 1.svg";
-import eastArrow from "../assets/east_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 (1).svg";
-import westArrow from "../assets/west_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg";
+import arrowUpIcon from "../assets/arrow-up.svg";
 
 export default function PagePublication(props) {
   const { footer, primaryMenuItems, publication: post } = props.data;
@@ -154,9 +153,9 @@ export default function PagePublication(props) {
             <UnstyledButton>
               <Group>
                 <Image
-                  src={westArrow.src}
+                  src={arrowUpIcon.src}
                   alt="east arrow"
-                  style={{ transform: "scale(1.5)" }}
+                  style={{ transform: "rotate(-90deg) scale(0.8)" }}
                 />
                 <Text fw="500">Previous Post</Text>
               </Group>
@@ -165,9 +164,9 @@ export default function PagePublication(props) {
               <Group>
                 <Text fw="500">Next Post</Text>
                 <Image
-                  src={eastArrow.src}
+                  src={arrowUpIcon.src}
                   alt="east arrow"
-                  style={{ transform: "scale(1.5)" }}
+                  style={{ transform: "rotate(90deg) scale(0.8)" }}
                 />
               </Group>
             </UnstyledButton>
