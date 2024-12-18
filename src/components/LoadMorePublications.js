@@ -148,7 +148,7 @@ export default function LoadMorePublications() {
           )}
         </form>
       ) : (
-        <Text c="#0A404A" ta="center" opacity={0.5}>
+        <Text size='xs' c="#0A404A" ta="center" opacity={0.5}>
           Showing all posts
         </Text>
       )}

@@ -10,7 +10,7 @@ import { Eyebrow } from "../components/Eyebrow";
 import LoadMorePublications from "../components/LoadMorePublications";
 import { Loading } from "../components/animated/Loading";
 
-export default function PagePublications(props) {
+export default function PageThoughtLeadership(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
 
   console.log(page);
@@ -102,7 +102,7 @@ export default function PagePublications(props) {
   );
 }
 
-PagePublications.variables = ({ databaseId }, ctx) => {
+PageThoughtLeadership.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
     asPreview: ctx?.asPreview,
@@ -110,7 +110,7 @@ PagePublications.variables = ({ databaseId }, ctx) => {
   };
 };
 
-PagePublications.query = gql`
+PageThoughtLeadership.query = gql`
   ${Header.fragments.entry}
 
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {

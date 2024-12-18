@@ -420,7 +420,7 @@ export default function Component(props) {
                       Nulla venenatis at nulla mi at.
                     </Text>
                     <Link
-                      href={"publications"}
+                      href={"thought-leadership"}
                       style={{ width: "fit-content" }}
                     >
                       <Stack
