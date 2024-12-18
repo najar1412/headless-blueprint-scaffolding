@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import { Group, Stack, Text, Divider, Button } from "@mantine/core";
 
+import styles from "./LoadMorePublications.module.css";
+
 const GET_POSTS = gql`
   query getPosts($first: Int!, $after: String) {
     publications(first: $first, after: $after) {
@@ -30,9 +32,9 @@ const GET_POSTS = gql`
   }
 `;
 
-const BATCH_SIZE = 5;
+const BATCH_SIZE = 10;
 
-export default function LoadMorePost() {
+export default function LoadMorePublications() {
   const { data, loading, error, fetchMore } = useQuery(GET_POSTS, {
     variables: { first: BATCH_SIZE, after: null },
   });
@@ -42,7 +44,7 @@ export default function LoadMorePost() {
   }
 
   if (!data && loading) {
-    return <p>Loading...</p>;
+    return <span className={styles.loader}></span>;
   }
 
   if (!data?.publications.edges.length) {
@@ -98,15 +100,59 @@ export default function LoadMorePost() {
           onSubmit={(event) => {
             event.preventDefault();
             fetchMore({
-              variables: { after: data.publications.pageInfo.endCursor },
+              variables: {
+                after: data.publications.pageInfo.endCursor,
+              },
+              updateQuery(
+                previousData,
+                { fetchMoreResult, variables: { first } }
+              ) {
+                // Slicing is necessary because the existing data is
+                // immutable, and frozen in development.
+                const updatedFeed = previousData.publications.edges.slice(0);
+                for (
+                  let i = 0;
+                  i < fetchMoreResult.publications.edges.length;
+                  ++i
+                ) {
+                  updatedFeed[first + i] =
+                    fetchMoreResult.publications.edges[i];
+                }
+                return {
+                  publications: {
+                    edges: updatedFeed,
+                    pageInfo: fetchMoreResult.publications.pageInfo,
+                    __typename: "RootQueryToPublicationConnection",
+                    id: 999,
+                  },
+                };
+              },
             });
           }}
         >
-          <Button type="submit" disabled={loading}>
-            {loading ? "Loading..." : "Load more"}
-          </Button>
+          {loading ? null : (
+            <Button
+              disabled={loading}
+              radius={"2rem"}
+              color="#bcdc49"
+              type="submit"
+              c="#0a404a"
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 50,
+              }}
+            >
+              Load more posts
+            </Button>
+          )}
         </form>
-      ) : null}
+      ) : (
+        <Text c="#0A404A" ta="center" opacity={0.5}>
+          Showing all posts
+        </Text>
+      )}
     </>
   );
 }

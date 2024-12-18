@@ -7,7 +7,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
 import { Eyebrow } from "../components/Eyebrow";
-import LoadMorePost from "../components/LoadMorePost";
+import LoadMorePublications from "../components/LoadMorePublications";
 
 export default function PagePublications(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
@@ -87,9 +87,9 @@ export default function PagePublications(props) {
           w="100%"
           maw={"1440px!important"}
         >
-          <Stack gap={"lg"}>
+          <Stack gap={0}>
             <Divider color={"#0A404A"} />
-            <LoadMorePost />
+            <LoadMorePublications />
           </Stack>
         </Container>
       </Container>
@@ -113,21 +113,10 @@ PagePublications.query = gql`
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
     ...HeaderFragment
     ...${Footer.fragments.entry}
+
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
-      acf: publicationPage {
-        cta1{
-        image {
-          node {
-            sourceUrl
-          }
-        }
-        tag
-        title
-        copy
-        }
-      }
     }
     
     publications {
@@ -137,14 +126,13 @@ PagePublications.query = gql`
         ... on NodeWithTitle {
           title
         }
-          
-          ... on NodeWithFeaturedImage {
+        ... on NodeWithFeaturedImage {
         featuredImage {
-      node {
-        id
-        sourceUrl
-      }
-    }}
+          node {
+            id
+            sourceUrl
+          }
+        }}
         ... on NodeWithContentEditor {
           content
         }
