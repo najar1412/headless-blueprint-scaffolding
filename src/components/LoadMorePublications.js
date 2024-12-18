@@ -2,10 +2,9 @@ import { Fragment } from "react";
 
 import { useQuery, gql } from "@apollo/client";
 import Link from "next/link";
-
 import { Group, Stack, Text, Divider, Button } from "@mantine/core";
 
-import styles from "./LoadMorePublications.module.css";
+import { Loading } from "./animated/Loading";
 
 const GET_POSTS = gql`
   query getPosts($first: Int!, $after: String) {
@@ -44,7 +43,7 @@ export default function LoadMorePublications() {
   }
 
   if (!data && loading) {
-    return <span className={styles.loader}></span>;
+    return <Loading />;
   }
 
   if (!data?.publications.edges.length) {

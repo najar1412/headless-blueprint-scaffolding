@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { Title, Container, Divider, Stack, Text, Group } from "@mantine/core";
+import { Title, Container, Divider, Stack, Group } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -8,13 +8,16 @@ import Footer from "../components/footer";
 import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import LoadMorePublications from "../components/LoadMorePublications";
+import { Loading } from "../components/animated/Loading";
 
 export default function PagePublications(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
 
+  console.log(page);
+
   // Loading state for previews
   if (props.loading) {
-    return <>Loading...</>;
+    return <Loading />;
   }
 
   useGSAP(() => {
