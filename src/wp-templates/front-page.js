@@ -95,17 +95,8 @@ export default function Component(props) {
       snap: { textContent: 1 }, // increment by 1
     });
 
-    // initial page animation
-    gsap.set(['[class*="main"]', '[class*="header"]'], { autoAlpha: 0 });
-    gsap.to(['[class*="main"]', '[class*="header"]'], {
-      autoAlpha: 1,
-      delay: 1,
-      duration: 2,
-    });
-
     // pinned section
     gsap.to('[class*="front-page_section-content-trigger"]', {
-      /* x: 260, */
       scrollTrigger: {
         trigger: '[class*="front-page_black"]',
         start: () => "top top",

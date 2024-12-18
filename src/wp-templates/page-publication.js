@@ -35,9 +35,6 @@ export default function PagePublication(props) {
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
     const sections = gsap.utils.toArray('[class*="front-page_section"]');
 
-    // initial page animation
-    gsap.set(['[class*="main"]', '[class*="header"]'], { opacity: 1 });
-
     // sectional animation
     sections.forEach((section, i) => {
       gsap.set('[class*="front-page_section-content"]', { autoAlpha: 0 });
