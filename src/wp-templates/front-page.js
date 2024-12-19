@@ -238,7 +238,7 @@ export default function Component(props) {
                 gravida urna.
               </Title>
               <Grid>
-                <Grid.Col span={{ base: 12, lg: 4 }}>
+                <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
                     icon={marketAccessIcon}
                     title={"Market Access Consulting"}
@@ -251,7 +251,7 @@ export default function Component(props) {
                     ]}
                   />
                 </Grid.Col>
-                <Grid.Col span={{ base: 12, lg: 4 }}>
+                <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
                     icon={valueIcon}
                     title={"value communications"}
@@ -264,7 +264,7 @@ export default function Component(props) {
                     ]}
                   />
                 </Grid.Col>
-                <Grid.Col span={{ base: 12, lg: 4 }}>
+                <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
                     icon={patientIcon}
                     title={"patient access & affordability"}

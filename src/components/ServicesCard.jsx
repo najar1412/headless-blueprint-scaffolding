@@ -11,15 +11,20 @@ export const ServicesCard = ({ icon, title, items }) => {
     <Box className={styles["service-card"]}>
       <Image alt="arrow" className={styles.arrow} src={arrowTrGreenIcon} />
       <Image alt="close" className={styles.close} src={closeIcon} />
-      <Box p="2rem" className={styles["content-1"]}>
+      <Box className={styles["content-1"]}>
         <Stack>
-          <Image alt={`${title} icon`} src={icon} style={{ width: "5rem" }} />
-          <Text size="1.6rem" c="white" tt="capitalize" maw={'12rem'}>
+          <Image alt={`${title} icon`} src={icon} className={styles.icon} />
+          <Text
+            c="white"
+            tt="capitalize"
+            maw={"12rem"}
+            className={styles.header}
+          >
             {title}
           </Text>
         </Stack>
       </Box>
-      <Box p="2rem" pr="4rem" pt={"4rem"} className={styles["content-2"]}>
+      <Box className={styles["content-2"]}>
         <List>
           {items.map((item) => (
             <List.Item key={item} my="0.5rem">
