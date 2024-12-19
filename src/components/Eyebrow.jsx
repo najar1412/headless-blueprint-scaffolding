@@ -22,7 +22,7 @@ export const Eyebrow = ({ label, variant }) => {
     <Badge
       py={"md"}
       px={"lg"}
-      mb="xl"
+      mb="sm"
       variant={variantType[variant ? variant : 1].variant}
       color={variantType[variant ? variant : 1].color}
       c={variantType[variant ? variant : 1].textColor}

@@ -31,6 +31,7 @@ import { ServicesCard } from "../components/ServicesCard";
 import { PinnedSection } from "../components/pinnedSection/PinnedSection";
 
 import styles from "./front-page.module.css";
+import headerStyles from "../components/header.module.css";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 import cardGrayImage from "../assets/card_gray.jpg";
@@ -67,49 +68,61 @@ export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page } = props.data;
   const [background, setBackground] = useState(0);
-  const [getPublications, { loading, error, data }] = useLazyQuery(
+  /* const [getPublications, { loading, error, data }] = useLazyQuery(
     GET_PUBLICATIONS,
     {
       server: false,
       fetchPolicy: "network-only", // Doesn't check cache before making a network request
     }
-  );
-
-  const testDataFetching = () => {
-    getPublications();
-  };
+  ); */
 
   const nextBackground = () => {
     setBackground(background === bgs.length - 1 ? 1 : background + 1);
-  };
-
-  const setActive = () => {
-    console.log("what");
   };
 
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
 
+    const setActive = (section) => {
+      console.log("start");
+      headerLinks.forEach((link) => {
+        if (link.id === section.id) {
+          link.children[0].classList.add(headerStyles["bar-link-show"]);
+        } else {
+          link.children[0].classList.remove(headerStyles["bar-link-show"]);
+        }
+      });
+    };
+    const vh = (coef) => window.innerHeight * (coef / 100);
+
     // sectional animation
-    const sections = gsap.utils.toArray('[class*="front-page_section"]');
+    const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
-    console.log(headerLinks);
+
+    const currentSection = (index) => {
+      const offset = vh(150);
+      if (index >= 2) {
+        return "+=" + vh(100) + offset + "px";
+      }
+      return "+=" + vh(100) + "px";
+    };
 
     sections.forEach((section, i) => {
+      console.log(section);
       gsap.to(section, {
-        filter: "blur(0px)",
-        opacity: 1,
-        scale: 1,
         scrollTrigger: {
           trigger: section,
-          start: () => "top bottom",
-          end: () => "bottom-=30% bottom",
-          scrub: true,
+          start: () => "top-=20% top",
+          end: () => `bottom${currentSection(i)} top`,
           toggleActions: "play none reverse none",
-          invalidateOnRefresh: true,
-          onToggle: (self) => self.isActive && setActive(),
-          /* markers: true, */
+          /* invalidateOnRefresh: true, */
+          onToggle: (self) => self.isActive && setActive(section),
+          /* markers: {
+            indent: 150 * i,
+            startColor: "red",
+            endColor: "red",
+          }, */
         },
       });
     });
@@ -131,8 +144,9 @@ export default function Component(props) {
         scrub: true,
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
-        /* markers: true, */
         pin: true,
+        pinSpacer: true,
+        /* markers: true, */
       },
     });
   });
@@ -160,7 +174,7 @@ export default function Component(props) {
           px={"5rem"}
           w="100%"
           maw={"unset"}
-          className={styles.section}
+          className={`${styles.section} ${styles["section-start"]}`}
           style={{
             position: "relative",
             backgroundImage: `url('${bgImage.src}')`,
@@ -175,8 +189,10 @@ export default function Component(props) {
             style={{ zIndex: 10 }}
           >
             <Stack>
-              <Title maw={"20rem"}>Shaping the future of Market Access</Title>
-              <Text maw={"15rem"}>
+              <Title maw={"40rem"} fw={600} size="4.17rem">
+                Shaping the future of Market Access
+              </Title>
+              <Text maw={"18rem"} size="1.2rem" lh={"1.7rem"} fw="500">
                 Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
                 eiusm od tempor incididunt.
               </Text>
@@ -197,15 +213,12 @@ export default function Component(props) {
                   style={{ overflow: "hidden" }}
                 >
                   <Group>
-                    <Text fw="500">Discover more</Text>
+                    <Text fw="500" size='1.25rem' lh='2rem'>Discover more</Text>
                     <Image alt="arrow" src={arrowBrGreen} />
                   </Group>
                   <div className={styles["bar-link"]} />
                 </Stack>
               </Link>
-              <Button maw="fit-content" onClick={() => testDataFetching()}>
-                Test data fetching
-              </Button>
               <Button maw="fit-content" onClick={() => nextBackground()}>
                 Change background
               </Button>
@@ -226,13 +239,13 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           bg={"var(--mantine-color-brand-1)"}
-          className={`${styles.section}`}
+          className={`${styles.section} ${styles["section-start"]}`}
         >
           <Container
             maw={"1440px!important"}
             w="100%"
             p={0}
-            className={`${styles["section-content"]} ${styles["section-animation"]}}`}
+            className={`${styles["section-content"]}`}
           >
             <Stack>
               <Eyebrow label={"services"} variant={1} />
@@ -293,7 +306,7 @@ export default function Component(props) {
           maw={"unset"}
           mih={"100vh"}
           bg={"var(--mantine-color-brand-0)"}
-          className={`${styles.section} ${styles.black}`}
+          className={`${styles.section} ${styles["section-start"]} ${styles.black}`}
         >
           <PinnedSection />
         </Container>
@@ -305,7 +318,7 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           bg={"brand.5"}
-          className={styles.section}
+          className={`${styles.section} ${styles["section-start"]}`}
         >
           <Container
             maw={"!important"}
@@ -412,7 +425,7 @@ export default function Component(props) {
           px={"5rem"}
           w="100%"
           maw={"unset"}
-          className={styles.section}
+          className={`${styles.section} ${styles["section-start"]}`}
         >
           <Container
             maw={"1440px!important"}
