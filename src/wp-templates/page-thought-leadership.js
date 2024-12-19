@@ -28,7 +28,7 @@ export default function PageThoughtLeadership(props) {
     <>
       <Header menuItems={primaryMenuItems.nodes} page={page} />
 
-      <Container component={"main"} px={"5rem"} p={0} className="container">
+      <Container component={"main"} px={"4rem"} p={0} className="container">
         <Container
           component={"section"}
           pt={"4rem"}

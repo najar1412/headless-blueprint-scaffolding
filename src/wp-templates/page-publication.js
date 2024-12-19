@@ -49,7 +49,7 @@ export default function PagePublication(props) {
         className={"main"}
         maw={"unset"}
         w="100%"
-        px={"5rem"}
+        px={"4rem"}
         pt={"12rem"}
         pb={0}
       >

@@ -94,13 +94,12 @@ export const NexusShape = forwardRef(function (props, ref) {
         }}
       />
       <g
-        id="Logo"
         style={{
           mask: "url(#mask)",
         }}
       >
-        <g>
-          <g id="_logo">
+        <g id="Logo">
+          <g id="circle_x5F_logo">
             <path
               d="M177.19,261.21h-.29v14.86h.29v-14.86Z"
               style={{
@@ -2835,18 +2834,18 @@ export const NexusShape = forwardRef(function (props, ref) {
       <g id="small_x5F_circles">
         <circle
           id="small_x5F_circle3"
-          cx={320.33}
+          cx={321.33}
           cy={214.85}
-          r={2.67}
+          r={4.25}
           style={{
             fill: "#fff",
           }}
         />
         <circle
           id="small_x5F_circle2"
-          cx={227.67}
+          cx={228.67}
           cy={214.85}
-          r={2.67}
+          r={4.25}
           style={{
             fill: "#fff",
           }}
@@ -2855,7 +2854,34 @@ export const NexusShape = forwardRef(function (props, ref) {
           id="small_x5F_circle1"
           cx={274.49}
           cy={304.68}
-          r={2.67}
+          r={4.25}
+          style={{
+            fill: "#fff",
+          }}
+        />
+        <circle
+          id="small_x5F_circle1-2"
+          cx={114.99}
+          cy={343.13}
+          r={4.25}
+          style={{
+            fill: "#fff",
+          }}
+        />
+        <circle
+          id="small_x5F_circle1-3"
+          cx={432.25}
+          cy={343.13}
+          r={4.25}
+          style={{
+            fill: "#fff",
+          }}
+        />
+        <circle
+          id="small_x5F_circle1-4"
+          cx={274.49}
+          cy={75.13}
+          r={4.25}
           style={{
             fill: "#fff",
           }}

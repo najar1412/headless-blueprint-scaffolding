@@ -11,7 +11,7 @@
   color: var(--mantine-color-brand-0);
   background-color: transparent;
   border: 0;
-  border-bottom: 1px solid var(--mantine-color-brand-0);
+  border-bottom: 1px solid #0A404A;
   padding-bottom: 0.5rem;
   width: 100%;
   padding-left: 1rem;

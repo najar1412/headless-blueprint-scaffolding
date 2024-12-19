@@ -13,8 +13,8 @@ export const ServicesCard = ({ icon, title, items }) => {
       <Image alt="close" className={styles.close} src={closeIcon} />
       <Box p="2rem" className={styles["content-1"]}>
         <Stack>
-          <Image alt={`${title} icon`} src={icon} style={{ width: "6rem" }} />
-          <Text size="1.8rem" c="white" tt="capitalize">
+          <Image alt={`${title} icon`} src={icon} style={{ width: "5rem" }} />
+          <Text size="1.6rem" c="white" tt="capitalize" maw={'12rem'}>
             {title}
           </Text>
         </Stack>

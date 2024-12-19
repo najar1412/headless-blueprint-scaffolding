@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { gql, useLazyQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,29 +38,13 @@ import cardGrayImage from "../assets/card_gray.jpg";
 import logoSymbolIcon from "../assets/logo-symbol.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
+import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
 import bgImage from "../assets/bg.jpg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
-
-const GET_PUBLICATIONS = gql`
-  query GetPublications {
-    publications {
-      nodes {
-        databaseId
-        uri
-        ... on NodeWithTitle {
-          title
-        }
-        ... on NodeWithContentEditor {
-          content
-        }
-      }
-    }
-  }
-`;
 
 const bgs = [<div />, <Landing />, <Landing2 />, <Landing3 />];
 
@@ -171,7 +155,7 @@ export default function Component(props) {
           component={"section"}
           h="100dvh"
           py={"8rem"}
-          px={"5rem"}
+          px={"4rem"}
           w="100%"
           maw={"unset"}
           className={`${styles.section} ${styles["section-start"]}`}
@@ -213,7 +197,9 @@ export default function Component(props) {
                   style={{ overflow: "hidden" }}
                 >
                   <Group>
-                    <Text fw="500" size='1.25rem' lh='2rem'>Discover more</Text>
+                    <Text fw="500" size="1.25rem" lh="2rem">
+                      Discover more
+                    </Text>
                     <Image alt="arrow" src={arrowBrGreen} />
                   </Group>
                   <div className={styles["bar-link"]} />
@@ -235,7 +221,7 @@ export default function Component(props) {
           id="services"
           component={"section"}
           py={"8rem"}
-          px={"5rem"}
+          px={"4rem"}
           w="100%"
           maw={"unset"}
           bg={"var(--mantine-color-brand-1)"}
@@ -256,14 +242,14 @@ export default function Component(props) {
               <Grid>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
                   <ServicesCard
-                    icon={patientIcon}
-                    title={"title"}
+                    icon={marketAccessIcon}
+                    title={"Market Access Consulting"}
                     items={[
                       "Commercial strategic planning",
-                      "Reimbursement, pricing,​ & contracting",
-                      "Market research​ & insights",
+                      "Market research & insights",
+                      "Policy impact & forecasting",
+                      "Reimbursement, pricing, & contracting",
                       "HEOR",
-                      "Policy impact ​& forecasting",
                     ]}
                   />
                 </Grid.Col>
@@ -272,11 +258,11 @@ export default function Component(props) {
                     icon={valueIcon}
                     title={"value communications"}
                     items={[
-                      "Commercial strategic planning",
-                      "Reimbursement, pricing,​ & contracting",
-                      "Market research​ & insights",
+                      "Payer marketing",
+                      "Pull-through",
                       "HEOR",
-                      "Policy impact ​& forecasting",
+                      "Hub communications",
+                      "Market research",
                     ]}
                   />
                 </Grid.Col>
@@ -285,11 +271,11 @@ export default function Component(props) {
                     icon={patientIcon}
                     title={"patient access & affordability"}
                     items={[
-                      "Commercial strategic planning",
-                      "Reimbursement, pricing,​ & contracting",
-                      "Market research​ & insights",
-                      "HEOR",
-                      "Policy impact ​& forecasting",
+                      "Pricing, reimbursement, & policy strategy",
+                      "Vendor selection & contracting",
+                      "Access & reimbursement communications",
+                      "Program & channel design",
+                      "Market research & insights",
                     ]}
                   />
                 </Grid.Col>
@@ -301,7 +287,7 @@ export default function Component(props) {
           id="who-we-are"
           component={"section"}
           py={"8rem"}
-          px={"5rem"}
+          px={"4rem"}
           w="100%"
           maw={"unset"}
           mih={"100vh"}
@@ -314,7 +300,7 @@ export default function Component(props) {
           id="the-nexus-advantage"
           component={"section"}
           py={"8rem"}
-          px={"5rem"}
+          px={"4rem"}
           w="100%"
           maw={"unset"}
           bg={"brand.5"}
@@ -346,10 +332,10 @@ export default function Component(props) {
               </Grid.Col>
               <Grid.Col span={{ base: 12, lg: 5 }}>
                 <Container maw={"unset"} p={0} w={"100%"}>
-                  <Grid>
+                  <Grid gutter={"3rem"}>
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>50</span>
                           <sup
                             style={{
@@ -367,7 +353,7 @@ export default function Component(props) {
                     </Grid.Col>
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>25</span>
                         </Text>
                         <Text lh="1rem">
@@ -377,7 +363,7 @@ export default function Component(props) {
                     </Grid.Col>
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>57</span>
                           <span
                             style={{
@@ -395,7 +381,7 @@ export default function Component(props) {
                     </Grid.Col>
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="500" c="brand.2">
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>11</span>
                           <sup
                             style={{
@@ -422,7 +408,7 @@ export default function Component(props) {
           component={"section"}
           pt={"8rem"}
           pb={0}
-          px={"5rem"}
+          px={"4rem"}
           w="100%"
           maw={"unset"}
           className={`${styles.section} ${styles["section-start"]}`}
@@ -441,7 +427,7 @@ export default function Component(props) {
                     <Title order={2} maw={"20rem"}>
                       What’s Happening at Nexus Health
                     </Title>
-                    <Text size="sm">
+                    <Text size="sm" fw='500'>
                       Lorem ipsum dolor sit amet consectetur. Nulla ultrices
                       feugiat et nullam. Dolor libero commodo lectus aliquet.
                       Nulla venenatis at nulla mi at.
@@ -455,8 +441,8 @@ export default function Component(props) {
                         className={styles.link}
                         style={{ overflow: "hidden" }}
                       >
-                        <Text fw="500" mb="0.25rem">
-                          Discover more
+                        <Text fw="700" mb="0.25rem" size="0.84rem" mt={'1rem'}>
+                          Discover More
                         </Text>
                         <div
                           className={`${styles["bar-link"]} ${styles["bar-link-active"]}`}

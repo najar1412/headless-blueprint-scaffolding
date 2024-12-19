@@ -131,7 +131,7 @@ export default function Header({ menuItems, page, frontPage }) {
       maw={"unset"}
       w="100%"
       h="5rem"
-      px={"5rem"}
+      px={"4rem"}
       className={`${styles.header} ${
         !frontPage ? styles["opaque-header"] : ""
       }`}

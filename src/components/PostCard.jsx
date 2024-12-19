@@ -6,6 +6,7 @@ import styles from "./PostCard.module.css";
 
 import arrow from "../assets/arrow-br.svg";
 import arrowGreen from "../assets/arrow-br-lg-green.svg";
+import arrowGreenLight from "../assets/arrow-br-lg-light-green.svg";
 
 export const PostCard = ({
   category,
@@ -43,7 +44,7 @@ export const PostCard = ({
           arrow: featureCarousel
             ? styles["arrow-absolute-top"]
             : styles["arrow-absolute"],
-          arrowIcon: arrowGreen,
+          arrowIcon: arrowGreenLight,
         };
       default:
         return {
@@ -86,7 +87,12 @@ export const PostCard = ({
           ) : null}
           {title ? (
             <Link href={link}>
-              <Text size="md" fw={500} lh={"1.25rem"} c={layout.fontColour}>
+              <Text
+                size={category === "featured" ? "0.9rem" : "1.25rem"}
+                fw={700}
+                lh={"1.5rem"}
+                c={layout.fontColour}
+              >
                 {title}
               </Text>
             </Link>

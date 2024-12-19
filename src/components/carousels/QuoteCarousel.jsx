@@ -30,7 +30,7 @@ export const QuoteCarousel = () => {
             “
           </Text>
           <Flex direction={"column"}>
-            <Text size="md" lh={"1.5rem"} mb={"1rem"}>
+            <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
               You delivered the exact type of  strategic support our team needs
               to expand thinking and identify options to how our payer story
               evolves.”
@@ -51,7 +51,7 @@ export const QuoteCarousel = () => {
             “
           </Text>
           <Flex direction={"column"}>
-            <Text size="md" lh={"1.5rem"} mb={"1rem"}>
+            <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
               You delivered the exact type of  strategic support our team needs
               to expand thinking and identify options to how our payer story
               evolves.”
@@ -72,7 +72,7 @@ export const QuoteCarousel = () => {
             “
           </Text>
           <Flex direction={"column"}>
-            <Text size="md" lh={"1.5rem"} mb={"1rem"}>
+            <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
               You delivered the exact type of  strategic support our team needs
               to expand thinking and identify options to how our payer story
               evolves.”
@@ -93,7 +93,7 @@ export const QuoteCarousel = () => {
             “
           </Text>
           <Flex direction={"column"}>
-            <Text size="md" lh={"1.5rem"} mb={"1rem"}>
+            <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
               You delivered the exact type of  strategic support our team needs
               to expand thinking and identify options to how our payer story
               evolves.”
