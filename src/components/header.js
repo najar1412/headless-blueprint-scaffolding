@@ -131,7 +131,6 @@ export default function Header({ menuItems, page, frontPage }) {
       maw={"unset"}
       w="100%"
       h="5rem"
-      px={"4rem"}
       className={`${styles.header} ${
         !frontPage ? styles["opaque-header"] : ""
       }`}
@@ -156,6 +155,7 @@ export default function Header({ menuItems, page, frontPage }) {
           alt="nexus logo"
           width={"280rem"}
           src={logo}
+          className={styles.logo}
           style={{ cursor: "pointer" }}
         />
         {showBurger ? (
