@@ -9,13 +9,15 @@ import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
+import { MobileMenu } from "./MobileMenu";
+
 import logo from "../assets/logo.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
 import styles from "./header.module.css";
 
 export default function Header({ menuItems, page, frontPage }) {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, close }] = useDisclosure();
   const router = useRouter();
   const showBurger = useMediaQuery(`(max-width: 62em)`);
   const container = useRef();
@@ -125,61 +127,70 @@ export default function Header({ menuItems, page, frontPage }) {
   );
 
   return (
-    <Container
-      ref={container}
-      component={"header"}
-      maw={"unset"}
-      w="100%"
-      h="5rem"
-      className={`${styles.header} ${
-        !frontPage ? styles["opaque-header"] : ""
-      }`}
-    >
-      <Group
-        w={"100%"}
-        maw={"1440px!important"}
-        h="100%"
-        justify="space-between"
-        m="auto"
+    <>
+      <Container
+        ref={container}
+        component={"header"}
+        maw={"unset"}
+        w="100%"
+        h="5rem"
+        className={`${styles.header} ${
+          !frontPage ? styles["opaque-header"] : ""
+        }`}
       >
-        <Image
-          onClick={() =>
-            frontPage
-              ? gsap.to(window, {
-                  ease: "power1.in",
-                  scrollTo: `#landing`,
-                  duration: 0.2,
-                })
-              : router.push(`/`)
-          }
-          alt="nexus logo"
-          width={"280rem"}
-          src={logo}
-          className={styles.logo}
-          style={{ cursor: "pointer" }}
-        />
-        {showBurger ? (
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            aria-label="Toggle navigation"
+        <Group
+          w={"100%"}
+          maw={"1440px!important"}
+          h="100%"
+          justify="space-between"
+          m="auto"
+        >
+          <Image
+            onClick={() => {
+              close();
+              return frontPage
+                ? gsap.to(window, {
+                    ease: "power1.in",
+                    scrollTo: `#landing`,
+                    duration: 0.2,
+                  })
+                : router.push(`/`);
+            }}
+            alt="nexus logo"
+            width={"280rem"}
+            src={logo}
+            className={styles.logo}
+            style={{ cursor: "pointer" }}
           />
-        ) : (
-          <Group>
-            {menuItems.map((item) => (
-              <Fragment key={item.label}>{menuItem(item)}</Fragment>
-            ))}
-            <Link href="https://www.linkedin.com" target="_blank">
-              <Image
-                alt="linkedin logo"
-                src={linkedinIcon}
-                style={{ cursor: "pointer", transform: "translateY(.25rem)" }}
-              />
-            </Link>
-          </Group>
-        )}
-      </Group>
-    </Container>
+          {showBurger ? (
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              aria-label="Toggle navigation"
+            />
+          ) : (
+            <Group>
+              {menuItems.map((item) => (
+                <Fragment key={item.label}>{menuItem(item)}</Fragment>
+              ))}
+              <Link href="https://www.linkedin.com" target="_blank">
+                <Image
+                  alt="linkedin logo"
+                  src={linkedinIcon}
+                  style={{ cursor: "pointer", transform: "translateY(.25rem)" }}
+                />
+              </Link>
+            </Group>
+          )}
+        </Group>
+      </Container>
+      <MobileMenu
+        opened={opened}
+        close={close}
+        menuItems={menuItems}
+        frontPage={frontPage}
+      />
+    </>
   );
 }
 
