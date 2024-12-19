@@ -21,9 +21,9 @@ export default function Footer(props) {
   return (
     <>
       <Container
+        className={styles["footer-margin"]}
         pt={"8rem"}
         pb={"2rem"}
-        px={"4rem"}
         maw={"unset"}
         w="100%"
         id="contact"
@@ -37,8 +37,6 @@ export default function Footer(props) {
         >
           <SimpleGrid
             component={"section"}
-            py="4rem"
-            px="4rem"
             w="100%"
             maw={"unset"}
             bg="var(--mantine-color-brand-0)"
@@ -70,8 +68,10 @@ export default function Footer(props) {
           style={{ position: "relative" }}
         >
           <Stack>
-            <Title order={3} size='1.25rem' lh='0.5rem'>Subscribe to our Newsletter</Title>
-            <Text maw={"18rem"} fw='500' size='0.75rem' lh={'1.25rem'}>
+            <Title order={3} size="1.25rem" lh="1.5rem">
+              Subscribe to our Newsletter
+            </Title>
+            <Text maw={"18rem"} fw="500" size="0.75rem" lh={"1.25rem"}>
               Join our email list to receive news and updates from Nexus Health
               Group.
             </Text>
@@ -85,7 +85,7 @@ export default function Footer(props) {
           <NewsletterForm />
         </Container>
         <Container w="100%" maw={"1440px!important"}>
-          <Divider color="#5A5A5A" size='0.1'/>
+          <Divider color="#5A5A5A" size="0.1" />
           <Text size="0.5rem" mt="1.5rem" c={"#5A5A5A"}>
             Copyright (c) 2024, Nexus Health Group, All rights reserved.
           </Text>

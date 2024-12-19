@@ -155,7 +155,6 @@ export default function Component(props) {
           component={"section"}
           h="100dvh"
           py={"8rem"}
-          px={"4rem"}
           w="100%"
           maw={"unset"}
           className={`${styles.section} ${styles["section-start"]}`}
@@ -173,7 +172,7 @@ export default function Component(props) {
             style={{ zIndex: 10 }}
           >
             <Stack>
-              <Title maw={"40rem"} fw={600} size="4.17rem">
+              <Title maw={"40rem"} fw={600} className={styles.title}>
                 Shaping the future of Market Access
               </Title>
               <Text maw={"18rem"} size="1.2rem" lh={"1.7rem"} fw="500">
@@ -221,7 +220,6 @@ export default function Component(props) {
           id="services"
           component={"section"}
           py={"8rem"}
-          px={"4rem"}
           w="100%"
           maw={"unset"}
           bg={"var(--mantine-color-brand-1)"}
@@ -287,7 +285,6 @@ export default function Component(props) {
           id="who-we-are"
           component={"section"}
           py={"8rem"}
-          px={"4rem"}
           w="100%"
           maw={"unset"}
           mih={"100vh"}
@@ -300,7 +297,6 @@ export default function Component(props) {
           id="the-nexus-advantage"
           component={"section"}
           py={"8rem"}
-          px={"4rem"}
           w="100%"
           maw={"unset"}
           bg={"brand.5"}
@@ -408,7 +404,6 @@ export default function Component(props) {
           component={"section"}
           pt={"8rem"}
           pb={0}
-          px={"4rem"}
           w="100%"
           maw={"unset"}
           className={`${styles.section} ${styles["section-start"]}`}
@@ -427,7 +422,7 @@ export default function Component(props) {
                     <Title order={2} maw={"20rem"}>
                       What’s Happening at Nexus Health
                     </Title>
-                    <Text size="sm" fw='500'>
+                    <Text size="sm" fw="500">
                       Lorem ipsum dolor sit amet consectetur. Nulla ultrices
                       feugiat et nullam. Dolor libero commodo lectus aliquet.
                       Nulla venenatis at nulla mi at.
@@ -441,7 +436,7 @@ export default function Component(props) {
                         className={styles.link}
                         style={{ overflow: "hidden" }}
                       >
-                        <Text fw="700" mb="0.25rem" size="0.84rem" mt={'1rem'}>
+                        <Text fw="700" mb="0.25rem" size="0.84rem" mt={"1rem"}>
                           Discover More
                         </Text>
                         <div
