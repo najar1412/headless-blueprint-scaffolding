@@ -16,7 +16,7 @@ export const FeatureCarousel = ({ items }) => {
 
   return (
     <Container p={0} style={{ position: "relative" }}>
-      <Group pr="5rem" className={styles["swiper-controls"]}>
+      <Group className={styles["swiper-controls"]}>
         <div className={styles.arrow} onClick={() => swiper.slidePrev()}>
           <Image
             src={arrowUpIcon.src}

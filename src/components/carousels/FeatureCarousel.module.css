@@ -2,7 +2,12 @@
   position: absolute;
   right: 0;
   z-index: 10;
-  transform: translateY(-5rem);
+  transform: translateY(-4rem);
+  padding-right: 0rem;
+
+  @media (min-width: $mantine-breakpoint-sm) {
+    padding-right: 5rem;
+  }
 }
 .arrow {
   user-select: none;
