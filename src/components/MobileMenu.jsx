@@ -2,8 +2,11 @@ import { Fragment } from "react";
 
 import { Drawer, Stack, Badge, Text } from "@mantine/core";
 import gsap from "gsap";
+import { useMediaQuery } from "@mantine/hooks";
 
 export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
+  const isMobile = useMediaQuery(`(max-width: 48em)`);
+
   const menuItem = (item) => {
     switch (item.label) {
       case "Contact":
@@ -24,9 +27,7 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
                   );
             }}
             mt="0.2rem"
-            pt="0.5rem"
-            pb="0.6rem"
-            px="md"
+            p={'1rem'}
             color="brand.2"
             style={{ cursor: "pointer" }}
           >
@@ -34,7 +35,7 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
               c="brand.0"
               fw="600"
               tt={"capitalize"}
-              style={{ fontSize: "0.75rem" }}
+              style={{ fontSize: "1.5rem" }}
             >
               Contact
             </Text>
@@ -57,7 +58,7 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
                     `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
                   );
             }}
-            style={{ fontSize: "0.75rem" }}
+            style={{ fontSize: "1.5rem" }}
           >
             {item.label}
           </Text>
@@ -67,11 +68,11 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
 
   return (
     <>
-      <Drawer.Root opened={opened} onClose={close}>
+      <Drawer.Root opened={opened} onClose={close} size="100%">
         <Drawer.Overlay />
         <Drawer.Content>
-          <Drawer.Body>
-            <Stack mt="5rem">
+          <Drawer.Body px={0} pt="2rem">
+            <Stack mt="5rem" ml={isMobile ? "1rem" : "4rem"}>
               {menuItems.map((item) => (
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
