@@ -147,7 +147,6 @@ export default function Component(props) {
           id="landing"
           component={"section"}
           h="100dvh"
-          py={"8rem"}
           w="100%"
           maw={"unset"}
           className={`${styles.section} ${styles["section-start"]}`}
@@ -212,7 +211,6 @@ export default function Component(props) {
         <Container
           id="services"
           component={"section"}
-          py={"8rem"}
           w="100%"
           maw={"unset"}
           bg={"var(--mantine-color-brand-1)"}
@@ -277,7 +275,6 @@ export default function Component(props) {
         <Container
           id="who-we-are"
           component={"section"}
-          py={"8rem"}
           w="100%"
           maw={"unset"}
           mih={"100vh"}
@@ -289,8 +286,8 @@ export default function Component(props) {
         <Container
           id="the-nexus-advantage"
           component={"section"}
-          py={"8rem"}
           w="100%"
+          py={"4rem"}
           maw={"unset"}
           bg={"brand.5"}
           className={`${styles.section} ${styles["section-start"]}`}
@@ -321,7 +318,7 @@ export default function Component(props) {
               </Grid.Col>
               <Grid.Col span={{ base: 12, lg: 5 }}>
                 <Container maw={"unset"} p={0} w={"100%"}>
-                  <Grid gutter={"3rem"}>
+                  <Grid gutter={{ base: "1rem", md: "3rem" }}>
                     <Grid.Col span={6}>
                       <Stack gap="0.25rem">
                         <Text size={"2.5rem"} fw="700" c="brand.2">
@@ -395,7 +392,6 @@ export default function Component(props) {
         <Container
           id="thought-leadership"
           component={"section"}
-          pt={"8rem"}
           pb={0}
           w="100%"
           maw={"unset"}
@@ -427,9 +423,11 @@ export default function Component(props) {
                       <Stack
                         gap={0}
                         className={styles.link}
+                        mt="0.4rem"
+                        mb="1rem"
                         style={{ overflow: "hidden" }}
                       >
-                        <Text fw="700" mb="0.25rem" size="0.84rem" mt={"1rem"}>
+                        <Text fw="700" size="0.84rem" mb="0.25rem">
                           Discover More
                         </Text>
                         <div
