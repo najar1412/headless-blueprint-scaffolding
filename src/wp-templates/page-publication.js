@@ -18,6 +18,8 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { Loading } from "../components/animated/Loading";
 
+import styles from "./page-publication.module.css"
+
 import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
 import facebookIcon from "../assets/facebook.svg";
 import xIcon from "../assets/X_logo_2023_original 1.svg";
@@ -46,10 +48,10 @@ export default function PagePublication(props) {
 
       <Container
         component={"main"}
-        className={"main"}
+        className={`main ${styles.container}`}
         maw={"unset"}
         w="100%"
-        px={"4rem"}
+        
         pt={"12rem"}
         pb={0}
       >
