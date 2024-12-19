@@ -35,7 +35,7 @@ import headerStyles from "../components/header.module.css";
 
 import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 import cardGrayImage from "../assets/card_gray.jpg";
-import logoSymbolIcon from "../assets/logo-symbol.svg";
+import logoSymbolIcon from "../assets/Nexus_Logomark_4C.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
@@ -52,13 +52,6 @@ export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page } = props.data;
   const [background, setBackground] = useState(0);
-  /* const [getPublications, { loading, error, data }] = useLazyQuery(
-    GET_PUBLICATIONS,
-    {
-      server: false,
-      fetchPolicy: "network-only", // Doesn't check cache before making a network request
-    }
-  ); */
 
   const nextBackground = () => {
     setBackground(background === bgs.length - 1 ? 1 : background + 1);
