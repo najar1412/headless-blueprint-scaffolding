@@ -19,11 +19,11 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{'example'}</title>
       </Head>
 
       <Header
-        siteTitle={siteTitle}
+        siteTitle={'example'}
         siteDescription={siteDescription}
         menuItems={menuItems}
       />
