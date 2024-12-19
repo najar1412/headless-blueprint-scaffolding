@@ -6,6 +6,8 @@ import { Group, Stack, Text, Divider, Button } from "@mantine/core";
 
 import { Loading } from "./animated/Loading";
 
+import styles from "./LoadMorePublications.module.css";
+
 const GET_POSTS = gql`
   query getPosts($first: Int!, $after: String) {
     publications(first: $first, after: $after) {
@@ -63,13 +65,9 @@ export default function LoadMorePublications() {
             <Fragment key={databaseId}>
               <Group wrap="no-wrap" gap={"2rem"} mb={"1rem"}>
                 <div
+                  className={styles.image}
                   style={{
-                    width: "18rem",
-                    height: "6rem",
-                    borderRadius: "1rem",
-                    overflow: "hidden",
                     backgroundImage: `url(${featuredImage.node.sourceUrl})`,
-                    backgroundSize: "cover",
                   }}
                 ></div>
 

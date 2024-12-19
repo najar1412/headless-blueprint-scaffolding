@@ -10,6 +10,8 @@ import { Eyebrow } from "../components/Eyebrow";
 import LoadMorePublications from "../components/LoadMorePublications";
 import { Loading } from "../components/animated/Loading";
 
+import styles from "./page-thought-leadership.module.css";
+
 export default function PageThoughtLeadership(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
 
@@ -28,9 +30,16 @@ export default function PageThoughtLeadership(props) {
     <>
       <Header menuItems={primaryMenuItems.nodes} page={page} />
 
-      <Container component={"main"} px={"4rem"} p={0} className="container">
+      <Container
+        component={"main"}
+        maw={"unset"}
+        w="100%"
+        p={0}
+        className={`main`}
+      >
         <Container
           component={"section"}
+          className={`${styles.container}`}
           pt={"4rem"}
           pb={"0"}
           w="100%"
@@ -51,7 +60,7 @@ export default function PageThoughtLeadership(props) {
         <Container
           component={"section"}
           pt={"0"}
-          px={"4rem"}
+          className={`${styles["post-container"]}`}
           w="100%"
           maw={"1440px!important"}
         >

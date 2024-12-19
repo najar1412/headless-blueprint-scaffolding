@@ -1,0 +1,11 @@
+.image {
+  width: 18rem;
+  height: 6rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-size: cover;
+  display: none;
+  @media (min-width: $mantine-breakpoint-sm) {
+    display: block;
+  }
+}
