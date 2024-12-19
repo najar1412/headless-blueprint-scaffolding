@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { PostCard } from "../PostCard";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "./FeatureCarousel.module.css";
@@ -33,7 +32,19 @@ export const FeatureCarousel = ({ items }) => {
           />
         </div>
       </Group>
-      <Swiper onSwiper={setSwiper} spaceBetween={5} slidesPerView={2.5}>
+      <Swiper
+        onSwiper={setSwiper}
+        breakpoints={{
+          700: {
+            spaceBetween: 5,
+            slidesPerView: 2,
+          },
+          900: {
+            spaceBetween: 5,
+            slidesPerView: 2.5,
+          },
+        }}
+      >
         {items
           ? items.map((item) => (
               <SwiperSlide className={styles["swiper-slide"]}>
