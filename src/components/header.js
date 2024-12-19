@@ -20,10 +20,7 @@ export default function Header({ menuItems, page, frontPage }) {
   const showBurger = useMediaQuery(`(max-width: 62em)`);
   const container = useRef();
 
-  console.log(page.title);
-
   const menuItem = (item) => {
-    console.log(item);
     switch (item.label) {
       case "Contact":
         return (
@@ -41,13 +38,19 @@ export default function Header({ menuItems, page, frontPage }) {
                     `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
                   )
             }
-            pt="xs"
-            pb="sm"
+            mt="0.2rem"
+            pt="0.5rem"
+            pb="0.6rem"
             px="md"
             color="brand.2"
             style={{ cursor: "pointer" }}
           >
-            <Text size="sm" c="brand.0" fw="600" tt={"capitalize"}>
+            <Text
+              c="brand.0"
+              fw="600"
+              tt={"capitalize"}
+              style={{ fontSize: "0.75rem" }}
+            >
               Contact
             </Text>
           </Badge>
@@ -55,6 +58,7 @@ export default function Header({ menuItems, page, frontPage }) {
       default:
         return (
           <Stack
+            id={`${item.label.toLowerCase().replace(/\s/g, "-")}`}
             onClick={() =>
               frontPage
                 ? gsap.to(window, {
@@ -81,7 +85,7 @@ export default function Header({ menuItems, page, frontPage }) {
                 page.title === item.label ? styles["bar-link-show"] : ""
               }`}
             />
-            <Text size="sm">{item.label}</Text>
+            <Text style={{ fontSize: "0.75rem" }}>{item.label}</Text>
           </Stack>
         );
     }
@@ -89,6 +93,23 @@ export default function Header({ menuItems, page, frontPage }) {
 
   useGSAP(
     () => {
+      const toggleHeader = gsap
+        .from(container.current, {
+          yPercent: -100,
+          paused: true,
+          duration: 0.3,
+          scrollTrigger: {
+            start: "top top",
+            end: "max",
+            onUpdate: (self) => {
+              self.direction === -1
+                ? toggleHeader.play()
+                : toggleHeader.reverse();
+            },
+          },
+        })
+        .progress(1);
+
       gsap.from(container.current, {
         backgroundColor: "rgba(255, 255, 255, 1)",
         duration: 0.3,
@@ -133,7 +154,7 @@ export default function Header({ menuItems, page, frontPage }) {
               : router.push(`/`)
           }
           alt="nexus logo"
-          width={200}
+          width={"280rem"}
           src={logo}
           style={{ cursor: "pointer" }}
         />
