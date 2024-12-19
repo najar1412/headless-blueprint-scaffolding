@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Button, Stack, UnstyledButton, Text } from "@mantine/core";
+import { Stack, UnstyledButton, Text } from "@mantine/core";
 import Image from "next/image";
 
 import styles from "./NewsletterForm.module.css";
