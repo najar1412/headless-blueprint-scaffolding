@@ -52,10 +52,6 @@ export default function Component(props) {
   const { footer, primaryMenuItems, page } = props.data;
   const [background, setBackground] = useState(0);
 
-  const nextBackground = () => {
-    setBackground(background === bgs.length - 1 ? 1 : background + 1);
-  };
-
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
@@ -151,7 +147,6 @@ export default function Component(props) {
           className={`${styles.section} ${styles["section-start"]}`}
           style={{
             position: "relative",
-            /* backgroundImage: `url('${bgImage.src}')`, */
             backgroundSize: "cover",
           }}
         >
@@ -160,7 +155,7 @@ export default function Component(props) {
             p={0}
             position={"relative"}
             className={styles["section-content"]}
-            style={{ zIndex: 10, pointerEvents: "none" }}
+            style={{ zIndex: 10 }}
           >
             <Stack>
               <Title maw={"40rem"} fw={600} className={styles.title}>
@@ -195,13 +190,6 @@ export default function Component(props) {
                   <div className={styles["bar-link"]} />
                 </Stack>
               </Link>
-              {/* <Button
-                maw="fit-content"
-                onClick={() => nextBackground()}
-                style={{ pointerEvents: "auto" }}
-              >
-                Change background
-              </Button> */}
             </Stack>
           </Container>
           <div
