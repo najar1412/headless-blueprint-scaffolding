@@ -1,7 +1,10 @@
-import { useRef, useState, useMemo } from "react";
+import { useRef, useMemo } from "react";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Color, MathUtils } from "three";
+/* import { OrbitControls } from "@react-three/drei"; */
+import { CameraControls } from "@react-three/drei";
+import { OrthographicCamera } from "@react-three/drei";
 
 import vertexShader from "raw-loader!glslify-loader!./glsl/vertexShader2.glsl?raw";
 import fragmentShader from "raw-loader!glslify-loader!./glsl/fragmentShader2.glsl?raw";
@@ -10,15 +13,18 @@ export const Landing = () => {
   const Blob = () => {
     // This reference will give us direct access to the mesh
     const mesh = useRef();
-    const hover = useRef(false);
 
+    // TODO: imp scale uniform
     const uniforms = useMemo(
       () => ({
         u_intensity: {
-          value: 0.3,
+          value: 0.6,
         },
         u_time: {
           value: 0.0,
+        },
+        u_color_lime: {
+          value: new Color("rgb(188, 220, 73)"),
         },
       }),
       []
@@ -28,25 +34,11 @@ export const Landing = () => {
       const { clock } = state;
       mesh.current.material.uniforms.u_time.value =
         0.04 * clock.getElapsedTime();
-
-      mesh.current.material.uniforms.u_intensity.value = MathUtils.lerp(
-        mesh.current.material.uniforms.u_intensity.value,
-        hover.current ? 0.85 : 0.55,
-        0.02
-      );
     });
 
     return (
-      <mesh
-        ref={mesh}
-        position={[0, 0, 0]}
-        /* scale={1.5} */
-        scale={[3, 0.5, 3]}
-        rotation={[MathUtils.degToRad(35), 0, 0]}
-        // onPointerOver={() => (hover.current = true)}
-        // onPointerOut={() => (hover.current = false)}
-      >
-        <icosahedronGeometry args={[2, 60]} />
+      <mesh ref={mesh} position={[0, 0, 0]} scale={5} rotation={[0, 0, 0]}>
+        <planeGeometry args={[10, 10, 100, 60]} />
         <shaderMaterial
           fragmentShader={fragmentShader}
           vertexShader={vertexShader}
@@ -61,20 +53,12 @@ export const Landing = () => {
     <Canvas
       orthographic
       camera={{
-        position: [0.0, 2.0, 8.0],
-        rotation: [MathUtils.degToRad(-15), 0, 0],
-        zoom: 270,
+        rotation: [MathUtils.degToRad(60), 0, MathUtils.degToRad(-10)],
+        position: [10, 1, 6],
+        zoom: 150,
       }}
     >
-      {/* <ambientLight intensity={Math.PI / 2} />
-      <spotLight
-        position={[10, 10, 10]}
-        angle={0.15}
-        penumbra={1}
-        decay={0}
-        intensity={Math.PI}
-      />
-      <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} /> */}
+      {/* <CameraControls onChange={(e) => console.log(e)} /> */}
       <Blob />
     </Canvas>
   );

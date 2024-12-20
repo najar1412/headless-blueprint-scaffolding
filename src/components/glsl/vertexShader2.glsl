@@ -1,5 +1,7 @@
 uniform float u_intensity;
 uniform float u_time;
+uniform vec3 u_color_lime;
+uniform vec3 u_color_gray;
 
 varying vec2 vUv;
 varying float vDisplacement;
@@ -90,16 +92,24 @@ float cnoise(vec3 P) {
 
 // End of Perlin Noise Code
 
+varying vec3 vPositionW;
+  varying vec3 vNormalW;
+  varying vec3 newPosition;
+  varying vec3 vViewPosition;
+
 void main() {
   vUv = uv;
 
-  vDisplacement = cnoise(position + vec3(2.0 * u_time));
+  vDisplacement = cnoise(position + vec3(3.0 * u_time));
 
-  vec3 newPosition = position + normal * (u_intensity * vDisplacement * 2.0);
+  newPosition = position + normal * (u_intensity * vDisplacement / 0.8);
 
   vec4 modelPosition = modelMatrix * vec4(newPosition, 1.0);
   vec4 viewPosition = viewMatrix * modelPosition;
   vec4 projectedPosition = projectionMatrix * viewPosition;
 
+  vPositionW = normalize(vec3(modelViewMatrix * vec4(position, 1.0)).xyz);
+  vViewPosition = - viewPosition.xyz;
+    
   gl_Position = projectedPosition;
 }

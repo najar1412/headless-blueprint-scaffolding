@@ -8,7 +8,6 @@ import {
   Container,
   Title,
   Text,
-  Button,
   Stack,
   Grid,
   Group,
@@ -46,7 +45,7 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
-const bgs = [<div />, <Landing />, <Landing2 />, <Landing3 />];
+const bgs = [<div />, <Landing2 />, <Landing />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
@@ -152,7 +151,7 @@ export default function Component(props) {
           className={`${styles.section} ${styles["section-start"]}`}
           style={{
             position: "relative",
-            backgroundImage: `url('${bgImage.src}')`,
+            /* backgroundImage: `url('${bgImage.src}')`, */
             backgroundSize: "cover",
           }}
         >
@@ -161,7 +160,7 @@ export default function Component(props) {
             p={0}
             position={"relative"}
             className={styles["section-content"]}
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 10, pointerEvents: "none" }}
           >
             <Stack>
               <Title maw={"40rem"} fw={600} className={styles.title}>
@@ -196,16 +195,20 @@ export default function Component(props) {
                   <div className={styles["bar-link"]} />
                 </Stack>
               </Link>
-              <Button maw="fit-content" onClick={() => nextBackground()}>
+              {/* <Button
+                maw="fit-content"
+                onClick={() => nextBackground()}
+                style={{ pointerEvents: "auto" }}
+              >
                 Change background
-              </Button>
+              </Button> */}
             </Stack>
           </Container>
           <div
             className={styles.landing}
-            style={{ display: `${background ? "flex" : "none"}` }}
+            /* style={{ display: `${background ? "flex" : "none"}` }} */
           >
-            {bgs[background]}
+            <Landing2 />
           </div>
         </Container>
         <Container
