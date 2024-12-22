@@ -27,8 +27,9 @@ export default function Header({ menuItems, page, frontPage }) {
       case "Contact":
         return (
           <Badge
-            onClick={() =>
-              frontPage
+            onClick={() => {
+              console.log(`#${item.label.toLowerCase().replace(/\s/g, "-")}`);
+              return frontPage
                 ? gsap.to(window, {
                     ease: "power1.in",
                     scrollTo: `#${item.label
@@ -38,8 +39,8 @@ export default function Header({ menuItems, page, frontPage }) {
                   })
                 : router.push(
                     `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
-                  )
-            }
+                  );
+            }}
             mt="0.2rem"
             pt="0.5rem"
             pb="0.6rem"
@@ -61,8 +62,9 @@ export default function Header({ menuItems, page, frontPage }) {
         return (
           <Stack
             id={`${item.label.toLowerCase().replace(/\s/g, "-")}`}
-            onClick={() =>
-              frontPage
+            onClick={() => {
+              console.log(`#${item.label.toLowerCase().replace(/\s/g, "-")}`);
+              return frontPage
                 ? gsap.to(window, {
                     ease: "power1.in",
                     scrollTo: `#${item.label
@@ -72,8 +74,8 @@ export default function Header({ menuItems, page, frontPage }) {
                   })
                 : router.push(
                     `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
-                  )
-            }
+                  );
+            }}
             gap={0}
             className={`${styles.link}`}
             style={{

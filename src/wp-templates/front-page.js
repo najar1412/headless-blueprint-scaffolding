@@ -57,7 +57,6 @@ export default function Component(props) {
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
 
     const setActive = (section) => {
-      console.log("start");
       headerLinks.forEach((link) => {
         if (link.id === section.id) {
           link.children[0].classList.add(headerStyles["bar-link-show"]);
@@ -72,29 +71,61 @@ export default function Component(props) {
     const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
 
-    const currentSection = (index) => {
-      const offset = vh(150);
+    /* const calcBottom = (index, height) => {
+      // console.log(index)
+      // const offset = vh(150);
       if (index >= 2) {
-        return "+=" + vh(100) + offset + "px";
+        // console.log('++')
+        // console.log(height)
+        // console.log("+=" + (height * 3) + "px");
+        return "+=" + height * 4 + "px";
       }
-      return "+=" + vh(100) + "px";
+      // console.log('--')
+      // console.log("+=" + height + "px");
+      return "+=" + height + "px";
+    }; */
+
+    const calcBottom = (index, section) => {
+      return '+=bottom'
     };
 
+    const calcTop = (index, height, section) => {
+      const offset = (section) => {
+        return section.offsetTop - section.offsetHeight * 2;
+      };
+      if (index < 3) {
+        return "+" + section.offsetTop;
+      } else if (index === 2) {
+        if (absoluteHeight === 0) {
+          absoluteHeight = section.offsetTop;
+        }
+        const t = absoluteHeight * 4;
+        console.log("++++++");
+        console.log(t);
+        return "+=" + t;
+      } else {
+        return "+=" + offset(section);
+      }
+    };
+
+    let absoluteHeight = 0;
+
     sections.forEach((section, i) => {
-      console.log(section);
+
       gsap.to(section, {
         scrollTrigger: {
           trigger: section,
-          start: () => "top-=20% top",
-          end: () => `bottom${currentSection(i)} top`,
+          start: () => `top${calcTop(i, section.offsetTop, section)} top`,
+          end: () => `${calcBottom()}`,
           toggleActions: "play none reverse none",
-          /* invalidateOnRefresh: true, */
+          invalidateOnRefresh: true,
           onToggle: (self) => self.isActive && setActive(section),
           /* markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          }, */
+          },
+          id: i, */
         },
       });
     });

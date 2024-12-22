@@ -88,7 +88,7 @@ export const PinnedSection = () => {
         defaults: { ease: "power1.inOut" },
         scrollTrigger: {
           start: () => `top+=${calcPosition(60, 3, true)}px top`,
-          end: () => `bottom+=360% bottom`,
+          end: () => `bottom+=300% bottom`,
           scrub: true,
           toggleActions: "play reverse play reverse",
           /* markers: {
