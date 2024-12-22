@@ -58,7 +58,7 @@ export default function Component(props) {
 
     const setActive = (section) => {
       headerLinks.forEach((link) => {
-        if (link.id === section.id) {
+        if (`item-${link.id}` === `item-${section.id}`) {
           link.children[0].classList.add(headerStyles["bar-link-show"]);
         } else {
           link.children[0].classList.remove(headerStyles["bar-link-show"]);
@@ -86,7 +86,7 @@ export default function Component(props) {
     }; */
 
     const calcBottom = (index, section) => {
-      return '+=bottom'
+      return "+=bottom";
     };
 
     const calcTop = (index, height, section) => {
@@ -111,7 +111,6 @@ export default function Component(props) {
     let absoluteHeight = 0;
 
     sections.forEach((section, i) => {
-
       gsap.to(section, {
         scrollTrigger: {
           trigger: section,

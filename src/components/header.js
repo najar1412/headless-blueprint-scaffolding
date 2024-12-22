@@ -27,6 +27,7 @@ export default function Header({ menuItems, page, frontPage }) {
       case "Contact":
         return (
           <Badge
+            id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
             onClick={() => {
               console.log(`#${item.label.toLowerCase().replace(/\s/g, "-")}`);
               return frontPage
@@ -61,7 +62,7 @@ export default function Header({ menuItems, page, frontPage }) {
       default:
         return (
           <Stack
-            id={`${item.label.toLowerCase().replace(/\s/g, "-")}`}
+            id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
             onClick={() => {
               console.log(`#${item.label.toLowerCase().replace(/\s/g, "-")}`);
               return frontPage
