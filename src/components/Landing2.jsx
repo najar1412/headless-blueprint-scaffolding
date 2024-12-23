@@ -2,16 +2,12 @@ import { useRef, useMemo } from "react";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Color, MathUtils } from "three";
-/* import { OrbitControls } from "@react-three/drei"; */
-import { CameraControls } from "@react-three/drei";
-import { OrthographicCamera } from "@react-three/drei";
 
 import vertexShader from "raw-loader!glslify-loader!./glsl/vertexShader2.glsl?raw";
 import fragmentShader from "raw-loader!glslify-loader!./glsl/fragmentShader2.glsl?raw";
 
 export const Landing = () => {
   const Blob = () => {
-    // This reference will give us direct access to the mesh
     const mesh = useRef();
 
     // TODO: imp scale uniform
@@ -55,10 +51,9 @@ export const Landing = () => {
       camera={{
         rotation: [MathUtils.degToRad(60), 0, MathUtils.degToRad(-10)],
         position: [10, 1, 6],
-        zoom: 150,
+        zoom: 120,
       }}
     >
-      {/* <CameraControls onChange={(e) => console.log(e)} /> */}
       <Blob />
     </Canvas>
   );

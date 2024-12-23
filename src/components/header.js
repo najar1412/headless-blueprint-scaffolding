@@ -82,7 +82,6 @@ export default function Header({ menuItems, page, frontPage }) {
             style={{
               overflow: "hidden",
               cursor: "pointer",
-              /* color: page.title === item.label ? "red" : "blue", */
             }}
           >
             <div
@@ -136,7 +135,7 @@ export default function Header({ menuItems, page, frontPage }) {
         component={"header"}
         maw={"unset"}
         w="100%"
-        h="5rem"
+        h="4rem"
         className={`${styles.header} ${
           !frontPage ? styles["opaque-header"] : ""
         }`}
