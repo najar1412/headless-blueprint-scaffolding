@@ -6,9 +6,9 @@ import styles from "./ServicesCard.module.css";
 import arrowTrGreenIcon from "../assets/arrow-tr-green.svg";
 import closeIcon from "../assets/close_24dp_5F6368_FILL0_wght200_GRAD0_opsz24.svg";
 
-export const ServicesCard = ({ icon, title, items }) => {
+export const ServicesCard = ({ icon, title, items, gsapName }) => {
   return (
-    <Box className={styles["service-card"]}>
+    <Box className={`${styles["service-card"]} ${gsapName ? gsapName : ""}`}>
       <Image alt="arrow" className={styles.arrow} src={arrowTrGreenIcon} />
       <Image alt="close" className={styles.close} src={closeIcon} />
       <Box className={styles["content-1"]}>

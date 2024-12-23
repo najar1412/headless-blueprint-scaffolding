@@ -9,6 +9,7 @@ import arrowGreen from "../assets/arrow-br-lg-green.svg";
 import arrowGreenLight from "../assets/arrow-br-lg-light-green.svg";
 
 export const PostCard = ({
+  gsapName,
   category,
   title,
   footer,
@@ -67,7 +68,7 @@ export const PostCard = ({
       mih={"15rem"}
       className={`${layout.shell} ${styles["bg-image"]} ${
         gradient ? styles.gradient : ""
-      }`}
+      } ${gsapName ? gsapName : ""}`}
       style={{
         backgroundImage: image ? `url(${image.src})` : "",
         backgroundColor: colour && !image ? colour : "transparent",

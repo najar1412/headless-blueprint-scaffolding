@@ -105,14 +105,38 @@ export default function Component(props) {
           id: i, */
         },
       });
-    });
 
-    // animate numbers
-    // TODO: imp in scrolltrigger
-    gsap.from('[class*="front-page_numbers"]', {
-      textContent: 0, // start from 0
-      duration: 10,
-      snap: { textContent: 1 }, // increment by 1
+      const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
+      gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
+
+      gsap.to(fadeUp, {
+        opacity: 1,
+        translateY: 0,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: section,
+          start: () => `top${calcTop(i, section.offsetTop, section)} top`,
+          end: () => `${calcBottom()}`,
+          toggleActions: "play none none none",
+        },
+      });
+
+      // animate numbers
+      // TODO: imp in scrolltrigger
+      const numberCount = gsap.utils.toArray(
+        section.querySelectorAll('[class*="front-page_numbers"]')
+      );
+
+      gsap.from(numberCount, {
+        textContent: 0, // start from 0
+        duration: 10,
+        snap: { textContent: 1 }, // increment by 1,
+        scrollTrigger: {
+          trigger: section,
+          start: () => `top${calcTop(i, section.offsetTop, section)} top`,
+          end: () => `${calcBottom()}`,
+        },
+      });
     });
 
     // pinned section
@@ -230,6 +254,7 @@ export default function Component(props) {
               <Grid>
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
+                    gsapName={"gsap-fade"}
                     icon={marketAccessIcon}
                     title={"Market Access Consulting"}
                     items={[
@@ -243,6 +268,7 @@ export default function Component(props) {
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
+                    gsapName={"gsap-fade"}
                     icon={valueIcon}
                     title={"value communications"}
                     items={[
@@ -256,6 +282,7 @@ export default function Component(props) {
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
+                    gsapName={"gsap-fade"}
                     icon={patientIcon}
                     title={"patient access & affordability"}
                     items={[
@@ -438,6 +465,7 @@ export default function Component(props) {
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
                   <PostCard
+                    gsapName={"gsap-fade"}
                     category={"announcement"}
                     title={"Catch Nexus Health at NGPX 2024"}
                     footer={"December 2-4 | Palm Springs, CA"}
@@ -446,7 +474,7 @@ export default function Component(props) {
                   />
                 </Grid.Col>
                 <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-                  <PostCard gradient />
+                  <PostCard gsapName={"gsap-fade"} gradient />
                 </Grid.Col>
               </Grid>
               <Grid gutter={"xs"}>
@@ -458,6 +486,7 @@ export default function Component(props) {
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
                   <PostCard
+                    gsapName={"gsap-fade"}
                     category={"journal"}
                     title={"Read a Letter from our CEO Andrew Gottfried"}
                     link={"/"}
@@ -465,10 +494,11 @@ export default function Component(props) {
                   />
                 </Grid.Col>
                 <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-                  <PostCard image={cardGrayImage} />
+                  <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
                   <PostCard
+                    gsapName={"gsap-fade"}
                     category={"featured"}
                     title={"Navigating Market Access in Emerging Markets"}
                     image={placeholderThumbImage}
