@@ -69,17 +69,17 @@ export const PinnedSection = () => {
       const vh = (coef) => window.innerHeight * (coef / 100);
       const vw = (coef) => window.innerWidth * (coef / 100);
 
-      const calcPosition = (num, index, start) => {
+      const calcPosition = (height, index, start) => {
         if (start) {
           if (index) {
-            return vh(num) * index;
+            return height * index;
           }
           return 0;
         } else {
           if (index) {
-            return vh(num) * index;
+            return height * index;
           }
-          return vh(50);
+          return height;
         }
       };
 
@@ -87,14 +87,15 @@ export const PinnedSection = () => {
       const shapeTl = gsap.timeline({
         defaults: { ease: "power1.inOut" },
         scrollTrigger: {
-          start: () => `top+=${calcPosition(60, 3, true)}px top`,
-          end: () => `bottom+=300% bottom`,
+          trigger: container.current,
+          start: () => `top bottom`,
+          end: () => `bottom+=${window.innerHeight} top`,
           scrub: true,
           toggleActions: "play reverse play reverse",
           /* markers: {
-            startColor: "yellow",
-            endColor: "yellow",
-            fontSize: "12px",
+            startColor: "red",
+            endColor: "red",
+            fontSize: "16px",
           }, */
           invalidateOnRefresh: true,
         },
@@ -104,7 +105,6 @@ export const PinnedSection = () => {
         .to(
           shapeSvgRef.current,
           {
-            /* x: `+=${container.current.offsetWidth / 4}`, */
             ease: "power1.inOut",
           },
           "section0"
@@ -113,8 +113,6 @@ export const PinnedSection = () => {
           [allCircles, textEvidence, textScience, textValue, smallCircles],
           {
             opacity: 0,
-            /* rotation: -75, */
-            /* transformOrigin: "center center", */
             ease: "power1.inOut",
           },
           "section1"
@@ -194,11 +192,18 @@ export const PinnedSection = () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: block,
-            start: () => `top+=${calcPosition(60, i, true)}px top`,
-            end: () => `bottom+=${calcPosition(120, i)}px  bottom`,
+            start: () => `top+=${window.innerHeight * i} bottom`,
+            end: () =>
+              `bottom+=${i === 2 ? window.innerHeight * 3 : window.innerHeight * i} top`,
             toggleActions: "play reverse play reverse",
             invalidateOnRefresh: true,
-            /* markers: true, */
+            /* markers: {
+              indent: 150 * i,
+              startColor: "yellow",
+              endColor: "yellow",
+              fontSize: "16px",
+            }, */
+            id: i,
           },
         });
 

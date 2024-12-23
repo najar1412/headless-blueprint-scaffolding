@@ -101,8 +101,8 @@ export default function Component(props) {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          },
-          id: i, */
+          }, */
+          id: i,
         },
       });
 
@@ -144,12 +144,12 @@ export default function Component(props) {
       scrollTrigger: {
         trigger: '[class*="front-page_black"]',
         start: () => "top top",
-        end: () => "top+=200% top",
+        end: () => `bottom+=${window.innerHeight} top`,
         scrub: true,
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
         pin: true,
-        pinSpacer: true,
+        pinSpacer: false,
         /* markers: true, */
       },
     });
