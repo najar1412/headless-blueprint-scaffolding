@@ -98,7 +98,7 @@ export default function Header({ menuItems, page, frontPage }) {
 
   useGSAP(
     () => {
-      const toggleHeader = gsap
+      /* const toggleHeader = gsap
         .from(container.current, {
           yPercent: -100,
           paused: true,
@@ -113,7 +113,7 @@ export default function Header({ menuItems, page, frontPage }) {
             },
           },
         })
-        .progress(1);
+        .progress(1); */
 
       gsap.from(container.current, {
         backgroundColor: "rgba(255, 255, 255, 1)",

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
@@ -39,7 +37,6 @@ import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
-import bgImage from "../assets/bg.jpg";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -50,7 +47,6 @@ const bgs = [<div />, <Landing2 />, <Landing />, <Landing3 />];
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page } = props.data;
-  const [background, setBackground] = useState(0);
 
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
@@ -58,7 +54,7 @@ export default function Component(props) {
 
     const setActive = (section) => {
       headerLinks.forEach((link) => {
-        if (`item-${link.id}` === `item-${section.id}`) {
+        if (`${link.id}`.endsWith(section.id)) {
           link.children[0].classList.add(headerStyles["bar-link-show"]);
         } else {
           link.children[0].classList.remove(headerStyles["bar-link-show"]);
