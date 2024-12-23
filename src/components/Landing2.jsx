@@ -2,11 +2,14 @@ import { useRef, useMemo } from "react";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Color, MathUtils } from "three";
+import { useMediaQuery } from "@mantine/hooks";
 
 import vertexShader from "raw-loader!glslify-loader!./glsl/vertexShader2.glsl?raw";
 import fragmentShader from "raw-loader!glslify-loader!./glsl/fragmentShader2.glsl?raw";
 
 export const Landing = () => {
+  const matches = useMediaQuery("(min-width: 56.25em)");
+
   const Blob = () => {
     const mesh = useRef();
 
@@ -34,7 +37,7 @@ export const Landing = () => {
 
     return (
       <mesh ref={mesh} position={[0, 0, 0]} scale={5} rotation={[0, 0, 0]}>
-        <planeGeometry args={[10, 10, 100, 60]} />
+        <planeGeometry args={[15, 15, 150, 150]} />
         <shaderMaterial
           fragmentShader={fragmentShader}
           vertexShader={vertexShader}
@@ -50,8 +53,8 @@ export const Landing = () => {
       orthographic
       camera={{
         rotation: [MathUtils.degToRad(60), 0, MathUtils.degToRad(-10)],
-        position: [10, 1, 6],
-        zoom: 120,
+        position: [10, 1, 10],
+        zoom: matches ? 80 : 150,
       }}
     >
       <Blob />

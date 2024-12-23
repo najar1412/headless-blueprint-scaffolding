@@ -23,6 +23,7 @@ export default function Header({ menuItems, page, frontPage }) {
   const container = useRef();
 
   const menuItem = (item) => {
+    console.log(item);
     switch (item.label) {
       case "Contact":
         return (
@@ -68,9 +69,10 @@ export default function Header({ menuItems, page, frontPage }) {
               return frontPage
                 ? gsap.to(window, {
                     ease: "power1.in",
-                    scrollTo: `#${item.label
-                      .toLowerCase()
-                      .replace(/\s/g, "-")}`,
+                    scrollTo: {
+                      y: `#${item.label.toLowerCase().replace(/\s/g, "-")}`,
+                      offsetY: item.label === "Thought Leadership" ? -100 : 0,
+                    },
                     duration: 0.2,
                   })
                 : router.push(

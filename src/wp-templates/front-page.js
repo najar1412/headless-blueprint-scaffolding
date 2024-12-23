@@ -124,12 +124,12 @@ export default function Component(props) {
           start: () => `${fadeStart(i, section)} top+=50%`,
           end: () => `${calcBottom()}`,
           toggleActions: "play none none none",
-          markers: {
+          /* markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
           },
-          id: i,
+          id: i, */
         },
       });
 
