@@ -65,24 +65,6 @@ export const PinnedSection = () => {
 
       let blocks = gsap.utils.toArray('[class*="front-page_pinned-section"]');
 
-      // helpers
-      const vh = (coef) => window.innerHeight * (coef / 100);
-      const vw = (coef) => window.innerWidth * (coef / 100);
-
-      const calcPosition = (height, index, start) => {
-        if (start) {
-          if (index) {
-            return height * index;
-          }
-          return 0;
-        } else {
-          if (index) {
-            return height * index;
-          }
-          return height;
-        }
-      };
-
       // nexus shape timeline
       const shapeTl = gsap.timeline({
         defaults: { ease: "power1.inOut" },

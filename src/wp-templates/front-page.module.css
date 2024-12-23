@@ -2,8 +2,8 @@
   overflow: hidden;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   @media (min-width: $mantine-breakpoint-md) {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -64,7 +64,6 @@
 }
 .box-element-1 > img {
   width: 2.5rem;
-  /* transform: translateY(-0.1rem); */
 }
 .box-element-2 {
   margin-left: auto;
@@ -115,9 +114,9 @@
   transform: translateX(-101%);
   transition: all 0.5s;
 }
-/* .bar-link-active {
+.bar-link-active {
   transform: unset !important;
-} */
+}
 .return-to-top {
   display: flex;
   justify-content: center;

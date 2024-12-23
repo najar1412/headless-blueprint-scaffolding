@@ -1,6 +1,6 @@
 import { Badge, Text } from "@mantine/core";
 
-export const Eyebrow = ({ label, variant }) => {
+export const Eyebrow = ({ gsapName, label, variant }) => {
   const variantType = {
     1: {
       variant: "outline",
@@ -20,6 +20,7 @@ export const Eyebrow = ({ label, variant }) => {
   };
   return (
     <Badge
+      className={gsapName ? gsapName : ""}
       py={"md"}
       px={"lg"}
       mb="sm"

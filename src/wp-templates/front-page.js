@@ -67,19 +67,17 @@ export default function Component(props) {
       return "+=bottom";
     };
 
-    const calcTop = (index, height, section) => {
+    const calcTop = (index, section) => {
       const offset = (section) => {
         return section.offsetTop - section.offsetHeight * 2;
       };
       if (index < 3) {
-        return "+" + section.offsetTop;
+        return "+" + section.offsetHeight;
       } else if (index === 2) {
         if (absoluteHeight === 0) {
           absoluteHeight = section.offsetTop;
         }
         const t = absoluteHeight * 4;
-        console.log("++++++");
-        console.log(t);
         return "+=" + t;
       } else {
         return "+=" + offset(section);
@@ -92,7 +90,7 @@ export default function Component(props) {
       gsap.to(section, {
         scrollTrigger: {
           trigger: section,
-          start: () => `top${calcTop(i, section.offsetTop, section)} top`,
+          start: () => `top${calcTop(i, section)} top`,
           end: () => `${calcBottom()}`,
           toggleActions: "play none reverse none",
           invalidateOnRefresh: true,
@@ -106,6 +104,14 @@ export default function Component(props) {
         },
       });
 
+      const fadeStart = (index, section) => {
+        const fullHeight = vh(100);
+        if (index > 3) {
+          return `+=${section.offsetHeight + fullHeight}`;
+        }
+        return `top`;
+      };
+
       const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
       gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
 
@@ -115,9 +121,15 @@ export default function Component(props) {
         stagger: 0.3,
         scrollTrigger: {
           trigger: section,
-          start: () => `top${calcTop(i, section.offsetTop, section)} top`,
+          start: () => `${fadeStart(i, section)} top+=50%`,
           end: () => `${calcBottom()}`,
           toggleActions: "play none none none",
+          markers: {
+            indent: 150 * i,
+            startColor: "red",
+            endColor: "red",
+          },
+          id: i,
         },
       });
 
@@ -133,7 +145,7 @@ export default function Component(props) {
         snap: { textContent: 1 }, // increment by 1,
         scrollTrigger: {
           trigger: section,
-          start: () => `top${calcTop(i, section.offsetTop, section)} top`,
+          start: () => `top${calcTop(i, section)} top`,
           end: () => `${calcBottom()}`,
         },
       });
@@ -152,6 +164,21 @@ export default function Component(props) {
         pinSpacer: false,
         /* markers: true, */
       },
+    });
+
+    // on load
+    const initialAnimation = gsap.utils.toArray(
+      document.querySelectorAll(".gsap-initial")
+    );
+    gsap.set(initialAnimation, {
+      opacity: 0,
+      translateY: 100,
+      ease: "power4.inOut",
+    });
+    gsap.to(initialAnimation, {
+      opacity: 1,
+      translateY: 0,
+      stagger: 0.3,
     });
   });
 
@@ -180,6 +207,7 @@ export default function Component(props) {
           style={{
             position: "relative",
             backgroundSize: "cover",
+            display: "flex",
           }}
         >
           <Container
@@ -187,17 +215,28 @@ export default function Component(props) {
             p={0}
             position={"relative"}
             className={styles["section-content"]}
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 10, marginTop: "auto" }}
           >
             <Stack>
-              <Title maw={"40rem"} fw={600} className={styles.title}>
+              <Title
+                maw={"40rem"}
+                fw={600}
+                className={`${styles.title} gsap-initial`}
+              >
                 Shaping the future of Market Access
               </Title>
-              <Text maw={"18rem"} size="1.2rem" lh={"1.7rem"} fw="500">
+              <Text
+                maw={"18rem"}
+                size="1.2rem"
+                lh={"1.7rem"}
+                fw="500"
+                className={"gsap-initial"}
+              >
                 Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
                 eiusm od tempor incididunt.
               </Text>
               <Link
+                className={"gsap-initial"}
                 href={"#services"}
                 onClick={() =>
                   gsap.to(window, {
@@ -246,8 +285,8 @@ export default function Component(props) {
             className={`${styles["section-content"]}`}
           >
             <Stack>
-              <Eyebrow label={"services"} variant={1} />
-              <Title order={2} maw={"32rem"} mb="2rem">
+              <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
+              <Title order={2} maw={"32rem"} mb="2rem" className={"gsap-fade"}>
                 Lorem ipsum dolor sit amet consectetur sed interdum semper sed
                 gravida urna.
               </Title>
@@ -430,14 +469,18 @@ export default function Component(props) {
             className={styles["section-content"]}
           >
             <Stack gap={"xs"}>
-              <Eyebrow label={"thought leadership"} variant={3} />
+              <Eyebrow
+                gsapName={"gsap-fade"}
+                label={"thought leadership"}
+                variant={3}
+              />
               <Grid gutter={"xs"}>
                 <Grid.Col span={{ base: 12, lg: 5 }}>
                   <Stack>
-                    <Title order={2} maw={"20rem"}>
+                    <Title order={2} maw={"20rem"} className={"gsap-fade"}>
                       What’s Happening at Nexus Health
                     </Title>
-                    <Text size="sm" fw="500">
+                    <Text size="sm" fw="500" className={"gsap-fade"}>
                       Lorem ipsum dolor sit amet consectetur. Nulla ultrices
                       feugiat et nullam. Dolor libero commodo lectus aliquet.
                       Nulla venenatis at nulla mi at.
@@ -448,7 +491,7 @@ export default function Component(props) {
                     >
                       <Stack
                         gap={0}
-                        className={styles.link}
+                        className={`${styles.link} gsap-fade`}
                         mt="0.4rem"
                         mb="1rem"
                         style={{ overflow: "hidden" }}

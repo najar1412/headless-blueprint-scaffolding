@@ -74,3 +74,6 @@ canvas {
 li::marker {
   color: #bcdc49;
 }
+.gsap-initial {
+  opacity: 0;
+}
