@@ -19,9 +19,7 @@ import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { PostCard } from "../components/PostCard";
-import { Landing } from "../components/Landing";
 import { Landing as Landing2 } from "../components/Landing2";
-import { Landing as Landing3 } from "../components/Landing3";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import { ServicesCard } from "../components/ServicesCard";
@@ -41,8 +39,6 @@ import valueIcon from "../assets/icon_value_comm.svg";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
-
-const bgs = [<div />, <Landing2 />, <Landing />, <Landing3 />];
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
@@ -67,21 +63,7 @@ export default function Component(props) {
     const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
 
-    /* const calcBottom = (index, height) => {
-      // console.log(index)
-      // const offset = vh(150);
-      if (index >= 2) {
-        // console.log('++')
-        // console.log(height)
-        // console.log("+=" + (height * 3) + "px");
-        return "+=" + height * 4 + "px";
-      }
-      // console.log('--')
-      // console.log("+=" + height + "px");
-      return "+=" + height + "px";
-    }; */
-
-    const calcBottom = (index, section) => {
+    const calcBottom = () => {
       return "+=bottom";
     };
 
