@@ -58,7 +58,7 @@ export default function LoadMorePublications() {
 
   return (
     <>
-      <ul style={{ padding: "0" }}>
+      <Stack>
         {posts.map((post) => {
           const { databaseId, title, slug, featuredImage, content } = post;
           return (
@@ -90,7 +90,7 @@ export default function LoadMorePublications() {
             </Fragment>
           );
         })}
-      </ul>
+      </Stack>
       {haveMorePosts ? (
         <form
           method="post"

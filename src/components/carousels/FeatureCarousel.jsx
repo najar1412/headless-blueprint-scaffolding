@@ -16,18 +16,18 @@ export const FeatureCarousel = ({ items }) => {
 
   return (
     <Container p={0} style={{ position: "relative" }}>
-      <Group className={styles["swiper-controls"]}>
+      <Group gap={'0.5rem'} className={styles["swiper-controls"]}>
         <div className={styles.arrow} onClick={() => swiper.slidePrev()}>
           <Image
             src={arrowUpIcon.src}
-            w={"1.25rem"}
+            w={"1rem"}
             style={{ transform: "rotate(-90deg)" }}
           />
         </div>
         <div className={styles.arrow} onClick={() => swiper.slideNext()}>
           <Image
             src={arrowUpIcon.src}
-            w={"1.25rem"}
+            w={"1rem"}
             style={{ transform: "rotate(90deg)" }}
           />
         </div>

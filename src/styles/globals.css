@@ -85,3 +85,12 @@ li::marker {
 .gsap-initial {
   opacity: 0;
 }
+/* posts */
+.what {
+  font-size: 0.7rem;
+  line-height: 1.15rem;
+}
+.wp-block-image {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

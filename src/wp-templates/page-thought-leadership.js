@@ -64,8 +64,8 @@ export default function PageThoughtLeadership(props) {
           w="100%"
           maw={"1440px!important"}
         >
-          <Stack gap={0}>
-            <Divider color={"#0A404A"} />
+          <Stack>
+            <Divider color={"#0A404A"} mb='1rem' />
             <LoadMorePublications />
           </Stack>
         </Container>

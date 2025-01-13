@@ -13,17 +13,19 @@ import {
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Link from "next/link";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Loading } from "../components/animated/Loading";
 
-import styles from "./page-publication.module.css"
+import styles from "./page-publication.module.css";
 
 import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
 import facebookIcon from "../assets/facebook.svg";
 import xIcon from "../assets/X_logo_2023_original 1.svg";
 import arrowUpIcon from "../assets/arrow-up.svg";
+import arrowBlBlueIcon from "../assets/arrow-bl-blue.svg";
 
 export default function PagePublication(props) {
   const { footer, primaryMenuItems, publication: post, page } = props.data;
@@ -39,6 +41,12 @@ export default function PagePublication(props) {
     // sectional animation
   });
 
+  const formatDate = (date) => {
+    const dateObj = new Date(date);
+    const result = `${dateObj.getDay()}.${dateObj.getMonth()}.${dateObj.getFullYear()}`;
+    return result;
+  };
+
   return (
     <>
       <Header
@@ -51,11 +59,20 @@ export default function PagePublication(props) {
         className={`main ${styles.container}`}
         maw={"unset"}
         w="100%"
-        
-        pt={"12rem"}
+        pt={"8rem"}
         pb={0}
       >
         <Container maw={"1440px!important"} w="100%">
+          <Link href="/thought-leadership">
+            <Group mb="md">
+              <Image
+                src={arrowBlBlueIcon.src}
+                style={{ transform: "rotate(225deg)" }}
+              />
+              <Text size="xs">Back to All Posts</Text>
+            </Group>
+          </Link>
+
           <Grid gutter="2rem">
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 5 }}>
               <Stack gap={"xs"}>
@@ -67,35 +84,37 @@ export default function PagePublication(props) {
                     style={{ borderRadius: "1rem" }}
                   />
                 ) : null}
-                <Group px={"1rem"} gap={"1.5rem"}>
-                  <Text fw={600}>Share this post</Text>
+                <Group px={"1rem"} gap={"1.25rem"}>
+                  <Text size="xs" fw={600}>
+                    Share this post
+                  </Text>
                   <Image
                     src={linkedInIcon.src}
                     alt="linkedIn Icon"
-                    style={{ transform: "scale(1.5)" }}
+                    style={{ transform: "scale(1.3)" }}
                   />
                   <Image
                     src={xIcon.src}
                     alt="x Icon"
-                    style={{ transform: "scale(1.5)" }}
+                    style={{ transform: "scale(1.3)" }}
                   />
                   <Image
                     src={facebookIcon.src}
                     alt="facebook Icon"
-                    style={{ transform: "scale(1.5)" }}
+                    style={{ transform: "scale(1.3)" }}
                   />
                 </Group>
               </Stack>
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 7 }}>
               <Stack>
-                <Text tt="uppercase" fw={"600"}>
-                  {post.publicationMeta.date}
+                <Text tt="uppercase" fw={"600"} size='sm'>
+                  {formatDate(post.publicationMeta.date)}
                 </Text>
                 <Title order={1} lh={"2.5rem"}>
                   {post.title}
                 </Title>
-                <Text tt="capitalize" fw={"600"}>
+                <Text size='sm' tt="capitalize" fw={"600"}>
                   by {post.publicationMeta.author}
                 </Text>
                 <Group hiddenFrom="lg" gap={"1.5rem"}>
@@ -116,7 +135,14 @@ export default function PagePublication(props) {
                     style={{ transform: "scale(1.5)" }}
                   />
                 </Group>
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.content.replaceAll(
+                      "<p>",
+                      '<p class="what">'
+                    ),
+                  }}
+                />
               </Stack>
             </Grid.Col>
           </Grid>
@@ -133,6 +159,13 @@ export default function PagePublication(props) {
                 <Text fw="500">Previous Post</Text>
               </Group>
             </UnstyledButton>
+            <Link href="/thought-leadership">
+              <UnstyledButton>
+                <Group>
+                  <Text fw="500">Back to All Posts</Text>
+                </Group>
+              </UnstyledButton>
+            </Link>
             <UnstyledButton>
               <Group>
                 <Text fw="500">Next Post</Text>

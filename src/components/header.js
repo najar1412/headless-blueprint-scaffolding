@@ -23,7 +23,6 @@ export default function Header({ menuItems, page, frontPage }) {
   const container = useRef();
 
   const menuItem = (item) => {
-    console.log(item);
     switch (item.label) {
       case "Contact":
         return (
