@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import styles from "./NewsletterForm.module.css";
 
-import arrow from "../../assets/arrow-tr-green.svg";
+import arrow from "../../assets/arrow-tr-blue.svg";
 
 export const NewsletterForm = () => {
   const {

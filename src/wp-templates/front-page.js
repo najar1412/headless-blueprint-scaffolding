@@ -141,7 +141,8 @@ export default function Component(props) {
 
       gsap.from(numberCount, {
         textContent: 0, // start from 0
-        duration: 10,
+        duration: 5,
+        ease: "none",
         snap: { textContent: 1 }, // increment by 1,
         scrollTrigger: {
           trigger: section,
@@ -263,10 +264,7 @@ export default function Component(props) {
               </Link>
             </Stack>
           </Container>
-          <div
-            className={styles.landing}
-            /* style={{ display: `${background ? "flex" : "none"}` }} */
-          >
+          <div className={styles.landing}>
             <Landing2 />
           </div>
         </Container>
@@ -286,7 +284,7 @@ export default function Component(props) {
           >
             <Stack>
               <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
-              <Title order={2} maw={"32rem"} mb="2rem" className={"gsap-fade"}>
+              <Title order={2} mb="2rem" className={"gsap-fade"}>
                 Lorem ipsum dolor sit amet consectetur sed interdum semper sed
                 gravida urna.
               </Title>
@@ -295,6 +293,7 @@ export default function Component(props) {
                   <ServicesCard
                     gsapName={"gsap-fade"}
                     icon={marketAccessIcon}
+                    iconSize={"3rem"}
                     title={"Market Access Consulting"}
                     items={[
                       "Commercial strategic planning",
@@ -309,6 +308,7 @@ export default function Component(props) {
                   <ServicesCard
                     gsapName={"gsap-fade"}
                     icon={valueIcon}
+                    iconSize={"4.5rem"}
                     title={"value communications"}
                     items={[
                       "Payer marketing",
@@ -323,6 +323,7 @@ export default function Component(props) {
                   <ServicesCard
                     gsapName={"gsap-fade"}
                     icon={patientIcon}
+                    iconSize={"4.5rem"}
                     title={"patient access & affordability"}
                     items={[
                       "Pricing, reimbursement, & policy strategy",
@@ -477,10 +478,10 @@ export default function Component(props) {
               <Grid gutter={"xs"}>
                 <Grid.Col span={{ base: 12, lg: 5 }}>
                   <Stack>
-                    <Title order={2} maw={"20rem"} className={"gsap-fade"}>
+                    <Title size='1.9rem' maw={"20rem"} className={"gsap-fade"}>
                       What’s Happening at Nexus Health
                     </Title>
-                    <Text size="sm" fw="500" className={"gsap-fade"}>
+                    <Text size="0.83rem" lh={'1.25rem'} fw="500" maw={'20rem'} className={"gsap-fade"}>
                       Lorem ipsum dolor sit amet consectetur. Nulla ultrices
                       feugiat et nullam. Dolor libero commodo lectus aliquet.
                       Nulla venenatis at nulla mi at.

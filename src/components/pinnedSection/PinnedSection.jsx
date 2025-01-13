@@ -240,10 +240,10 @@ export const PinnedSection = () => {
             <Grid.Col span={6}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
-                <Title c="white" order={3} maw={"16rem"}>
+                <Title c="white" size="1.9rem" maw={"20rem"}>
                   Meeting the needs of today and tomorrow
                 </Title>
-                <Text c="white" maw={"23rem"}>
+                <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"23rem"}>
                   With the growing complexity of the healthcare system and a
                   shift toward value-based care, there is increasing pressure to
                   demonstrate the impact of a product in more innovative ways.
@@ -270,14 +270,14 @@ export const PinnedSection = () => {
             <Grid.Col span={6}></Grid.Col>
             <Grid.Col span={6}>
               <Stack>
-                <Title c="white" order={3} maw={"16rem"}>
+                <Title c="white" size="1.9rem" maw={"20rem"}>
                   A strong foundation built in science
                 </Title>
-                <Text c="white" maw={"23rem"} fw={"100"}>
+                <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"23rem"}>
                   We noticed there was a blank spot in medical communications
                   around the value narrative.
                 </Text>
-                <Text c="white" maw={"24rem"} fw={"100"}>
+                <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"24rem"}>
                   Joining with market access leaders, we sought to bring
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
@@ -303,12 +303,12 @@ export const PinnedSection = () => {
             <Grid.Col span={6}></Grid.Col>
             <Grid.Col span={6}>
               <Stack>
-                <Title c="white" order={3} maw={"16rem"}>
+                <Title c="white" size="1.9rem" maw={"20rem"}>
                   Ability to address all stakeholder types
                 </Title>
-                <Group wrap="no-wrap" gap={"5rem"}>
+                <Group wrap="no-wrap" gap={"4rem"}>
                   <div>
-                    <List c="white" fw={"100"}>
+                    <List c="white" fs={"0.96rem"}>
                       <List.Item>Payers</List.Item>
                       <List.Item>Employers</List.Item>
                       <List.Item>Physicians</List.Item>
@@ -321,7 +321,7 @@ export const PinnedSection = () => {
                     </List>
                   </div>
                   <div>
-                    <List c="white" fw={"100"}>
+                    <List c="white" fs={"0.96rem"}>
                       <List.Item>Hospitals</List.Item>
                       <List.Item>IDNs</List.Item>
                       <List.Item>Specialty</List.Item>

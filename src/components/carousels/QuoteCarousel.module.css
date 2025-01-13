@@ -1,3 +1,5 @@
 .swiper-slide {
-  height: 14rem;
+  padding-bottom: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
 }

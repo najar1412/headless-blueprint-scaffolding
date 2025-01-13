@@ -68,6 +68,14 @@ canvas {
   height: auto;
   border-radius: 1rem;
 }
+.swiper {
+  height: fit-content;
+}
+.swiper-custom-pagination {
+  position: relative;
+  left: -50%;
+  transform: translateX(50%);
+}
 .swiper-pagination-bullet {
   background-color: #bcdc49 !important;
 }
