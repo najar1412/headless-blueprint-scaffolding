@@ -17,7 +17,7 @@ export const FeatureCarousel = ({ items }) => {
   const [swiper, setSwiper] = useState();
 
   return (
-    <Container p={0} style={{ position: "relative" }}>
+    <Container p={0} m={0} style={{ position: "relative" }}>
       <Group gap={"0.5rem"} className={styles["swiper-controls"]}>
         <div className={styles.arrow} onClick={() => swiper.slidePrev()}>
           <Image

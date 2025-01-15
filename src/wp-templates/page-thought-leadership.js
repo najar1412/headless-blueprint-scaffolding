@@ -52,7 +52,7 @@ export default function PageThoughtLeadership(props) {
             <Group justify="space-between">
               <Eyebrow label={"featured"} variant={3} />
             </Group>
-            <Container p={0} maw={"100%"}>
+            <Container p={0} maw={"100%"} m={0}>
               <FeatureCarousel
                 items={publications.nodes.filter((publication) =>
                   publication.publicationMeta.postType.includes("featured")
