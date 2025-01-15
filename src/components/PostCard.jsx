@@ -93,6 +93,7 @@ export const PostCard = ({
                 fw={700}
                 lh={"1.5rem"}
                 c={layout.fontColour}
+                lineClamp={3}
               >
                 {title}
               </Text>

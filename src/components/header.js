@@ -29,7 +29,6 @@ export default function Header({ menuItems, page, frontPage }) {
           <Badge
             id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
             onClick={() => {
-              console.log(`#${item.label.toLowerCase().replace(/\s/g, "-")}`);
               return frontPage
                 ? gsap.to(window, {
                     ease: "power1.in",
@@ -64,7 +63,6 @@ export default function Header({ menuItems, page, frontPage }) {
           <Stack
             id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
             onClick={() => {
-              console.log(`#${item.label.toLowerCase().replace(/\s/g, "-")}`);
               return frontPage
                 ? gsap.to(window, {
                     ease: "power1.in",

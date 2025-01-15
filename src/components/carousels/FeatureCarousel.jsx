@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { PostCard } from "../PostCard";
 
+import placeholderImage from "../../assets/card_gray.jpg";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "./FeatureCarousel.module.css";
@@ -16,7 +18,7 @@ export const FeatureCarousel = ({ items }) => {
 
   return (
     <Container p={0} style={{ position: "relative" }}>
-      <Group gap={'0.5rem'} className={styles["swiper-controls"]}>
+      <Group gap={"0.5rem"} className={styles["swiper-controls"]}>
         <div className={styles.arrow} onClick={() => swiper.slidePrev()}>
           <Image
             src={arrowUpIcon.src}
@@ -51,7 +53,11 @@ export const FeatureCarousel = ({ items }) => {
                 <PostCard
                   category={"featured"}
                   title={item.title}
-                  image={{ src: item.featuredImage.node.sourceUrl }}
+                  image={{
+                    src: item.featuredImage
+                      ? item.featuredImage.node.sourceUrl
+                      : placeholderImage.src,
+                  }}
                   link={item.uri}
                   featureCarousel
                 />

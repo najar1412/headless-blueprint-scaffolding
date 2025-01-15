@@ -210,6 +210,7 @@ PagePublication.query = gql`
       publicationMeta: publicationMeta {
         date
         author
+        postType
       }
     }
     ...HeaderFragment

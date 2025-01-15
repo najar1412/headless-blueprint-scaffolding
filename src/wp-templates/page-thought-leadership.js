@@ -53,7 +53,11 @@ export default function PageThoughtLeadership(props) {
               <Eyebrow label={"featured"} variant={3} />
             </Group>
             <Container p={0} maw={"100%"}>
-              <FeatureCarousel items={publications.nodes} />
+              <FeatureCarousel
+                items={publications.nodes.filter((publication) =>
+                  publication.publicationMeta.postType.includes("featured")
+                )}
+              />
             </Container>
           </Stack>
         </Container>
@@ -65,7 +69,7 @@ export default function PageThoughtLeadership(props) {
           maw={"1440px!important"}
         >
           <Stack>
-            <Divider color={"#0A404A"} mb='1rem' />
+            <Divider color={"#0A404A"} mb="1rem" />
             <LoadMorePublications />
           </Stack>
         </Container>
@@ -112,6 +116,11 @@ PageThoughtLeadership.query = gql`
         }}
         ... on NodeWithContentEditor {
           content
+        }
+        publicationMeta: publicationMeta {
+          date
+          author
+          postType
         }
       }
     }

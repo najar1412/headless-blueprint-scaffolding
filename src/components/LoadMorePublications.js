@@ -8,6 +8,8 @@ import { Loading } from "./animated/Loading";
 
 import styles from "./LoadMorePublications.module.css";
 
+import placeholderImage from "../assets/card_gray.jpg";
+
 const GET_POSTS = gql`
   query getPosts($first: Int!, $after: String) {
     publications(first: $first, after: $after) {
@@ -26,6 +28,9 @@ const GET_POSTS = gql`
             node {
               sourceUrl
             }
+          }
+          publicationMeta: publicationMeta {
+            postType
           }
         }
       }
@@ -52,44 +57,48 @@ export default function LoadMorePublications() {
     return <p>no posts have been published</p>;
   }
 
-  const posts = data.publications.edges.map((edge) => edge.node);
+  const posts = data.publications.edges
+    .filter(
+      (edge) => !edge.node.publicationMeta.postType.includes("announcement")
+    )
+    .map((edge) => edge.node);
 
   const haveMorePosts = Boolean(data?.publications?.pageInfo?.hasNextPage);
 
   return (
     <>
       <Stack>
-        {posts.map((post) => {
-          const { databaseId, title, slug, featuredImage, content } = post;
-          return (
-            <Fragment key={databaseId}>
-              <Group wrap="no-wrap" gap={"2rem"} mb={"1rem"}>
-                <div
-                  className={styles.image}
-                  style={{
-                    backgroundImage: `url(${featuredImage.node.sourceUrl})`,
-                  }}
-                ></div>
+        {posts.map((post) => (
+          <Fragment key={post.databaseId}>
+            <Group wrap="no-wrap" gap={"2rem"} mb={"1rem"}>
+              <div
+                className={styles.image}
+                style={{
+                  backgroundImage: `url(${post.featuredImage ? post.featuredImage.node.sourceUrl : placeholderImage.src})`,
+                  maxWidth: "7.5rem",
+                }}
+              ></div>
 
-                <Stack key={title} gap="0.3rem">
-                  <Link href={`/thought-leadership/${slug}`}>
-                    <Text fw="bold">{title}</Text>
-                  </Link>
+              <Stack key={post.title} gap="0.3rem">
+                <Link href={`/thought-leadership/${post.slug}`}>
+                  <Text fw="bold">{post.title}</Text>
+                </Link>
+                {post.content ? (
                   <div
                     style={{ fontSize: "0.8rem" }}
                     dangerouslySetInnerHTML={{
-                      __html: `${content
+                      __html: `${post.content
                         .replace(/<\/?[^>]+(>|$)/g, "")
                         .substring(0, 200)}...`,
                     }}
                   />
-                </Stack>
-              </Group>
+                ) : null}
+              </Stack>
+            </Group>
 
-              <Divider color={"#0A404A"} mb="1rem" />
-            </Fragment>
-          );
-        })}
+            <Divider color={"#0A404A"} mb="1rem" />
+          </Fragment>
+        ))}
       </Stack>
       {haveMorePosts ? (
         <form

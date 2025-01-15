@@ -1,3 +1,5 @@
+// TODO: instead of returning all posts and filtering, just query for the first/latest of types featured, journal, announcement
+
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
@@ -42,7 +44,17 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
-  const { footer, primaryMenuItems, page } = props.data;
+  const { footer, primaryMenuItems, page, publications } = props.data;
+
+  const featured = publications.nodes.filter((publication) =>
+    publication.publicationMeta.postType.includes("featured")
+  );
+  const journal = publications.nodes.filter((publication) =>
+    publication.publicationMeta.postType.includes("journal")
+  );
+  const announcement = publications.nodes.filter((publication) =>
+    publication.publicationMeta.postType.includes("announcement")
+  );
 
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
@@ -478,10 +490,16 @@ export default function Component(props) {
               <Grid gutter={"xs"}>
                 <Grid.Col span={{ base: 12, lg: 5 }}>
                   <Stack>
-                    <Title size='1.9rem' maw={"20rem"} className={"gsap-fade"}>
+                    <Title size="1.9rem" maw={"20rem"} className={"gsap-fade"}>
                       What’s Happening at Nexus Health
                     </Title>
-                    <Text size="0.83rem" lh={'1.25rem'} fw="500" maw={'20rem'} className={"gsap-fade"}>
+                    <Text
+                      size="0.83rem"
+                      lh={"1.25rem"}
+                      fw="500"
+                      maw={"20rem"}
+                      className={"gsap-fade"}
+                    >
                       Lorem ipsum dolor sit amet consectetur. Nulla ultrices
                       feugiat et nullam. Dolor libero commodo lectus aliquet.
                       Nulla venenatis at nulla mi at.
@@ -508,14 +526,18 @@ export default function Component(props) {
                   </Stack>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
-                  <PostCard
-                    gsapName={"gsap-fade"}
-                    category={"announcement"}
-                    title={"Catch Nexus Health at NGPX 2024"}
-                    footer={"December 2-4 | Palm Springs, CA"}
-                    link={"/"}
-                    colour={"var(--mantine-color-brand-3)"}
-                  />
+                  {announcement.length ? (
+                    <PostCard
+                      gsapName={"gsap-fade"}
+                      category={"announcement"}
+                      title={announcement[0].title}
+                      footer={
+                        announcement[0].publicationMeta.announcementLocation
+                      }
+                      link={"/"}
+                      colour={"var(--mantine-color-brand-3)"}
+                    />
+                  ) : null}
                 </Grid.Col>
                 <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
                   <PostCard gsapName={"gsap-fade"} gradient />
@@ -529,25 +551,29 @@ export default function Component(props) {
                   <div className={styles["box-element-2"]}></div>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
-                  <PostCard
-                    gsapName={"gsap-fade"}
-                    category={"journal"}
-                    title={"Read a Letter from our CEO Andrew Gottfried"}
-                    link={"/"}
-                    colour={"var(--mantine-color-brand-4)"}
-                  />
+                  {journal.length ? (
+                    <PostCard
+                      gsapName={"gsap-fade"}
+                      category={"journal"}
+                      title={journal[0].title}
+                      link={"/"}
+                      colour={"var(--mantine-color-brand-4)"}
+                    />
+                  ) : null}
                 </Grid.Col>
                 <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
                   <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, lg: 4 }}>
-                  <PostCard
-                    gsapName={"gsap-fade"}
-                    category={"featured"}
-                    title={"Navigating Market Access in Emerging Markets"}
-                    image={placeholderThumbImage}
-                    link={"/"}
-                  />
+                  {featured ? (
+                    <PostCard
+                      gsapName={"gsap-fade"}
+                      category={"featured"}
+                      title={featured[0].title}
+                      image={placeholderThumbImage}
+                      link={"/"}
+                    />
+                  ) : null}
                 </Grid.Col>
               </Grid>
             </Stack>
@@ -577,18 +603,6 @@ Component.query = gql`
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
-      acf: publicationPage {
-        cta1{
-        image {
-          node {
-            sourceUrl
-          }
-        }
-        tag
-        title
-        copy
-        }
-      }
     }
     
     publications {
@@ -601,7 +615,14 @@ Component.query = gql`
         ... on NodeWithContentEditor {
           content
         }
+        publicationMeta: publicationMeta {
+          date
+          author
+          postType
+          announcementLocation
+        }
       }
+        
     }
   }
 `;
