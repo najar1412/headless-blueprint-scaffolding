@@ -240,7 +240,7 @@ export const PinnedSection = () => {
             <Grid.Col span={6}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
-                <Title c="white" size="1.9rem" maw={"20rem"}>
+                <Title c="white" size={"1.9rem"} maw={"20rem"}>
                   Meeting the needs of today and tomorrow
                 </Title>
                 <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"23rem"}>
