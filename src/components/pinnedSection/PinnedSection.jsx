@@ -223,7 +223,7 @@ export const PinnedSection = () => {
             alignItems: "center",
           }}
         >
-          <NexusShape ref={shapeSvgRef} />
+          <NexusShape ref={shapeSvgRef} className={styles.hidden} />
         </div>
         <Container
           className={styles["pinned-section"]}
@@ -239,7 +239,7 @@ export const PinnedSection = () => {
               transform: "translateY(-50%)",
             }}
           >
-            <Grid.Col span={6}>
+            <Grid.Col span={{ base: 12, md: 6 }}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
                 <Title c="white" size={"2.3rem"} maw={"25rem"}>
@@ -252,7 +252,7 @@ export const PinnedSection = () => {
                 </Text>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={6}></Grid.Col>
+            <Grid.Col span={{ base: 0, md: 6 }}></Grid.Col>
           </Grid>
         </Container>
         <Container

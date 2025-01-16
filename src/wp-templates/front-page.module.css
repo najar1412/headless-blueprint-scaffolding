@@ -17,6 +17,12 @@
 }
 .section-start {
 }
+.hidden {
+  opacity: 0!important;
+  @media (min-width: $mantine-breakpoint-xl) {
+    opacity: 1;
+  }
+}
 .section-content {
   position: relative;
   max-width: 1440px;

@@ -14,6 +14,7 @@ import {
   Space,
   List,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -351,6 +352,7 @@ export default function Component(props) {
             </Stack>
           </Container>
         </Container>
+
         <Container
           id="who-we-are"
           component={"section"}
@@ -422,27 +424,17 @@ export default function Component(props) {
                   width: "100%",
                 }}
               >
-                <Grid.Col span={6}></Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 0, md: 6 }}></Grid.Col>
+                <Grid.Col span={{ base: 12, md: 6 }}>
                   <Stack>
                     <Title c="white" size="2.3rem" maw={"25rem"}>
                       A strong foundation built in science
                     </Title>
-                    <Text
-                      c="white"
-                      size={"1.1rem"}
-                      lh={"1.5rem"}
-                      maw={"25rem"}
-                    >
+                    <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"25rem"}>
                       We noticed there was a blank spot in medical
                       communications around the value narrative.
                     </Text>
-                    <Text
-                      c="white"
-                      size={"1.1rem"}
-                      lh={"1.5rem"}
-                      maw={"25rem"}
-                    >
+                    <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"25rem"}>
                       Joining with market access leaders, we sought to bring
                       together a curated group of people to meet the needs of
                       the evolving market access landscape.
@@ -464,8 +456,8 @@ export default function Component(props) {
                   width: "100%",
                 }}
               >
-                <Grid.Col span={6}></Grid.Col>
-                <Grid.Col span={6}>
+                <Grid.Col span={{ base: 0, md: 6 }}></Grid.Col>
+                <Grid.Col span={{ base: 12, md: 6 }}>
                   <Stack>
                     <Title c="white" size="2.3rem" maw={"25rem"}>
                       Ability to address all stakeholder types
