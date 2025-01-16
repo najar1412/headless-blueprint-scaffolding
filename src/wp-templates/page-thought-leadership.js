@@ -35,13 +35,15 @@ export default function PageThoughtLeadership(props) {
         maw={"unset"}
         w="100%"
         p={0}
+        px={"4rem"}
         className={`main`}
       >
         <Container
           component={"section"}
           className={`${styles.container}`}
           pt={"4rem"}
-          pb={"0"}
+          pb={0}
+          px={0}
           w="100%"
           maw={"1440px!important"}
         >
