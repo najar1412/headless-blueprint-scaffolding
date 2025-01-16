@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 import { gql } from "@apollo/client";
 import { Title, Container, Divider, Stack, Group } from "@mantine/core";
 import gsap from "gsap";
@@ -47,22 +49,50 @@ export default function PageThoughtLeadership(props) {
           w="100%"
           maw={"1440px!important"}
         >
-          <Stack my="5rem">
+          <Stack mt="5rem" mb="1.5rem">
             <Title size="3rem" mb="1rem">
               Thought Leadership
             </Title>
             <Group justify="space-between">
               <Eyebrow label={"featured"} variant={3} />
             </Group>
-            <Container p={0} maw={"100%"} m={0}>
-              <FeatureCarousel
-                items={publications.nodes.filter((publication) =>
-                  publication.publicationMeta.postType.includes("featured")
-                )}
-              />
-            </Container>
           </Stack>
         </Container>
+      </Container>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr minmax(20px, 1440px) 1fr",
+          gap: " 0px 0px",
+          gridTemplateAreas: ". . .",
+          marginBottom: "4rem",
+        }}
+      >
+        <div></div>
+        <div
+          style={{
+            gridColumnStart: 2,
+            gridColumnEnd: 4,
+          }}
+        >
+          <FeatureCarousel
+            items={publications.nodes.filter((publication) =>
+              publication.publicationMeta.postType.includes("featured")
+            )}
+          />
+        </div>
+        <div></div>
+      </div>
+
+      <Container
+        component={"main"}
+        maw={"unset"}
+        w="100%"
+        p={0}
+        px={"4rem"}
+        className={`main`}
+      >
         <Container
           component={"section"}
           pt={"0"}
