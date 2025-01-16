@@ -74,11 +74,11 @@ export const PinnedSection = () => {
           end: () => `bottom+=${window.innerHeight * 2} top`,
           scrub: true,
           toggleActions: "play reverse play reverse",
-          markers: {
+          /* markers: {
             startColor: "red",
             endColor: "red",
             fontSize: "16px",
-          },
+          }, */
           invalidateOnRefresh: true,
         },
       });
@@ -242,10 +242,10 @@ export const PinnedSection = () => {
             <Grid.Col span={6}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
-                <Title c="white" size={"1.9rem"} maw={"20rem"}>
+                <Title c="white" size={"2.3rem"} maw={"25rem"}>
                   Meeting the needs of today and tomorrow
                 </Title>
-                <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"23rem"}>
+                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"25rem"}>
                   With the growing complexity of the healthcare system and a
                   shift toward value-based care, there is increasing pressure to
                   demonstrate the impact of a product in more innovative ways.
@@ -276,11 +276,11 @@ export const PinnedSection = () => {
                 <Title c="white" size="1.9rem" maw={"20rem"}>
                   A strong foundation built in science
                 </Title>
-                <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"23rem"}>
+                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"23rem"}>
                   We noticed there was a blank spot in medical communications
                   around the value narrative.
                 </Text>
-                <Text c="white" size={"0.96rem"} lh={"1.5rem"} maw={"24rem"}>
+                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"24rem"}>
                   Joining with market access leaders, we sought to bring
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
@@ -312,7 +312,7 @@ export const PinnedSection = () => {
                 </Title>
                 <Group wrap="no-wrap" gap={"4rem"}>
                   <div>
-                    <List c="white" fs={"0.96rem"}>
+                    <List c="white" fs={"1.1rem"}>
                       <List.Item>Payers</List.Item>
                       <List.Item>Employers</List.Item>
                       <List.Item>Physicians</List.Item>
@@ -325,7 +325,7 @@ export const PinnedSection = () => {
                     </List>
                   </div>
                   <div>
-                    <List c="white" fs={"0.96rem"}>
+                    <List c="white" fs={"1.1rem"}>
                       <List.Item>Hospitals</List.Item>
                       <List.Item>IDNs</List.Item>
                       <List.Item>Specialty</List.Item>

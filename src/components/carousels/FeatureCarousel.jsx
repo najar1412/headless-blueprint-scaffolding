@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Group, Image, Container } from "@mantine/core";
+import { Group, Image } from "@mantine/core";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { PostCard } from "../PostCard";

@@ -24,7 +24,7 @@ export const Landing = () => {
           value: 0.0,
         },
         u_color_lime: {
-          value: new Color("rgb(188, 220, 73)"),
+          value: new Color("rgb(235, 235, 235)"),
         },
       }),
       []
@@ -59,8 +59,8 @@ export const Landing = () => {
       orthographic
       camera={{
         rotation: [MathUtils.degToRad(60), 0, MathUtils.degToRad(-10)],
-        position: [10, 1, 8],
-        zoom: 50,
+        position: [20, 50, 50],
+        zoom: 25,
       }}
     >
       <Blob />

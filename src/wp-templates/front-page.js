@@ -13,7 +13,6 @@ import {
   Group,
   Space,
   List,
-  Flex,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -362,6 +361,7 @@ export default function Component(props) {
           className={`${styles.section}`}
         >
           <Container
+            maw={"1440px"}
             style={{
               position: "absolute",
               zIndex: 99999,
@@ -370,6 +370,7 @@ export default function Component(props) {
               height: "300vh",
               left: "50%",
               transform: "translateX(-50%)",
+              overflowX: "hidden",
             }}
           >
             <Container maw={"unset"} w="100%" h={"100vh"}>
@@ -386,7 +387,7 @@ export default function Component(props) {
                     </Title>
                     <Text
                       c="white"
-                      size={"0.96rem"}
+                      size={"1.1rem"}
                       lh={"1.5rem"}
                       maw={"23rem"}
                     >
@@ -395,7 +396,7 @@ export default function Component(props) {
                     </Text>
                     <Text
                       c="white"
-                      size={"0.96rem"}
+                      size={"1.1rem"}
                       lh={"1.5rem"}
                       maw={"24rem"}
                     >
@@ -413,8 +414,10 @@ export default function Component(props) {
               w="100%"
               h={"100vh"}
               style={{ display: "flex", alignItems: "center" }}
+              p={0}
             >
               <Grid
+                gutter={"10rem"}
                 style={{
                   width: "100%",
                 }}
@@ -422,23 +425,23 @@ export default function Component(props) {
                 <Grid.Col span={6}></Grid.Col>
                 <Grid.Col span={6}>
                   <Stack>
-                    <Title c="white" size="1.9rem" maw={"20rem"}>
-                      A strong foundation built in science2
+                    <Title c="white" size="2.3rem" maw={"25rem"}>
+                      A strong foundation built in science
                     </Title>
                     <Text
                       c="white"
-                      size={"0.96rem"}
+                      size={"1.1rem"}
                       lh={"1.5rem"}
-                      maw={"23rem"}
+                      maw={"25rem"}
                     >
                       We noticed there was a blank spot in medical
                       communications around the value narrative.
                     </Text>
                     <Text
                       c="white"
-                      size={"0.96rem"}
+                      size={"1.1rem"}
                       lh={"1.5rem"}
-                      maw={"24rem"}
+                      maw={"25rem"}
                     >
                       Joining with market access leaders, we sought to bring
                       together a curated group of people to meet the needs of
@@ -456,6 +459,7 @@ export default function Component(props) {
               style={{ display: "flex", alignItems: "center" }}
             >
               <Grid
+                gutter={"10rem"}
                 style={{
                   width: "100%",
                 }}
@@ -463,12 +467,12 @@ export default function Component(props) {
                 <Grid.Col span={6}></Grid.Col>
                 <Grid.Col span={6}>
                   <Stack>
-                    <Title c="white" size="1.9rem" maw={"20rem"}>
+                    <Title c="white" size="2.3rem" maw={"25rem"}>
                       Ability to address all stakeholder types
                     </Title>
-                    <Group wrap="no-wrap" gap={"4rem"}>
+                    <Group wrap="no-wrap" gap={"6rem"}>
                       <div>
-                        <List c="white" fs={"0.96rem"}>
+                        <List c="white" fs={"1.1rem"}>
                           <List.Item>Payers</List.Item>
                           <List.Item>Employers</List.Item>
                           <List.Item>Physicians</List.Item>
@@ -481,7 +485,7 @@ export default function Component(props) {
                         </List>
                       </div>
                       <div>
-                        <List c="white" fs={"0.96rem"}>
+                        <List c="white" fs={"1.1rem"}>
                           <List.Item>Hospitals</List.Item>
                           <List.Item>IDNs</List.Item>
                           <List.Item>Specialty</List.Item>
@@ -510,6 +514,7 @@ export default function Component(props) {
             <PinnedSection />
           </Container>
         </Container>
+
         <Container
           id="the-nexus-advantage"
           component={"section"}
@@ -616,6 +621,7 @@ export default function Component(props) {
             </Grid>
           </Container>
         </Container>
+
         <Container
           id="thought-leadership"
           component={"section"}

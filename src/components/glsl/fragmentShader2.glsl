@@ -12,7 +12,7 @@ varying vec3 vNormalW;
 void main() {
   float distort = 4.0 * vDisplacement * u_intensity;
 
-  vec3 colorA = vec3(0.94,0.94,0.94);
+  vec3 colorA = vec3(1.0,1.0,1.0);
   vec3 colorDisortion = vec3(abs(colorA.xy - 0.6) * 2.0 * (0.5 - distort), 1.0);
 
   float fresnelTerm = (dot(vPositionW, colorDisortion) ); 
