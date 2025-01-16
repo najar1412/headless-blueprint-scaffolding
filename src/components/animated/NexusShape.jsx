@@ -8,7 +8,7 @@ export const NexusShape = forwardRef(function (props, ref) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 548 552.17"
       ref={ref}
-      style={{ width: "500px", height: "500px" }}
+      style={{ width: "500px", height: "500px", transform: "scale(1.2)" }}
       /* {...props} */
     >
       <defs>

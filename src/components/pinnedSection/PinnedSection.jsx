@@ -71,14 +71,14 @@ export const PinnedSection = () => {
         scrollTrigger: {
           trigger: container.current,
           start: () => `top bottom`,
-          end: () => `bottom+=${window.innerHeight} top`,
+          end: () => `bottom+=${window.innerHeight * 2} top`,
           scrub: true,
           toggleActions: "play reverse play reverse",
-          /* markers: {
+          markers: {
             startColor: "red",
             endColor: "red",
             fontSize: "16px",
-          }, */
+          },
           invalidateOnRefresh: true,
         },
       });
@@ -94,6 +94,7 @@ export const PinnedSection = () => {
         .to(
           [allCircles, textEvidence, textScience, textValue, smallCircles],
           {
+            duration: 0.2,
             opacity: 0,
             ease: "power1.inOut",
           },
@@ -110,6 +111,7 @@ export const PinnedSection = () => {
         .to(
           [logo, text, allPills],
           {
+            duration: 0.2,
             opacity: 1,
             ease: "power1.inOut",
           },
@@ -176,7 +178,7 @@ export const PinnedSection = () => {
             trigger: block,
             start: () => `top+=${window.innerHeight * i} bottom`,
             end: () =>
-              `bottom+=${i === 2 ? window.innerHeight * 3 : window.innerHeight * i} top`,
+              `bottom+=${window.innerHeight + (window.innerHeight / 4) * i} top+=75%`,
             toggleActions: "play reverse play reverse",
             invalidateOnRefresh: true,
             /* markers: {
@@ -190,7 +192,7 @@ export const PinnedSection = () => {
         });
 
         tl.to(block, {
-          duration: 0.1,
+          duration: 0.2,
           opacity: 1,
         });
       });
@@ -258,6 +260,7 @@ export const PinnedSection = () => {
           maw={"unset"}
           w="100%"
           h={"100%"}
+          opacity={0}
         >
           <Grid
             style={{
@@ -269,7 +272,7 @@ export const PinnedSection = () => {
           >
             <Grid.Col span={6}></Grid.Col>
             <Grid.Col span={6}>
-              <Stack>
+              {/* <Stack>
                 <Title c="white" size="1.9rem" maw={"20rem"}>
                   A strong foundation built in science
                 </Title>
@@ -282,7 +285,7 @@ export const PinnedSection = () => {
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
                 </Text>
-              </Stack>
+              </Stack> */}
             </Grid.Col>
           </Grid>
         </Container>
@@ -291,6 +294,7 @@ export const PinnedSection = () => {
           maw={"unset"}
           w="100%"
           h={"100%"}
+          opacity={0}
         >
           <Grid
             style={{
@@ -302,7 +306,7 @@ export const PinnedSection = () => {
           >
             <Grid.Col span={6}></Grid.Col>
             <Grid.Col span={6}>
-              <Stack>
+              {/* <Stack>
                 <Title c="white" size="1.9rem" maw={"20rem"}>
                   Ability to address all stakeholder types
                 </Title>
@@ -334,7 +338,7 @@ export const PinnedSection = () => {
                     </List>
                   </div>
                 </Group>
-              </Stack>
+              </Stack> */}
             </Grid.Col>
           </Grid>
         </Container>

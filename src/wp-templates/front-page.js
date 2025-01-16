@@ -1,5 +1,5 @@
 // TODO: instead of returning all posts and filtering, just query for the first/latest of types featured, journal, announcement
-
+// TODO: clean up pinned section
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
@@ -12,6 +12,8 @@ import {
   Grid,
   Group,
   Space,
+  List,
+  Flex,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -357,9 +359,156 @@ export default function Component(props) {
           maw={"unset"}
           mih={"100vh"}
           bg={"var(--mantine-color-brand-0)"}
-          className={`${styles.section} ${styles["section-start"]} ${styles.black}`}
+          className={`${styles.section}`}
         >
-          <PinnedSection />
+          <Container
+            style={{
+              position: "absolute",
+              zIndex: 99999,
+              bg: "red",
+              width: "100%",
+              height: "300vh",
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+          >
+            <Container maw={"unset"} w="100%" h={"100vh"}>
+              <Grid
+                style={{
+                  width: "100%",
+                }}
+              >
+                <Grid.Col span={6}></Grid.Col>
+                <Grid.Col span={6}>
+                  {/* <Stack>
+                    <Title c="white" size="1.9rem" maw={"20rem"}>
+                      A strong foundation built in science1
+                    </Title>
+                    <Text
+                      c="white"
+                      size={"0.96rem"}
+                      lh={"1.5rem"}
+                      maw={"23rem"}
+                    >
+                      We noticed there was a blank spot in medical
+                      communications around the value narrative.
+                    </Text>
+                    <Text
+                      c="white"
+                      size={"0.96rem"}
+                      lh={"1.5rem"}
+                      maw={"24rem"}
+                    >
+                      Joining with market access leaders, we sought to bring
+                      together a curated group of people to meet the needs of
+                      the evolving market access landscape.
+                    </Text>
+                  </Stack> */}
+                </Grid.Col>
+              </Grid>
+            </Container>
+
+            <Container
+              maw={"unset"}
+              w="100%"
+              h={"100vh"}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <Grid
+                style={{
+                  width: "100%",
+                }}
+              >
+                <Grid.Col span={6}></Grid.Col>
+                <Grid.Col span={6}>
+                  <Stack>
+                    <Title c="white" size="1.9rem" maw={"20rem"}>
+                      A strong foundation built in science2
+                    </Title>
+                    <Text
+                      c="white"
+                      size={"0.96rem"}
+                      lh={"1.5rem"}
+                      maw={"23rem"}
+                    >
+                      We noticed there was a blank spot in medical
+                      communications around the value narrative.
+                    </Text>
+                    <Text
+                      c="white"
+                      size={"0.96rem"}
+                      lh={"1.5rem"}
+                      maw={"24rem"}
+                    >
+                      Joining with market access leaders, we sought to bring
+                      together a curated group of people to meet the needs of
+                      the evolving market access landscape.
+                    </Text>
+                  </Stack>
+                </Grid.Col>
+              </Grid>
+            </Container>
+
+            <Container
+              maw={"unset"}
+              w="100%"
+              h={"100vh"}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <Grid
+                style={{
+                  width: "100%",
+                }}
+              >
+                <Grid.Col span={6}></Grid.Col>
+                <Grid.Col span={6}>
+                  <Stack>
+                    <Title c="white" size="1.9rem" maw={"20rem"}>
+                      Ability to address all stakeholder types
+                    </Title>
+                    <Group wrap="no-wrap" gap={"4rem"}>
+                      <div>
+                        <List c="white" fs={"0.96rem"}>
+                          <List.Item>Payers</List.Item>
+                          <List.Item>Employers</List.Item>
+                          <List.Item>Physicians</List.Item>
+                          <List.Item>Pharmacies</List.Item>
+                          <List.Item>Patients</List.Item>
+                          <List.Item>Caregivers</List.Item>
+                          <List.Item>Hubs</List.Item>
+                          <List.Item>Office Staff</List.Item>
+                          <List.Item>GPOs</List.Item>
+                        </List>
+                      </div>
+                      <div>
+                        <List c="white" fs={"0.96rem"}>
+                          <List.Item>Hospitals</List.Item>
+                          <List.Item>IDNs</List.Item>
+                          <List.Item>Specialty</List.Item>
+                          <List.Item>Community Pharmacies</List.Item>
+                          <List.Item>Physician Assistants</List.Item>
+                          <List.Item>Distributors & 3PLs</List.Item>
+                          <List.Item>Infusion Centers</List.Item>
+                          <List.Item>Sites of Care</List.Item>
+                          <List.Item>Nurse Practitioners</List.Item>
+                        </List>
+                      </div>
+                    </Group>
+                  </Stack>
+                </Grid.Col>
+              </Grid>
+            </Container>
+          </Container>
+
+          <Container
+            w="100%"
+            maw={"unset"}
+            mih={"100vh"}
+            bg={"transparent"}
+            className={`${styles["section-start"]} ${styles.black}`}
+          >
+            <PinnedSection />
+          </Container>
         </Container>
         <Container
           id="the-nexus-advantage"
