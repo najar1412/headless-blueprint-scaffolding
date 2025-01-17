@@ -71,7 +71,7 @@ export default function Footer(props) {
             <Title order={3} size="1.25rem" lh="1.5rem">
               Subscribe to our Newsletter
             </Title>
-            <Text maw={"18rem"} fw="500" size="0.75rem" lh={"1.25rem"}>
+            <Text maw={"18rem"} fw="500" size="0.78rem" lh={"1.25rem"}>
               Join our email list to receive news and updates from Nexus Health
               Group.
             </Text>
