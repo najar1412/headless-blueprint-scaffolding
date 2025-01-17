@@ -18,7 +18,7 @@
 .section-start {
 }
 .hidden {
-  opacity: 0!important;
+  opacity: 0 !important;
   @media (min-width: $mantine-breakpoint-xl) {
     opacity: 1;
   }
@@ -40,6 +40,13 @@
 .black {
 }
 .numbers {
+}
+.fadeIn {
+  transition: 0.3s all;
+  opacity: 0;
+}
+.enable {
+  opacity: 1;
 }
 .title {
   font-size: 2rem;

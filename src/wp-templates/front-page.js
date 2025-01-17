@@ -75,6 +75,7 @@ export default function Component(props) {
 
     // sectional animation
     const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
+    const sectionsFades = gsap.utils.toArray('[class*="front-page_fadeIn"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
 
     const calcBottom = () => {
@@ -114,6 +115,74 @@ export default function Component(props) {
             startColor: "red",
             endColor: "red",
           }, */
+          id: i,
+        },
+      });
+
+      const fadeStart = (index, section) => {
+        const fullHeight = vh(100);
+        if (index > 3) {
+          return `+=${section.offsetHeight + fullHeight}`;
+        }
+        return `top`;
+      };
+
+      const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
+      gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
+
+      gsap.to(fadeUp, {
+        opacity: 1,
+        translateY: 0,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: section,
+          start: () => `${fadeStart(i, section)} top+=50%`,
+          end: () => `${calcBottom()}`,
+          toggleActions: "play none none none",
+          /* markers: {
+            indent: 150 * i,
+            startColor: "red",
+            endColor: "red",
+          },
+          id: i, */
+        },
+      });
+
+      // animate numbers
+      // TODO: imp in scrolltrigger
+      const numberCount = gsap.utils.toArray(
+        section.querySelectorAll('[class*="front-page_numbers"]')
+      );
+
+      gsap.from(numberCount, {
+        textContent: 0, // start from 0
+        duration: 5,
+        ease: "none",
+        snap: { textContent: 1 }, // increment by 1,
+        scrollTrigger: {
+          trigger: section,
+          start: () => `top${calcTop(i, section)} top`,
+          end: () => `${calcBottom()}`,
+        },
+      });
+    });
+
+    sectionsFades.forEach((section, i) => {
+      // gsap.set(section, { opacity: 0 });
+      gsap.to(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: () => `top+=50% bottom-=20%`,
+          end: () => `bottom-=50% top+=20%`,
+          toggleActions: "play none reverse none",
+          invalidateOnRefresh: true,
+          /* onToggle: (self) => self.isActive && setActive(section), */
+          toggleClass: styles.enable,
+          markers: {
+            indent: 150 * i,
+            startColor: "red",
+            endColor: "red",
+          },
           id: i,
         },
       });
@@ -415,6 +484,7 @@ export default function Component(props) {
               maw={"unset"}
               w="100%"
               h={"100vh"}
+              className={`${styles.fadeIn}`}
               style={{ display: "flex", alignItems: "center" }}
               p={0}
             >
@@ -448,6 +518,7 @@ export default function Component(props) {
               maw={"unset"}
               w="100%"
               h={"100vh"}
+              className={`${styles.fadeIn}`}
               style={{ display: "flex", alignItems: "center" }}
             >
               <Grid
