@@ -163,6 +163,7 @@ export default function Component(props) {
           trigger: section,
           start: () => `top${calcTop(i, section)} top`,
           end: () => `${calcBottom()}`,
+          /* markers: true, */
         },
       });
     });
@@ -178,11 +179,11 @@ export default function Component(props) {
           invalidateOnRefresh: true,
           /* onToggle: (self) => self.isActive && setActive(section), */
           toggleClass: styles.enable,
-          markers: {
+          /* markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          },
+          }, */
           id: i,
         },
       });
