@@ -14,7 +14,6 @@ import {
   Space,
   List,
 } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -156,7 +155,7 @@ export default function Component(props) {
 
       gsap.from(numberCount, {
         textContent: 0, // start from 0
-        duration: 5,
+        duration: 3,
         ease: "none",
         snap: { textContent: 1 }, // increment by 1,
         scrollTrigger: {
