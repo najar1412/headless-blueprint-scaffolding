@@ -520,8 +520,6 @@ export default function Component(props) {
             maw={"1440px"}
             style={{
               position: "absolute",
-              zIndex: 99999,
-              bg: "red",
               width: "100%",
               height: "300vh",
               left: "50%",
