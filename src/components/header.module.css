@@ -5,7 +5,7 @@
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.03));
   padding-left: 1rem;
   padding-right: 1rem;
-  z-index: 1000;
+  z-index: 99999999;
   @media (min-width: $mantine-breakpoint-md) {
     padding-left: 4rem;
     padding-right: 4rem;
