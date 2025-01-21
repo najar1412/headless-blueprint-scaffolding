@@ -1,14 +1,6 @@
 import { useRef } from "react";
 
-import {
-  Container,
-  Grid,
-  Stack,
-  Title,
-  Text,
-  Group,
-  List,
-} from "@mantine/core";
+import { Container, Grid, Stack, Title, Text } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -271,22 +263,7 @@ export const PinnedSection = () => {
             }}
           >
             <Grid.Col span={6}></Grid.Col>
-            <Grid.Col span={6}>
-              {/* <Stack>
-                <Title c="white" size="1.9rem" maw={"20rem"}>
-                  A strong foundation built in science
-                </Title>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"23rem"}>
-                  We noticed there was a blank spot in medical communications
-                  around the value narrative.
-                </Text>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"24rem"}>
-                  Joining with market access leaders, we sought to bring
-                  together a curated group of people to meet the needs of the
-                  evolving market access landscape.
-                </Text>
-              </Stack> */}
-            </Grid.Col>
+            <Grid.Col span={6}></Grid.Col>
           </Grid>
         </Container>
         <Container
@@ -305,41 +282,7 @@ export const PinnedSection = () => {
             }}
           >
             <Grid.Col span={6}></Grid.Col>
-            <Grid.Col span={6}>
-              {/* <Stack>
-                <Title c="white" size="1.9rem" maw={"20rem"}>
-                  Ability to address all stakeholder types
-                </Title>
-                <Group wrap="no-wrap" gap={"4rem"}>
-                  <div>
-                    <List c="white" fs={"1.1rem"}>
-                      <List.Item>Payers</List.Item>
-                      <List.Item>Employers</List.Item>
-                      <List.Item>Physicians</List.Item>
-                      <List.Item>Pharmacies</List.Item>
-                      <List.Item>Patients</List.Item>
-                      <List.Item>Caregivers</List.Item>
-                      <List.Item>Hubs</List.Item>
-                      <List.Item>Office Staff</List.Item>
-                      <List.Item>GPOs</List.Item>
-                    </List>
-                  </div>
-                  <div>
-                    <List c="white" fs={"1.1rem"}>
-                      <List.Item>Hospitals</List.Item>
-                      <List.Item>IDNs</List.Item>
-                      <List.Item>Specialty</List.Item>
-                      <List.Item>Community Pharmacies</List.Item>
-                      <List.Item>Physician Assistants</List.Item>
-                      <List.Item>Distributors & 3PLs</List.Item>
-                      <List.Item>Infusion Centers</List.Item>
-                      <List.Item>Sites of Care</List.Item>
-                      <List.Item>Nurse Practitioners</List.Item>
-                    </List>
-                  </div>
-                </Group>
-              </Stack> */}
-            </Grid.Col>
+            <Grid.Col span={6}></Grid.Col>
           </Grid>
         </Container>
       </Container>

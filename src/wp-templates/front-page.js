@@ -86,11 +86,11 @@ export default function Component(props) {
           toggleActions: "play none reverse none",
           invalidateOnRefresh: true,
           onToggle: (self) => self.isActive && setActive(section),
-          /* markers: {
+          markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          }, */
+          },
           id: i,
         },
       });
@@ -116,10 +116,10 @@ export default function Component(props) {
       });
 
       // thought leadership section
-      const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
-      gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
+      const cardElements = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
+      gsap.set(cardElements, { opacity: 0, translateY: 100, ease: "power1.inOut" });
 
-      gsap.to(fadeUp, {
+      gsap.to(cardElements, {
         opacity: 1,
         translateY: 0,
         stagger: 0.15,
@@ -130,11 +130,11 @@ export default function Component(props) {
           end: () =>
             `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
           toggleActions: "play none none none",
-          markers: {
+          /* markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          },
+          }, */
           id: i,
         },
       });
@@ -187,11 +187,11 @@ export default function Component(props) {
           start: () => `${fadeStart(i, section)} top+=50%`,
           end: () => `+=bottom`,
           toggleActions: "play none none none",
-          markers: {
+          /* markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          },
+          }, */
           id: i,
         },
       });
