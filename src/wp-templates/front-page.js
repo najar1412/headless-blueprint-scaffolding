@@ -476,13 +476,13 @@ export default function Component(props) {
               width: "100%",
             }}
           >
-            <Stack gap={"6rem"}>
+            <Stack gap={"4rem"}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
-                <Title c="white" size={"2.3rem"}>
+                <Title c="white" size="2rem" fw="400" mb="1.5rem">
                   Meeting the needs of today and tomorrow
                 </Title>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"}>
+                <Text c="white" size={"1rem"} lh={"1.5rem"}>
                   With the growing complexity of the healthcare system and a
                   shift toward value-based care, there is increasing pressure to
                   demonstrate the impact of a product in more innovative ways.
@@ -490,14 +490,14 @@ export default function Component(props) {
               </Stack>
 
               <Stack>
-                <Title c="white" size="2.3rem">
+                <Title c="white" size="2rem" fw="400" mb="1.5rem">
                   A strong foundation built in science
                 </Title>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"}>
+                <Text c="white" size={"1rem"} lh={"1.5rem"}>
                   We noticed there was a blank spot in medical communications
                   around the value narrative.
                 </Text>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"}>
+                <Text c="white" size={"1rem"} lh={"1.5rem"}>
                   Joining with market access leaders, we sought to bring
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
@@ -505,12 +505,12 @@ export default function Component(props) {
               </Stack>
 
               <Stack>
-                <Title c="white" size="2.3rem">
+                <Title c="white" size="2rem" fw="400" mb="1.5rem">
                   Ability to address all stakeholder types
                 </Title>
                 <Group wrap="no-wrap" gap={"3rem"}>
                   <div>
-                    <List c="white" fs={"1.1rem"}>
+                    <List c="white" size="1rem" spacing='xs'>
                       <List.Item>Payers</List.Item>
                       <List.Item>Employers</List.Item>
                       <List.Item>Physicians</List.Item>
@@ -523,7 +523,7 @@ export default function Component(props) {
                     </List>
                   </div>
                   <div>
-                    <List c="white" fs={"1.1rem"}>
+                    <List c="white" size="1rem" spacing='xs'>
                       <List.Item>Hospitals</List.Item>
                       <List.Item>IDNs</List.Item>
                       <List.Item>Specialty</List.Item>
