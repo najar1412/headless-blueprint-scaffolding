@@ -11,7 +11,6 @@ import {
   Stack,
   Group,
 } from "@mantine/core";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 
@@ -55,14 +54,14 @@ export default function PagePublication(props) {
       />
 
       <Container
-        component={"main"}
+        /* component={"main"} */
         className={`${styles.container}`}
         maw={"unset"}
         w="100%"
         pt={"8rem"}
         pb={0}
       >
-        <Container maw={"1440px!important"} w="100%">
+        <Container maw={"1440px!important"} w="100%" p={0} mx={'auto'}>
           <Link href="/thought-leadership">
             <Group mb="md">
               <Image
@@ -144,6 +143,7 @@ export default function PagePublication(props) {
             </Grid.Col>
           </Grid>
         </Container>
+
         <Container maw={"1440px!important"} w="100%" p={0} py={"5rem"}>
           <Flex justify={"space-between"}>
             <UnstyledButton>

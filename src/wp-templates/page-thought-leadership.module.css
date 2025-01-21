@@ -7,6 +7,10 @@
 
 .title {
   margin: 0 1rem;
+  z-index: 1000;
+  @media (min-width: $mantine-breakpoint-md) {
+    margin: 0 4rem;
+  }
 }
 .carousel-grid {
   display: grid;
@@ -17,7 +21,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   @media (min-width: $mantine-breakpoint-md) {
-    padding-left: 1rem;
+    padding-left: 4rem;
     padding-right: 0;
   }
 }

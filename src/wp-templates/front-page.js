@@ -58,9 +58,10 @@ export default function Component(props) {
   );
 
   useGSAP(() => {
+    const mm = gsap.matchMedia();
+
     // helpers
     const setActive = (section) => {
-      console.log(section);
       headerLinks.forEach((link) => {
         if (`${link.id}`.endsWith(section.id)) {
           link.children[0].classList.add(headerStyles["bar-link-show"]);
@@ -75,70 +76,158 @@ export default function Component(props) {
     const sectionsFades = gsap.utils.toArray('[class*="front-page_fadeIn"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
 
-    sections.forEach((section, i) => {
-      gsap.to(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: () =>
-            `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
-          end: () =>
-            `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
-          toggleActions: "play none reverse none",
-          invalidateOnRefresh: true,
-          onToggle: (self) => self.isActive && setActive(section),
-          /* markers: {
-            indent: 150 * i,
-            startColor: "red",
-            endColor: "red",
-          }, */
-          id: i,
-        },
-      });
+    mm.add(
+      {
+        small: "(max-width: 62em)",
+        large: "(min-width: 62em)",
+      },
+      (ctx) => {
+        const { large, small } = ctx.conditions;
+        console.log(large);
+        if (large) {
+          sections.forEach((section, i) => {
+            gsap.to(section, {
+              scrollTrigger: {
+                trigger: section,
+                start: () =>
+                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                end: () =>
+                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                toggleActions: "play none reverse none",
+                invalidateOnRefresh: true,
+                onToggle: (self) => self.isActive && setActive(section),
+                /* markers: {
+                  indent: 150 * i,
+                  startColor: "red",
+                  endColor: "red",
+                }, */
+                id: i,
+              },
+            });
 
-      // the nexus advantage section
-      const numberCountElements = gsap.utils.toArray(
-        section.querySelectorAll('[class*="front-page_numbers"]')
-      );
+            // the nexus advantage section
+            const numberCountElements = gsap.utils.toArray(
+              section.querySelectorAll('[class*="front-page_numbers"]')
+            );
 
-      gsap.from(numberCountElements, {
-        textContent: 0,
-        duration: 3,
-        ease: "none",
-        snap: { textContent: 1 },
-        scrollTrigger: {
-          trigger: section,
-          start: () =>
-            `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
-          end: () =>
-            `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
-          /* markers: true, */
-        },
-      });
+            gsap.from(numberCountElements, {
+              textContent: 0,
+              duration: 3,
+              ease: "none",
+              snap: { textContent: 1 },
+              scrollTrigger: {
+                trigger: section,
+                start: () =>
+                  `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                end: () =>
+                  `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                /* markers: true, */
+              },
+            });
 
-      // thought leadership section
-      const cardElements = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
-      gsap.set(cardElements, { opacity: 0, translateY: 100, ease: "power1.inOut" });
+            // thought leadership section
+            const cardElements = gsap.utils.toArray(
+              section.querySelectorAll(".gsap-fade")
+            );
+            gsap.set(cardElements, {
+              opacity: large ? 0 : 1,
+              translateY: 100,
+              ease: "power1.inOut",
+            });
 
-      gsap.to(cardElements, {
-        opacity: 1,
-        translateY: 0,
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: section,
-          start: () =>
-            `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
-          end: () =>
-            `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
-          toggleActions: "play none none none",
-          /* markers: {
-            indent: 150 * i,
-            startColor: "red",
-            endColor: "red",
-          }, */
-          id: i,
-        },
-      });
-    });
+            gsap.to(cardElements, {
+              opacity: 1,
+              translateY: 0,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: section,
+                start: () =>
+                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                end: () =>
+                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                toggleActions: "play none none none",
+                /* markers: {
+                  indent: 150 * i,
+                  startColor: "red",
+                  endColor: "red",
+                }, */
+                id: i,
+              },
+            });
+          });
+        }
+        if (small) {
+          sections.forEach((section, i) => {
+            gsap.to(section, {
+              scrollTrigger: {
+                trigger: section,
+                start: () =>
+                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                end: () =>
+                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                toggleActions: "play none reverse none",
+                invalidateOnRefresh: true,
+                onToggle: (self) => self.isActive && setActive(section),
+                /* markers: {
+                  indent: 150 * i,
+                  startColor: "red",
+                  endColor: "red",
+                }, */
+                id: i,
+              },
+            });
+
+            // the nexus advantage section
+            const numberCountElements = gsap.utils.toArray(
+              section.querySelectorAll('[class*="front-page_numbers"]')
+            );
+
+            gsap.from(numberCountElements, {
+              textContent: 0,
+              duration: 3,
+              ease: "none",
+              snap: { textContent: 1 },
+              scrollTrigger: {
+                trigger: section,
+                start: () => `top bottom-=50%`,
+                end: () => `bottom top+=50%`,
+                /* markers: true, */
+              },
+            });
+
+            // thought leadership section
+            const cardElements = gsap.utils.toArray(
+              section.querySelectorAll(".gsap-fade")
+            );
+            gsap.set(cardElements, {
+              opacity: large ? 0 : 1,
+              translateY: 100,
+              ease: "power1.inOut",
+            });
+
+            gsap.to(cardElements, {
+              opacity: 1,
+              translateY: 0,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: section,
+                start: () =>
+                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                end: () =>
+                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                toggleActions: "play none none none",
+                /* markers: {
+                    indent: 150 * i,
+                    startColor: "red",
+                    endColor: "red",
+                  }, */
+                id: i,
+              },
+            });
+          });
+        }
+      }
+    );
 
     // pinned section
     gsap.to('[class*="front-page_section-content-trigger"]', {
@@ -239,6 +328,7 @@ export default function Component(props) {
             position: "relative",
             backgroundSize: "cover",
             display: "flex",
+            overflow: "hidden",
           }}
         >
           <Container

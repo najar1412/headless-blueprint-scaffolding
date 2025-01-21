@@ -6,7 +6,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   z-index: 1000;
-  @media (min-width: $mantine-breakpoint-sm) {
+  @media (min-width: $mantine-breakpoint-md) {
     padding-left: 4rem;
     padding-right: 4rem;
   }

@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
-import { Title, Container, Divider, Stack, Group } from "@mantine/core";
-import { useGSAP } from "@gsap/react";
+import { Title, Container, Divider, Stack } from "@mantine/core";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -19,39 +18,23 @@ export default function PageThoughtLeadership(props) {
     return <Loading />;
   }
 
-  useGSAP(() => {
-    // TODO: imp timelines for sectional animation
-    //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
-    // sectional animation
-  });
-
   return (
     <>
       <Header menuItems={primaryMenuItems.nodes} page={page} />
 
-      <Container
-        component={"main"}
-        maw={"unset"}
-        w="100%"
-        p={0}
-        className={styles.title}
-      >
+      <Container maw={"unset"} p={0} className={styles.title}>
         <Container
-          pt={"4rem"}
-          pb={0}
-          px={0}
+          pt={"8rem"}
+          pb={'1rem'}
+          pr={0}
+          pl="0.5rem"
           mx="auto"
-          w="100%"
-          maw={"1440px!important"}
+          style={{ maxWidth: "1440px" }}
         >
-          <Stack mt="5rem" mb="1.5rem">
-            <Title size="3rem" mb="1rem">
-              Thought Leadership
-            </Title>
-            <Group justify="space-between">
-              <Eyebrow label={"featured"} variant={3} />
-            </Group>
-          </Stack>
+          <Title size="3rem" mb="2rem" fw='600'>
+            Thought Leadership
+          </Title>
+          <Eyebrow label={"featured"} variant={3} />
         </Container>
       </Container>
 
@@ -72,13 +55,7 @@ export default function PageThoughtLeadership(props) {
         <div></div>
       </div>
 
-      <Container
-        component={"main"}
-        maw={"unset"}
-        w="100%"
-        p={0}
-        className={styles.main}
-      >
+      <Container maw={"unset"} w="100%" p={0} className={styles.main}>
         <Container
           component={"section"}
           pt={"0"}
