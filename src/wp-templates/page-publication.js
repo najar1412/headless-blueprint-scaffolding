@@ -56,7 +56,7 @@ export default function PagePublication(props) {
 
       <Container
         component={"main"}
-        className={`main ${styles.container}`}
+        className={`${styles.container}`}
         maw={"unset"}
         w="100%"
         pt={"8rem"}
@@ -108,13 +108,13 @@ export default function PagePublication(props) {
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 7 }}>
               <Stack>
-                <Text tt="uppercase" fw={"600"} size='sm'>
+                <Text tt="uppercase" fw={"600"} size="sm">
                   {formatDate(post.publicationMeta.date)}
                 </Text>
                 <Title order={1} lh={"2.5rem"}>
                   {post.title}
                 </Title>
-                <Text size='sm' tt="capitalize" fw={"600"}>
+                <Text size="sm" tt="capitalize" fw={"600"}>
                   by {post.publicationMeta.author}
                 </Text>
                 <Group hiddenFrom="lg" gap={"1.5rem"}>
@@ -137,10 +137,7 @@ export default function PagePublication(props) {
                 </Group>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: post.content.replaceAll(
-                      "<p>",
-                      '<p class="what">'
-                    ),
+                    __html: post.content.replaceAll("<p>", '<p class="what">'),
                   }}
                 />
               </Stack>

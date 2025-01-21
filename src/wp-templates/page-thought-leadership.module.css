@@ -1,3 +1,26 @@
+.main {
+  padding: 0 2rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    padding: 0 4rem;
+  }
+}
+
+.title {
+  margin: 0 1rem;
+}
+.carousel-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(20px, 1440px) 1fr;
+  gap: 0px 0px;
+  /* grid-template-areas: . . .; */
+  margin-bottom: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+}
 .container {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -7,14 +30,14 @@
   }
 }
 .post-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    @media (min-width: $mantine-breakpoint-sm) {
-      padding-left: 6rem;
-      padding-right: 6rem;
-    }
-    @media (min-width: $mantine-breakpoint-md) {
-        padding-left: 5rem;
-        padding-right: 5rem;
-      }
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: $mantine-breakpoint-sm) {
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
+  @media (min-width: $mantine-breakpoint-md) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}

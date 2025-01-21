@@ -139,12 +139,15 @@ export default function Header({ menuItems, page, frontPage }) {
           !frontPage ? styles["opaque-header"] : ""
         }`}
       >
-        <Group
-          w={"100%"}
-          maw={"1440px!important"}
-          h="100%"
-          justify="space-between"
-          m="auto"
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            maxWidth: "1440px",
+            margin: "0 auto",
+            alignItems: "center",
+            height: "100%",
+          }}
         >
           <Image
             onClick={() => {
@@ -170,7 +173,7 @@ export default function Header({ menuItems, page, frontPage }) {
               aria-label="Toggle navigation"
             />
           ) : (
-            <Group>
+            <Group ml="auto">
               {menuItems.map((item) => (
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
@@ -183,7 +186,7 @@ export default function Header({ menuItems, page, frontPage }) {
               </Link>
             </Group>
           )}
-        </Group>
+        </div>
       </Container>
       <MobileMenu
         opened={opened}

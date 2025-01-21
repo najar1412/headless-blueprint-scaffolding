@@ -1,8 +1,5 @@
-import { useEffect, useRef } from "react";
-
 import { gql } from "@apollo/client";
 import { Title, Container, Divider, Stack, Group } from "@mantine/core";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import Header from "../components/header";
@@ -37,15 +34,13 @@ export default function PageThoughtLeadership(props) {
         maw={"unset"}
         w="100%"
         p={0}
-        px={"4rem"}
-        className={`main`}
+        className={styles.title}
       >
         <Container
-          component={"section"}
-          className={`${styles.container}`}
           pt={"4rem"}
           pb={0}
           px={0}
+          mx="auto"
           w="100%"
           maw={"1440px!important"}
         >
@@ -60,15 +55,7 @@ export default function PageThoughtLeadership(props) {
         </Container>
       </Container>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr minmax(20px, 1440px) 1fr",
-          gap: " 0px 0px",
-          gridTemplateAreas: ". . .",
-          marginBottom: "4rem",
-        }}
-      >
+      <div className={styles["carousel-grid"]}>
         <div></div>
         <div
           style={{
@@ -90,8 +77,7 @@ export default function PageThoughtLeadership(props) {
         maw={"unset"}
         w="100%"
         p={0}
-        px={"4rem"}
-        className={`main`}
+        className={styles.main}
       >
         <Container
           component={"section"}
