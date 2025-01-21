@@ -58,10 +58,9 @@ export default function Component(props) {
   );
 
   useGSAP(() => {
-    // TODO: imp timelines for sectional animation
-    //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
-
+    // helpers
     const setActive = (section) => {
+      console.log(section);
       headerLinks.forEach((link) => {
         if (`${link.id}`.endsWith(section.id)) {
           link.children[0].classList.add(headerStyles["bar-link-show"]);
@@ -70,42 +69,20 @@ export default function Component(props) {
         }
       });
     };
-    const vh = (coef) => window.innerHeight * (coef / 100);
 
     // sectional animation
     const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
     const sectionsFades = gsap.utils.toArray('[class*="front-page_fadeIn"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
 
-    const calcBottom = () => {
-      return "+=bottom";
-    };
-
-    const calcTop = (index, section) => {
-      const offset = (section) => {
-        return section.offsetTop - section.offsetHeight * 2;
-      };
-      if (index < 3) {
-        return "+" + section.offsetHeight;
-      } else if (index === 2) {
-        if (absoluteHeight === 0) {
-          absoluteHeight = section.offsetTop;
-        }
-        const t = absoluteHeight * 4;
-        return "+=" + t;
-      } else {
-        return "+=" + offset(section);
-      }
-    };
-
-    let absoluteHeight = 0;
-
     sections.forEach((section, i) => {
       gsap.to(section, {
         scrollTrigger: {
           trigger: section,
-          start: () => `top${calcTop(i, section)} top`,
-          end: () => `${calcBottom()}`,
+          start: () =>
+            `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+          end: () =>
+            `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
           toggleActions: "play none reverse none",
           invalidateOnRefresh: true,
           onToggle: (self) => self.isActive && setActive(section),
@@ -118,119 +95,47 @@ export default function Component(props) {
         },
       });
 
-      const fadeStart = (index, section) => {
-        const fullHeight = vh(100);
-        if (index > 3) {
-          return `+=${section.offsetHeight + fullHeight}`;
-        }
-        return `top`;
-      };
-
-      const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
-      gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
-
-      gsap.to(fadeUp, {
-        opacity: 1,
-        translateY: 0,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: section,
-          start: () => `${fadeStart(i, section)} top+=50%`,
-          end: () => `${calcBottom()}`,
-          toggleActions: "play none none none",
-          /* markers: {
-            indent: 150 * i,
-            startColor: "red",
-            endColor: "red",
-          },
-          id: i, */
-        },
-      });
-
-      // animate numbers
-      // TODO: imp in scrolltrigger
-      const numberCount = gsap.utils.toArray(
+      // the nexus advantage section
+      const numberCountElements = gsap.utils.toArray(
         section.querySelectorAll('[class*="front-page_numbers"]')
       );
 
-      gsap.from(numberCount, {
-        textContent: 0, // start from 0
+      gsap.from(numberCountElements, {
+        textContent: 0,
         duration: 3,
         ease: "none",
-        snap: { textContent: 1 }, // increment by 1,
+        snap: { textContent: 1 },
         scrollTrigger: {
           trigger: section,
-          start: () => `top${calcTop(i, section)} top`,
-          end: () => `${calcBottom()}`,
+          start: () =>
+            `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+          end: () =>
+            `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
           /* markers: true, */
         },
       });
-    });
 
-    sectionsFades.forEach((section, i) => {
-      // gsap.set(section, { opacity: 0 });
-      gsap.to(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: () => `top+=50% bottom-=20%`,
-          end: () => `bottom-=50% top+=20%`,
-          toggleActions: "play none reverse none",
-          invalidateOnRefresh: true,
-          /* onToggle: (self) => self.isActive && setActive(section), */
-          toggleClass: styles.enable,
-          /* markers: {
-            indent: 150 * i,
-            startColor: "red",
-            endColor: "red",
-          }, */
-          id: i,
-        },
-      });
-
-      const fadeStart = (index, section) => {
-        const fullHeight = vh(100);
-        if (index > 3) {
-          return `+=${section.offsetHeight + fullHeight}`;
-        }
-        return `top`;
-      };
-
+      // thought leadership section
       const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
       gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
 
       gsap.to(fadeUp, {
         opacity: 1,
         translateY: 0,
-        stagger: 0.3,
+        stagger: 0.15,
         scrollTrigger: {
           trigger: section,
-          start: () => `${fadeStart(i, section)} top+=50%`,
-          end: () => `${calcBottom()}`,
+          start: () =>
+            `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+          end: () =>
+            `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
           toggleActions: "play none none none",
-          /* markers: {
+          markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
           },
-          id: i, */
-        },
-      });
-
-      // animate numbers
-      // TODO: imp in scrolltrigger
-      const numberCount = gsap.utils.toArray(
-        section.querySelectorAll('[class*="front-page_numbers"]')
-      );
-
-      gsap.from(numberCount, {
-        textContent: 0, // start from 0
-        duration: 5,
-        ease: "none",
-        snap: { textContent: 1 }, // increment by 1,
-        scrollTrigger: {
-          trigger: section,
-          start: () => `top${calcTop(i, section)} top`,
-          end: () => `${calcBottom()}`,
+          id: i,
         },
       });
     });
@@ -245,9 +150,51 @@ export default function Component(props) {
         toggleActions: "play none reverse none",
         invalidateOnRefresh: true,
         pin: true,
-        pinSpacer: false,
+        pinSpacer: true,
         /* markers: true, */
       },
+    });
+
+    // pinned section fades
+    sectionsFades.forEach((section, i) => {
+      gsap.to(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: () => `top+=50% bottom-=20%`,
+          end: () => `bottom-=50% top+=20%`,
+          scrub: true,
+          toggleClass: styles.enable,
+          id: i,
+        },
+      });
+
+      const fadeStart = (index, section) => {
+        if (index > 3) {
+          return `+=${section.offsetHeight + window.innerHeight}`;
+        }
+        return `top`;
+      };
+
+      const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
+      gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
+
+      gsap.to(fadeUp, {
+        opacity: 1,
+        translateY: 0,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: section,
+          start: () => `${fadeStart(i, section)} top+=50%`,
+          end: () => `+=bottom`,
+          toggleActions: "play none none none",
+          markers: {
+            indent: 150 * i,
+            startColor: "red",
+            endColor: "red",
+          },
+          id: i,
+        },
+      });
     });
 
     // on load
@@ -439,7 +386,7 @@ export default function Component(props) {
               width: "100%",
             }}
           >
-            <Stack gap={'6rem'}>
+            <Stack gap={"6rem"}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
                 <Title c="white" size={"2.3rem"}>
@@ -501,7 +448,6 @@ export default function Component(props) {
                 </Group>
               </Stack>
             </Stack>
-
           </Container>
         </Container>
 
