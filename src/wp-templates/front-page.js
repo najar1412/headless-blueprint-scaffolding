@@ -86,11 +86,11 @@ export default function Component(props) {
           toggleActions: "play none reverse none",
           invalidateOnRefresh: true,
           onToggle: (self) => self.isActive && setActive(section),
-          markers: {
+          /* markers: {
             indent: 150 * i,
             startColor: "red",
             endColor: "red",
-          },
+          }, */
           id: i,
         },
       });
