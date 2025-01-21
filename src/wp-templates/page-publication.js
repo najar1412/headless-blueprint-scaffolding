@@ -61,7 +61,7 @@ export default function PagePublication(props) {
         pt={"8rem"}
         pb={0}
       >
-        <Container maw={"1440px!important"} w="100%" p={0} mx={'auto'}>
+        <Container maw={"1440px!important"} w="100%" p={0} mx={"auto"}>
           <Link href="/thought-leadership">
             <Group mb="md">
               <Image
@@ -156,13 +156,13 @@ export default function PagePublication(props) {
                 <Text fw="500">Previous Post</Text>
               </Group>
             </UnstyledButton>
-            <Link href="/thought-leadership">
-              <UnstyledButton>
+            <UnstyledButton visibleFrom="sm">
+              <Link href="/thought-leadership">
                 <Group>
                   <Text fw="500">Back to All Posts</Text>
                 </Group>
-              </UnstyledButton>
-            </Link>
+              </Link>
+            </UnstyledButton>
             <UnstyledButton>
               <Group>
                 <Text fw="500">Next Post</Text>
@@ -174,6 +174,19 @@ export default function PagePublication(props) {
               </Group>
             </UnstyledButton>
           </Flex>
+          <UnstyledButton
+            hiddenFrom="sm"
+            mt='2rem'
+            mx="auto"
+            w="fit-content"
+            style={{ display: "flex" }}
+          >
+            <Link href="/thought-leadership">
+              <Text fw="500" ta={"center"}>
+                Back to All Posts
+              </Text>
+            </Link>
+          </UnstyledButton>
         </Container>
       </Container>
 
