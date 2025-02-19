@@ -17,7 +17,7 @@ export const QuoteCarousel = () => {
         slidesPerView={1}
         pagination={{ clickable: true, el: ".swiper-custom-pagination" }}
         autoplay={{
-          delay: 30000000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
       >
@@ -32,12 +32,15 @@ export const QuoteCarousel = () => {
             </Text>
             <Flex direction={"column"}>
               <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
-                You delivered the exact type of  strategic support our team
-                needs to expand thinking and identify options to how our payer
-                story evolves.”
+                When we were tasked with throwing together a payer advisory
+                board meeting so quickly, your team delivered in a pinch and
+                executed it flawlessly. Thank you for your strategic
+                partnership, for anticipating our needs, for knowing the market
+                and how payers respond, and for doing it all with such a great
+                attitude!”
               </Text>
               <Text fw={300} size="sm">
-                —Jane Doe, Executive Director
+                —Director, Payer Marketing at a midsize biotech company
               </Text>
             </Flex>
           </Group>
@@ -53,12 +56,12 @@ export const QuoteCarousel = () => {
             </Text>
             <Flex direction={"column"}>
               <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
-                You delivered the exact type of  strategic support our team
-                needs to expand thinking and identify options to how our payer
-                story evolves.”
+                The quality of work your team provides is so much higher than
+                any other agency. You understand what I need much better, and we
+                don’t have the same amount of time-consuming back and forth.”
               </Text>
               <Text fw={300} size="sm">
-                —Jane Doe, Executive Director
+                —Director Market Access at a large pharmaceutical company
               </Text>
             </Flex>
           </Group>
@@ -74,12 +77,13 @@ export const QuoteCarousel = () => {
             </Text>
             <Flex direction={"column"}>
               <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
-                You delivered the exact type of  strategic support our team
-                needs to expand thinking and identify options to how our payer
-                story evolves.”
+                The Nexus team was instrumental in ensuring care was delivered
+                and reimbursed for a patient who otherwise would have faced
+                premature death and significant disability. You helped save a
+                child’s life.”
               </Text>
               <Text fw={300} size="sm">
-                —Jane Doe, Executive Director
+                —General Manager at a gene therapy company
               </Text>
             </Flex>
           </Group>
@@ -95,12 +99,33 @@ export const QuoteCarousel = () => {
             </Text>
             <Flex direction={"column"}>
               <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
-                You delivered the exact type of  strategic support our team
-                needs to expand thinking and identify options to how our payer
-                story evolves.”
+                Your team is always so prepared. You’re efficient and great to
+                work with.”
               </Text>
               <Text fw={300} size="sm">
-                —Jane Doe, Executive Director
+                —Senior Medical Reviewer at a large pharmaceutical company
+              </Text>
+            </Flex>
+          </Group>
+        </SwiperSlide>
+        <SwiperSlide className={styles["swiper-slide"]}>
+          <Group wrap="no-wrap" align="flex-start">
+            <Text
+              size="5rem"
+              c="brand.4"
+              style={{ transform: "translateY(-1rem)" }}
+            >
+              “
+            </Text>
+            <Flex direction={"column"}>
+              <Text size="md" lh={"1.5rem"} mb={"1rem"} fw={500}>
+                You delivered the exact type of strategic support our team needs
+                to expand thinking and identify options to how our payer story
+                evolves.”
+              </Text>
+              <Text fw={300} size="sm">
+                —Executive Director, Access Strategy at a midsize biotech
+                company
               </Text>
             </Flex>
           </Group>
