@@ -344,17 +344,18 @@ export default function Component(props) {
                 fw={600}
                 className={`${styles.title} gsap-initial`}
               >
-                Shaping the future of Market Access
+                Shaping the future of market access
               </Title>
               <Text
-                maw={"18rem"}
+                maw={"28rem"}
                 size="1.2rem"
                 lh={"1.7rem"}
                 fw="500"
                 className={"gsap-initial"}
               >
-                Lorem ipsum dolor sit amet con sectetur adipiscing elit sed do
-                eiusm od tempor incididunt.
+                Bringing together scientific expertise, strategic insights, and
+                innovative solutions to navigate market access, optimize
+                reimbursement, and accelerate patient access.
               </Text>
               <Link
                 className={"gsap-initial"}
@@ -388,6 +389,7 @@ export default function Component(props) {
             <Landing2 />
           </div>
         </Container>
+
         <Container
           id="services"
           component={"section"}
@@ -403,11 +405,23 @@ export default function Component(props) {
             className={`${styles["section-content"]}`}
           >
             <Stack>
-              <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
-              <Title order={2} mb="2rem" className={"gsap-fade"}>
-                Lorem ipsum dolor sit amet consectetur sed interdum semper sed
-                gravida urna.
-              </Title>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Eyebrow
+                  gsapName={"gsap-fade"}
+                  label={"services"}
+                  variant={1}
+                />
+                <Title order={2} mb="2rem" className={"gsap-fade"}>
+                  Science-powered access with future-proof solutions.
+                </Title>
+              </div>
+
               <Grid>
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
@@ -510,7 +524,7 @@ export default function Component(props) {
                 </Title>
                 <Group wrap="no-wrap" gap={"3rem"}>
                   <div>
-                    <List c="white" size="1rem" spacing='xs'>
+                    <List c="white" size="1rem" spacing="xs">
                       <List.Item>Payers</List.Item>
                       <List.Item>Employers</List.Item>
                       <List.Item>Physicians</List.Item>
@@ -523,7 +537,7 @@ export default function Component(props) {
                     </List>
                   </div>
                   <div>
-                    <List c="white" size="1rem" spacing='xs'>
+                    <List c="white" size="1rem" spacing="xs">
                       <List.Item>Hospitals</List.Item>
                       <List.Item>IDNs</List.Item>
                       <List.Item>Specialty</List.Item>
@@ -673,12 +687,48 @@ export default function Component(props) {
         </Container>
 
         <Container
-          id="the-nexus-advantage"
+          id="our-leadership-team"
           component={"section"}
           w="100%"
           py={"4rem"}
           maw={"unset"}
           bg={"brand.5"}
+          className={`${styles.section} ${styles["section-start"]}`}
+        >
+          <Container
+            maw={"!important"}
+            w="100%"
+            p={0}
+            className={styles["section-content"]}
+          >
+            <Stack>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Eyebrow
+                  gsapName={"gsap-fade"}
+                  label={"our leadership team"}
+                  variant={3}
+                />
+                <Title order={2} mb="2rem" className={"gsap-fade"}>
+                  A team of experts built to support your business.
+                </Title>
+              </div>
+            </Stack>
+          </Container>
+        </Container>
+
+        <Container
+          id="the-nexus-advantage"
+          component={"section"}
+          w="100%"
+          py={"4rem"}
+          maw={"unset"}
+          bg={"rgba(210, 227, 147, 0.35)"}
           className={`${styles.section} ${styles["section-start"]}`}
         >
           <Container
