@@ -759,9 +759,47 @@ export default function Component(props) {
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <Grid gutter={{ base: "1rem", md: "3rem" }}>
                     <Grid.Col span={6}>
-                      <Stack gap="0.25rem">
+                      <Stack gap={'0.5rem'}>
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
+                          <span className={styles.numbers}>20</span>
+                          <sup
+                            style={{
+                              fontSize: "2rem",
+                              paddingLeft: "0.25rem",
+                            }}
+                          >
+                            +
+                          </sup>
+                        </Text>
+                        <Text lh={"1.25rem"} fw={500}>
+                          years of driving market access success
+                        </Text>
+                      </Stack>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                      <Stack gap={'0.5rem'}>
                         <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>50</span>
+                        </Text>
+                        <Text lh={"1.25rem"} fw={500}>
+                          product launches executed successfully
+                        </Text>
+                      </Stack>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                      <Stack gap={'0.5rem'}>
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
+                          <span className={styles.numbers}>10</span>
+                        </Text>
+                        <Text lh={"1.25rem"} fw={500}>
+                          diverse disease state markets represented
+                        </Text>
+                      </Stack>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                      <Stack gap={'0.5rem'}>
+                        <Text size={"2.5rem"} fw="700" c="brand.2">
+                          <span className={styles.numbers}>18</span>
                           <sup
                             style={{
                               fontSize: "2rem",
@@ -771,54 +809,8 @@ export default function Component(props) {
                             +
                           </sup>
                         </Text>
-                        <Text lh="1rem">
-                          Lorem ipsum dolor sit amet consecte
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>25</span>
-                        </Text>
-                        <Text lh="1rem">
-                          Lorem ipsum dolor sit amet consecte
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>57</span>
-                          <span
-                            style={{
-                              fontSize: "1.5rem",
-                              paddingLeft: "0.5rem",
-                            }}
-                          >
-                            %
-                          </span>
-                        </Text>
-                        <Text lh="1rem">
-                          Lorem ipsum dolor sit amet consecte
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Stack gap="0.25rem">
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>11</span>
-                          <sup
-                            style={{
-                              fontSize: "2rem",
-                              paddingLeft: "0.25rem",
-                            }}
-                          >
-                            +
-                          </sup>
-                        </Text>
-                        <Text lh="1rem">
-                          Lorem ipsum dolor sit amet consecte
+                        <Text lh={"1.25rem"} fw={500}>
+                          stakeholders engaged through high-impact strategies
                         </Text>
                       </Stack>
                     </Grid.Col>
@@ -852,19 +844,18 @@ export default function Component(props) {
               <Grid gutter={"xs"}>
                 <Grid.Col span={{ base: 12, lg: 5 }}>
                   <Stack>
-                    <Title size="1.9rem" maw={"20rem"} className={"gsap-fade"}>
+                    <Title size="2.25rem" maw={"21rem"} className={"gsap-fade"}>
                       What’s Happening at Nexus Health
                     </Title>
                     <Text
-                      size="0.83rem"
-                      lh={"1.25rem"}
+                      size="1.15rem"
+                      lh={"1.5rem"}
                       fw="500"
-                      maw={"20rem"}
+                      maw={"23rem"}
                       className={"gsap-fade"}
                     >
-                      Lorem ipsum dolor sit amet consectetur. Nulla ultrices
-                      feugiat et nullam. Dolor libero commodo lectus aliquet.
-                      Nulla venenatis at nulla mi at.
+                      The future of market access starts here—news, insights,
+                      and expert perspectives.
                     </Text>
                     <Link
                       href={"thought-leadership"}
