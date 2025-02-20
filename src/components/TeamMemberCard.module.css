@@ -12,3 +12,20 @@
   justify-content: center;
   align-items: center;
 }
+.scrollbar {
+  &,
+  &:hover {
+    background-color: light-dark(
+      var(--mantine-color-gray-0),
+      var(--mantine-color-dark-6)
+    );
+  }
+
+  &[data-orientation="vertical"] .thumb {
+    background-color: #d2e393;
+  }
+
+  &[data-orientation="horizontal"] .thumb {
+    background-color: #d2e393;
+  }
+}

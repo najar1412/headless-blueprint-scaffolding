@@ -705,7 +705,7 @@ export default function Component(props) {
             p={0}
             className={styles["section-content"]}
           >
-            <Stack>
+            <Stack px="4.5rem">
               <div
                 style={{
                   display: "flex",
@@ -715,7 +715,7 @@ export default function Component(props) {
               >
                 <Eyebrow
                   gsapName={"gsap-fade"}
-                  label={"our leadership team"}
+                  label={page.s4.eyeBrow}
                   variant={3}
                 />
                 <Title
@@ -724,21 +724,14 @@ export default function Component(props) {
                   mb="4rem"
                   className={"gsap-fade"}
                 >
-                  A team of experts built to support your business.
+                  {page.s4.title}
                 </Title>
                 <Grid w={"100%"}>
-                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
-                    <TeamMemberCard />
-                  </Grid.Col>
-                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
-                    <TeamMemberCard />
-                  </Grid.Col>
-                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
-                    <TeamMemberCard />
-                  </Grid.Col>
-                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
-                    <TeamMemberCard />
-                  </Grid.Col>
+                  {page.s4.leaders.map((leader) => (
+                    <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
+                      <TeamMemberCard data={leader} />
+                    </Grid.Col>
+                  ))}
                 </Grid>
               </div>
             </Stack>
@@ -981,6 +974,21 @@ Component.query = gql`
     s1 {
       title
       __typename
+    }
+    s4 {
+      title
+      eyeBrow
+      leaders {
+        bio
+        linkedin
+        name
+        title
+        headshot {
+          node {
+            sourceUrl(size: MEDIUM)
+          }
+        }
+      }
     }
   }
     
