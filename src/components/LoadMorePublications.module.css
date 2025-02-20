@@ -9,3 +9,23 @@
     display: block;
   }
 }
+.card,
+.title,
+.thumb {
+  transition: 0.2s all linear;
+}
+.thumb {
+  background-color: rgba(188, 220, 73, 0.7);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.card:hover .title {
+  color: var(--mantine-color-brand-2);
+}
+.card:hover .thumb {
+  opacity: 1;
+}

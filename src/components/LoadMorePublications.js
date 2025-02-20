@@ -9,6 +9,7 @@ import { Loading } from "./animated/Loading";
 import styles from "./LoadMorePublications.module.css";
 
 import placeholderImage from "../assets/card_gray.jpg";
+import whiteArrowIcon from "../assets/white_arrow.svg";
 
 const GET_POSTS = gql`
   query getPosts($first: Int!, $after: String) {
@@ -70,18 +71,35 @@ export default function LoadMorePublications() {
       <Stack>
         {posts.map((post) => (
           <Fragment key={post.databaseId}>
-            <Group wrap="no-wrap" gap={"2rem"} mb={"1rem"}>
+            <Group
+              wrap="no-wrap"
+              gap={"2rem"}
+              mb={"1rem"}
+              className={styles["card"]}
+            >
               <div
                 className={styles.image}
                 style={{
                   backgroundImage: `url(${post.featuredImage ? post.featuredImage.node.sourceUrl : placeholderImage.src})`,
                   maxWidth: "7.5rem",
                 }}
-              ></div>
+              >
+                <div className={styles["thumb"]}>
+                  <img
+                    style={{
+                      width: "3rem",
+                      height: "3rem",
+                    }}
+                    src={whiteArrowIcon.src}
+                  />
+                </div>
+              </div>
 
               <Stack key={post.title} gap="0.3rem">
                 <Link href={`/thought-leadership/${post.slug}`}>
-                  <Text fw="bold">{post.title}</Text>
+                  <Text fw="bold" className={styles["title"]}>
+                    {post.title}
+                  </Text>
                 </Link>
                 {post.content ? (
                   <div
