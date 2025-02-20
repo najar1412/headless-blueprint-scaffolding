@@ -27,6 +27,8 @@ import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import { ServicesCard } from "../components/ServicesCard";
 import { PinnedSection } from "../components/pinnedSection/PinnedSection";
+import { TeamMemberCard } from "../components/TeamMemberCard";
+import { Section } from "../components/layout/Section";
 
 import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
@@ -38,7 +40,6 @@ import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
-import { TeamMemberCard } from "../components/TeamMemberCard";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -320,26 +321,37 @@ export default function Component(props) {
         w="100%"
         p={0}
       >
-        <Container
-          id="landing"
-          component={"section"}
-          h="100dvh"
-          w="100%"
-          maw={"unset"}
-          className={`${styles.section} ${styles["section-start"]}`}
-          style={{
-            position: "relative",
-            backgroundSize: "cover",
-            display: "flex",
-            overflow: "hidden",
-          }}
+        <Section
+          label="landing"
+          fullHeight
+          backgroundElement={
+            <video
+              src={page.s1.background.node.mediaItemUrl}
+              autoPlay
+              muted
+              loop
+              style={{
+                top: 0,
+                left: 0,
+                position: "absolute",
+                width: "100%",
+                height: "auto",
+                maskImage: `linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 1) 0%,
+                  rgba(0, 0, 0, 1) 80%,
+                  rgba(0, 0, 0, 0) 100%
+                )`,
+              }}
+            />
+          }
         >
-          <Container
-            w="100%"
-            p={0}
-            position={"relative"}
-            className={styles["section-content"]}
-            style={{ zIndex: 10, marginTop: "auto" }}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              height: "100%",
+            }}
           >
             <Stack>
               <Title
@@ -357,9 +369,7 @@ export default function Component(props) {
                 fw="500"
                 className={"gsap-initial"}
               >
-                Bringing together scientific expertise, strategic insights, and
-                innovative solutions to navigate market access, optimize
-                reimbursement, and accelerate patient access.
+                {page.s1.body}
               </Text>
               <Link
                 className={"gsap-initial"}
@@ -388,94 +398,43 @@ export default function Component(props) {
                 </Stack>
               </Link>
             </Stack>
-          </Container>
-          <div className={styles.landing}>
-            <Landing2 />
           </div>
-        </Container>
+        </Section>
 
-        <Container
-          id="services"
-          component={"section"}
-          w="100%"
-          maw={"unset"}
-          bg={"var(--mantine-color-brand-1)"}
-          className={`${styles.section} ${styles["section-start"]}`}
-        >
-          <Container
-            maw={"1440px!important"}
-            w="100%"
-            p={0}
-            className={`${styles["section-content"]}`}
-          >
-            <Stack>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Eyebrow
-                  gsapName={"gsap-fade"}
-                  label={"services"}
-                  variant={1}
-                />
-                <Title order={2} mb="2rem" className={"gsap-fade"}>
-                  Science-powered access with future-proof solutions.
-                </Title>
-              </div>
+        <Section label="services" bgColor="var(--mantine-color-brand-1)">
+          <Stack px={"3rem"}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Eyebrow
+                gsapName={"gsap-fade"}
+                label={page.s2.eyeBrow}
+                variant={1}
+              />
+              <Title order={2} mb="2rem" className={"gsap-fade"}>
+                {page.s2.title}
+              </Title>
+            </div>
 
-              <Grid>
+            <Grid>
+              {page.s2.serviceCards.map((card) => (
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
                     gsapName={"gsap-fade"}
                     icon={marketAccessIcon}
                     iconSize={"3rem"}
-                    title={"Market Access Consulting"}
-                    items={[
-                      "Commercial strategic planning",
-                      "Market research & insights",
-                      "Policy impact & forecasting",
-                      "Reimbursement, pricing, & contracting",
-                      "HEOR",
-                    ]}
+                    title={card.label}
+                    items={card.list.map((item) => item.item)}
                   />
                 </Grid.Col>
-                <Grid.Col span={{ base: 12, md: 4 }}>
-                  <ServicesCard
-                    gsapName={"gsap-fade"}
-                    icon={valueIcon}
-                    iconSize={"4.5rem"}
-                    title={"value communications"}
-                    items={[
-                      "Payer marketing",
-                      "Pull-through",
-                      "HEOR",
-                      "Hub communications",
-                      "Market research",
-                    ]}
-                  />
-                </Grid.Col>
-                <Grid.Col span={{ base: 12, md: 4 }}>
-                  <ServicesCard
-                    gsapName={"gsap-fade"}
-                    icon={patientIcon}
-                    iconSize={"4.5rem"}
-                    title={"patient access & affordability"}
-                    items={[
-                      "Pricing, reimbursement, & policy strategy",
-                      "Vendor selection & contracting",
-                      "Access & reimbursement communications",
-                      "Program & channel design",
-                      "Market research & insights",
-                    ]}
-                  />
-                </Grid.Col>
-              </Grid>
-            </Stack>
-          </Container>
-        </Container>
+              ))}
+            </Grid>
+          </Stack>
+        </Section>
 
         {/* pinned mobile */}
         <Container
@@ -483,10 +442,38 @@ export default function Component(props) {
           component={"section"}
           w="100%"
           maw={"unset"}
-          bg={"var(--mantine-color-brand-0)"}
+          // bg={"var(--mantine-color-brand-0)"}
           className={`${styles.section}`}
           hiddenFrom="md"
+          style={{ position: "relative" }}
         >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <video
+              src={page.s1.background.node.mediaItemUrl}
+              autoPlay
+              muted
+              loop
+              style={{
+                width: "100%",
+                height: "auto",
+                maskImage: `linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 1) 0%,
+                  rgba(0, 0, 0, 1) 80%,
+                  rgba(0, 0, 0, 0) 100%
+                )`,
+              }}
+            />
+          </div>
+
           <Container
             maw={"1440px"}
             style={{
@@ -566,10 +553,38 @@ export default function Component(props) {
           w="100%"
           maw={"unset"}
           mih={"100vh"}
-          bg={"var(--mantine-color-brand-0)"}
+          bg={"rgba(10, 64, 74, 0.9)"}
           className={`${styles.section}`}
           visibleFrom="md"
+          style={{ position: "relative" }}
         >
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: -1,
+            }}
+          >
+            <video
+              src={page.s1.background.node.mediaItemUrl}
+              autoPlay
+              muted
+              loop
+              style={{
+                width: "100%",
+                height: "auto",
+                maskImage: `linear-gradient(
+                  to bottom,
+                  rgba(0, 0, 0, 1) 0%,
+                  rgba(0, 0, 0, 1) 80%,
+                  rgba(0, 0, 0, 0) 100%
+                )`,
+              }}
+            />
+          </div>
           <Container
             maw={"1440px"}
             style={{
@@ -738,216 +753,187 @@ export default function Component(props) {
           </Container>
         </Container>
 
-        <Container
-          id="the-nexus-advantage"
-          component={"section"}
-          w="100%"
-          py={"4rem"}
-          maw={"unset"}
-          bg={"rgba(210, 227, 147, 0.35)"}
-          className={`${styles.section} ${styles["section-start"]}`}
-        >
-          <Container
-            maw={"!important"}
-            w="100%"
-            p={0}
-            className={styles["section-content"]}
-          >
-            <Grid cols={2} justify="center" align="center">
+        <Section label="the-nexus-advantage" bgColor={"#EFF6D9"}>
+          <Grid cols={2} justify="center" align="center">
+            <Grid.Col span={{ base: 12, lg: 5 }}>
+              <Container maw={"unset"} p={0} w={"100%"}>
+                <QuoteCarousel />
+              </Container>
+              <Space hiddenFrom="lg" h="5rem" />
+            </Grid.Col>
+            <Grid.Col visibleFrom="lg" span={2}>
+              <div
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  width: "1px",
+                  height: "20rem",
+                  backgroundColor: "var(--mantine-color-brand-2)",
+                }}
+              ></div>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, lg: 5 }}>
+              <Container maw={"unset"} p={0} w={"100%"}>
+                <Grid gutter={{ base: "1rem", md: "3rem" }}>
+                  <Grid.Col span={6}>
+                    <Stack gap={"0.5rem"}>
+                      <Text size={"2.5rem"} fw="700" c="brand.2">
+                        <span className={styles.numbers}>20</span>
+                        <sup
+                          style={{
+                            fontSize: "2rem",
+                            paddingLeft: "0.25rem",
+                          }}
+                        >
+                          +
+                        </sup>
+                      </Text>
+                      <Text lh={"1.25rem"} fw={500}>
+                        years of driving market access success
+                      </Text>
+                    </Stack>
+                  </Grid.Col>
+                  <Grid.Col span={6}>
+                    <Stack gap={"0.5rem"}>
+                      <Text size={"2.5rem"} fw="700" c="brand.2">
+                        <span className={styles.numbers}>50</span>
+                      </Text>
+                      <Text lh={"1.25rem"} fw={500}>
+                        product launches executed successfully
+                      </Text>
+                    </Stack>
+                  </Grid.Col>
+                  <Grid.Col span={6}>
+                    <Stack gap={"0.5rem"}>
+                      <Text size={"2.5rem"} fw="700" c="brand.2">
+                        <span className={styles.numbers}>10</span>
+                      </Text>
+                      <Text lh={"1.25rem"} fw={500}>
+                        diverse disease state markets represented
+                      </Text>
+                    </Stack>
+                  </Grid.Col>
+                  <Grid.Col span={6}>
+                    <Stack gap={"0.5rem"}>
+                      <Text size={"2.5rem"} fw="700" c="brand.2">
+                        <span className={styles.numbers}>18</span>
+                        <sup
+                          style={{
+                            fontSize: "2rem",
+                            paddingLeft: "0.25rem",
+                          }}
+                        >
+                          +
+                        </sup>
+                      </Text>
+                      <Text lh={"1.25rem"} fw={500}>
+                        stakeholders engaged through high-impact strategies
+                      </Text>
+                    </Stack>
+                  </Grid.Col>
+                </Grid>
+              </Container>
+            </Grid.Col>
+          </Grid>
+        </Section>
+
+        <Section label="thought-leadership">
+          <Stack gap={"xs"}>
+            <Eyebrow
+              gsapName={"gsap-fade"}
+              label={"thought leadership"}
+              variant={3}
+            />
+            <Grid gutter={"xs"}>
               <Grid.Col span={{ base: 12, lg: 5 }}>
-                <Container maw={"unset"} p={0} w={"100%"}>
-                  <QuoteCarousel />
-                </Container>
-                <Space hiddenFrom="lg" h="5rem" />
+                <Stack>
+                  <Title size="2.25rem" maw={"21rem"} className={"gsap-fade"}>
+                    What’s Happening at Nexus Health
+                  </Title>
+                  <Text
+                    size="1.15rem"
+                    lh={"1.5rem"}
+                    fw="500"
+                    maw={"23rem"}
+                    className={"gsap-fade"}
+                  >
+                    The future of market access starts here—news, insights, and
+                    expert perspectives.
+                  </Text>
+                  <Link
+                    href={"thought-leadership"}
+                    style={{ width: "fit-content" }}
+                  >
+                    <Stack
+                      gap={0}
+                      className={`${styles.link} gsap-fade`}
+                      mt="0.4rem"
+                      mb="1rem"
+                      style={{ overflow: "hidden" }}
+                    >
+                      <Text fw="700" size="0.84rem" mb="0.25rem">
+                        Discover More
+                      </Text>
+                      <div
+                        className={`${styles["bar-link"]} ${styles["bar-link-active"]}`}
+                      />
+                    </Stack>
+                  </Link>
+                </Stack>
               </Grid.Col>
-              <Grid.Col visibleFrom="lg" span={2}>
-                <div
-                  style={{
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    width: "1px",
-                    height: "20rem",
-                    backgroundColor: "var(--mantine-color-brand-2)",
-                  }}
-                ></div>
+              <Grid.Col span={{ base: 12, lg: 4 }}>
+                {announcement.length ? (
+                  <PostCard
+                    gsapName={"gsap-fade"}
+                    category={"announcement"}
+                    title={announcement[0].title}
+                    footer={
+                      announcement[0].publicationMeta.announcementLocation
+                    }
+                    link={"/"}
+                    colour={"var(--mantine-color-brand-3)"}
+                  />
+                ) : null}
               </Grid.Col>
-              <Grid.Col span={{ base: 12, lg: 5 }}>
-                <Container maw={"unset"} p={0} w={"100%"}>
-                  <Grid gutter={{ base: "1rem", md: "3rem" }}>
-                    <Grid.Col span={6}>
-                      <Stack gap={"0.5rem"}>
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>20</span>
-                          <sup
-                            style={{
-                              fontSize: "2rem",
-                              paddingLeft: "0.25rem",
-                            }}
-                          >
-                            +
-                          </sup>
-                        </Text>
-                        <Text lh={"1.25rem"} fw={500}>
-                          years of driving market access success
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Stack gap={"0.5rem"}>
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>50</span>
-                        </Text>
-                        <Text lh={"1.25rem"} fw={500}>
-                          product launches executed successfully
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Stack gap={"0.5rem"}>
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>10</span>
-                        </Text>
-                        <Text lh={"1.25rem"} fw={500}>
-                          diverse disease state markets represented
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Stack gap={"0.5rem"}>
-                        <Text size={"2.5rem"} fw="700" c="brand.2">
-                          <span className={styles.numbers}>18</span>
-                          <sup
-                            style={{
-                              fontSize: "2rem",
-                              paddingLeft: "0.25rem",
-                            }}
-                          >
-                            +
-                          </sup>
-                        </Text>
-                        <Text lh={"1.25rem"} fw={500}>
-                          stakeholders engaged through high-impact strategies
-                        </Text>
-                      </Stack>
-                    </Grid.Col>
-                  </Grid>
-                </Container>
+              <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
+                <PostCard gsapName={"gsap-fade"} gradient />
               </Grid.Col>
             </Grid>
-          </Container>
-        </Container>
-
-        <Container
-          id="thought-leadership"
-          component={"section"}
-          pb={0}
-          w="100%"
-          maw={"unset"}
-          className={`${styles.section} ${styles["section-start"]}`}
-        >
-          <Container
-            maw={"1440px!important"}
-            w="100%"
-            p={0}
-            className={styles["section-content"]}
-          >
-            <Stack gap={"xs"}>
-              <Eyebrow
-                gsapName={"gsap-fade"}
-                label={"thought leadership"}
-                variant={3}
-              />
-              <Grid gutter={"xs"}>
-                <Grid.Col span={{ base: 12, lg: 5 }}>
-                  <Stack>
-                    <Title size="2.25rem" maw={"21rem"} className={"gsap-fade"}>
-                      What’s Happening at Nexus Health
-                    </Title>
-                    <Text
-                      size="1.15rem"
-                      lh={"1.5rem"}
-                      fw="500"
-                      maw={"23rem"}
-                      className={"gsap-fade"}
-                    >
-                      The future of market access starts here—news, insights,
-                      and expert perspectives.
-                    </Text>
-                    <Link
-                      href={"thought-leadership"}
-                      style={{ width: "fit-content" }}
-                    >
-                      <Stack
-                        gap={0}
-                        className={`${styles.link} gsap-fade`}
-                        mt="0.4rem"
-                        mb="1rem"
-                        style={{ overflow: "hidden" }}
-                      >
-                        <Text fw="700" size="0.84rem" mb="0.25rem">
-                          Discover More
-                        </Text>
-                        <div
-                          className={`${styles["bar-link"]} ${styles["bar-link-active"]}`}
-                        />
-                      </Stack>
-                    </Link>
-                  </Stack>
-                </Grid.Col>
-                <Grid.Col span={{ base: 12, lg: 4 }}>
-                  {announcement.length ? (
-                    <PostCard
-                      gsapName={"gsap-fade"}
-                      category={"announcement"}
-                      title={announcement[0].title}
-                      footer={
-                        announcement[0].publicationMeta.announcementLocation
-                      }
-                      link={"/"}
-                      colour={"var(--mantine-color-brand-3)"}
-                    />
-                  ) : null}
-                </Grid.Col>
-                <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-                  <PostCard gsapName={"gsap-fade"} gradient />
-                </Grid.Col>
-              </Grid>
-              <Grid gutter={"xs"}>
-                <Grid.Col visibleFrom="lg" span={1}>
-                  <div className={styles["box-element-1"]}>
-                    <Image alt="nexus logo" src={logoSymbolIcon} />
-                  </div>
-                  <div className={styles["box-element-2"]}></div>
-                </Grid.Col>
-                <Grid.Col span={{ base: 12, lg: 4 }}>
-                  {journal.length ? (
-                    <PostCard
-                      gsapName={"gsap-fade"}
-                      category={"journal"}
-                      title={journal[0].title}
-                      link={"/"}
-                      colour={"var(--mantine-color-brand-4)"}
-                    />
-                  ) : null}
-                </Grid.Col>
-                <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-                  <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
-                </Grid.Col>
-                <Grid.Col span={{ base: 12, lg: 4 }}>
-                  {featured ? (
-                    <PostCard
-                      gsapName={"gsap-fade"}
-                      category={"featured"}
-                      title={featured[0].title}
-                      image={placeholderThumbImage}
-                      link={"/"}
-                    />
-                  ) : null}
-                </Grid.Col>
-              </Grid>
-            </Stack>
-          </Container>
-        </Container>
+            <Grid gutter={"xs"}>
+              <Grid.Col visibleFrom="lg" span={1}>
+                <div className={styles["box-element-1"]}>
+                  <Image alt="nexus logo" src={logoSymbolIcon} />
+                </div>
+                <div className={styles["box-element-2"]}></div>
+              </Grid.Col>
+              <Grid.Col span={{ base: 12, lg: 4 }}>
+                {journal.length ? (
+                  <PostCard
+                    gsapName={"gsap-fade"}
+                    category={"journal"}
+                    title={journal[0].title}
+                    link={"/"}
+                    colour={"var(--mantine-color-brand-4)"}
+                  />
+                ) : null}
+              </Grid.Col>
+              <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
+                <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
+              </Grid.Col>
+              <Grid.Col span={{ base: 12, lg: 4 }}>
+                {featured ? (
+                  <PostCard
+                    gsapName={"gsap-fade"}
+                    category={"featured"}
+                    title={featured[0].title}
+                    image={placeholderThumbImage}
+                    link={"/"}
+                  />
+                ) : null}
+              </Grid.Col>
+            </Grid>
+          </Stack>
+        </Section>
       </Container>
 
       <Footer node={footer} />
@@ -973,7 +959,27 @@ Component.query = gql`
     title
     s1 {
       title
-      __typename
+      body
+      background {
+        node {
+          mediaItemUrl
+        }
+      }
+    }
+    s2 {
+      eyeBrow
+      title
+      serviceCards {
+        label
+        list {
+          item
+        }
+        icon {
+          node {
+            sourceUrl
+          }
+        }
+      }
     }
     s4 {
       title

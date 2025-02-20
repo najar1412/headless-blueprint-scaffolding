@@ -144,7 +144,7 @@ export const TeamMemberCard = ({ data }) => {
                 </div>
 
                 {data.linkedin ? (
-                  <Link href={data.linkedin}>
+                  <Link href={data.linkedin} target='_blank'>
                     <Image
                       width={25}
                       height={25}

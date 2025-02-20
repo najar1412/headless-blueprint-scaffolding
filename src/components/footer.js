@@ -27,6 +27,7 @@ export default function Footer(props) {
         maw={"unset"}
         w="100%"
         id="contact"
+        bg={"white"}
         style={{
           position: "relative",
         }}
@@ -34,6 +35,7 @@ export default function Footer(props) {
         <Container
           maw={"1440px!important"}
           className={styles["section-content"]}
+          style={{ zIndex: 2, position: "relative" }}
         >
           <SimpleGrid
             component={"section"}
@@ -48,7 +50,7 @@ export default function Footer(props) {
                 <Title order={1} size="2.5rem" c="white">
                   Get in Touch
                 </Title>
-                <Text c="white" maw={'16rem'}>
+                <Text c="white" maw={"16rem"}>
                   Together, we can build smarter, more effective access
                   solutions.
                 </Text>
@@ -65,7 +67,7 @@ export default function Footer(props) {
           py={"5rem"}
           w="100%"
           maw={"1440px!important"}
-          style={{ position: "relative" }}
+          style={{ zIndex: 2, position: "relative" }}
         >
           <Stack>
             <Title order={3} size="1.25rem" lh="1.5rem">
@@ -86,7 +88,11 @@ export default function Footer(props) {
         </Container>
         <Container
           w="100%"
-          style={{ maxWidth: "1440px!important" }}
+          style={{
+            maxWidth: "1440px!important",
+            zIndex: 2,
+            position: "relative",
+          }}
           p={"1rem"}
           mx={"auto"}
         >

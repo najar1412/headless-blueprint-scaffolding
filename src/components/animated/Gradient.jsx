@@ -1,45 +1,6 @@
-import { useRef, useEffect, useState } from "react";
-
 import styles from "./Gradient.module.css";
 
 export const Gradient = () => {
-  /* const interactiveElRef = useRef(); */
-  /* const [cur, setCur] = useState({ x: 0, y: 0 });
-  const [tar, setTar] = useState({ x: 0, y: 0 });
-  let curX = 0;
-  let curY = 0;
-  let tgX = 0;
-  let tgY = 0;
-
-  function move() {
-    setCur({
-      x: (cur.x += (tar.x - cur.x) / 20),
-      y: (cur.y += (tar.y - cur.y) / 20),
-    });
-    console.log(cur.x);
-    // cur[0] += (tgX - cur[0]) / 20;
-    // curY += (tgY - curY) / 20;
-    interactiveElRef.current.style.transform = `translate(${Math.round(
-      cur.x
-    )}px, ${Math.round(cur.y)}px)`;
-    requestAnimationFrame(() => {
-      move();
-    });
-  } */
-
-  /* const getMouse = (e) => {
-    setTar({ x: e.clientX, y: e.clientY });
-  };
-
-  useEffect(() => {
-    move();
-  }, [cur]); */
-
-  /* useEffect(() => {
-    window.addEventListener("mousemove", getMouse);
-    return () => window.removeEventListener("mousemove", getMouse);
-  }, []); */
-
   return (
     <div className={styles["gradient-bg"]}>
       <svg xmlns="http://www.w3.org/2000/svg">
