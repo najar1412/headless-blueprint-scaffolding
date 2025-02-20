@@ -718,20 +718,25 @@ export default function Component(props) {
                   label={"our leadership team"}
                   variant={3}
                 />
-                <Title order={2} mb="2rem" className={"gsap-fade"}>
+                <Title
+                  order={2}
+                  size="2.25rem"
+                  mb="4rem"
+                  className={"gsap-fade"}
+                >
                   A team of experts built to support your business.
                 </Title>
-                <Grid w={'100%'}>
-                  <Grid.Col span={3}>
+                <Grid w={"100%"}>
+                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
                     <TeamMemberCard />
                   </Grid.Col>
-                  <Grid.Col span={3}>
+                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
                     <TeamMemberCard />
                   </Grid.Col>
-                  <Grid.Col span={3}>
+                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
                     <TeamMemberCard />
                   </Grid.Col>
-                  <Grid.Col span={3}>
+                  <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
                     <TeamMemberCard />
                   </Grid.Col>
                 </Grid>
