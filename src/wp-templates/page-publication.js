@@ -18,6 +18,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { Loading } from "../components/animated/Loading";
 
+import frontPageStyles from "./front-page.module.css";
 import styles from "./page-publication.module.css";
 
 import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
@@ -62,14 +63,30 @@ export default function PagePublication(props) {
         pb={0}
       >
         <Container maw={"1440px!important"} w="100%" p={0} mx={"auto"}>
-          <Link href="/thought-leadership">
-            <Group mb="md">
-              <Image
-                src={arrowBlBlueIcon.src}
-                style={{ transform: "rotate(225deg)" }}
-              />
-              <Text size="xs">Back to All Posts</Text>
-            </Group>
+          <Link href={"/thought-leadership"} style={{ width: "fit-content" }}>
+            <Stack
+              gap={"0.25rem"}
+              className={`${frontPageStyles.link} gsap-fade`}
+              mt="0.4rem"
+              mb="1rem"
+              w="fit-content"
+              style={{ overflow: "hidden" }}
+            >
+              <Group>
+                <Image
+                  src={arrowBlBlueIcon.src}
+                  style={{
+                    transform:
+                      "translateX(0.25rem) translateY(-0.1rem) rotate(225deg)",
+                  }}
+                />
+                <Text fw="700" size="0.84rem" mb="0.25rem">
+                  Back to All Posts
+                </Text>
+              </Group>
+
+              <div className={`${frontPageStyles["bar-link"]}`} />
+            </Stack>
           </Link>
 
           <Grid gutter="2rem">
@@ -146,24 +163,76 @@ export default function PagePublication(props) {
 
         <Container maw={"1440px!important"} w="100%" p={0} py={"5rem"}>
           <Flex justify={"space-between"}>
-            <UnstyledButton>
-              <Group>
-                <Image
-                  src={arrowUpIcon.src}
-                  alt="east arrow"
-                  style={{ transform: "rotate(-90deg) scale(0.8)" }}
-                />
-                <Text fw="500">Previous Post</Text>
-              </Group>
-            </UnstyledButton>
-            <UnstyledButton visibleFrom="sm">
-              <Link href="/thought-leadership">
+            <Link href={"#"} style={{ width: "fit-content" }}>
+              <Stack
+                gap={"0.25rem"}
+                className={`${frontPageStyles.link} gsap-fade`}
+                mt="0.4rem"
+                mb="1rem"
+                w="fit-content"
+                style={{ overflow: "hidden" }}
+              >
                 <Group>
-                  <Text fw="500">Back to All Posts</Text>
+                  <Image
+                    src={arrowBlBlueIcon.src}
+                    style={{
+                      transform:
+                        "translateX(0.25rem) translateY(-0.1rem) rotate(225deg)",
+                    }}
+                  />
+                  <Text fw="700" size="0.84rem" mb="0.25rem">
+                    Previous Post
+                  </Text>
                 </Group>
-              </Link>
-            </UnstyledButton>
-            <UnstyledButton>
+
+                <div className={`${frontPageStyles["bar-link"]}`} />
+              </Stack>
+            </Link>
+
+            <Link href={"/thought-leadership"} style={{ width: "fit-content" }}>
+              <Stack
+                gap={"0.25rem"}
+                className={`${frontPageStyles.link} gsap-fade`}
+                mt="0.4rem"
+                mb="1rem"
+                w="fit-content"
+                style={{ overflow: "hidden" }}
+              >
+                <Text fw="700" size="0.84rem" mb="0.25rem">
+                  Back to All Posts
+                </Text>
+
+                <div className={`${frontPageStyles["bar-link"]}`} />
+              </Stack>
+            </Link>
+
+            <Link href={"#"} style={{ width: "fit-content" }}>
+              <Stack
+                gap={"0.25rem"}
+                className={`${frontPageStyles.link} gsap-fade`}
+                mt="0.4rem"
+                mb="1rem"
+                w="fit-content"
+                style={{ overflow: "hidden" }}
+              >
+                <Group>
+                  <Text fw="700" size="0.84rem" mb="0.25rem">
+                    Next Post
+                  </Text>
+                  <Image
+                    src={arrowBlBlueIcon.src}
+                    style={{
+                      transform:
+                        "translateX(-0.25rem) translateY(-0.1rem) rotate(44deg)",
+                    }}
+                  />
+                </Group>
+
+                <div className={`${frontPageStyles["bar-link"]}`} />
+              </Stack>
+            </Link>
+
+            {/* <UnstyledButton>
               <Group>
                 <Text fw="500">Next Post</Text>
                 <Image
@@ -172,11 +241,11 @@ export default function PagePublication(props) {
                   style={{ transform: "rotate(90deg) scale(0.8)" }}
                 />
               </Group>
-            </UnstyledButton>
+            </UnstyledButton> */}
           </Flex>
           <UnstyledButton
             hiddenFrom="sm"
-            mt='2rem'
+            mt="2rem"
             mx="auto"
             w="fit-content"
             style={{ display: "flex" }}

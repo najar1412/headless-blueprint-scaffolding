@@ -22,16 +22,20 @@ export default function PageThoughtLeadership(props) {
     <>
       <Header menuItems={primaryMenuItems.nodes} page={page} />
 
-      <Container maw={"unset"} p={0} className={styles.title}>
+      <Container
+        maw={"unset"}
+        p={0}
+        className={styles.title}
+        style={{ position: "relative", zIndex: -1 }}
+      >
         <Container
           pt={"8rem"}
-          pb={'1rem'}
-          pr={0}
-          pl="0.5rem"
+          pb={"1rem"}
+          px={0}
           mx="auto"
           style={{ maxWidth: "1440px" }}
         >
-          <Title size="3rem" mb="2rem" fw='600'>
+          <Title size="3rem" mb="2rem" fw="600">
             Thought Leadership
           </Title>
           <Eyebrow label={"featured"} variant={3} />

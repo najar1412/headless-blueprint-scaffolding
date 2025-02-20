@@ -513,6 +513,10 @@ export default function Component(props) {
                 <Title c="white" size="2rem" fw="400" mb="1.5rem">
                   Ability to address all stakeholder types
                 </Title>
+                <Text>
+                  As market access evolves, the list of stakeholders has grown.
+                  We ensure communication is tailored to each stakeholder.
+                </Text>
                 <Group wrap="no-wrap" gap={"3rem"}>
                   <div>
                     <List c="white" size="1rem" spacing="xs">
@@ -660,6 +664,11 @@ export default function Component(props) {
                     <Title c="white" size="2.3rem" maw={"25rem"}>
                       Ability to address all stakeholder types
                     </Title>
+                    <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"27rem"}>
+                      As market access evolves, the list of stakeholders has
+                      grown. We ensure communication is tailored to each
+                      stakeholder.
+                    </Text>
                     <Group wrap="no-wrap" gap={"6rem"}>
                       <div>
                         <List c="white" fs={"1.1rem"}>
@@ -874,9 +883,7 @@ export default function Component(props) {
                       <Text fw="700" size="0.84rem" mb="0.25rem">
                         Discover More
                       </Text>
-                      <div
-                        className={`${styles["bar-link"]} ${styles["bar-link-active"]}`}
-                      />
+                      <div className={`${styles["bar-link"]}`} />
                     </Stack>
                   </Link>
                 </Stack>
