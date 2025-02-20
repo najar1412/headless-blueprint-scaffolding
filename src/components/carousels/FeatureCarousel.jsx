@@ -35,21 +35,22 @@ export const FeatureCarousel = ({ items }) => {
         </div>
       </Group>
       <Swiper
+      className={styles["swiper"]}
         onSwiper={setSwiper}
         breakpoints={{
           700: {
-            spaceBetween: 5,
+            spaceBetween: 10,
             slidesPerView: 2,
           },
           900: {
-            spaceBetween: 5,
+            spaceBetween: 10,
             slidesPerView: 2.5,
           },
         }}
       >
         {items
           ? items.map((item) => (
-              <SwiperSlide className={styles["swiper-slide"]}>
+              <SwiperSlide className={styles["swiper"]}>
                 <PostCard
                   category={"featured"}
                   title={item.title}
