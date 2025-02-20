@@ -38,6 +38,7 @@ import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
+import { TeamMemberCard } from "../components/TeamMemberCard";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -46,6 +47,8 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
+
+  console.log(page);
 
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
@@ -342,9 +345,10 @@ export default function Component(props) {
               <Title
                 maw={"40rem"}
                 fw={600}
+                mb={"lg"}
                 className={`${styles.title} gsap-initial`}
               >
-                Shaping the future of market access
+                {page.s1.title}
               </Title>
               <Text
                 maw={"28rem"}
@@ -717,6 +721,20 @@ export default function Component(props) {
                 <Title order={2} mb="2rem" className={"gsap-fade"}>
                   A team of experts built to support your business.
                 </Title>
+                <Grid w={'100%'}>
+                  <Grid.Col span={3}>
+                    <TeamMemberCard />
+                  </Grid.Col>
+                  <Grid.Col span={3}>
+                    <TeamMemberCard />
+                  </Grid.Col>
+                  <Grid.Col span={3}>
+                    <TeamMemberCard />
+                  </Grid.Col>
+                  <Grid.Col span={3}>
+                    <TeamMemberCard />
+                  </Grid.Col>
+                </Grid>
               </div>
             </Stack>
           </Container>
@@ -759,7 +777,7 @@ export default function Component(props) {
                 <Container maw={"unset"} p={0} w={"100%"}>
                   <Grid gutter={{ base: "1rem", md: "3rem" }}>
                     <Grid.Col span={6}>
-                      <Stack gap={'0.5rem'}>
+                      <Stack gap={"0.5rem"}>
                         <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>20</span>
                           <sup
@@ -777,7 +795,7 @@ export default function Component(props) {
                       </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Stack gap={'0.5rem'}>
+                      <Stack gap={"0.5rem"}>
                         <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>50</span>
                         </Text>
@@ -787,7 +805,7 @@ export default function Component(props) {
                       </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Stack gap={'0.5rem'}>
+                      <Stack gap={"0.5rem"}>
                         <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>10</span>
                         </Text>
@@ -797,7 +815,7 @@ export default function Component(props) {
                       </Stack>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                      <Stack gap={'0.5rem'}>
+                      <Stack gap={"0.5rem"}>
                         <Text size={"2.5rem"} fw="700" c="brand.2">
                           <span className={styles.numbers}>18</span>
                           <sup
@@ -954,9 +972,12 @@ Component.query = gql`
     ...HeaderFragment
     ...${Footer.fragments.entry}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+    title
+    s1 {
       title
-      content
+      __typename
     }
+  }
     
     publications {
       nodes {

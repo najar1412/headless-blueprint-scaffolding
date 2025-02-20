@@ -48,9 +48,9 @@ export default function Footer(props) {
                 <Title order={1} size="2.5rem" c="white">
                   Get in Touch
                 </Title>
-                <Text c="white">
-                  Lorem ipsum dolor sit amet consec tetur. Nulla ultrices
-                  feugiat et nullam.
+                <Text c="white" maw={'16rem'}>
+                  Together, we can build smarter, more effective access
+                  solutions.
                 </Text>
               </Stack>
             </Container>
@@ -84,7 +84,12 @@ export default function Footer(props) {
           </div>
           <NewsletterForm />
         </Container>
-        <Container w="100%" style={{ maxWidth: "1440px!important" }} p={'1rem'} mx={'auto'}>
+        <Container
+          w="100%"
+          style={{ maxWidth: "1440px!important" }}
+          p={"1rem"}
+          mx={"auto"}
+        >
           <Divider color="#5A5A5A" size="0.1" />
           <Text size="0.5rem" mt="1.5rem" c={"#5A5A5A"}>
             Copyright (c) 2024, Nexus Health Group, All rights reserved.
