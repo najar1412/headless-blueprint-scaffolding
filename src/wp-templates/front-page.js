@@ -402,7 +402,7 @@ export default function Component(props) {
         </Section>
 
         <Section label="services" bgColor="var(--mantine-color-brand-1)">
-          <Stack px={"3rem"}>
+          <Stack px={{ base: "0rem", md: "3rem" }}>
             <div
               style={{
                 display: "flex",
@@ -415,7 +415,7 @@ export default function Component(props) {
                 label={page.s2.eyeBrow}
                 variant={1}
               />
-              <Title order={2} mb="2rem" className={"gsap-fade"}>
+              <Title order={2} mb="2rem" className={"gsap-fade"} ta={"center"}>
                 {page.s2.title}
               </Title>
             </div>
@@ -442,38 +442,11 @@ export default function Component(props) {
           component={"section"}
           w="100%"
           maw={"unset"}
-          // bg={"var(--mantine-color-brand-0)"}
+          bg={"var(--mantine-color-brand-0)"}
           className={`${styles.section}`}
           hiddenFrom="md"
           style={{ position: "relative" }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <video
-              src={page.s1.background.node.mediaItemUrl}
-              autoPlay
-              muted
-              loop
-              style={{
-                width: "100%",
-                height: "auto",
-                maskImage: `linear-gradient(
-                  to bottom,
-                  rgba(0, 0, 0, 1) 0%,
-                  rgba(0, 0, 0, 1) 80%,
-                  rgba(0, 0, 0, 0) 100%
-                )`,
-              }}
-            />
-          </div>
-
           <Container
             maw={"1440px"}
             style={{
@@ -513,7 +486,7 @@ export default function Component(props) {
                 <Title c="white" size="2rem" fw="400" mb="1.5rem">
                   Ability to address all stakeholder types
                 </Title>
-                <Text>
+                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"27rem"}>
                   As market access evolves, the list of stakeholders has grown.
                   We ensure communication is tailored to each stakeholder.
                 </Text>
@@ -729,7 +702,12 @@ export default function Component(props) {
             p={0}
             className={styles["section-content"]}
           >
-            <Stack px="4.5rem">
+            <Stack
+              px={{
+                base: "0rem",
+                md: "4.5rem",
+              }}
+            >
               <div
                 style={{
                   display: "flex",
