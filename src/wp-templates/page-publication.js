@@ -38,7 +38,7 @@ export default function PagePublication(props) {
   useGSAP(() => {
     // TODO: imp timelines for sectional animation
     //https://gsap.com/community/forums/topic/36504-gsap-scrolltrigger-loop-through-array/
-    // sectional animation
+    // sectional animatio
   });
 
   const formatDate = (date) => {
