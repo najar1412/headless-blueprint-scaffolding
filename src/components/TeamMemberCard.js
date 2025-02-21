@@ -99,11 +99,12 @@ export const TeamMemberCard = ({ data }) => {
       </Stack>
 
       <Modal.Root
+        className={styles.cardModal}
         opened={opened}
         onClose={close}
+        size={"90vw"}
         centered
         h={"100%"}
-        mah={"960px"}
       >
         <Modal.Overlay bg={"rgba(250, 250, 250, 0.9)"} />
         <Modal.Content
@@ -132,6 +133,7 @@ export const TeamMemberCard = ({ data }) => {
                   }}
                 >
                   <div
+                    className={styles.teamImage}
                     style={{
                       height: "100%",
                       width: "270px",
