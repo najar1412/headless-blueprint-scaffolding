@@ -59,7 +59,7 @@ export default function PagePublication(props) {
         className={`${styles.container}`}
         maw={"unset"}
         w="100%"
-        pt={"8rem"}
+        pt={"6rem"}
         pb={0}
       >
         <Container maw={"1440px!important"} w="100%" p={0} mx={"auto"}>
