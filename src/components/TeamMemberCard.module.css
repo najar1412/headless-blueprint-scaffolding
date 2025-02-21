@@ -29,3 +29,14 @@
     background-color: #d2e393;
   }
 }
+.cardModal div section {
+  max-width: 1440px;
+}
+@media screen and (max-width: 680px) {
+  .cardModal div section div.mantine-Modal-body div.mantine-Flex-root {
+    display: block;
+  }
+}
+/* .teamImage {
+
+} */
