@@ -14,10 +14,9 @@ export const Section = ({
       id={label}
       component={"section"}
       w="100%"
-      h={fullHeight ? "100dvh" : "fit-content"}
       maw={"unset"}
       bg={bgColor ? bgColor : "white"}
-      className={`${styles.section} ${styles["section-start"]}`}
+      className={`${styles.section} ${styles["section-start"]} ${fullHeight ? styles["full-height-section"] : ""}`}
       style={{
         position: "relative",
       }}
@@ -26,6 +25,7 @@ export const Section = ({
         maw={"1440px!important"}
         w="100%"
         p={0}
+        pt={fullHeight ? "4rem" : 0}
         className={`${styles["section-content"]}`}
         style={{
           height: "100%",

@@ -65,7 +65,7 @@ export const PostCard = ({
       component="div"
       w="100%"
       h="100%"
-      mih={"15rem"}
+      mih={{ base: "1rem", md: "15rem" }}
       className={`${layout.shell} ${styles["bg-image"]} ${
         gradient ? styles.gradient : ""
       } ${gsapName ? gsapName : ""}`}
@@ -82,18 +82,26 @@ export const PostCard = ({
           }}
         >
           {category ? (
-            <Text size="0.6rem" tt="uppercase" fw="700" c={layout.fontColour}>
+            <Text
+              tt="uppercase"
+              fw="700"
+              c={layout.fontColour}
+              className={styles["category"]}
+            >
               {category}
             </Text>
           ) : null}
           {title ? (
             <Link href={link}>
               <Text
-                size={category === "featured" ? "0.9rem" : "1.25rem"}
                 fw={700}
-                lh={"1.5rem"}
                 c={layout.fontColour}
                 lineClamp={3}
+                className={
+                  category === "featured"
+                    ? styles["title-feature"]
+                    : styles["title"]
+                }
               >
                 {title}
               </Text>

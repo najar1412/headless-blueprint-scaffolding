@@ -19,7 +19,7 @@ import styles from "./header.module.css";
 export default function Header({ menuItems, page, frontPage }) {
   const [opened, { toggle, close }] = useDisclosure();
   const router = useRouter();
-  const showBurger = useMediaQuery(`(max-width: 62em)`);
+  const showBurger = useMediaQuery(`(max-width: 75em)`);
   const container = useRef();
 
   const menuItem = (item) => {

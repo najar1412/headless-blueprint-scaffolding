@@ -1,8 +1,11 @@
 import { Fragment } from "react";
+import Link from "next/link";
 
-import { Drawer, Stack, Badge, Text } from "@mantine/core";
+import { Drawer, Stack, Badge, Text, Image } from "@mantine/core";
 import gsap from "gsap";
 import { useMediaQuery } from "@mantine/hooks";
+
+import linkedinIcon from "../assets/linkedin.svg";
 
 export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
   const isMobile = useMediaQuery(`(max-width: 48em)`);
@@ -27,7 +30,8 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
                   );
             }}
             mt="0.2rem"
-            p={'1rem'}
+            px={"2rem"}
+            py={'1.25rem'}
             color="brand.2"
             style={{ cursor: "pointer" }}
           >
@@ -76,6 +80,17 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
               {menuItems.map((item) => (
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
+              <Link href="#">
+                <Image
+                  alt="linkedin logo"
+                  src={linkedinIcon.src}
+                  style={{
+                    cursor: "pointer",
+                    transform: "translateY(.25rem)",
+                    width: "2.5rem",
+                  }}
+                />
+              </Link>
             </Stack>
           </Drawer.Body>
         </Drawer.Content>

@@ -44,6 +44,7 @@
 }
 .inner-2 {
   border-radius: 0;
+  width: 100%;
 }
 .inner-3 {
   border-radius: 0;
@@ -90,4 +91,33 @@
   background: #bcdc49;
   background: linear-gradient(180deg, #bcdc49 0%, #9fd3ce 100%);
   opacity: 0.7;
+}
+.category {
+  font-size: 0.8rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    font-size: 1rem;
+  }
+  @media (min-width: $mantine-breakpoint-lg) {
+    font-size: 0.6rem;
+  }
+}
+.title {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    font-size: 1.6rem;
+  }
+  @media (min-width: $mantine-breakpoint-lg) {
+    font-size: 1.25rem;
+  }
+}
+.title-feature {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    font-size: 1.25rem;
+  }
+  @media (min-width: $mantine-breakpoint-lg) {
+    font-size: 0.9rem;
+  }
 }

@@ -7,6 +7,7 @@ import {
   Stack,
   Divider,
   Image,
+  Space,
 } from "@mantine/core";
 
 import { GetInTouchForm } from "./forms/GetInTouchForm";
@@ -22,7 +23,7 @@ export default function Footer(props) {
     <>
       <Container
         className={styles["footer-margin"]}
-        pt={"8rem"}
+        // pt={"2rem"}
         pb={"2rem"}
         maw={"unset"}
         w="100%"
@@ -47,10 +48,10 @@ export default function Footer(props) {
           >
             <Container maw={"unset"} mx={"auto"}>
               <Stack>
-                <Title order={1} size="2.5rem" c="white">
+                <Title order={1} size="3.05rem" c="white">
                   Get in Touch
                 </Title>
-                <Text c="white" maw={"16rem"}>
+                <Text c="white" size="1.2rem" lh="1.5rem" maw={"20rem"}>
                   Together, we can build smarter, more effective access
                   solutions.
                 </Text>
@@ -69,7 +70,7 @@ export default function Footer(props) {
           maw={"1440px!important"}
           style={{ zIndex: 2, position: "relative" }}
         >
-          <Stack>
+          <Stack className={styles["footer-stack"]}>
             <Title order={3} size="1.25rem" lh="1.5rem">
               Subscribe to our Newsletter
             </Title>
@@ -85,6 +86,7 @@ export default function Footer(props) {
             <Image src={arrowUpIcon.src} w={"3rem"} />
           </div>
           <NewsletterForm />
+          <Space h={"1rem"} hiddenFrom="md" />
         </Container>
         <Container
           w="100%"
@@ -106,12 +108,6 @@ export default function Footer(props) {
     </>
   );
 }
-
-/* Footer.variables = ({ databaseId }, ctx) => {
-  return {
-    id: 35,
-  };
-}; */
 
 Footer.fragments = {
   entry: gql`

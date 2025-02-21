@@ -22,7 +22,6 @@ import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { PostCard } from "../components/PostCard";
-import { Landing as Landing2 } from "../components/Landing2";
 import { QuoteCarousel } from "../components/carousels/QuoteCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import { ServicesCard } from "../components/ServicesCard";
@@ -40,6 +39,7 @@ import arrowBrGreen from "../assets/arrow-br-green.svg";
 import patientIcon from "../assets/icon_patient.svg";
 import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
 import valueIcon from "../assets/icon_value_comm.svg";
+import step1Image from "../assets/step1.png";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -325,25 +325,25 @@ export default function Component(props) {
           label="landing"
           fullHeight
           backgroundElement={
-            <video
-              src={page.s1.background.node.mediaItemUrl}
-              autoPlay
-              muted
-              loop
+            <div
               style={{
+                position: "absolute",
                 top: 0,
                 left: 0,
-                position: "absolute",
+                display: "flex",
                 width: "100%",
-                height: "auto",
-                maskImage: `linear-gradient(
-                  to bottom,
-                  rgba(0, 0, 0, 1) 0%,
-                  rgba(0, 0, 0, 1) 80%,
-                  rgba(0, 0, 0, 0) 100%
-                )`,
+                height: "100%",
+                overflow: "hidden",
               }}
-            />
+            >
+              <video
+                src={page.s1.background.node.mediaItemUrl}
+                autoPlay
+                muted
+                loop
+                className={styles["background-video"]}
+              />
+            </div>
           }
         >
           <div
@@ -360,7 +360,7 @@ export default function Component(props) {
                 mb={"lg"}
                 className={`${styles.title} gsap-initial`}
               >
-                {page.s1.title}
+                Shaping the future of market access
               </Title>
               <Text
                 maw={"28rem"}
@@ -410,13 +410,9 @@ export default function Component(props) {
                 alignItems: "center",
               }}
             >
-              <Eyebrow
-                gsapName={"gsap-fade"}
-                label={page.s2.eyeBrow}
-                variant={1}
-              />
+              <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
               <Title order={2} mb="2rem" className={"gsap-fade"} ta={"center"}>
-                {page.s2.title}
+                Science-powered access with future-proof solutions.
               </Title>
             </div>
 
@@ -450,14 +446,21 @@ export default function Component(props) {
           <Container
             maw={"1440px"}
             style={{
-              bg: "red",
               width: "100%",
+              padding: 0,
+              margin: 0,
             }}
           >
             <Stack gap={"4rem"}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
-                <Title c="white" size="2rem" fw="400" mb="1.5rem">
+                <img src={step1Image.src} />
+                <Title
+                  c="white"
+                  size="2rem"
+                  fw="400"
+                  mb={{ base: "0", md: "1.5rem" }}
+                >
                   Meeting the needs of today and tomorrow
                 </Title>
                 <Text c="white" size={"1rem"} lh={"1.5rem"}>
@@ -468,7 +471,12 @@ export default function Component(props) {
               </Stack>
 
               <Stack>
-                <Title c="white" size="2rem" fw="400" mb="1.5rem">
+                <Title
+                  c="white"
+                  size="2rem"
+                  fw="400"
+                  mb={{ base: "0", md: "1.5rem" }}
+                >
                   A strong foundation built in science
                 </Title>
                 <Text c="white" size={"1rem"} lh={"1.5rem"}>
@@ -483,7 +491,12 @@ export default function Component(props) {
               </Stack>
 
               <Stack>
-                <Title c="white" size="2rem" fw="400" mb="1.5rem">
+                <Title
+                  c="white"
+                  size="2rem"
+                  fw="400"
+                  mb={{ base: "0", md: "1.5rem" }}
+                >
                   Ability to address all stakeholder types
                 </Title>
                 <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"27rem"}>
@@ -744,9 +757,9 @@ export default function Component(props) {
           <Grid cols={2} justify="center" align="center">
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Container maw={"unset"} p={0} w={"100%"}>
-                <QuoteCarousel />
+                <QuoteCarousel quotes={page.s5.quotes} />
               </Container>
-              <Space hiddenFrom="lg" h="5rem" />
+              <Space hiddenFrom="lg" h="2.5rem" />
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={2}>
               <div
@@ -761,63 +774,36 @@ export default function Component(props) {
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Container maw={"unset"} p={0} w={"100%"}>
-                <Grid gutter={{ base: "1rem", md: "3rem" }}>
-                  <Grid.Col span={6}>
-                    <Stack gap={"0.5rem"}>
-                      <Text size={"2.5rem"} fw="700" c="brand.2">
-                        <span className={styles.numbers}>20</span>
-                        <sup
-                          style={{
-                            fontSize: "2rem",
-                            paddingLeft: "0.25rem",
-                          }}
+                <Grid gutter={{ base: "3rem", md: "3rem" }}>
+                  {page.s5.stats.map((stat) => (
+                    <Grid.Col span={{ base: 12, md: 6 }}>
+                      <Stack gap={"0.5rem"}>
+                        <Text
+                          size={"2.5rem"}
+                          fw="700"
+                          c="brand.2"
+                          className={styles["stat-number"]}
                         >
-                          +
-                        </sup>
-                      </Text>
-                      <Text lh={"1.25rem"} fw={500}>
-                        years of driving market access success
-                      </Text>
-                    </Stack>
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <Stack gap={"0.5rem"}>
-                      <Text size={"2.5rem"} fw="700" c="brand.2">
-                        <span className={styles.numbers}>50</span>
-                      </Text>
-                      <Text lh={"1.25rem"} fw={500}>
-                        product launches executed successfully
-                      </Text>
-                    </Stack>
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <Stack gap={"0.5rem"}>
-                      <Text size={"2.5rem"} fw="700" c="brand.2">
-                        <span className={styles.numbers}>10</span>
-                      </Text>
-                      <Text lh={"1.25rem"} fw={500}>
-                        diverse disease state markets represented
-                      </Text>
-                    </Stack>
-                  </Grid.Col>
-                  <Grid.Col span={6}>
-                    <Stack gap={"0.5rem"}>
-                      <Text size={"2.5rem"} fw="700" c="brand.2">
-                        <span className={styles.numbers}>18</span>
-                        <sup
-                          style={{
-                            fontSize: "2rem",
-                            paddingLeft: "0.25rem",
-                          }}
+                          <span className={styles.numbers}>{stat.number}</span>
+                          <sup
+                            style={{
+                              fontSize: "2rem",
+                              paddingLeft: "0.25rem",
+                            }}
+                          >
+                            {stat.unit}
+                          </sup>
+                        </Text>
+                        <Text
+                          lh={"1.25rem"}
+                          fw={500}
+                          className={styles["stat-copy"]}
                         >
-                          +
-                        </sup>
-                      </Text>
-                      <Text lh={"1.25rem"} fw={500}>
-                        stakeholders engaged through high-impact strategies
-                      </Text>
-                    </Stack>
-                  </Grid.Col>
+                          {stat.copy}
+                        </Text>
+                      </Stack>
+                    </Grid.Col>
+                  ))}
                 </Grid>
               </Container>
             </Grid.Col>
@@ -834,16 +820,10 @@ export default function Component(props) {
             <Grid gutter={"xs"}>
               <Grid.Col span={{ base: 12, lg: 5 }}>
                 <Stack>
-                  <Title size="2.25rem" maw={"21rem"} className={"gsap-fade"}>
+                  <Title className={`${styles["title-2"]} gsap-fade`}>
                     What’s Happening at Nexus Health
                   </Title>
-                  <Text
-                    size="1.15rem"
-                    lh={"1.5rem"}
-                    fw="500"
-                    maw={"23rem"}
-                    className={"gsap-fade"}
-                  >
+                  <Text fw="500" className={`${styles["copy-2"]} gsap-fade`}>
                     The future of market access starts here—news, insights, and
                     expert perspectives.
                   </Text>
@@ -858,7 +838,12 @@ export default function Component(props) {
                       mb="1rem"
                       style={{ overflow: "hidden" }}
                     >
-                      <Text fw="700" size="0.84rem" mb="0.25rem">
+                      <Text
+                        fw="700"
+                        size="0.84rem"
+                        mb="0.25rem"
+                        className={styles["button-2"]}
+                      >
                         Discover More
                       </Text>
                       <div className={`${styles["bar-link"]}`} />
@@ -979,6 +964,17 @@ Component.query = gql`
             sourceUrl(size: MEDIUM)
           }
         }
+      }
+    }
+    s5 {
+      quotes {
+        quote
+        quoter
+      }
+      stats {
+        copy
+        number
+        unit
       }
     }
   }
