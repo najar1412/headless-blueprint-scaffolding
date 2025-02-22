@@ -37,9 +37,6 @@ import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 import cardGrayImage from "../assets/card_gray.jpg";
 import logoSymbolIcon from "../assets/Nexus_Logomark_4C.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
-import patientIcon from "../assets/icon_patient.svg";
-import marketAccessIcon from "../assets/Market_Access_Consulting_Icon.svg";
-import valueIcon from "../assets/icon_value_comm.svg";
 import step1Image from "../assets/step1.png";
 
 gsap.registerPlugin(useGSAP);
@@ -134,7 +131,8 @@ export default function Component(props) {
               section.querySelectorAll(".gsap-fade")
             );
             gsap.set(cardElements, {
-              opacity: large ? 0 : 1,
+              opacity: 0,
+              duration: 2,
               translateY: 100,
               ease: "power1.inOut",
             });
@@ -146,9 +144,9 @@ export default function Component(props) {
               scrollTrigger: {
                 trigger: section,
                 start: () =>
-                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
                 end: () =>
-                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
                 toggleActions: "play none none none",
                 /* markers: {
                   indent: 150 * i,
@@ -204,7 +202,7 @@ export default function Component(props) {
               section.querySelectorAll(".gsap-fade")
             );
             gsap.set(cardElements, {
-              opacity: large ? 0 : 1,
+              opacity: 0,
               translateY: 100,
               ease: "power1.inOut",
             });
@@ -216,15 +214,15 @@ export default function Component(props) {
               scrollTrigger: {
                 trigger: section,
                 start: () =>
-                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
                 end: () =>
-                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
                 toggleActions: "play none none none",
                 /* markers: {
-                    indent: 150 * i,
-                    startColor: "red",
-                    endColor: "red",
-                  }, */
+                  indent: 150 * i,
+                  startColor: "red",
+                  endColor: "red",
+                }, */
                 id: i,
               },
             });
@@ -888,7 +886,7 @@ export default function Component(props) {
                   category={"announcement"}
                   title={announcement[0].title}
                   footer={announcement[0].publicationMeta.announcementLocation}
-                  link={"/"}
+                  link={announcement[0].uri}
                   colour={"var(--mantine-color-brand-3)"}
                 />
               ) : null}
@@ -910,7 +908,7 @@ export default function Component(props) {
                   gsapName={"gsap-fade"}
                   category={"journal"}
                   title={journal[0].title}
-                  link={"/"}
+                  link={journal[0].uri}
                   colour={"var(--mantine-color-brand-4)"}
                 />
               ) : null}
@@ -925,7 +923,7 @@ export default function Component(props) {
                   category={"featured"}
                   title={featured[0].title}
                   image={placeholderThumbImage}
-                  link={"/"}
+                  link={featured[0].uri}
                 />
               ) : null}
             </Grid.Col>
