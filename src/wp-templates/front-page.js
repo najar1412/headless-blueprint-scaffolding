@@ -47,6 +47,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function Component(props) {
+  1;
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
 
@@ -437,8 +438,8 @@ export default function Component(props) {
                   >
                     <Image
                       src={card.icon.node.sourceUrl}
-                      width="50"
-                      height="50"
+                      width="75"
+                      height="75"
                       style={{
                         marginBottom: "1rem",
                       }}
@@ -786,7 +787,7 @@ export default function Component(props) {
               <Container maw={"unset"} p={0} w={"100%"}>
                 <QuoteCarousel quotes={page.s5.quotes} />
               </Container>
-              <Space hiddenFrom="lg" h="2.5rem" />
+              <Space hiddenFrom="lg" h="1.5rem" />
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={2}>
               <div
@@ -804,7 +805,10 @@ export default function Component(props) {
                 <Grid gutter={{ base: "3rem", md: "3rem" }}>
                   {page.s5.stats.map((stat) => (
                     <Grid.Col span={{ base: 12, md: 6 }}>
-                      <Stack gap={"0.5rem"}>
+                      <Stack
+                        gap={"0.5rem"}
+                        className={styles["stat-container"]}
+                      >
                         <Text
                           size={"2.5rem"}
                           fw="700"
