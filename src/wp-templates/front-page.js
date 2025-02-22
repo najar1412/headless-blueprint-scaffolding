@@ -842,98 +842,94 @@ export default function Component(props) {
         </Section>
 
         <Section label="thought-leadership">
-          <Stack gap={"xs"}>
-            <Eyebrow
-              gsapName={"gsap-fade"}
-              label={"thought leadership"}
-              variant={3}
-            />
-            <Grid gutter={"xs"}>
-              <Grid.Col span={{ base: 12, lg: 5 }}>
-                <Stack>
-                  <Title className={`${styles["title-2"]} gsap-fade`}>
-                    What’s Happening at Nexus Health
-                  </Title>
-                  <Text fw="500" className={`${styles["copy-2"]} gsap-fade`}>
-                    The future of market access starts here—news, insights, and
-                    expert perspectives.
-                  </Text>
-                  <Link
-                    href={"thought-leadership"}
-                    style={{ width: "fit-content" }}
+          <Eyebrow
+            gsapName={"gsap-fade"}
+            label={"thought leadership"}
+            variant={3}
+          />
+          <Grid gutter={"xs"}>
+            <Grid.Col span={{ base: 12, lg: 5 }}>
+              <Stack>
+                <Title className={`${styles["title-2"]} gsap-fade`}>
+                  What’s Happening at Nexus Health
+                </Title>
+                <Text fw="500" className={`${styles["copy-2"]} gsap-fade`}>
+                  The future of market access starts here—news, insights, and
+                  expert perspectives.
+                </Text>
+                <Link
+                  href={"thought-leadership"}
+                  style={{ width: "fit-content" }}
+                >
+                  <Stack
+                    gap={0}
+                    className={`${styles.link} gsap-fade`}
+                    mt="0.4rem"
+                    mb="1rem"
+                    style={{ overflow: "hidden" }}
                   >
-                    <Stack
-                      gap={0}
-                      className={`${styles.link} gsap-fade`}
-                      mt="0.4rem"
-                      mb="1rem"
-                      style={{ overflow: "hidden" }}
+                    <Text
+                      fw="700"
+                      size="0.84rem"
+                      mb="0.25rem"
+                      className={styles["button-2"]}
                     >
-                      <Text
-                        fw="700"
-                        size="0.84rem"
-                        mb="0.25rem"
-                        className={styles["button-2"]}
-                      >
-                        Discover More
-                      </Text>
-                      <div className={`${styles["bar-link"]}`} />
-                    </Stack>
-                  </Link>
-                </Stack>
-              </Grid.Col>
-              <Grid.Col span={{ base: 12, lg: 4 }}>
-                {announcement.length ? (
-                  <PostCard
-                    gsapName={"gsap-fade"}
-                    category={"announcement"}
-                    title={announcement[0].title}
-                    footer={
-                      announcement[0].publicationMeta.announcementLocation
-                    }
-                    link={"/"}
-                    colour={"var(--mantine-color-brand-3)"}
-                  />
-                ) : null}
-              </Grid.Col>
-              <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-                <PostCard gsapName={"gsap-fade"} gradient />
-              </Grid.Col>
-            </Grid>
-            <Grid gutter={"xs"}>
-              <Grid.Col visibleFrom="lg" span={1}>
-                <div className={styles["box-element-1"]}>
-                  <Image alt="nexus logo" src={logoSymbolIcon} />
-                </div>
-                <div className={styles["box-element-2"]}></div>
-              </Grid.Col>
-              <Grid.Col span={{ base: 12, lg: 4 }}>
-                {journal.length ? (
-                  <PostCard
-                    gsapName={"gsap-fade"}
-                    category={"journal"}
-                    title={journal[0].title}
-                    link={"/"}
-                    colour={"var(--mantine-color-brand-4)"}
-                  />
-                ) : null}
-              </Grid.Col>
-              <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-                <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
-              </Grid.Col>
-              <Grid.Col span={{ base: 12, lg: 4 }}>
-                {featured ? (
-                  <PostCard
-                    gsapName={"gsap-fade"}
-                    category={"featured"}
-                    title={featured[0].title}
-                    image={placeholderThumbImage}
-                    link={"/"}
-                  />
-                ) : null}
-              </Grid.Col>
-            </Grid>
-          </Stack>
+                      Discover More
+                    </Text>
+                    <div className={`${styles["bar-link"]}`} />
+                  </Stack>
+                </Link>
+              </Stack>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, lg: 4 }}>
+              {announcement.length ? (
+                <PostCard
+                  gsapName={"gsap-fade"}
+                  category={"announcement"}
+                  title={announcement[0].title}
+                  footer={announcement[0].publicationMeta.announcementLocation}
+                  link={"/"}
+                  colour={"var(--mantine-color-brand-3)"}
+                />
+              ) : null}
+            </Grid.Col>
+            <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
+              <PostCard gsapName={"gsap-fade"} gradient />
+            </Grid.Col>
+          </Grid>
+          <Grid gutter={"xs"}>
+            <Grid.Col visibleFrom="lg" span={1}>
+              <div className={styles["box-element-1"]}>
+                <Image alt="nexus logo" src={logoSymbolIcon} />
+              </div>
+              <div className={styles["box-element-2"]}></div>
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, lg: 4 }}>
+              {journal.length ? (
+                <PostCard
+                  gsapName={"gsap-fade"}
+                  category={"journal"}
+                  title={journal[0].title}
+                  link={"/"}
+                  colour={"var(--mantine-color-brand-4)"}
+                />
+              ) : null}
+            </Grid.Col>
+            <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
+              <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
+            </Grid.Col>
+            <Grid.Col span={{ base: 12, lg: 4 }}>
+              {featured ? (
+                <PostCard
+                  gsapName={"gsap-fade"}
+                  category={"featured"}
+                  title={featured[0].title}
+                  image={placeholderThumbImage}
+                  link={"/"}
+                />
+              ) : null}
+            </Grid.Col>
+          </Grid>
         </Section>
       </Container>
 
