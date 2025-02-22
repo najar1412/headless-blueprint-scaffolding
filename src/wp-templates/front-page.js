@@ -343,6 +343,9 @@ export default function Component(props) {
                 loop
                 className={styles["background-video"]}
               />
+              <div className={styles["splotch-2"]}></div>
+              <div className={styles["splotch-1"]}></div>
+              <div className={styles["splotch-3"]}></div>
             </div>
           }
         >
