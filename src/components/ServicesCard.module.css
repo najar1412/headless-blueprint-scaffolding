@@ -1,34 +1,52 @@
 .service-card {
   position: relative;
-  aspect-ratio: 1/1;
   width: 100%;
-  max-width: 18rem;
-  background-color: var(--mantine-color-brand-0);
+  max-width: 420px;
+  border-radius: 2.5rem 0 2.5rem 2.5rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+}
+.service-card-content-1 {
+  display: flex;
+  width: 100%;
+  background-color: #093c46;
+  aspect-ratio: 1 / 1;
+  opacity: 1;
+}
+.service-card-content-2 {
+  position: relative !important;
+  background-color: white;
+  opacity: 0;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+.service-card-content-1,
+.service-card-content-2 {
+  position: absolute;
+  top: 0;
+  width: 100%;
   border-radius: 2.5rem 0 2.5rem 2.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-left: auto;
   margin-right: auto;
-}
-.service-card:hover {
-  background-color: white;
-  aspect-ratio: auto;
   height: fit-content;
 }
-.service-card:hover > .arrow {
+.service-card:hover > .service-card-content-1 > .arrow,
+.service-card-content-2 > .arrow {
   opacity: 0;
 }
-.service-card:hover > .close {
+.service-card:hover > .service-card-content-1 > .close,
+.service-card-content-2 > .close {
   opacity: 1;
 }
-.service-card:hover > .content-1 {
+.service-card:hover > .service-card-content-1 {
   opacity: 0;
 }
-.service-card:hover > .content-2 {
+.service-card:hover > .service-card-content-2 {
   opacity: 1;
-}
-.service-card:hover > .content-2 {
-  height: 100%;
 }
 .header {
   font-size: 1.4rem;
@@ -46,6 +64,7 @@
 }
 .arrow {
   position: absolute;
+  top: 0;
   right: 0;
   width: 2rem;
   height: 2rem;
@@ -54,6 +73,7 @@
 }
 .close {
   position: absolute;
+  top: 0;
   right: 0;
   width: 2rem;
   height: 2rem;
@@ -63,25 +83,30 @@
 }
 .content-1 {
   display: flex;
+  aspect-ratio: 1/1;
+  visibility: visible;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
   position: absolute;
   opacity: 1;
   padding: 1rem 1rem 1rem 1rem;
-  @media (min-width: $mantine-breakpoint-md) {
+  @media (min-width: $mantine-breakpoint-lg) {
     padding: 2rem 2rem 2rem 2rem;
   }
 }
 
 .content-2 {
-  height: 0%;
-  transition: opacity, height 3s;
-  opacity: 0;
-  padding: 1rem 1rem 1rem 1rem;
-  @media (min-width: $mantine-breakpoint-md) {
-    padding: 2rem 2rem 2rem 2rem;
+  display: flex;
+  visibility: visible;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  transition: all 0.3s ease;
+  padding: 1rem 1rem 1rem 0.5rem;
+  @media (min-width: $mantine-breakpoint-lg) {
+    padding: 2rem 2rem 2rem 1.5rem;
   }
 }
 .content-2 ul {

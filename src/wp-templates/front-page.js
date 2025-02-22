@@ -413,18 +413,27 @@ export default function Component(props) {
               }}
             >
               <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
-              <Title order={2} mb="2rem" className={"gsap-fade"} ta={"center"}>
+              <Title
+                order={2}
+                mb="2rem"
+                className={`${styles["title-3"]} gsap-fade`}
+                ta={"center"}
+              >
                 Science-powered access with future-proof solutions.
               </Title>
             </div>
 
-            <Grid>
+            <Grid visibleFrom="md">
               {page.s2.serviceCards.map((card) => (
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
                     gsapName={"gsap-fade"}
-                    icon={marketAccessIcon}
-                    iconSize={"3rem"}
+                    icon={card.icon.node.sourceUrl}
+                    iconSize={
+                      card.label === "Market Access Consulting"
+                        ? "4.5rem"
+                        : "6.5rem"
+                    }
                     title={card.label}
                     items={card.list.map((item) => item.item)}
                   />
