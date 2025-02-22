@@ -9,7 +9,7 @@ import { NexusShape } from "../animated/NexusShape";
 
 import styles from "../../wp-templates/front-page.module.css";
 
-export const PinnedSection = () => {
+export const PinnedSection = ({ background }) => {
   const container = useRef();
   const shapeSvgRef = useRef();
 
@@ -193,99 +193,132 @@ export const PinnedSection = () => {
   );
 
   return (
-    <>
+    <Container
+      ref={container}
+      w="100%"
+      maw={"unset"}
+      h={"100%"}
+      p={0}
+      bg={"rgba(10, 64, 74, 1.0)"}
+      className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
+      style={{
+        position: "relative",
+        justifyContent: "center",
+        display: "flex",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          overflow: "hidden",
+          top: 0,
+          left: 0,
+          height: "100%",
+          width: "100%",
+          zIndex: 0,
+          mixBlendMode: "color-burn",
+          background: "red",
+          opacity: 0.5,
+        }}
+      >
+        <video
+          src={background}
+          autoPlay
+          muted
+          loop
+          style={{ minHeight: "100dvh", width: "auto" }}
+        />
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          zIndex: 100,
+          width: "100%",
+          maxWidth: "1440px!important",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <NexusShape ref={shapeSvgRef} className={styles.hidden} />
+      </div>
+
       <Container
-        ref={container}
+        className={styles["pinned-section"]}
+        w="100%"
+        maw={"1440px!important"}
+        px="4rem"
+        mx="auto"
+        h={"100%"}
+      >
+        <Grid
+          style={{
+            width: "100%",
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Stack>
+              <Eyebrow label={"who are we"} variant={2} />
+              <Title c="white" size={"2.3rem"} maw={"25rem"}>
+                Meeting the needs of today and tomorrow
+              </Title>
+              <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"25rem"}>
+                With the growing complexity of the healthcare system and a shift
+                toward value-based care, there is increasing pressure to
+                demonstrate the impact of a product in more innovative ways.
+              </Text>
+            </Stack>
+          </Grid.Col>
+          <Grid.Col span={{ base: 0, md: 6 }}></Grid.Col>
+        </Grid>
+      </Container>
+
+      <Container
+        className={styles["pinned-section"]}
+        w="100%"
+        maw={"1440px!important"}
+        px="4rem"
+        mx="auto"
+        h={"100%"}
+      >
+        <Grid
+          style={{
+            width: "100%",
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <Grid.Col span={6}></Grid.Col>
+          <Grid.Col span={6}></Grid.Col>
+        </Grid>
+      </Container>
+
+      <Container
+        className={styles["pinned-section"]}
         maw={"1440px!important"}
         w="100%"
         h={"100%"}
-        p={0}
-        className={`${styles["section-content"]} ${styles["section-content-trigger"]}`}
-        style={{ position: "relative" }}
+        opacity={0}
       >
-        <div
+        <Grid
           style={{
-            position: "absolute",
-            top: 0,
-            zIndex: 100,
             width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
           }}
         >
-          <NexusShape ref={shapeSvgRef} className={styles.hidden} />
-        </div>
-        <Container
-          className={styles["pinned-section"]}
-          maw={"unset"}
-          w="100%"
-          h={"100%"}
-        >
-          <Grid
-            style={{
-              width: "100%",
-              position: "absolute",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <Grid.Col span={{ base: 12, md: 6 }}>
-              <Stack>
-                <Eyebrow label={"who are we"} variant={2} />
-                <Title c="white" size={"2.3rem"} maw={"25rem"}>
-                  Meeting the needs of today and tomorrow
-                </Title>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"25rem"}>
-                  With the growing complexity of the healthcare system and a
-                  shift toward value-based care, there is increasing pressure to
-                  demonstrate the impact of a product in more innovative ways.
-                </Text>
-              </Stack>
-            </Grid.Col>
-            <Grid.Col span={{ base: 0, md: 6 }}></Grid.Col>
-          </Grid>
-        </Container>
-        <Container
-          className={styles["pinned-section"]}
-          maw={"unset"}
-          w="100%"
-          h={"100%"}
-          opacity={0}
-        >
-          <Grid
-            style={{
-              width: "100%",
-              position: "absolute",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <Grid.Col span={6}></Grid.Col>
-            <Grid.Col span={6}></Grid.Col>
-          </Grid>
-        </Container>
-        <Container
-          className={styles["pinned-section"]}
-          maw={"unset"}
-          w="100%"
-          h={"100%"}
-          opacity={0}
-        >
-          <Grid
-            style={{
-              width: "100%",
-              position: "absolute",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
-            <Grid.Col span={6}></Grid.Col>
-            <Grid.Col span={6}></Grid.Col>
-          </Grid>
-        </Container>
+          <Grid.Col span={6}></Grid.Col>
+          <Grid.Col span={6}></Grid.Col>
+        </Grid>
       </Container>
-    </>
+    </Container>
   );
 };

@@ -1,0 +1,5 @@
+.svg {
+  width: 25rem !important;
+  @media (min-width: $mantine-breakpoint-lg) {
+  }
+}
