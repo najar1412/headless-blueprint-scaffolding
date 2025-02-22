@@ -105,6 +105,15 @@
     max-width: 21rem;
   }
 }
+.title-3 {
+  font-size: 1.5rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    font-size: 2.8rem;
+  }
+  @media (min-width: $mantine-breakpoint-lg) {
+    font-size: 2.25rem;
+  }
+}
 .copy-2 {
   font-size: 1.15rem;
   @media (min-width: $mantine-breakpoint-md) {

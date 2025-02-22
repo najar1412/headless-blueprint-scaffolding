@@ -13,6 +13,7 @@ import {
   Group,
   Space,
   List,
+  Flex,
 } from "@mantine/core";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -404,7 +405,7 @@ export default function Component(props) {
         </Section>
 
         <Section label="services" bgColor="var(--mantine-color-brand-1)">
-          <Stack px={{ base: "0rem", md: "3rem" }}>
+          <Stack px={{ base: "0rem", lg: "3rem" }}>
             <div
               style={{
                 display: "flex",
@@ -413,18 +414,62 @@ export default function Component(props) {
               }}
             >
               <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
-              <Title order={2} mb="2rem" className={"gsap-fade"} ta={"center"}>
+              <Title
+                order={2}
+                mb="2rem"
+                className={`${styles["title-3"]} gsap-fade`}
+                ta={"center"}
+              >
                 Science-powered access with future-proof solutions.
               </Title>
             </div>
-
-            <Grid>
+            <Grid hiddenFrom="lg">
+              {page.s2.serviceCards.map((card) => (
+                <Grid.Col span={{ base: 12, md: 4 }}>
+                  <Flex
+                    direction={"column"}
+                    px={"1.5rem"}
+                    py={"2.5rem"}
+                    style={{
+                      borderRadius: "2rem",
+                      backgroundColor: "#093c46",
+                    }}
+                  >
+                    <Image
+                      src={card.icon.node.sourceUrl}
+                      width="50"
+                      height="50"
+                      style={{
+                        marginBottom: "1rem",
+                      }}
+                    />
+                    <Title size="1.25rem" c="white" mb="xl" tt={"capitalize"}>
+                      {card.label}
+                    </Title>
+                    <Stack gap="xs">
+                      {card.list
+                        .map((item) => item.item)
+                        .map((item) => (
+                          <Text c="white" key={item}>
+                            {item}
+                          </Text>
+                        ))}
+                    </Stack>
+                  </Flex>
+                </Grid.Col>
+              ))}
+            </Grid>
+            <Grid visibleFrom="lg">
               {page.s2.serviceCards.map((card) => (
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
                     gsapName={"gsap-fade"}
-                    icon={marketAccessIcon}
-                    iconSize={"3rem"}
+                    icon={card.icon.node.sourceUrl}
+                    iconSize={
+                      card.label === "Market Access Consulting"
+                        ? "4.5rem"
+                        : "6.5rem"
+                    }
                     title={card.label}
                     items={card.list.map((item) => item.item)}
                   />
