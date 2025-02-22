@@ -1,7 +1,7 @@
 // import Swiper core and required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Flex, Group, Text } from "@mantine/core";
+import { Flex, Group, Stack, Text } from "@mantine/core";
 
 // Import Swiper styles
 import "swiper/css";
@@ -28,18 +28,32 @@ export const QuoteCarousel = ({ quotes }) => {
                 size="5rem"
                 c="#BCDC49"
                 style={{ transform: "translateY(-0.5rem)" }}
+                visibleFrom="md"
               >
                 “
               </Text>
               <Flex direction={"column"}>
-                <Text
-                  size="md"
-                  mb={"1rem"}
-                  fw={500}
-                  className={styles["quote-copy"]}
-                >
-                  {quote.quote}
-                </Text>
+                <Stack gap={0}>
+                  <Text
+                    size="5rem"
+                    c="#BCDC49"
+                    hiddenFrom="md"
+                    style={{
+                      lineHeight: "4rem",
+                    }}
+                  >
+                    “
+                  </Text>
+                  <Text
+                    size="md"
+                    mb={"1rem"}
+                    fw={500}
+                    className={styles["quote-copy"]}
+                  >
+                    {quote.quote}
+                  </Text>
+                </Stack>
+
                 <Text fw={300} size="sm" className={styles["quoter-copy"]}>
                   {quote.quoter}
                 </Text>

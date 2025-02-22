@@ -54,29 +54,43 @@
 }
 .numbers {
 }
+.stat-container {
+  align-items: center;
+  @media (min-width: $mantine-breakpoint-lg) {
+    align-items: flex-start;
+  }
+}
 .stat-number {
   font-size: 4rem;
   line-height: 4rem;
   margin-bottom: 0.5rem;
+  text-align: center;
   @media (min-width: $mantine-breakpoint-md) {
-    font-size: 4rem;
-    line-height: 3rem;
+    font-size: 6rem;
+    line-height: 4rem !important;
     margin-bottom: 1rem;
   }
   @media (min-width: $mantine-breakpoint-lg) {
+    text-align: left;
     font-size: 2.5rem;
-    line-height: 3rem;
+    line-height: 2.5rem !important;
     margin-bottom: 0rem;
   }
 }
 .stat-copy {
   font-size: 1.2rem;
   line-height: 3rem;
+  max-width: 14rem;
+  text-align: center;
   @media (min-width: $mantine-breakpoint-md) {
     font-size: 1.4rem;
+    line-height: 2rem !important;
+    max-width: 16rem;
   }
   @media (min-width: $mantine-breakpoint-lg) {
+    text-align: left;
     font-size: 1rem;
+    line-height: 1.2rem !important;
   }
 }
 .fadeIn {
