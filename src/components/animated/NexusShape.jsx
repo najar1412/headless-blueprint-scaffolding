@@ -2,9 +2,12 @@ import { forwardRef } from "react";
 
 import { useMediaQuery } from "@mantine/hooks";
 
+import styles from "./NexusShape.module.css";
+
 export const NexusShape = forwardRef(function (props, ref) {
   return (
     <svg
+      className={styles.svg}
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

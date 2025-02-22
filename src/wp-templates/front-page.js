@@ -49,8 +49,6 @@ export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
 
-  console.log(page);
-
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
   );
@@ -334,6 +332,7 @@ export default function Component(props) {
                 width: "100%",
                 height: "100%",
                 overflow: "hidden",
+                zIndex: 0,
               }}
             >
               <video
@@ -435,9 +434,10 @@ export default function Component(props) {
           </Stack>
         </Section>
 
-        {/* pinned mobile */}
+        {/* who we are section */}
+        <div id="who-we-are"></div>
+        {/* mobile */}
         <Container
-          id="who-we-are"
           component={"section"}
           w="100%"
           maw={"unset"}
@@ -455,7 +455,7 @@ export default function Component(props) {
             }}
           >
             <Stack gap={"4rem"}>
-              <Stack>
+              <Stack align="center">
                 <Eyebrow label={"who are we"} variant={2} />
                 <img
                   src={step1Image.src}
@@ -463,9 +463,12 @@ export default function Component(props) {
                     maxWidth: "16rem",
                     marginLeft: "auto",
                     marginRight: "auto",
+                    marginTop: "2rem",
+                    marginBottom: "2rem",
                   }}
                 />
                 <Title
+                  ta="center"
                   c="white"
                   size="2rem"
                   fw="400"
@@ -473,7 +476,7 @@ export default function Component(props) {
                 >
                   Meeting the needs of today and tomorrow
                 </Title>
-                <Text c="white" size={"1rem"} lh={"1.5rem"}>
+                <Text ta="center" c="white" size={"1rem"} lh={"1.5rem"}>
                   With the growing complexity of the healthcare system and a
                   shift toward value-based care, there is increasing pressure to
                   demonstrate the impact of a product in more innovative ways.
@@ -482,6 +485,7 @@ export default function Component(props) {
 
               <Stack>
                 <Title
+                  ta={"center"}
                   c="white"
                   size="2rem"
                   fw="400"
@@ -489,11 +493,11 @@ export default function Component(props) {
                 >
                   A strong foundation built in science
                 </Title>
-                <Text c="white" size={"1rem"} lh={"1.5rem"}>
+                <Text ta={"center"} c="white" size={"1rem"} lh={"1.5rem"}>
                   We noticed there was a blank spot in medical communications
                   around the value narrative.
                 </Text>
-                <Text c="white" size={"1rem"} lh={"1.5rem"}>
+                <Text ta={"center"} c="white" size={"1rem"} lh={"1.5rem"}>
                   Joining with market access leaders, we sought to bring
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
@@ -502,6 +506,7 @@ export default function Component(props) {
 
               <Stack>
                 <Title
+                  ta={"center"}
                   c="white"
                   size="2rem"
                   fw="400"
@@ -509,11 +514,18 @@ export default function Component(props) {
                 >
                   Ability to address all stakeholder types
                 </Title>
-                <Text c="white" size={"1.1rem"} lh={"1.5rem"} maw={"27rem"}>
+                <Text
+                  ta={"center"}
+                  c="white"
+                  size={"1.1rem"}
+                  lh={"1.5rem"}
+                  maw={"27rem"}
+                  mb="1rem"
+                >
                   As market access evolves, the list of stakeholders has grown.
                   We ensure communication is tailored to each stakeholder.
                 </Text>
-                <Group>
+                <Group wrap="no-wrap" align="flex-start">
                   <div>
                     <List c="white" size="1rem" spacing="xs">
                       <List.Item>Payers</List.Item>
@@ -546,46 +558,22 @@ export default function Component(props) {
           </Container>
         </Container>
 
-        {/* pinned desktop */}
+        {/* desktop */}
         <Container
-          id="who-we-are"
           component={"section"}
           w="100%"
           maw={"unset"}
           mih={"100vh"}
-          bg={"rgba(10, 64, 74, 0.9)"}
+          bg={"rgba(10, 64, 74, 1)"}
+          p={0}
+          m={0}
           className={`${styles.section}`}
           visibleFrom="md"
-          style={{ position: "relative" }}
+          style={{ position: "relative", overflowX: "hidden" }}
         >
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              zIndex: -1,
-            }}
-          >
-            <video
-              src={page.s1.background.node.mediaItemUrl}
-              autoPlay
-              muted
-              loop
-              style={{
-                width: "100%",
-                height: "auto",
-                maskImage: `linear-gradient(
-                  to bottom,
-                  rgba(0, 0, 0, 1) 0%,
-                  rgba(0, 0, 0, 1) 80%,
-                  rgba(0, 0, 0, 0) 100%
-                )`,
-              }}
-            />
-          </div>
           <Container
+            p={0}
+            m={0}
             maw={"1440px"}
             style={{
               position: "absolute",
@@ -594,6 +582,7 @@ export default function Component(props) {
               left: "50%",
               transform: "translateX(-50%)",
               overflowX: "hidden",
+              zIndex: 10,
             }}
           >
             <Container maw={"unset"} w="100%" h={"100vh"}>
@@ -616,7 +605,7 @@ export default function Component(props) {
               p={0}
             >
               <Grid
-                gutter={"10rem"}
+                gutter={"6rem"}
                 style={{
                   width: "100%",
                 }}
@@ -649,7 +638,7 @@ export default function Component(props) {
               style={{ display: "flex", alignItems: "center" }}
             >
               <Grid
-                gutter={"10rem"}
+                gutter={"6rem"}
                 style={{
                   width: "100%",
                 }}
@@ -703,10 +692,11 @@ export default function Component(props) {
             w="100%"
             maw={"unset"}
             mih={"100vh"}
-            bg={"transparent"}
+            p={0}
+            m={0}
             className={`${styles["section-start"]} ${styles.black}`}
           >
-            <PinnedSection />
+            <PinnedSection background={page.s1.background.node.mediaItemUrl} />
           </Container>
         </Container>
 
