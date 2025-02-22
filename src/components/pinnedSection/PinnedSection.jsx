@@ -226,7 +226,7 @@ export const PinnedSection = ({ background }) => {
           autoPlay
           muted
           loop
-          style={{ minHeight: "100dvh", width: "auto" }}
+          style={{ minHeight: "100dvh", width: "auto", minWidth: "100vw" }}
         />
       </div>
 
