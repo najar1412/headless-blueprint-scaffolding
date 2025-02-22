@@ -454,7 +454,14 @@ export default function Component(props) {
             <Stack gap={"4rem"}>
               <Stack>
                 <Eyebrow label={"who are we"} variant={2} />
-                <img src={step1Image.src} />
+                <img
+                  src={step1Image.src}
+                  style={{
+                    maxWidth: "16rem",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }}
+                />
                 <Title
                   c="white"
                   size="2rem"
@@ -503,7 +510,7 @@ export default function Component(props) {
                   As market access evolves, the list of stakeholders has grown.
                   We ensure communication is tailored to each stakeholder.
                 </Text>
-                <Group wrap="no-wrap" gap={"3rem"}>
+                <Group>
                   <div>
                     <List c="white" size="1rem" spacing="xs">
                       <List.Item>Payers</List.Item>
@@ -700,58 +707,40 @@ export default function Component(props) {
           </Container>
         </Container>
 
-        <Container
-          id="our-leadership-team"
-          component={"section"}
-          w="100%"
-          py={"4rem"}
-          maw={"unset"}
-          bg={"brand.5"}
-          className={`${styles.section} ${styles["section-start"]}`}
+        <Section
+          label="our-leadership-team"
+          bgColor="var(--mantine-color-brand-5)"
         >
-          <Container
-            maw={"!important"}
-            w="100%"
-            p={0}
-            className={styles["section-content"]}
+          <Stack
+            px={{
+              base: "0rem",
+              md: "4.5rem",
+            }}
+            align="center"
           >
-            <Stack
-              px={{
-                base: "0rem",
-                md: "4.5rem",
-              }}
+            <Eyebrow
+              // gsapName={"gsap-fade"}
+              label={page.s4.eyeBrow}
+              variant={3}
+            />
+            <Title
+              order={2}
+              ta="center"
+              size="2.25rem"
+              mb={{ base: "2rem", md: "4rem" }}
+              // className={"gsap-fade"}
             >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Eyebrow
-                  gsapName={"gsap-fade"}
-                  label={page.s4.eyeBrow}
-                  variant={3}
-                />
-                <Title
-                  order={2}
-                  size="2.25rem"
-                  mb="4rem"
-                  className={"gsap-fade"}
-                >
-                  {page.s4.title}
-                </Title>
-                <Grid w={"100%"}>
-                  {page.s4.leaders.map((leader) => (
-                    <Grid.Col span={{ base: 12, sm: 6, md: 3 }}>
-                      <TeamMemberCard data={leader} />
-                    </Grid.Col>
-                  ))}
-                </Grid>
-              </div>
-            </Stack>
-          </Container>
-        </Container>
+              {page.s4.title}
+            </Title>
+            <Grid w={"100%"}>
+              {page.s4.leaders.map((leader) => (
+                <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
+                  <TeamMemberCard data={leader} />
+                </Grid.Col>
+              ))}
+            </Grid>
+          </Stack>
+        </Section>
 
         <Section label="the-nexus-advantage" bgColor={"#EFF6D9"}>
           <Grid cols={2} justify="center" align="center">

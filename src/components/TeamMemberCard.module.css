@@ -8,15 +8,52 @@
   top: 0;
   left: 0;
   transform: translate(-50%, -50%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  @media (min-width: $mantine-breakpoint-lg) {
+    display: flex;
+  }
+}
+.mycircleicon-static {
+  display: block;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-color: #bcdc49;
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  transform: translate(-0.1rem, -3.3rem);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  position: absolute;
+  @media (min-width: $mantine-breakpoint-lg) {
+    display: none;
+  }
+}
+.member-image {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  @media (min-width: $mantine-breakpoint-md) {
+    background-size: cover;
+    background-position: 0 -3rem;
+  }
+  @media (min-width: $mantine-breakpoint-lg) {
+    background-position: 0 0rem;
+  }
 }
 .scrollbar {
   &,
   &:hover {
     background-color: light-dark(
-      var(--mantine-color-gray-0),
+      var(--mantine-color-white),
       var(--mantine-color-dark-6)
     );
   }
@@ -29,14 +66,16 @@
     background-color: #d2e393;
   }
 }
-.cardModal div section {
-  max-width: 1440px;
+.cardModal {
+  position: absolute;
+  z-index: 999999999999;
 }
-@media screen and (max-width: 680px) {
-  .cardModal div section div.mantine-Modal-body div.mantine-Flex-root {
-    display: block;
+.cardModal div section {
+  height: 100%;
+  max-width: 960px;
+
+  @media (min-width: $mantine-breakpoint-md) {
+    height: fit-content;
+    max-height: 515px;
   }
 }
-/* .teamImage {
-
-} */

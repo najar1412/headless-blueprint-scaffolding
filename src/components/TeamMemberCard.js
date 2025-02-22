@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Box, Text, Stack, ScrollArea, Flex } from "@mantine/core";
+import { Box, Text, Stack, ScrollArea, Flex, Space } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
 import { useGSAP } from "@gsap/react";
@@ -66,7 +66,14 @@ export const TeamMemberCard = ({ data }) => {
           BIO
         </Text>
       </div>
-      <Stack gap={"0.4rem"}>
+      <Stack gap={"0.4rem"} style={{ position: "relative" }}>
+        <div className={styles["mycircleicon-static"]}>
+          <Text c={"#0A404A"} ta="center" fw="bold" size="1.05rem">
+            READ
+            <br />
+            BIO
+          </Text>
+        </div>
         <Box
           ref={container}
           bg={"rgba(235, 235, 235, 1)"}
@@ -74,6 +81,8 @@ export const TeamMemberCard = ({ data }) => {
             borderRadius: "2.5rem 0 2.5rem 2.5rem",
             cursor: "pointer",
             overflow: "hidden",
+            position: "relative",
+            zIndex: 0,
           }}
           mb="sm"
           onClick={open}
@@ -81,14 +90,11 @@ export const TeamMemberCard = ({ data }) => {
           mih={"16rem"}
         >
           <div
+            className={styles["member-image"]}
             style={{
-              padding: "1rem",
-              height: "100%",
-              width: "100%",
               backgroundImage: data.headshot
                 ? `url('${data.headshot.node.sourceUrl}')`
                 : "none",
-              backgroundSize: "cover",
             }}
           ></div>
         </Box>
@@ -108,9 +114,9 @@ export const TeamMemberCard = ({ data }) => {
       >
         <Modal.Overlay bg={"rgba(250, 250, 250, 0.9)"} />
         <Modal.Content
-          pl={"3rem"}
+          pl={{ base: "1rem", md: "3rem" }}
           pr={"1rem"}
-          pb={"2rem"}
+          pb={{ base: "0.25rem", md: "2rem" }}
           style={{
             borderRadius: "4rem 0 3.5rem 3.5rem",
           }}
@@ -121,32 +127,36 @@ export const TeamMemberCard = ({ data }) => {
             </Modal.CloseButton>
           </Modal.Header>
           <Modal.Body>
-            <Flex>
+            <Flex direction={{ base: "column", md: "row" }}>
               <Stack gap={"md"} mr={"1.5rem"}>
                 <div
                   style={{
                     display: "flex",
                     backgroundColor: "rgba(235, 235, 235, 1)",
                     height: "100%",
+                    maxHeight: "250px",
                     width: "100%",
                     borderRadius: "2.5rem 0 2.5rem 2.5rem",
+                    overflow: "hidden",
                   }}
                 >
                   <div
                     className={styles.teamImage}
                     style={{
                       height: "100%",
-                      width: "270px",
+                      width: "250px",
+                      minHeight: "15rem",
                       backgroundImage: data.headshot
                         ? `url('${data.headshot.node.sourceUrl}')`
                         : "none",
-                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
                     }}
                   ></div>
                 </div>
 
                 {data.linkedin ? (
-                  <Link href={data.linkedin} target='_blank'>
+                  <Link href={data.linkedin} target="_blank">
                     <Image
                       width={25}
                       height={25}
@@ -156,8 +166,9 @@ export const TeamMemberCard = ({ data }) => {
                   </Link>
                 ) : null}
               </Stack>
+              <Space h={"2rem"} hiddenFrom="md" />
               <ScrollArea
-                h={"300px"}
+                h={"250px"}
                 type="always"
                 offsetScrollbars
                 scrollbarSize={6}
