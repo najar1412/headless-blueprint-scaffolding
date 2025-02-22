@@ -434,9 +434,10 @@ export default function Component(props) {
           </Stack>
         </Section>
 
-        {/* who we are mobile */}
+        {/* who we are section */}
+        <div id="who-we-are"></div>
+        {/* mobile */}
         <Container
-          id="who-we-are"
           component={"section"}
           w="100%"
           maw={"unset"}
@@ -519,7 +520,7 @@ export default function Component(props) {
                   size={"1.1rem"}
                   lh={"1.5rem"}
                   maw={"27rem"}
-                  mb='1rem'
+                  mb="1rem"
                 >
                   As market access evolves, the list of stakeholders has grown.
                   We ensure communication is tailored to each stakeholder.
@@ -557,9 +558,8 @@ export default function Component(props) {
           </Container>
         </Container>
 
-        {/* who we are desktop */}
+        {/* desktop */}
         <Container
-          id="who-we-are"
           component={"section"}
           w="100%"
           maw={"unset"}
