@@ -100,7 +100,7 @@ export default function Header({ menuItems, page, frontPage }) {
         .from(container.current, {
           yPercent: -100,
           paused: true,
-          duration: 0.3,
+          duration: 0.1,
           scrollTrigger: {
             start: "top top",
             end: "max",
