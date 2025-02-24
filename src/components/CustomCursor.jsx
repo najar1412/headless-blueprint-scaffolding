@@ -14,7 +14,7 @@ const CustomCursor = () => {
     let cursorY = 0;
     let cursorDotX = 0;
     let cursorDotY = 0;
-    const speed = .15;
+    const speed = 0.15;
 
     window.addEventListener("mousemove", (e) => {
       mouseX = e.pageX;
@@ -32,6 +32,37 @@ const CustomCursor = () => {
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
+
+    const buttons = document.querySelectorAll(".team-card");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("mouseenter", () => {
+        gsap.to(cursorRef.current, {
+          // scale: 3,
+          opacity: 0,
+          duration: 0.1,
+          ease: "bounce.in",
+        });
+        gsap.to(cursorDotRef.current, {
+          // scale: 3,
+          opacity: 0,
+          duration: 0.1,
+          ease: "bounce.in",
+        });
+      });
+      btn.addEventListener("mouseleave", () => {
+        gsap.to(cursorRef.current, {
+          opacity: 1,
+          duration: 0.1,
+          ease: "bounce.out",
+        });
+        gsap.to(cursorDotRef.current, {
+          opacity: 1,
+          duration: 0.1,
+          ease: "bounce.out",
+        });
+      });
+    });
 
     /* const buttons = document.querySelectorAll("button");
     const paragraphs = document.querySelectorAll("p");

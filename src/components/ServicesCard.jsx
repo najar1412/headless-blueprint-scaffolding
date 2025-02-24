@@ -8,7 +8,7 @@ import arrowBrBlueIcon from "../assets/arrow-bl-blue.svg";
 
 export const ServicesCard = ({ icon, iconSize, title, items, gsapName }) => {
   return (
-    <Box className={`${styles["service-card"]} ${gsapName ? gsapName : ""}`}>
+    <Box className={`${styles["service-card"]}`}>
       <Box className={styles["service-card-content-1"]}>
         <Image alt="arrow" className={styles.arrow} src={arrowTrGreenIcon} />
         <Image

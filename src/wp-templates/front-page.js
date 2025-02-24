@@ -45,7 +45,6 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function Component(props) {
-  1;
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
 
@@ -77,15 +76,20 @@ export default function Component(props) {
     const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
     const sectionsFades = gsap.utils.toArray('[class*="front-page_fadeIn"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
+    const servicesDesktop = document.querySelector(
+      '[class*="front-page_service-grid-desk"]'
+    );
+    const servicesMobile = document.querySelector(
+      '[class*="front-page_service-grid-mob"]'
+    );
 
     mm.add(
       {
-        small: "(max-width: 62em)",
-        large: "(min-width: 62em)",
+        small: "(max-width: 75em)",
+        large: "(min-width: 75em)",
       },
       (ctx) => {
         const { large, small } = ctx.conditions;
-        console.log(large);
         if (large) {
           sections.forEach((section, i) => {
             gsap.to(section, {
@@ -107,23 +111,82 @@ export default function Component(props) {
               },
             });
 
+            // services
+            if (servicesDesktop) {
+              const items = servicesDesktop.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                duration: 2,
+                translateY: 100,
+                ease: "power1.inOut",
+              });
+
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
+                  toggleActions: "play none none none",
+                  /* markers: {
+                    indent: 150 * i,
+                    startColor: "red",
+                    endColor: "red",
+                  }, */
+                  id: i,
+                },
+              });
+            }
+
             // the nexus advantage section
             const numberCountElements = gsap.utils.toArray(
               section.querySelectorAll('[class*="front-page_numbers"]')
             );
 
-            gsap.from(numberCountElements, {
-              textContent: 0,
-              duration: 3,
-              ease: "none",
-              snap: { textContent: 1 },
+            if (numberCountElements) {
+              gsap.from(numberCountElements, {
+                textContent: 0,
+                duration: 3,
+                ease: "none",
+                snap: { textContent: 1 },
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                },
+              });
+            }
+
+            // team
+            const members = section.querySelectorAll(".gsap-fade");
+            gsap.set(members, {
+              opacity: 0,
+              duration: 2,
+              translateY: 100,
+              ease: "power1.inOut",
+            });
+
+            gsap.to(members, {
+              opacity: 1,
+              translateY: 0,
+              stagger: 0.15,
               scrollTrigger: {
                 trigger: section,
-                start: () =>
-                  `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
-                end: () =>
-                  `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
-                /* markers: true, */
+                start: () => `top bottom-=25%`,
+                end: () => `bottom top+=75%`,
+                toggleActions: "play none none none",
+                /* markers: {
+                  indent: 150 * i,
+                  startColor: "yellow",
+                  endColor: "yellow",
+                }, */
+                id: i,
               },
             });
 
@@ -131,6 +194,7 @@ export default function Component(props) {
             const cardElements = gsap.utils.toArray(
               section.querySelectorAll(".gsap-fade")
             );
+
             gsap.set(cardElements, {
               opacity: 0,
               duration: 2,
@@ -149,11 +213,6 @@ export default function Component(props) {
                 end: () =>
                   `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
                 toggleActions: "play none none none",
-                /* markers: {
-                  indent: 150 * i,
-                  startColor: "red",
-                  endColor: "red",
-                }, */
                 id: i,
               },
             });
@@ -165,20 +224,43 @@ export default function Component(props) {
               scrollTrigger: {
                 trigger: section,
                 start: () =>
-                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
-                end: () =>
-                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=50%`,
+                  `top${i > 2 ? `+=${small ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                end: () => `bottom bottom`,
                 toggleActions: "play none reverse none",
                 invalidateOnRefresh: true,
                 onToggle: (self) => self.isActive && setActive(section),
                 /* markers: {
                   indent: 150 * i,
-                  startColor: "red",
-                  endColor: "red",
+                  startColor: "green",
+                  endColor: "green",
                 }, */
                 id: i,
               },
             });
+
+            // services
+            if (servicesMobile) {
+              const items = servicesMobile.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                duration: 2,
+                translateY: 100,
+                ease: "power1.inOut",
+              });
+
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top bottom-=25%`,
+                  end: () => `bottom top+=75%`,
+                  toggleActions: "play none none none",
+                  id: i,
+                },
+              });
+            }
 
             // the nexus advantage section
             const numberCountElements = gsap.utils.toArray(
@@ -198,8 +280,34 @@ export default function Component(props) {
               },
             });
 
+            // team
+            const members = section.querySelectorAll(".gsap-fade");
+            gsap.set(members, {
+              opacity: 0,
+              duration: 2,
+              translateY: 100,
+              ease: "power1.inOut",
+            });
+
+            gsap.to(members, {
+              opacity: 1,
+              translateY: 0,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: section,
+                start: () => `top bottom-=25%`,
+                end: () => `bottom top+=75%`,
+                toggleActions: "play none none none",
+                /* markers: {
+                    indent: 150 * i,
+                    startColor: "red",
+                    endColor: "red",
+                  }, */
+                id: i,
+              },
+            });
             // thought leadership section
-            const cardElements = gsap.utils.toArray(
+            /* const cardElements = gsap.utils.toArray(
               section.querySelectorAll(".gsap-fade")
             );
             gsap.set(cardElements, {
@@ -219,14 +327,10 @@ export default function Component(props) {
                 end: () =>
                   `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
                 toggleActions: "play none none none",
-                /* markers: {
-                  indent: 150 * i,
-                  startColor: "red",
-                  endColor: "red",
-                }, */
+
                 id: i,
               },
-            });
+            }); */
           });
         }
       }
@@ -310,7 +414,9 @@ export default function Component(props) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
       <CustomCursor />
+
       <Header menuItems={primaryMenuItems.nodes} page={page} frontPage />
 
       <Container
@@ -357,14 +463,24 @@ export default function Component(props) {
             }}
           >
             <Stack>
-              <Title
-                maw={"40rem"}
-                fw={600}
-                mb={"lg"}
-                className={`${styles.title} gsap-initial`}
-              >
-                Shaping the future of market access
-              </Title>
+              <Stack gap={0}>
+                <Title
+                  maw={"40rem"}
+                  fw={600}
+                  className={`${styles.title} gsap-initial`}
+                >
+                  Shaping the future
+                </Title>
+                <Title
+                  maw={"40rem"}
+                  fw={600}
+                  mb={"lg"}
+                  className={`${styles.title} gsap-initial`}
+                >
+                  of market access
+                </Title>
+              </Stack>
+
               <Text
                 maw={"28rem"}
                 size="1.2rem"
@@ -423,7 +539,8 @@ export default function Component(props) {
                 Science-powered access with future-proof solutions.
               </Title>
             </div>
-            <Grid hiddenFrom="lg">
+
+            <Grid hiddenFrom="lg" className={styles["service-grid-mobile"]}>
               {page.s2.serviceCards.map((card) => (
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <Flex
@@ -436,6 +553,7 @@ export default function Component(props) {
                     }}
                   >
                     <Image
+                      className="gsap-fade"
                       src={card.icon.node.sourceUrl}
                       width="75"
                       height="75"
@@ -443,14 +561,20 @@ export default function Component(props) {
                         marginBottom: "1rem",
                       }}
                     />
-                    <Title size="1.25rem" c="white" mb="xl" tt={"capitalize"}>
+                    <Title
+                      className="gsap-fade"
+                      size="1.25rem"
+                      c="white"
+                      mb="xl"
+                      tt={"capitalize"}
+                    >
                       {card.label}
                     </Title>
                     <Stack gap="xs">
                       {card.list
                         .map((item) => item.item)
                         .map((item) => (
-                          <Text c="white" key={item}>
+                          <Text className="gsap-fade" c="white" key={item}>
                             {item}
                           </Text>
                         ))}
@@ -459,7 +583,8 @@ export default function Component(props) {
                 </Grid.Col>
               ))}
             </Grid>
-            <Grid visibleFrom="lg">
+
+            <Grid visibleFrom="lg" className={styles["service-grid-desktop"]}>
               {page.s2.serviceCards.map((card) => (
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <ServicesCard
@@ -757,7 +882,7 @@ export default function Component(props) {
             align="center"
           >
             <Eyebrow
-              // gsapName={"gsap-fade"}
+              gsapName={"gsap-fade"}
               label={page.s4.eyeBrow}
               variant={3}
             />
@@ -766,7 +891,7 @@ export default function Component(props) {
               ta="center"
               size="2.25rem"
               mb={{ base: "2rem", md: "4rem" }}
-              // className={"gsap-fade"}
+              className={"gsap-fade"}
             >
               {page.s4.title}
             </Title>
@@ -842,17 +967,17 @@ export default function Component(props) {
 
         <Section label="thought-leadership">
           <Eyebrow
-            // gsapName={"gsap-fade"}
+            gsapName={"gsap-fade"}
             label={"thought leadership"}
             variant={3}
           />
           <Grid gutter={"xs"}>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Stack>
-                <Title className={`${styles["title-2"]}`}>
+                <Title className={`${styles["title-2"]} gsap-fade`}>
                   What’s Happening at Nexus Health
                 </Title>
-                <Text fw="500" className={`${styles["copy-2"]}`}>
+                <Text fw="500" className={`${styles["copy-2"]} gsap-fade`}>
                   The future of market access starts here—news, insights, and
                   expert perspectives.
                 </Text>
@@ -883,7 +1008,7 @@ export default function Component(props) {
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {announcement.length ? (
                 <PostCard
-                  // gsapName={"gsap-fade"}
+                  gsapName={"gsap-fade"}
                   category={"announcement"}
                   title={announcement[0].title}
                   footer={announcement[0].publicationMeta.announcementLocation}
@@ -893,7 +1018,7 @@ export default function Component(props) {
               ) : null}
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-              <PostCard /* gsapName={"gsap-fade"} */ gradient />
+              <PostCard gsapName={"gsap-fade"} gradient />
             </Grid.Col>
           </Grid>
           <Grid gutter={"xs"}>
@@ -906,7 +1031,7 @@ export default function Component(props) {
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {journal.length ? (
                 <PostCard
-                  // gsapName={"gsap-fade"}
+                  gsapName={"gsap-fade"}
                   category={"journal"}
                   title={journal[0].title}
                   link={journal[0].uri}
@@ -915,12 +1040,12 @@ export default function Component(props) {
               ) : null}
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-              <PostCard /* gsapName={"gsap-fade"} */ image={cardGrayImage} />
+              <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {featured ? (
                 <PostCard
-                  // gsapName={"gsap-fade"}
+                  gsapName={"gsap-fade"}
                   category={"featured"}
                   title={featured[0].title}
                   image={placeholderThumbImage}

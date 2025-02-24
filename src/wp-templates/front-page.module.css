@@ -101,7 +101,7 @@
   opacity: 1;
 }
 .title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   @media (min-width: $mantine-breakpoint-xs) {
     font-size: 3rem;
   }
@@ -154,6 +154,10 @@
   left: 0;
   width: 100vw;
   height: 100dvh;
+}
+.service-grid-mobile {
+}
+.service-grid-desktop {
 }
 .box-element-1 {
   display: flex;
