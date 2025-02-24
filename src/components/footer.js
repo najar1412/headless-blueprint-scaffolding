@@ -100,7 +100,8 @@ export default function Footer(props) {
         >
           <Divider color="#5A5A5A" size="0.1" />
           <Text size="0.5rem" mt="1.5rem" c={"#5A5A5A"}>
-            Copyright (c) 2024, Nexus Health Group, All rights reserved.
+            Copyright (c) {new Date().getFullYear()}, Nexus Health Group, All
+            rights reserved.
           </Text>
         </Container>
         <Gradient />

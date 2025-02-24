@@ -151,11 +151,18 @@ export default function PagePublication(props) {
                     style={{ transform: "scale(1.5)" }}
                   />
                 </Group>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.content.replaceAll("<p>", '<p class="what">'),
-                  }}
-                />
+                {post && post.content ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.content.replaceAll(
+                        "<p>",
+                        '<p class="what">'
+                      ),
+                    }}
+                  />
+                ) : (
+                  <Text>No Content</Text>
+                )}
               </Stack>
             </Grid.Col>
           </Grid>
@@ -189,22 +196,28 @@ export default function PagePublication(props) {
               </Stack>
             </Link>
 
-            <Link href={"/thought-leadership"} style={{ width: "fit-content" }}>
-              <Stack
-                gap={"0.25rem"}
-                className={`${frontPageStyles.link} gsap-fade`}
-                mt="0.4rem"
-                mb="1rem"
-                w="fit-content"
-                style={{ overflow: "hidden" }}
+            <UnstyledButton>
+              <Link
+                href={"/thought-leadership"}
+                style={{ width: "fit-content" }}
               >
-                <Text fw="700" size="0.84rem" mb="0.25rem">
-                  Back to All Posts
-                </Text>
+                <Stack
+                  visibleFrom="md"
+                  gap={"0.25rem"}
+                  className={`${frontPageStyles.link} gsap-fade`}
+                  mt="0.4rem"
+                  mb="1rem"
+                  w="fit-content"
+                  style={{ overflow: "hidden" }}
+                >
+                  <Text fw="700" size="0.84rem" mb="0.25rem">
+                    Back to All Posts
+                  </Text>
 
-                <div className={`${frontPageStyles["bar-link"]}`} />
-              </Stack>
-            </Link>
+                  <div className={`${frontPageStyles["bar-link"]}`} />
+                </Stack>
+              </Link>
+            </UnstyledButton>
 
             <Link href={"#"} style={{ width: "fit-content" }}>
               <Stack
@@ -231,17 +244,6 @@ export default function PagePublication(props) {
                 <div className={`${frontPageStyles["bar-link"]}`} />
               </Stack>
             </Link>
-
-            {/* <UnstyledButton>
-              <Group>
-                <Text fw="500">Next Post</Text>
-                <Image
-                  src={arrowUpIcon.src}
-                  alt="east arrow"
-                  style={{ transform: "rotate(90deg) scale(0.8)" }}
-                />
-              </Group>
-            </UnstyledButton> */}
           </Flex>
           <UnstyledButton
             hiddenFrom="sm"
@@ -251,7 +253,7 @@ export default function PagePublication(props) {
             style={{ display: "flex" }}
           >
             <Link href="/thought-leadership">
-              <Text fw="500" ta={"center"}>
+              <Text fw="700" size="0.84rem" mb="0.25rem" ta="center">
                 Back to All Posts
               </Text>
             </Link>
