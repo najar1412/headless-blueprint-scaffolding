@@ -29,6 +29,7 @@ import { ServicesCard } from "../components/ServicesCard";
 import { PinnedSection } from "../components/pinnedSection/PinnedSection";
 import { TeamMemberCard } from "../components/TeamMemberCard";
 import { Section } from "../components/layout/Section";
+import CustomCursor from "../components/CustomCursor";
 
 import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
@@ -309,7 +310,7 @@ export default function Component(props) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
+      <CustomCursor />
       <Header menuItems={primaryMenuItems.nodes} page={page} frontPage />
 
       <Container

@@ -7,6 +7,7 @@ import { FeatureCarousel } from "../components/carousels/FeatureCarousel";
 import { Eyebrow } from "../components/Eyebrow";
 import LoadMorePublications from "../components/LoadMorePublications";
 import { Loading } from "../components/animated/Loading";
+import CustomCursor from "../components/CustomCursor";
 
 import styles from "./page-thought-leadership.module.css";
 
@@ -20,6 +21,7 @@ export default function PageThoughtLeadership(props) {
 
   return (
     <>
+      <CustomCursor />
       <Header menuItems={primaryMenuItems.nodes} page={page} />
 
       <Container

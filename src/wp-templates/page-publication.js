@@ -17,6 +17,7 @@ import Link from "next/link";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Loading } from "../components/animated/Loading";
+import CustomCursor from "../components/CustomCursor";
 
 import frontPageStyles from "./front-page.module.css";
 import styles from "./page-publication.module.css";
@@ -24,7 +25,6 @@ import styles from "./page-publication.module.css";
 import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
 import facebookIcon from "../assets/facebook.svg";
 import xIcon from "../assets/X_logo_2023_original 1.svg";
-import arrowUpIcon from "../assets/arrow-up.svg";
 import arrowBlBlueIcon from "../assets/arrow-bl-blue.svg";
 
 export default function PagePublication(props) {
@@ -49,13 +49,13 @@ export default function PagePublication(props) {
 
   return (
     <>
+      <CustomCursor />
       <Header
         menuItems={primaryMenuItems.nodes}
         page={{ title: "Thought Leadership" }}
       />
 
       <Container
-        /* component={"main"} */
         className={`${styles.container}`}
         maw={"unset"}
         w="100%"
