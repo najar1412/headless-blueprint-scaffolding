@@ -69,7 +69,7 @@ export const TeamMemberCard = ({ data }) => {
       <Stack
         gap={"0.4rem"}
         style={{ position: "relative" }}
-        className={"gsap-fade"}
+        // className={"gsap-fade"}
       >
         <div className={styles["mycircleicon-static"]}>
           <Text c={"#0A404A"} ta="center" fw="bold" size="1.05rem">

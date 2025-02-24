@@ -841,17 +841,17 @@ export default function Component(props) {
 
         <Section label="thought-leadership">
           <Eyebrow
-            gsapName={"gsap-fade"}
+            // gsapName={"gsap-fade"}
             label={"thought leadership"}
             variant={3}
           />
           <Grid gutter={"xs"}>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Stack>
-                <Title className={`${styles["title-2"]} gsap-fade`}>
+                <Title className={`${styles["title-2"]}`}>
                   What’s Happening at Nexus Health
                 </Title>
-                <Text fw="500" className={`${styles["copy-2"]} gsap-fade`}>
+                <Text fw="500" className={`${styles["copy-2"]}`}>
                   The future of market access starts here—news, insights, and
                   expert perspectives.
                 </Text>
@@ -882,7 +882,7 @@ export default function Component(props) {
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {announcement.length ? (
                 <PostCard
-                  gsapName={"gsap-fade"}
+                  // gsapName={"gsap-fade"}
                   category={"announcement"}
                   title={announcement[0].title}
                   footer={announcement[0].publicationMeta.announcementLocation}
@@ -892,7 +892,7 @@ export default function Component(props) {
               ) : null}
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-              <PostCard gsapName={"gsap-fade"} gradient />
+              <PostCard /* gsapName={"gsap-fade"} */ gradient />
             </Grid.Col>
           </Grid>
           <Grid gutter={"xs"}>
@@ -905,7 +905,7 @@ export default function Component(props) {
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {journal.length ? (
                 <PostCard
-                  gsapName={"gsap-fade"}
+                  // gsapName={"gsap-fade"}
                   category={"journal"}
                   title={journal[0].title}
                   link={journal[0].uri}
@@ -914,12 +914,12 @@ export default function Component(props) {
               ) : null}
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-              <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
+              <PostCard /* gsapName={"gsap-fade"} */ image={cardGrayImage} />
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {featured ? (
                 <PostCard
-                  gsapName={"gsap-fade"}
+                  // gsapName={"gsap-fade"}
                   category={"featured"}
                   title={featured[0].title}
                   image={placeholderThumbImage}
