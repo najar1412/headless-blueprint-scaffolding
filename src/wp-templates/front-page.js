@@ -129,73 +129,75 @@ export default function Component(props) {
             });
 
             if (section.id === "services") {
+              // header
+              const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                translateY: 100,
+              });
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                  toggleActions: "play none none none",
+                  /* markers: {
+                    indent: 150 * i,
+                    startColor: "red",
+                    endColor: "red",
+                  }, */
+                  id: i,
+                },
+              });
+
+              // desktop content
               const desktopComp = section.querySelector(
                 `.${styles["service-grid-desktop"]}`
               );
-              console.log("-----------");
-              console.log(desktopComp);
-              const items = desktopComp.querySelectorAll(".gsap-fade");
-              gsap.set(items, {
+              const desktopItems = desktopComp.querySelectorAll(".gsap-fade");
+              gsap.set(desktopItems, {
                 opacity: 0,
                 duration: 2,
                 translateY: 100,
                 ease: "power1.inOut",
               });
 
-              gsap.to(items, {
+              gsap.to(desktopItems, {
                 opacity: 1,
                 translateY: 0,
                 stagger: 0.15,
                 scrollTrigger: {
                   trigger: desktopComp,
                   start: () =>
-                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
                   end: () =>
-                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
-                  markers: {
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                  /* markers: {
                     indent: 150 * i,
                     startColor: "red",
                     endColor: "red",
-                  },
+                  }, */
                   id: i,
                 },
               });
             }
 
-            // the nexus advantage section
-            const numberCountElements = gsap.utils.toArray(
-              section.querySelectorAll('[class*="front-page_numbers"]')
-            );
-
-            if (numberCountElements) {
-              gsap.from(numberCountElements, {
-                textContent: 0,
-                duration: 3,
-                ease: "none",
-                snap: { textContent: 1 },
-                scrollTrigger: {
-                  trigger: section,
-                  start: () =>
-                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
-                  end: () =>
-                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
-                },
-              });
-            }
-
-            // team
             if (section.id === "our-leadership-team") {
-              const members = section.querySelectorAll(".gsap-fade");
-              gsap.set(members, {
+              const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
                 opacity: 0,
                 translateY: 100,
               });
 
-              gsap.to(members, {
+              gsap.to(items, {
                 opacity: 1,
-                duration: 2,
                 translateY: 0,
-                stagger: 0.6,
+                stagger: 0.15,
                 scrollTrigger: {
                   trigger: section,
                   start: () =>
@@ -213,32 +215,65 @@ export default function Component(props) {
               });
             }
 
-            // thought leadership section
-            const cardElements = gsap.utils.toArray(
-              section.querySelectorAll(".gsap-fade")
-            );
+            if (section.id === "the-nexus-advantage") {
+              const numberCountElements = gsap.utils.toArray(
+                section.querySelectorAll('[class*="front-page_numbers"]')
+              );
 
-            gsap.set(cardElements, {
-              opacity: 0,
-              duration: 2,
-              translateY: 100,
-              ease: "power1.inOut",
-            });
+              if (numberCountElements) {
+                gsap.from(numberCountElements, {
+                  textContent: 0,
+                  duration: 3,
+                  ease: "none",
+                  snap: { textContent: 1 },
+                  scrollTrigger: {
+                    trigger: section,
+                    start: () =>
+                      `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                    end: () =>
+                      `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                    /* markers: {
+                      indent: 150 * i,
+                      startColor: "red",
+                      endColor: "red",
+                    }, */
+                  },
+                });
+              }
+            }
 
-            gsap.to(cardElements, {
-              opacity: 1,
-              translateY: 0,
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: section,
-                start: () =>
-                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
-                end: () =>
-                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
-                toggleActions: "play none none none",
-                id: i,
-              },
-            });
+            if (section.id === "thought-leadership") {
+              const cardElements = gsap.utils.toArray(
+                section.querySelectorAll(".gsap-fade")
+              );
+
+              gsap.set(cardElements, {
+                opacity: 0,
+                duration: 2,
+                translateY: 100,
+                ease: "power1.inOut",
+              });
+
+              gsap.to(cardElements, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
+                  toggleActions: "play none none none",
+                  id: i,
+                  markers: {
+                    indent: 150 * i,
+                    startColor: "red",
+                    endColor: "red",
+                  },
+                },
+              });
+            }
           });
 
           // pinned section
