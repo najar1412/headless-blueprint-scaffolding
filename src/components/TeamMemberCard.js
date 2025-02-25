@@ -19,8 +19,6 @@ export const TeamMemberCard = ({ data }) => {
   const newCursor = useRef();
 
   useGSAP(() => {
-    console.log(container);
-
     const xTo = gsap.quickTo(newCursor.current, "x", {
       duration: 0.3,
       ease: "power3",
@@ -57,6 +55,16 @@ export const TeamMemberCard = ({ data }) => {
     // sectional animation
   });
 
+  const handleOpen = () => {
+    document.body.classList.add("show-cursor");
+    open();
+  };
+
+  const handleClose = () => {
+    document.body.classList.remove("show-cursor");
+    close();
+  };
+
   return (
     <>
       <div ref={newCursor} className={styles.mycircleicon}>
@@ -89,7 +97,7 @@ export const TeamMemberCard = ({ data }) => {
             zIndex: 0,
           }}
           mb="sm"
-          onClick={open}
+          onClick={() => handleOpen()}
           h={"16rem"}
           mih={"16rem"}
         >
@@ -111,10 +119,11 @@ export const TeamMemberCard = ({ data }) => {
       <Modal.Root
         className={styles.cardModal}
         opened={opened}
-        onClose={close}
+        onClose={() => handleClose()}
         size={"90vw"}
         centered
         h={"100%"}
+        removeScrollProps={{ removeScrollBar: false }}
       >
         <Modal.Overlay bg={"rgba(250, 250, 250, 0.9)"} />
         <Modal.Content

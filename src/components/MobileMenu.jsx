@@ -31,7 +31,7 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
             }}
             mt="0.2rem"
             px={"2rem"}
-            py={'1.25rem'}
+            py={"1.25rem"}
             color="brand.2"
             style={{ cursor: "pointer" }}
           >
@@ -72,7 +72,12 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
 
   return (
     <>
-      <Drawer.Root opened={opened} onClose={close} size="100%">
+      <Drawer.Root
+        opened={opened}
+        onClose={close}
+        size="100%"
+        removeScrollProps={{ removeScrollBar: false }}
+      >
         <Drawer.Overlay />
         <Drawer.Content>
           <Drawer.Body px={0} pt="2rem">
