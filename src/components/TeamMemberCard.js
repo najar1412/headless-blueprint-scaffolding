@@ -95,6 +95,7 @@ export const TeamMemberCard = ({ data }) => {
             overflow: "hidden",
             position: "relative",
             zIndex: 0,
+            cursor: "none",
           }}
           mb="sm"
           onClick={() => handleOpen()}
