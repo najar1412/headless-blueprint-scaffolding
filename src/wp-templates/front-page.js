@@ -402,11 +402,11 @@ export default function Component(props) {
                       `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
                     toggleActions: "play none none none",
                     id: i,
-                    markers: {
+                    /* markers: {
                       indent: 150 * i,
                       startColor: "red",
                       endColor: "red",
-                    },
+                    }, */
                   },
                 });
               });
@@ -499,11 +499,11 @@ export default function Component(props) {
                         `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
                       toggleActions: "play none none none",
                       id: i,
-                      markers: {
+                      /* markers: {
                         indent: 150 * i,
                         startColor: "red",
                         endColor: "red",
-                      },
+                      }, */
                     },
                   });
                 });
