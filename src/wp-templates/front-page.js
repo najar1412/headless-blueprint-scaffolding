@@ -76,12 +76,6 @@ export default function Component(props) {
     const sections = gsap.utils.toArray('[class*="front-page_section-start"]');
     const sectionsFades = gsap.utils.toArray('[class*="front-page_fadeIn"]');
     const headerLinks = gsap.utils.toArray('[class*="header_link"]');
-    const servicesDesktop = document.querySelector(
-      '[class*="front-page_service-grid-desk"]'
-    );
-    const servicesMobile = document.querySelector(
-      '[class*="front-page_service-grid-mob"]'
-    );
 
     mm.add(
       {
@@ -266,11 +260,11 @@ export default function Component(props) {
                     `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
                   toggleActions: "play none none none",
                   id: i,
-                  markers: {
+                  /* markers: {
                     indent: 150 * i,
                     startColor: "red",
                     endColor: "red",
-                  },
+                  }, */
                 },
               });
             }
@@ -353,10 +347,88 @@ export default function Component(props) {
                 id: i,
               },
             });
+            if (section.id === "services") {
+              // header
+              /* const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                translateY: 100,
+              });
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                  toggleActions: "play none none none",
 
-            // services
-            if (servicesMobile) {
-              const items = servicesMobile.querySelectorAll(".gsap-fade");
+                  id: i,
+                },
+              }); */
+
+              // mobile content
+              const mobileComp = section.querySelector(
+                `.${styles["service-grid-mobile"]}`
+              );
+              const groups = gsap.utils.toArray(
+                mobileComp.querySelectorAll(".gsap-group-fade")
+              );
+
+              groups.forEach((group) => {
+                const items = gsap.utils.toArray(
+                  group.querySelectorAll(".gsap-fade")
+                );
+                gsap.set(items, {
+                  opacity: 0,
+                  duration: 2,
+                  translateY: 100,
+                  ease: "power1.inOut",
+                });
+
+                gsap.to(items, {
+                  opacity: 1,
+                  translateY: 0,
+                  stagger: 0.2,
+                  scrollTrigger: {
+                    trigger: group,
+                    start: () =>
+                      `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                    end: () =>
+                      `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                    toggleActions: "play none none none",
+                    id: i,
+                    markers: {
+                      indent: 150 * i,
+                      startColor: "red",
+                      endColor: "red",
+                    },
+                  },
+                });
+              });
+            } else if (section.id === "the-nexus-advantage") {
+              // the nexus advantage section
+              const numberCountElements = gsap.utils.toArray(
+                section.querySelectorAll('[class*="front-page_numbers"]')
+              );
+
+              gsap.from(numberCountElements, {
+                textContent: 0,
+                duration: 3,
+                ease: "none",
+                snap: { textContent: 1 },
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top bottom-=50%`,
+                  end: () => `bottom top+=50%`,
+                  /* markers: true, */
+                },
+              });
+            } else if (section.id === "our-leadership-team") {
+              const items = section.querySelectorAll(".gsap-fade");
               gsap.set(items, {
                 opacity: 0,
                 duration: 2,
@@ -376,77 +448,66 @@ export default function Component(props) {
                   id: i,
                 },
               });
+            } else if (section.id === "thought-leadership") {
+              const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                duration: 2,
+                translateY: 100,
+                ease: "power1.inOut",
+              });
+
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top bottom-=25%`,
+                  end: () => `bottom top+=75%`,
+                  toggleActions: "play none none none",
+                  id: i,
+                },
+              });
+            } else {
+              if (section.id === "who-we-are-mobile") {
+                const groups = gsap.utils.toArray(
+                  section.querySelectorAll(".gsap-group-fade")
+                );
+
+                groups.forEach((group) => {
+                  const items = gsap.utils.toArray(
+                    group.querySelectorAll(".gsap-fade")
+                  );
+                  gsap.set(items, {
+                    opacity: 0,
+                    duration: 2,
+                    translateY: 100,
+                    ease: "power1.inOut",
+                  });
+
+                  gsap.to(items, {
+                    opacity: 1,
+                    translateY: 0,
+                    stagger: 0.2,
+                    scrollTrigger: {
+                      trigger: group,
+                      start: () =>
+                        `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                      end: () =>
+                        `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                      toggleActions: "play none none none",
+                      id: i,
+                      markers: {
+                        indent: 150 * i,
+                        startColor: "red",
+                        endColor: "red",
+                      },
+                    },
+                  });
+                });
+              }
             }
-
-            // the nexus advantage section
-            const numberCountElements = gsap.utils.toArray(
-              section.querySelectorAll('[class*="front-page_numbers"]')
-            );
-
-            gsap.from(numberCountElements, {
-              textContent: 0,
-              duration: 3,
-              ease: "none",
-              snap: { textContent: 1 },
-              scrollTrigger: {
-                trigger: section,
-                start: () => `top bottom-=50%`,
-                end: () => `bottom top+=50%`,
-                /* markers: true, */
-              },
-            });
-
-            // team
-            const members = section.querySelectorAll(".gsap-fade");
-            gsap.set(members, {
-              opacity: 0,
-              duration: 2,
-              translateY: 100,
-              ease: "power1.inOut",
-            });
-
-            gsap.to(members, {
-              opacity: 1,
-              translateY: 0,
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: section,
-                start: () => `top bottom-=25%`,
-                end: () => `bottom top+=75%`,
-                toggleActions: "play none none none",
-                /* markers: {
-                    indent: 150 * i,
-                    startColor: "red",
-                    endColor: "red",
-                  }, */
-                id: i,
-              },
-            });
-            // thought leadership section
-            /* const cardElements = gsap.utils.toArray(
-              section.querySelectorAll(".gsap-fade")
-            );
-            gsap.set(cardElements, {
-              opacity: 0,
-              translateY: 100,
-              ease: "power1.inOut",
-            });
-
-            gsap.to(cardElements, {
-              opacity: 1,
-              translateY: 0,
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: section,
-                start: () =>
-                  `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
-                end: () =>
-                  `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
-                toggleActions: "play none none none",
-
-                id: i,
-              },
-            }); */
           });
         }
       }
@@ -588,6 +649,7 @@ export default function Component(props) {
               {page.s2.serviceCards.map((card) => (
                 <Grid.Col span={{ base: 12, md: 4 }}>
                   <Flex
+                    className="gsap-group-fade"
                     direction={"column"}
                     px={"1.5rem"}
                     py={"2.5rem"}
@@ -650,12 +712,13 @@ export default function Component(props) {
 
         <div id="who-we-are"></div>
         {/* mobile */}
-        {/* <Container
+        <Container
+          id="who-we-are-mobile"
           component={"section"}
           w="100%"
           maw={"unset"}
           bg={"var(--mantine-color-brand-0)"}
-          className={`${styles.section}`}
+          className={`${styles.section} ${styles["section-start"]}`}
           hiddenFrom="md"
           style={{ position: "relative" }}
         >
@@ -668,9 +731,14 @@ export default function Component(props) {
             }}
           >
             <Stack gap={"4rem"}>
-              <Stack align="center">
-                <Eyebrow label={"who are we"} variant={2} />
+              <Stack align="center" className="gsap-group-fade">
+                <Eyebrow
+                  label={"who are we"}
+                  variant={2}
+                  gsapName={"gsap-fade"}
+                />
                 <img
+                  className="gsap-fade"
                   src={step1Image.src}
                   style={{
                     maxWidth: "16rem",
@@ -686,39 +754,60 @@ export default function Component(props) {
                   size="2rem"
                   fw="400"
                   mb={{ base: "0", md: "1.5rem" }}
+                  className="gsap-fade"
                 >
                   Meeting the needs of today and tomorrow
                 </Title>
-                <Text ta="center" c="white" size={"1rem"} lh={"1.5rem"}>
+                <Text
+                  ta="center"
+                  c="white"
+                  size={"1rem"}
+                  lh={"1.5rem"}
+                  className="gsap-fade"
+                >
                   With the growing complexity of the healthcare system and a
                   shift toward value-based care, there is increasing pressure to
                   demonstrate the impact of a product in more innovative ways.
                 </Text>
               </Stack>
 
-              <Stack>
+              <Stack className="gsap-group-fade">
                 <Title
                   ta={"center"}
                   c="white"
                   size="2rem"
                   fw="400"
                   mb={{ base: "0", md: "1.5rem" }}
+                  className="gsap-fade"
                 >
                   A strong foundation built in science
                 </Title>
-                <Text ta={"center"} c="white" size={"1rem"} lh={"1.5rem"}>
+                <Text
+                  ta={"center"}
+                  c="white"
+                  size={"1rem"}
+                  lh={"1.5rem"}
+                  className="gsap-fade"
+                >
                   We noticed there was a blank spot in medical communications
                   around the value narrative.
                 </Text>
-                <Text ta={"center"} c="white" size={"1rem"} lh={"1.5rem"}>
+                <Text
+                  ta={"center"}
+                  c="white"
+                  size={"1rem"}
+                  lh={"1.5rem"}
+                  className="gsap-fade"
+                >
                   Joining with market access leaders, we sought to bring
                   together a curated group of people to meet the needs of the
                   evolving market access landscape.
                 </Text>
               </Stack>
 
-              <Stack>
+              <Stack className="gsap-group-fade">
                 <Title
+                  className="gsap-fade"
                   ta={"center"}
                   c="white"
                   size="2rem"
@@ -734,11 +823,12 @@ export default function Component(props) {
                   lh={"1.5rem"}
                   maw={"27rem"}
                   mb="1rem"
+                  className="gsap-fade"
                 >
                   As market access evolves, the list of stakeholders has grown.
                   We ensure communication is tailored to each stakeholder.
                 </Text>
-                <Group wrap="no-wrap" align="flex-start">
+                <Group wrap="no-wrap" align="flex-start" className="gsap-fade">
                   <div>
                     <List c="white" size="1rem" spacing="xs">
                       <List.Item>Payers</List.Item>
@@ -769,7 +859,7 @@ export default function Component(props) {
               </Stack>
             </Stack>
           </Container>
-        </Container> */}
+        </Container>
 
         {/* desktop */}
         <Container
