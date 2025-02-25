@@ -85,13 +85,30 @@ export default function Component(props) {
 
     mm.add(
       {
-        small: "(max-width: 75em)",
-        large: "(min-width: 75em)",
+        small: "(max-width: 62em)",
+        large: "(min-width: 62em)",
       },
       (ctx) => {
         const { large, small } = ctx.conditions;
+
+        // landing section
+        const initialAnimation = gsap.utils.toArray(
+          document.querySelectorAll(".gsap-initial")
+        );
+        gsap.set(initialAnimation, {
+          opacity: 0,
+          translateY: 100,
+          ease: "power4.inOut",
+        });
+        gsap.to(initialAnimation, {
+          opacity: 1,
+          translateY: 0,
+          stagger: 0.3,
+        });
+
         if (large) {
           sections.forEach((section, i) => {
+            // header highlight
             gsap.to(section, {
               scrollTrigger: {
                 trigger: section,
@@ -111,9 +128,13 @@ export default function Component(props) {
               },
             });
 
-            // services
-            if (servicesDesktop) {
-              const items = servicesDesktop.querySelectorAll(".gsap-fade");
+            if (section.id === "services") {
+              const desktopComp = section.querySelector(
+                `.${styles["service-grid-desktop"]}`
+              );
+              console.log("-----------");
+              console.log(desktopComp);
+              const items = desktopComp.querySelectorAll(".gsap-fade");
               gsap.set(items, {
                 opacity: 0,
                 duration: 2,
@@ -126,17 +147,16 @@ export default function Component(props) {
                 translateY: 0,
                 stagger: 0.15,
                 scrollTrigger: {
-                  trigger: section,
+                  trigger: desktopComp,
                   start: () =>
-                    `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
                   end: () =>
-                    `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
-                  toggleActions: "play none none none",
-                  /* markers: {
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                  markers: {
                     indent: 150 * i,
                     startColor: "red",
                     endColor: "red",
-                  }, */
+                  },
                   id: i,
                 },
               });
@@ -164,31 +184,34 @@ export default function Component(props) {
             }
 
             // team
-            const members = section.querySelectorAll(".gsap-fade");
-            gsap.set(members, {
-              opacity: 0,
-              duration: 2,
-              translateY: 100,
-              ease: "power1.inOut",
-            });
+            if (section.id === "our-leadership-team") {
+              const members = section.querySelectorAll(".gsap-fade");
+              gsap.set(members, {
+                opacity: 0,
+                translateY: 100,
+              });
 
-            gsap.to(members, {
-              opacity: 1,
-              translateY: 0,
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: section,
-                start: () => `top bottom-=25%`,
-                end: () => `bottom top+=75%`,
-                toggleActions: "play none none none",
-                /* markers: {
-                  indent: 150 * i,
-                  startColor: "yellow",
-                  endColor: "yellow",
-                }, */
-                id: i,
-              },
-            });
+              gsap.to(members, {
+                opacity: 1,
+                duration: 2,
+                translateY: 0,
+                stagger: 0.6,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                  toggleActions: "play none none none",
+                  /* markers: {
+                    indent: 150 * i,
+                    startColor: "red",
+                    endColor: "red",
+                  }, */
+                  id: i,
+                },
+              });
+            }
 
             // thought leadership section
             const cardElements = gsap.utils.toArray(
@@ -212,6 +235,64 @@ export default function Component(props) {
                   `top${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} bottom-=25%`,
                 end: () =>
                   `bottom${i > 2 ? `+=${large ? window.innerHeight * 2 : ""}` : ""} top+=75%`,
+                toggleActions: "play none none none",
+                id: i,
+              },
+            });
+          });
+
+          // pinned section
+          gsap.to('[class*="front-page_section-content-trigger"]', {
+            scrollTrigger: {
+              trigger: '[class*="front-page_black"]',
+              start: () => "top top",
+              end: () => `bottom+=${window.innerHeight} top`,
+              scrub: true,
+              toggleActions: "play none reverse none",
+              invalidateOnRefresh: true,
+              pin: true,
+              pinSpacer: true,
+            },
+          });
+
+          // pinned section fades
+          sectionsFades.forEach((section, i) => {
+            gsap.to(section, {
+              scrollTrigger: {
+                trigger: section,
+                start: () => `top+=50% bottom-=20%`,
+                end: () => `bottom-=50% top+=20%`,
+                scrub: true,
+                toggleClass: styles.enable,
+                id: i,
+                // markers: true,
+              },
+            });
+
+            const fadeStart = (index, section) => {
+              if (index > 3) {
+                return `+=${section.offsetHeight + window.innerHeight}`;
+              }
+              return `top`;
+            };
+
+            const fadeUp = gsap.utils.toArray(
+              section.querySelectorAll(".gsap-fade")
+            );
+            gsap.set(fadeUp, {
+              opacity: 0,
+              translateY: 100,
+              ease: "power1.inOut",
+            });
+
+            gsap.to(fadeUp, {
+              opacity: 1,
+              translateY: 0,
+              stagger: 0.3,
+              scrollTrigger: {
+                trigger: section,
+                start: () => `${fadeStart(i, section)} top+=50%`,
+                end: () => `+=bottom`,
                 toggleActions: "play none none none",
                 id: i,
               },
@@ -335,78 +416,6 @@ export default function Component(props) {
         }
       }
     );
-
-    // pinned section
-    gsap.to('[class*="front-page_section-content-trigger"]', {
-      scrollTrigger: {
-        trigger: '[class*="front-page_black"]',
-        start: () => "top top",
-        end: () => `bottom+=${window.innerHeight} top`,
-        scrub: true,
-        toggleActions: "play none reverse none",
-        invalidateOnRefresh: true,
-        pin: true,
-        pinSpacer: true,
-        /* markers: true, */
-      },
-    });
-
-    // pinned section fades
-    sectionsFades.forEach((section, i) => {
-      gsap.to(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: () => `top+=50% bottom-=20%`,
-          end: () => `bottom-=50% top+=20%`,
-          scrub: true,
-          toggleClass: styles.enable,
-          id: i,
-        },
-      });
-
-      const fadeStart = (index, section) => {
-        if (index > 3) {
-          return `+=${section.offsetHeight + window.innerHeight}`;
-        }
-        return `top`;
-      };
-
-      const fadeUp = gsap.utils.toArray(section.querySelectorAll(".gsap-fade"));
-      gsap.set(fadeUp, { opacity: 0, translateY: 100, ease: "power1.inOut" });
-
-      gsap.to(fadeUp, {
-        opacity: 1,
-        translateY: 0,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: section,
-          start: () => `${fadeStart(i, section)} top+=50%`,
-          end: () => `+=bottom`,
-          toggleActions: "play none none none",
-          /* markers: {
-            indent: 150 * i,
-            startColor: "red",
-            endColor: "red",
-          }, */
-          id: i,
-        },
-      });
-    });
-
-    // on load
-    const initialAnimation = gsap.utils.toArray(
-      document.querySelectorAll(".gsap-initial")
-    );
-    gsap.set(initialAnimation, {
-      opacity: 0,
-      translateY: 100,
-      ease: "power4.inOut",
-    });
-    gsap.to(initialAnimation, {
-      opacity: 1,
-      translateY: 0,
-      stagger: 0.3,
-    });
   });
 
   return (
@@ -521,7 +530,7 @@ export default function Component(props) {
         </Section>
 
         <Section label="services" bgColor="var(--mantine-color-brand-1)">
-          <Stack px={{ base: "0rem"}}>
+          <Stack px={{ base: "0rem" }}>
             <div
               style={{
                 display: "flex",
@@ -604,10 +613,9 @@ export default function Component(props) {
           </Stack>
         </Section>
 
-        {/* who we are section */}
         <div id="who-we-are"></div>
         {/* mobile */}
-        <Container
+        {/* <Container
           component={"section"}
           w="100%"
           maw={"unset"}
@@ -726,7 +734,7 @@ export default function Component(props) {
               </Stack>
             </Stack>
           </Container>
-        </Container>
+        </Container> */}
 
         {/* desktop */}
         <Container
