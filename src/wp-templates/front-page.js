@@ -521,7 +521,7 @@ export default function Component(props) {
         </Section>
 
         <Section label="services" bgColor="var(--mantine-color-brand-1)">
-          <Stack px={{ base: "0rem", lg: "3rem" }}>
+          <Stack px={{ base: "0rem"}}>
             <div
               style={{
                 display: "flex",
