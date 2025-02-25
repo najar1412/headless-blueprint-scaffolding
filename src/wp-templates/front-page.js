@@ -95,9 +95,10 @@ export default function Component(props) {
           ease: "power4.inOut",
         });
         gsap.to(initialAnimation, {
+          delay: 0.25,
           opacity: 1,
           translateY: 0,
-          stagger: 0.3,
+          stagger: 0.4,
         });
 
         if (large) {
