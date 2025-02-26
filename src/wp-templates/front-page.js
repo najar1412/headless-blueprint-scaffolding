@@ -652,6 +652,8 @@ export default function Component(props) {
                   <Flex
                     className="gsap-group-fade"
                     direction={"column"}
+                    justify={"center"}
+                    align={"center"}
                     px={"1.5rem"}
                     py={"2.5rem"}
                     style={{
@@ -670,6 +672,7 @@ export default function Component(props) {
                     />
                     <Title
                       className="gsap-fade"
+                      ta={"center"}
                       size="1.25rem"
                       c="white"
                       mb="xl"
@@ -681,7 +684,12 @@ export default function Component(props) {
                       {card.list
                         .map((item) => item.item)
                         .map((item) => (
-                          <Text className="gsap-fade" c="white" key={item}>
+                          <Text
+                            className="gsap-fade"
+                            c="white"
+                            ta={"center"}
+                            key={item}
+                          >
                             {item}
                           </Text>
                         ))}

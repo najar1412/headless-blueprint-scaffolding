@@ -46,20 +46,17 @@ export default function Footer(props) {
             cols={{ base: 1, md: 2 }}
             className={styles["contact-form-container"]}
           >
-            <Container maw={"unset"} mx={"auto"}>
-              <Stack>
-                <Title order={1} size="3.05rem" c="white">
-                  Get in Touch
-                </Title>
-                <Text c="white" size="1.2rem" lh="1.5rem" maw={"20rem"}>
-                  Together, we can build smarter, more effective access
-                  solutions.
-                </Text>
-              </Stack>
-            </Container>
-            <Container maw={"unset"} m={0}>
+            <Stack px={"lg"}>
+              <Title order={1} size="3.05rem" c="white">
+                Get in Touch
+              </Title>
+              <Text c="white" size="1.2rem" lh="1.5rem" maw={"20rem"}>
+                Together, we can build smarter, more effective access solutions.
+              </Text>
+            </Stack>
+            <div>
               <GetInTouchForm />
-            </Container>
+            </div>
           </SimpleGrid>
         </Container>
 
@@ -88,22 +85,25 @@ export default function Footer(props) {
           <NewsletterForm />
           <Space h={"1rem"} hiddenFrom="md" />
         </Container>
-        <Container
-          w="100%"
+
+        <div
           style={{
-            maxWidth: "1440px!important",
-            zIndex: 2,
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "flex",
+            flexDirection: "column",
+            maxWidth: "1440px",
             position: "relative",
+            zIndex: 999999,
           }}
-          p={"1rem"}
-          mx={"auto"}
         >
-          <Divider color="#5A5A5A" size="0.1" />
+          <Divider color="#5A5A5A" w={"100%"} size="xs" />
           <Text size="0.5rem" mt="1.5rem" c={"#5A5A5A"}>
             Copyright (c) {new Date().getFullYear()}, Nexus Health Group, All
             rights reserved.
           </Text>
-        </Container>
+        </div>
+
         <Gradient />
       </Container>
     </>
