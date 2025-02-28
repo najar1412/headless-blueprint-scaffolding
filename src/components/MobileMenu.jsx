@@ -85,7 +85,10 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
               {menuItems.map((item) => (
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
-              <Link href="#">
+              <Link
+                href="https://www.linkedin.com/company/nexus-health-grp"
+                target="_blank"
+              >
                 <Image
                   alt="linkedin logo"
                   src={linkedinIcon.src}
