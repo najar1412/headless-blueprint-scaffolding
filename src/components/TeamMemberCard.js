@@ -74,18 +74,16 @@ export const TeamMemberCard = ({ data }) => {
           BIO
         </Text>
       </div>
-      <Stack
+      <div
         gap={"0.4rem"}
-        style={{ position: "relative" }}
+        style={{
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
         className={"team-card gsap-fade"}
       >
-        <div className={styles["mycircleicon-static"]}>
-          <Text c={"#0A404A"} ta="center" fw="bold" size="1.05rem">
-            READ
-            <br />
-            BIO
-          </Text>
-        </div>
         <Box
           ref={container}
           bg={"rgba(235, 235, 235, 1)"}
@@ -101,8 +99,16 @@ export const TeamMemberCard = ({ data }) => {
           onClick={() => handleOpen()}
           h={"16rem"}
           mih={"16rem"}
-          maw={'20rem'}
+          maw={"20rem"}
+          w="100%"
         >
+          <div className={styles["mycircleicon-static"]}>
+            <Text c={"#0A404A"} ta="center" fw="bold" size="1.05rem">
+              READ
+              <br />
+              BIO
+            </Text>
+          </div>
           <div
             className={styles["member-image"]}
             style={{
@@ -116,7 +122,7 @@ export const TeamMemberCard = ({ data }) => {
           {data.name}
         </Text>
         <Text size="0.9rem">{data.title}</Text>
-      </Stack>
+      </div>
 
       <Modal.Root
         className={styles.cardModal}
@@ -153,6 +159,7 @@ export const TeamMemberCard = ({ data }) => {
                     width: "100%",
                     borderRadius: "2.5rem 0 2.5rem 2.5rem",
                     overflow: "hidden",
+                    maxWidth: "fit-content",
                   }}
                 >
                   <div
@@ -166,6 +173,7 @@ export const TeamMemberCard = ({ data }) => {
                         : "none",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
                     }}
                   ></div>
                 </div>
@@ -183,7 +191,7 @@ export const TeamMemberCard = ({ data }) => {
               </Stack>
               <Space h={"2rem"} hiddenFrom="md" />
               <ScrollArea
-                h={"250px"}
+                h={"100%"}
                 type="always"
                 offsetScrollbars
                 scrollbarSize={6}
