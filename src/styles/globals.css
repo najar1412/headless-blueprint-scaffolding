@@ -114,16 +114,19 @@ li::marker {
 .wp-block-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   @media (min-width: $mantine-breakpoint-md) {
-    align-items: center;
+    /* align-items: center; */
     flex-direction: row;
     gap: 1rem;
   }
 }
+.is-vertical {
+  flex-direction: column;
+}
 .wp-block-group > .wp-block-image {
-  max-width: 50%;
-  width: 100%;
+  /* max-width: 50%;
+  width: 100%; */
 }
 .has-small-font-size {
   font-size: 1rem;
@@ -133,4 +136,8 @@ li::marker {
 }
 .wp-link {
   text-decoration: underline;
+}
+.wp-block-column {
+  display: flex;
+  gap: 2rem;
 }
