@@ -154,10 +154,12 @@ export default function PagePublication(props) {
                 {post && post.content ? (
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: post.content.replaceAll(
-                        "<p>",
-                        '<p class="what">'
-                      ),
+                      __html: post.content
+                        .replaceAll("<p>", '<p class="what">')
+                        .replaceAll(
+                          "<a h",
+                          '<a target="_blank" class="wp-link" h'
+                        ),
                     }}
                   />
                 ) : (
