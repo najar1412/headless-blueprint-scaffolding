@@ -111,3 +111,23 @@ li::marker {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.wp-block-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: $mantine-breakpoint-md) {
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+.wp-block-group > .wp-block-image {
+  max-width: 50%;
+  width: 100%;
+}
+.has-small-font-size {
+  font-size: 1rem;
+  @media (min-width: $mantine-breakpoint-md) {
+    font-size: 0.8rem;
+  }
+}
