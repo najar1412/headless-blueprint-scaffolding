@@ -141,3 +141,7 @@ li::marker {
   display: flex;
   gap: 2rem;
 }
+
+input {
+  border-radius: 0 !important;
+}
