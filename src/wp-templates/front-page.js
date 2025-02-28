@@ -1231,6 +1231,19 @@ export default function Component(props) {
                 }}
               ></div>
             </Grid.Col>
+            <Grid.Col hiddenFrom="lg" span={12}>
+              <div
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  marginTop: "4rem",
+                  marginBottom: "4rem",
+                  width: "100%",
+                  height: "1px",
+                  backgroundColor: "var(--mantine-color-brand-2)",
+                }}
+              ></div>
+            </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Container maw={"unset"} p={0} w={"100%"}>
                 <Grid gutter={{ base: "3rem", md: "3rem" }}>

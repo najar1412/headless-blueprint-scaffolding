@@ -36,6 +36,7 @@ export const QuoteCarousel = ({ quotes }) => {
                 <Stack gap={0}>
                   <Text
                     size="5rem"
+                    ta="center"
                     c="#BCDC49"
                     hiddenFrom="md"
                     style={{

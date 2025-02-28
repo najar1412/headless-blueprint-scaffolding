@@ -79,11 +79,11 @@ canvas {
 }
 .swiper {
   height: fit-content;
+  position: relative;
 }
 .swiper-custom-pagination {
-  position: relative;
-  left: -50%;
-  transform: translateX(50%);
+  display: flex;
+  justify-content: center;
 }
 .swiper-pagination-bullet {
   background-color: #bcdc49 !important;
