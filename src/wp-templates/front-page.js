@@ -39,6 +39,8 @@ import cardGrayImage from "../assets/card_gray.jpg";
 import logoSymbolIcon from "../assets/Nexus_Logomark_4C.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import step1Image from "../assets/step1.png";
+import step2Image from "../assets/step_2.png";
+import step3Image from "../assets/step_3.png";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -876,7 +878,7 @@ export default function Component(props) {
               margin: 0,
             }}
           >
-            <Stack gap={"4rem"}>
+            <Stack gap={"4rem"} maw={"32rem"} mx="auto">
               <Stack align="center" className="gsap-group-fade">
                 <Eyebrow
                   label={"who are we"}
@@ -918,6 +920,17 @@ export default function Component(props) {
               </Stack>
 
               <Stack className="gsap-group-fade">
+                <img
+                  className="gsap-fade"
+                  src={step2Image.src}
+                  style={{
+                    maxWidth: "16rem",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    marginTop: "2rem",
+                    marginBottom: "2rem",
+                  }}
+                />
                 <Title
                   ta={"center"}
                   c="white"
@@ -952,6 +965,17 @@ export default function Component(props) {
               </Stack>
 
               <Stack className="gsap-group-fade">
+                <img
+                  className="gsap-fade"
+                  src={step3Image.src}
+                  style={{
+                    maxWidth: "16rem",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    marginTop: "2rem",
+                    marginBottom: "2rem",
+                  }}
+                />
                 <Title
                   className="gsap-fade"
                   ta={"center"}
@@ -967,14 +991,18 @@ export default function Component(props) {
                   c="white"
                   size={"1.1rem"}
                   lh={"1.5rem"}
-                  maw={"27rem"}
                   mb="1rem"
                   className="gsap-fade"
                 >
                   As market access evolves, the list of stakeholders has grown.
                   We ensure communication is tailored to each stakeholder.
                 </Text>
-                <Group wrap="no-wrap" align="flex-start" className="gsap-fade">
+                <Group
+                  wrap="no-wrap"
+                  align="flex-start"
+                  className="gsap-fade"
+                  mx={"auto"}
+                >
                   <div>
                     <List c="white" size="1rem" spacing="xs">
                       <List.Item>Payers</List.Item>
