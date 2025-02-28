@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Drawer, Stack, Badge, Text, Image } from "@mantine/core";
 import gsap from "gsap";
@@ -8,6 +9,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import linkedinIcon from "../assets/linkedin.svg";
 
 export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
+  const router = useRouter();
   const isMobile = useMediaQuery(`(max-width: 48em)`);
 
   const menuItem = (item) => {

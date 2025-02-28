@@ -244,9 +244,9 @@
   border: 1px solid #0a404a;
   border-radius: 100%;
   cursor: pointer;
-  transform: translate(-50%, 5rem);
+  transform: translate(-50%, 1.25rem);
 
-  @media (min-width: $mantine-breakpoint-xs) {
+  @media (min-width: $mantine-breakpoint-sm) {
     left: unset;
     right: 0;
     transform: unset;

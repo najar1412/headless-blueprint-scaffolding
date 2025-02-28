@@ -54,7 +54,7 @@ export default function Footer(props) {
                 Together, we can build smarter, more effective access solutions.
               </Text>
             </Stack>
-            <div>
+            <div style={{ paddingLeft: "1rem", paddingRight: "1rem" }}>
               <GetInTouchForm />
             </div>
           </SimpleGrid>

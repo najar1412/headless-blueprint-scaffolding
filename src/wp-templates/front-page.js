@@ -407,7 +407,29 @@ export default function Component(props) {
                   ease: "power1.inOut",
                   overflowY: "hidden",
                 });
-                gsap.to([group, titles, items, titles], {
+                gsap.to([group, titles, items], {
+                  opacity: 1,
+                  stagger: 0.2,
+                  color: "#093C46",
+                  //backgroundColor: "#FAFAFA",
+                  scrollTrigger: {
+                    trigger: group,
+                    start: () =>
+                      `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                    end: () =>
+                      `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                    toggleActions: "play none none none",
+                    id: i,
+                    /* markers: {
+                      indent: 150 * i,
+                      startColor: "red",
+                      endColor: "red",
+                    }, */
+                  },
+                });
+              });
+              groups.forEach((group) => {
+                gsap.to([group], {
                   opacity: 1,
                   stagger: 0.2,
                   color: "#093C46",
@@ -551,6 +573,7 @@ export default function Component(props) {
             });
             if (section.id === "services") {
             } else if (section.id === "the-nexus-advantage") {
+              /* 
               // the nexus advantage section
               const numberCountElements = gsap.utils.toArray(
                 section.querySelectorAll('[class*="front-page_numbers"]')
@@ -565,9 +588,9 @@ export default function Component(props) {
                   trigger: section,
                   start: () => `top bottom-=50%`,
                   end: () => `bottom top+=50%`,
-                  /* markers: true, */
                 },
               });
+             */
             } else if (section.id === "our-leadership-team") {
               const items = section.querySelectorAll(".gsap-fade");
               gsap.set(items, {
@@ -1301,7 +1324,7 @@ export default function Component(props) {
                   The future of market access starts here—news, insights, and
                   expert perspectives.
                 </Text>
-                <Link
+                {/* <Link
                   href={"thought-leadership"}
                   style={{ width: "fit-content" }}
                 >
@@ -1333,7 +1356,7 @@ export default function Component(props) {
 
                     <div className={`${styles["bar-link"]}`} />
                   </Stack>
-                </Link>
+                </Link> */}
               </Stack>
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 4 }}>
