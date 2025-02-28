@@ -35,16 +35,16 @@ export const FeatureCarousel = ({ items }) => {
         </div>
       </Group>
       <Swiper
-      className={styles["swiper"]}
+        className={styles["swiper"]}
         onSwiper={setSwiper}
         breakpoints={{
           700: {
             spaceBetween: 10,
-            slidesPerView: 2,
+            slidesPerView: items.length === 1 ? 2 : 2,
           },
           900: {
             spaceBetween: 10,
-            slidesPerView: 2.5,
+            slidesPerView: items.length === 1 ? 2 : 0.5,
           },
         }}
       >
