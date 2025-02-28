@@ -43,7 +43,7 @@
   background-repeat: no-repeat;
   @media (min-width: $mantine-breakpoint-md) {
     background-size: cover;
-    background-position: 0 -3rem;
+    /* background-position: 0 -3rem; */
   }
   @media (min-width: $mantine-breakpoint-lg) {
     background-position: 0 0rem;

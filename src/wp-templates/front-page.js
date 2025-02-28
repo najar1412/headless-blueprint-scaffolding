@@ -48,6 +48,7 @@ export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
 
+  // TODO: remove this nasty filter stuff, and just retrieve one item from DB
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
   );
@@ -1190,7 +1191,11 @@ export default function Component(props) {
                   gsapName={"gsap-fade"}
                   category={"featured"}
                   title={featured[0].title}
-                  image={placeholderThumbImage}
+                  image={{
+                    src: featured[0].featuredImage
+                      ? featured[0].featuredImage.node.sourceUrl
+                      : cardGrayImage.src,
+                  }}
                   link={featured[0].uri}
                 />
               ) : null}
@@ -1282,6 +1287,11 @@ Component.query = gql`
         ... on NodeWithContentEditor {
           content
         }
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
         publicationMeta: publicationMeta {
           date
           author
