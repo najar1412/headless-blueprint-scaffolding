@@ -17,7 +17,7 @@ export const QuoteCarousel = ({ quotes }) => {
         slidesPerView={1}
         pagination={{ clickable: true, el: ".swiper-custom-pagination" }}
         autoplay={{
-          // delay: 50000000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
       >
