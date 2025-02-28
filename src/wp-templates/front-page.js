@@ -81,10 +81,11 @@ export default function Component(props) {
     mm.add(
       {
         small: "(max-width: 62em)",
-        large: "(min-width: 62em)",
+        medium: "(max-width: 75em)",
+        large: "(min-width: 75em)",
       },
       (ctx) => {
-        const { large, small } = ctx.conditions;
+        const { large, medium, small } = ctx.conditions;
 
         // landing section
         const initialAnimation = gsap.utils.toArray(
@@ -101,7 +102,6 @@ export default function Component(props) {
           translateY: 0,
           stagger: 0.4,
         });
-
         if (large) {
           sections.forEach((section, i) => {
             // header highlight
@@ -330,7 +330,8 @@ export default function Component(props) {
             });
           });
         }
-        if (small) {
+
+        if (medium) {
           sections.forEach((section, i) => {
             gsap.to(section, {
               scrollTrigger: {
@@ -351,7 +352,7 @@ export default function Component(props) {
             });
             if (section.id === "services") {
               // header
-              /* const items = section.querySelectorAll(".gsap-fade");
+              const items = section.querySelectorAll(".gsap-fade");
               gsap.set(items, {
                 opacity: 0,
                 translateY: 100,
@@ -370,7 +371,7 @@ export default function Component(props) {
 
                   id: i,
                 },
-              }); */
+              });
 
               // mobile content
               const mobileComp = section.querySelector(
@@ -379,9 +380,45 @@ export default function Component(props) {
               const groups = gsap.utils.toArray(
                 mobileComp.querySelectorAll(".gsap-group-fade")
               );
+              gsap.set(groups, {
+                duration: 2,
+                // maxHeight: "15rem",
+                backgroundColor: "#093C46",
+                ease: "power1.inOut",
+                overflowY: "hidden",
+              });
 
               groups.forEach((group) => {
                 const items = gsap.utils.toArray(
+                  group.querySelectorAll(".service-list-item")
+                );
+                gsap.set(items, {
+                  opacity: 0,
+                  color: "#093C46",
+                  ease: "power1.inOut",
+                  overflowY: "hidden",
+                });
+                gsap.to([group, items], {
+                  backgroundColor: "#FAFAFA",
+                  opacity: 1,
+                  stagger: 0.2,
+                  scrollTrigger: {
+                    trigger: group,
+                    start: () =>
+                      `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                    end: () =>
+                      `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                    toggleActions: "play none none none",
+                    id: i,
+                    markers: {
+                      indent: 150 * i,
+                      startColor: "red",
+                      endColor: "red",
+                    },
+                  },
+                });
+
+                /* const items = gsap.utils.toArray(
                   group.querySelectorAll(".gsap-fade")
                 );
                 gsap.set(items, {
@@ -403,13 +440,232 @@ export default function Component(props) {
                       `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
                     toggleActions: "play none none none",
                     id: i,
-                    /* markers: {
+                    markers: {
                       indent: 150 * i,
                       startColor: "red",
                       endColor: "red",
-                    }, */
+                    },
+                  },
+                }); */
+              });
+            } else if (section.id === "the-nexus-advantage") {
+              // the nexus advantage section
+              const numberCountElements = gsap.utils.toArray(
+                section.querySelectorAll('[class*="front-page_numbers"]')
+              );
+
+              gsap.from(numberCountElements, {
+                textContent: 0,
+                duration: 3,
+                ease: "none",
+                snap: { textContent: 1 },
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top bottom-=50%`,
+                  end: () => `bottom top+=50%`,
+                  /* markers: true, */
+                },
+              });
+            } else if (section.id === "our-leadership-team") {
+              const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                duration: 2,
+                translateY: 100,
+                ease: "power1.inOut",
+              });
+
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top bottom-=25%`,
+                  end: () => `bottom top+=75%`,
+                  toggleActions: "play none none none",
+                  id: i,
+                },
+              });
+            } else if (section.id === "thought-leadership") {
+              const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                duration: 2,
+                translateY: 100,
+                ease: "power1.inOut",
+              });
+
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () => `top bottom-=25%`,
+                  end: () => `bottom top+=75%`,
+                  toggleActions: "play none none none",
+                  id: i,
+                },
+              });
+            } else {
+              if (section.id === "who-we-are-mobile") {
+                const groups = gsap.utils.toArray(
+                  section.querySelectorAll(".gsap-group-fade")
+                );
+
+                groups.forEach((group) => {
+                  const items = gsap.utils.toArray(
+                    group.querySelectorAll(".gsap-fade")
+                  );
+                  gsap.set(items, {
+                    opacity: 0,
+                    duration: 2,
+                    translateY: 100,
+                    ease: "power1.inOut",
+                  });
+
+                  gsap.to(items, {
+                    opacity: 1,
+                    translateY: 0,
+                    stagger: 0.2,
+                    scrollTrigger: {
+                      trigger: group,
+                      start: () =>
+                        `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                      end: () =>
+                        `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                      toggleActions: "play none none none",
+                      id: i,
+                      /* markers: {
+                        indent: 150 * i,
+                        startColor: "red",
+                        endColor: "red",
+                      }, */
+                    },
+                  });
+                });
+              }
+            }
+          });
+        }
+
+        if (small) {
+          sections.forEach((section, i) => {
+            gsap.to(section, {
+              scrollTrigger: {
+                trigger: section,
+                start: () =>
+                  `top${i > 2 ? `+=${small ? window.innerHeight * 2 : ""}` : ""} bottom-=50%`,
+                end: () => `bottom bottom`,
+                toggleActions: "play none reverse none",
+                invalidateOnRefresh: true,
+                onToggle: (self) => self.isActive && setActive(section),
+                /* markers: {
+                  indent: 150 * i,
+                  startColor: "green",
+                  endColor: "green",
+                }, */
+                id: i,
+              },
+            });
+            if (section.id === "services") {
+              // header
+              const items = section.querySelectorAll(".gsap-fade");
+              gsap.set(items, {
+                opacity: 0,
+                translateY: 100,
+              });
+              gsap.to(items, {
+                opacity: 1,
+                translateY: 0,
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: section,
+                  start: () =>
+                    `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                  end: () =>
+                    `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                  toggleActions: "play none none none",
+
+                  id: i,
+                },
+              });
+
+              // mobile content
+              const mobileComp = section.querySelector(
+                `.${styles["service-grid-mobile"]}`
+              );
+              const groups = gsap.utils.toArray(
+                mobileComp.querySelectorAll(".gsap-group-fade")
+              );
+              gsap.set(groups, {
+                duration: 2,
+                // maxHeight: "15rem",
+                backgroundColor: "#093C46",
+                ease: "power1.inOut",
+                overflowY: "hidden",
+              });
+
+              groups.forEach((group) => {
+                const items = gsap.utils.toArray(
+                  group.querySelectorAll(".service-list-item")
+                );
+                gsap.set(items, {
+                  opacity: 0,
+                  color: "#093C46",
+                  ease: "power1.inOut",
+                  overflowY: "hidden",
+                });
+                gsap.to([group, items], {
+                  backgroundColor: "#FAFAFA",
+                  opacity: 1,
+                  stagger: 0.2,
+                  scrollTrigger: {
+                    trigger: group,
+                    start: () =>
+                      `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=50%`,
+                    end: () =>
+                      `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=50%`,
+                    toggleActions: "play none none none",
+                    id: i,
+                    markers: {
+                      indent: 150 * i,
+                      startColor: "red",
+                      endColor: "red",
+                    },
                   },
                 });
+
+                /* const items = gsap.utils.toArray(
+                  group.querySelectorAll(".gsap-fade")
+                );
+                gsap.set(items, {
+                  opacity: 0,
+                  duration: 2,
+                  translateY: 100,
+                  ease: "power1.inOut",
+                });
+
+                gsap.to(items, {
+                  opacity: 1,
+                  translateY: 0,
+                  stagger: 0.2,
+                  scrollTrigger: {
+                    trigger: group,
+                    start: () =>
+                      `top${i > 2 ? `+=${window.innerHeight * 2}` : ""} bottom-=25%`,
+                    end: () =>
+                      `bottom${i > 2 ? `+=${window.innerHeight * 2}` : ""} top+=75%`,
+                    toggleActions: "play none none none",
+                    id: i,
+                    markers: {
+                      indent: 150 * i,
+                      startColor: "red",
+                      endColor: "red",
+                    },
+                  },
+                }); */
               });
             } else if (section.id === "the-nexus-advantage") {
               // the nexus advantage section
@@ -663,7 +919,7 @@ export default function Component(props) {
                     }}
                   >
                     <Image
-                      className="gsap-fade"
+                      // className="gsap-fade"
                       src={card.icon.node.sourceUrl}
                       width="75"
                       height="75"
@@ -672,7 +928,7 @@ export default function Component(props) {
                       }}
                     />
                     <Title
-                      className="gsap-fade"
+                      // className="gsap-fade"
                       ta={"center"}
                       size="1.25rem"
                       c="white"
@@ -686,7 +942,7 @@ export default function Component(props) {
                         .map((item) => item.item)
                         .map((item) => (
                           <Text
-                            className="gsap-fade"
+                            className="service-list-item"
                             c="white"
                             ta={"center"}
                             key={item}
@@ -729,7 +985,7 @@ export default function Component(props) {
           maw={"unset"}
           bg={"var(--mantine-color-brand-0)"}
           className={`${styles.section} ${styles["section-start"]}`}
-          hiddenFrom="md"
+          hiddenFrom="lg"
           style={{ position: "relative" }}
         >
           <Container
@@ -881,7 +1137,7 @@ export default function Component(props) {
           p={0}
           m={0}
           className={`${styles.section}`}
-          visibleFrom="md"
+          visibleFrom="lg"
           style={{ position: "relative", overflowX: "hidden" }}
         >
           <Container
