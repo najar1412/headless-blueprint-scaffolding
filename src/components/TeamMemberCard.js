@@ -101,6 +101,7 @@ export const TeamMemberCard = ({ data }) => {
           onClick={() => handleOpen()}
           h={"16rem"}
           mih={"16rem"}
+          maw={'20rem'}
         >
           <div
             className={styles["member-image"]}

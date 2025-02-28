@@ -36,18 +36,11 @@
   }
 }
 .member-image {
-  padding: 1rem;
   height: 100%;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  @media (min-width: $mantine-breakpoint-md) {
-    background-size: cover;
-    /* background-position: 0 -3rem; */
-  }
-  @media (min-width: $mantine-breakpoint-lg) {
-    background-position: 0 0rem;
-  }
+  background-size: cover;
 }
 .scrollbar {
   &,
