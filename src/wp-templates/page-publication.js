@@ -171,40 +171,10 @@ export default function PagePublication(props) {
         </Container>
 
         <Container maw={"1440px!important"} w="100%" p={0} py={"5rem"}>
-          <Flex justify={"space-between"}>
-            <Link href={"#"} style={{ width: "fit-content" }}>
-              <Stack
-                gap={"0.25rem"}
-                className={`${frontPageStyles.link} gsap-fade`}
-                mt="0.4rem"
-                mb="1rem"
-                w="fit-content"
-                style={{ overflow: "hidden" }}
-              >
-                <Group>
-                  <Image
-                    src={arrowBlBlueIcon.src}
-                    style={{
-                      transform:
-                        "translateX(0.25rem) translateY(-0.1rem) rotate(225deg)",
-                    }}
-                  />
-                  <Text fw="700" size="0.84rem" mb="0.25rem">
-                    Previous Post
-                  </Text>
-                </Group>
-
-                <div className={`${frontPageStyles["bar-link"]}`} />
-              </Stack>
-            </Link>
-
-            <UnstyledButton>
-              <Link
-                href={"/thought-leadership"}
-                style={{ width: "fit-content" }}
-              >
+          <Grid>
+            <Grid.Col span={{ base: 4 }}>
+              {/* <Link href={"#"} style={{ width: "fit-content" }}>
                 <Stack
-                  visibleFrom="md"
                   gap={"0.25rem"}
                   className={`${frontPageStyles.link} gsap-fade`}
                   mt="0.4rem"
@@ -212,41 +182,83 @@ export default function PagePublication(props) {
                   w="fit-content"
                   style={{ overflow: "hidden" }}
                 >
-                  <Text fw="700" size="0.84rem" mb="0.25rem">
-                    Back to All Posts
-                  </Text>
+                  <Group wrap="no-wrap">
+                    <Image
+                      src={arrowBlBlueIcon.src}
+                      style={{
+                        transform:
+                          "translateX(0.25rem) translateY(-0.1rem) rotate(225deg)",
+                      }}
+                    />
+                    <Text fw="700" size="0.84rem" mb="0.25rem">
+                      Previous Post
+                    </Text>
+                  </Group>
 
                   <div className={`${frontPageStyles["bar-link"]}`} />
                 </Stack>
-              </Link>
-            </UnstyledButton>
+              </Link> */}
+            </Grid.Col>
 
-            <Link href={"#"} style={{ width: "fit-content" }}>
-              <Stack
-                gap={"0.25rem"}
-                className={`${frontPageStyles.link} gsap-fade`}
-                mt="0.4rem"
-                mb="1rem"
-                w="fit-content"
-                style={{ overflow: "hidden" }}
-              >
-                <Group>
-                  <Text fw="700" size="0.84rem" mb="0.25rem">
-                    Next Post
-                  </Text>
-                  <Image
-                    src={arrowBlBlueIcon.src}
-                    style={{
-                      transform:
-                        "translateX(-0.25rem) translateY(-0.1rem) rotate(44deg)",
-                    }}
-                  />
-                </Group>
+            <Grid.Col
+              span={{ base: 4 }}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <UnstyledButton>
+                <Link
+                  href={"/thought-leadership"}
+                  style={{ width: "fit-content" }}
+                >
+                  <Stack
+                    visibleFrom="md"
+                    gap={"0.25rem"}
+                    className={`${frontPageStyles.link} gsap-fade`}
+                    mt="0.4rem"
+                    mb="1rem"
+                    w="fit-content"
+                    style={{ overflow: "hidden" }}
+                  >
+                    <Text fw="700" size="0.84rem" mb="0.25rem">
+                      Back to All Posts
+                    </Text>
 
-                <div className={`${frontPageStyles["bar-link"]}`} />
-              </Stack>
-            </Link>
-          </Flex>
+                    <div className={`${frontPageStyles["bar-link"]}`} />
+                  </Stack>
+                </Link>
+              </UnstyledButton>
+            </Grid.Col>
+
+            <Grid.Col
+              span={{ base: 4 }}
+              style={{ display: "flex", justifyContent: "end" }}
+            >
+              {/* <Link href={"#"} style={{ width: "fit-content" }}>
+                <Stack
+                  gap={"0.25rem"}
+                  className={`${frontPageStyles.link} gsap-fade`}
+                  mt="0.4rem"
+                  mb="1rem"
+                  w="fit-content"
+                  style={{ overflow: "hidden" }}
+                >
+                  <Group wrap="no-wrap">
+                    <Text fw="700" size="0.84rem" mb="0.25rem">
+                      Next Post
+                    </Text>
+                    <Image
+                      src={arrowBlBlueIcon.src}
+                      style={{
+                        transform:
+                          "translateX(-0.25rem) translateY(-0.1rem) rotate(44deg)",
+                      }}
+                    />
+                  </Group>
+
+                  <div className={`${frontPageStyles["bar-link"]}`} />
+                </Stack>
+              </Link> */}
+            </Grid.Col>
+          </Grid>
           <UnstyledButton
             hiddenFrom="sm"
             mt="2rem"

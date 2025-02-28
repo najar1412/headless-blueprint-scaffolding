@@ -65,7 +65,7 @@ export const PostCard = ({
       component="div"
       w="100%"
       h="100%"
-      mih={{ base: "1rem", md: "15rem" }}
+      mih={{ base: "1rem", lg: "15rem" }}
       className={`${layout.shell} ${styles["bg-image"]} ${
         gradient ? styles.gradient : ""
       } ${gsapName ? gsapName : ""}`}
