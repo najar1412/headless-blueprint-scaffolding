@@ -71,48 +71,48 @@ export default function LoadMorePublications() {
       <Stack>
         {posts.map((post) => (
           <Fragment key={post.databaseId}>
-            <Group
-              wrap="no-wrap"
-              gap={"2rem"}
-              mb={"1rem"}
-              className={styles["card"]}
-            >
-              <div
-                className={styles.image}
-                style={{
-                  backgroundImage: `url(${post.featuredImage ? post.featuredImage.node.sourceUrl : placeholderImage.src})`,
-                  maxWidth: "7.5rem",
-                }}
+            <Link href={`/thought-leadership/${post.slug}`}>
+              <Group
+                wrap="no-wrap"
+                gap={"2rem"}
+                mb={"1rem"}
+                className={styles["card"]}
               >
-                <div className={styles["thumb"]}>
-                  <img
-                    style={{
-                      width: "3rem",
-                      height: "3rem",
-                    }}
-                    src={whiteArrowIcon.src}
-                  />
+                <div
+                  className={styles.image}
+                  style={{
+                    backgroundImage: `url(${post.featuredImage ? post.featuredImage.node.sourceUrl : placeholderImage.src})`,
+                    maxWidth: "7.5rem",
+                  }}
+                >
+                  <div className={styles["thumb"]}>
+                    <img
+                      style={{
+                        width: "3rem",
+                        height: "3rem",
+                      }}
+                      src={whiteArrowIcon.src}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <Stack key={post.title} gap="0.3rem">
-                <Link href={`/thought-leadership/${post.slug}`}>
+                <Stack key={post.title} gap="0.3rem">
                   <Text fw="bold" className={styles["title"]}>
                     {post.title}
                   </Text>
-                </Link>
-                {post.content ? (
-                  <div
-                    style={{ fontSize: "0.8rem" }}
-                    dangerouslySetInnerHTML={{
-                      __html: `${post.content
-                        .replace(/<\/?[^>]+(>|$)/g, "")
-                        .substring(0, 200)}...`,
-                    }}
-                  />
-                ) : null}
-              </Stack>
-            </Group>
+                  {post.content ? (
+                    <div
+                      style={{ fontSize: "0.8rem" }}
+                      dangerouslySetInnerHTML={{
+                        __html: `${post.content
+                          .replace(/<\/?[^>]+(>|$)/g, "")
+                          .substring(0, 200)}...`,
+                      }}
+                    />
+                  ) : null}
+                </Stack>
+              </Group>
+            </Link>
 
             <Divider color={"#0A404A"} mb="1rem" />
           </Fragment>

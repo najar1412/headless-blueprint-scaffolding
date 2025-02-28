@@ -75,6 +75,7 @@ export default function Footer(props) {
               Join our email list to receive news and updates from Nexus Health
               Group.
             </Text>
+            <NewsletterForm />
           </Stack>
           <div
             className={styles["return-to-top"]}
@@ -82,7 +83,7 @@ export default function Footer(props) {
           >
             <Image src={arrowUpIcon.src} w={"3rem"} />
           </div>
-          <NewsletterForm />
+
           <Space h={"1rem"} hiddenFrom="md" />
         </Container>
 
@@ -95,6 +96,8 @@ export default function Footer(props) {
             maxWidth: "1440px",
             position: "relative",
             zIndex: 999999,
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
           }}
         >
           <Divider color="#5A5A5A" w={"100%"} size="xs" />

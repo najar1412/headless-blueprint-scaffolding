@@ -18,7 +18,7 @@ export const NewsletterForm = () => {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
       <Stack mt="1rem">
         <div className={styles["input-container"]}>
           <UnstyledButton type="submit">

@@ -1,6 +1,13 @@
 .input-container {
   position: relative;
   max-width: 17.1rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: $mantine-breakpoint-xs) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 .arrow {
   position: absolute;
@@ -11,7 +18,7 @@
   color: var(--mantine-color-brand-0);
   background-color: transparent;
   border: 0;
-  border-bottom: 1px solid #0A404A;
+  border-bottom: 1px solid #0a404a;
   padding-bottom: 0.5rem;
   width: 100%;
   padding-left: 1rem;

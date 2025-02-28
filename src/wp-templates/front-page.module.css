@@ -215,7 +215,7 @@
   display: flex;
   align-items: center;
 
-  @media (min-width: $mantine-breakpoint-md) {
+  @media (min-width: $mantine-breakpoint-xs) {
     align-items: flex-start;
   }
 }
