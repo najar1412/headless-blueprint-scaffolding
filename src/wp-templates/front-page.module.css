@@ -256,6 +256,8 @@
 }
 
 .background-video {
+  pointer-events: none;
+  user-select: none;
   min-width: 105%;
   top: 0;
   left: 0;
