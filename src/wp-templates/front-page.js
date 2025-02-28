@@ -1135,14 +1135,25 @@ export default function Component(props) {
                     mb="1rem"
                     style={{ overflow: "hidden" }}
                   >
-                    <Text
-                      fw="700"
-                      size="0.84rem"
-                      mb="0.25rem"
-                      className={styles["button-2"]}
-                    >
-                      Discover More
-                    </Text>
+                    <Group gap="xs">
+                      <Text
+                        fw="700"
+                        size="0.84rem"
+                        mb="0.25rem"
+                        className={styles["button-2"]}
+                      >
+                        Discover More
+                      </Text>
+                      <Image
+                        alt="arrow"
+                        style={{
+                          width: "1rem",
+                          transform: "translateY(-0.1rem)",
+                        }}
+                        src={arrowBrGreen}
+                      />
+                    </Group>
+
                     <div className={`${styles["bar-link"]}`} />
                   </Stack>
                 </Link>
