@@ -74,16 +74,7 @@ export const TeamMemberCard = ({ data }) => {
           BIO
         </Text>
       </div>
-      <div
-        gap={"0.4rem"}
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-        className={"team-card gsap-fade"}
-      >
+      <div className={`${styles["member-card"]} team-card gsap-fade`}>
         <Box
           ref={container}
           bg={"rgba(235, 235, 235, 1)"}
@@ -118,7 +109,7 @@ export const TeamMemberCard = ({ data }) => {
             }}
           ></div>
         </Box>
-        <Text size="1.1rem" fw="bold">
+        <Text size="1.1rem" fw="bold" mb='0.35rem'>
           {data.name}
         </Text>
         <Text size="0.9rem">{data.title}</Text>

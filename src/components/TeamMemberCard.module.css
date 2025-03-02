@@ -42,6 +42,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.member-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: $mantine-breakpoint-lg) {
+    align-items: flex-start;
+  }
+}
 .scrollbar {
   &,
   &:hover {
