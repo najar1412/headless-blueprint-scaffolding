@@ -46,7 +46,7 @@ export default function PagePublication(props) {
 
   const formatDate = (date) => {
     const dateObj = new Date(date);
-    const result = `${dateObj.getDay()}.${dateObj.getMonth()}.${dateObj.getFullYear()}`;
+    const result = `${dateObj.getMonth() + 1}.${dateObj.getDate()}.${dateObj.getFullYear()}`;
     return result;
   };
 

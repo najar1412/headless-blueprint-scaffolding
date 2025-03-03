@@ -1386,7 +1386,7 @@ export default function Component(props) {
               </div>
               <div className={styles["box-element-2"]}></div>
             </Grid.Col>
-            <Grid.Col span={{ base: 12, lg: 4 }}>
+            {/* <Grid.Col span={{ base: 12, lg: 4 }}>
               {journal.length ? (
                 <PostCard
                   gsapName={"gsap-fade"}
@@ -1396,6 +1396,9 @@ export default function Component(props) {
                   colour={"var(--mantine-color-brand-4)"}
                 />
               ) : null}
+            </Grid.Col> */}
+            <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 4 }}>
+              <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
             </Grid.Col>
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
               <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
