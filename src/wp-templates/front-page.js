@@ -30,6 +30,7 @@ import { PinnedSection } from "../components/pinnedSection/PinnedSection";
 import { TeamMemberCard } from "../components/TeamMemberCard";
 import { Section } from "../components/layout/Section";
 import CustomCursor from "../components/CustomCursor";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
@@ -682,6 +683,7 @@ export default function Component(props) {
   return (
     <>
       <Head>
+        <GoogleAnalytics />
         <title>{siteTitle}</title>
         <link rel="icon" type="image/x-icon" href={favicon.src} />
       </Head>
