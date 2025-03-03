@@ -60,7 +60,9 @@ export default function LoadMorePublications() {
 
   const posts = data.publications.edges
     .filter(
-      (edge) => !edge.node.publicationMeta.postType.includes("announcement")
+      (edge) =>
+        !edge.node.publicationMeta.postType.includes("announcement") &&
+        edge.node.title !== "Press Release"
     )
     .map((edge) => edge.node);
 
