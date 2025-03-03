@@ -6,12 +6,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <ColorSchemeScript defaultColorScheme="auto" />
-        {/* <link
-          rel="icon"
-          href="/Nexus_Favicon.png"
-          type="image/png"
-          sizes="<generated>"
-        /> */}
       </Head>
       <body>
         <Main />

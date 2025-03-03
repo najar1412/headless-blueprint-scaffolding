@@ -41,6 +41,7 @@ import arrowBrGreen from "../assets/arrow-br-green.svg";
 import step1Image from "../assets/step1.png";
 import step2Image from "../assets/step_2.png";
 import step3Image from "../assets/step_3.png";
+import favicon from "../favicon.png";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -682,6 +683,7 @@ export default function Component(props) {
     <>
       <Head>
         <title>{siteTitle}</title>
+        <link rel="icon" type="image/x-icon" href={favicon.src} />
       </Head>
 
       <CustomCursor />

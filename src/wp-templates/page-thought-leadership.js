@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { Title, Container, Divider, Stack } from "@mantine/core";
+import Head from "next/head";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -11,8 +12,11 @@ import CustomCursor from "../components/CustomCursor";
 
 import styles from "./page-thought-leadership.module.css";
 
+import favicon from "../favicon.png";
+
 export default function PageThoughtLeadership(props) {
   const { publications, footer, page, primaryMenuItems } = props.data;
+  const { title: siteTitle } = props.data.generalSettings;
 
   // Loading state for previews
   if (props.loading) {
@@ -21,6 +25,11 @@ export default function PageThoughtLeadership(props) {
 
   return (
     <>
+      <Head>
+        <title>{siteTitle}</title>
+        <link rel="icon" type="image/x-icon" href={favicon.src} />
+      </Head>
+
       <CustomCursor />
       <Header menuItems={primaryMenuItems.nodes} page={page} />
 

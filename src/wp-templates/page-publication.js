@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import Head from "next/head";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -26,9 +27,11 @@ import linkedInIcon from "../assets/linkedin-icon-2 3.svg";
 import facebookIcon from "../assets/facebook.svg";
 import xIcon from "../assets/X_logo_2023_original 1.svg";
 import arrowBlBlueIcon from "../assets/arrow-bl-blue.svg";
+import favicon from "../favicon.png";
 
 export default function PagePublication(props) {
   const { footer, primaryMenuItems, publication: post, page } = props.data;
+  const { title: siteTitle } = props.data.generalSettings;
 
   // Loading state for previews
   if (props.loading) {
@@ -49,6 +52,11 @@ export default function PagePublication(props) {
 
   return (
     <>
+      <Head>
+        <title>{siteTitle}</title>
+        <link rel="icon" type="image/x-icon" href={favicon.src} />
+      </Head>
+
       <CustomCursor />
       <Header
         menuItems={primaryMenuItems.nodes}
