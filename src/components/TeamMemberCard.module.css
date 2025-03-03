@@ -80,6 +80,6 @@
 
   @media (min-width: $mantine-breakpoint-md) {
     height: fit-content;
-    max-height: 515px;
+    /* max-height: 515px; */
   }
 }

@@ -109,7 +109,7 @@ export const TeamMemberCard = ({ data }) => {
             }}
           ></div>
         </Box>
-        <Text size="1.1rem" fw="bold" mb='0.35rem'>
+        <Text size="1.1rem" fw="bold" mb="0.35rem">
           {data.name}
         </Text>
         <Text size="0.9rem">{data.title}</Text>
@@ -123,6 +123,7 @@ export const TeamMemberCard = ({ data }) => {
         centered
         h={"100%"}
         removeScrollProps={{ removeScrollBar: false }}
+        style={{}}
       >
         <Modal.Overlay bg={"rgba(250, 250, 250, 0.9)"} />
         <Modal.Content
@@ -131,6 +132,7 @@ export const TeamMemberCard = ({ data }) => {
           pb={{ base: "0.25rem", md: "2rem" }}
           style={{
             borderRadius: "4rem 0 3.5rem 3.5rem",
+            overflow: "hidden",
           }}
         >
           <Modal.Header>
@@ -138,7 +140,11 @@ export const TeamMemberCard = ({ data }) => {
               <Image width={25} height={25} src={leaderCloseIcon} />
             </Modal.CloseButton>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body
+            style={{
+              maxHeight: "fit-content",
+            }}
+          >
             <Flex direction={{ base: "column", md: "row" }}>
               <Stack gap={"md"} mr={"1.5rem"}>
                 <div
@@ -182,11 +188,10 @@ export const TeamMemberCard = ({ data }) => {
               </Stack>
               <Space h={"2rem"} hiddenFrom="md" />
               <ScrollArea
-                h={"100%"}
+                h={"16rem"}
                 type="always"
                 offsetScrollbars
                 scrollbarSize={6}
-                pr={"2rem"}
                 classNames={styles}
               >
                 <Text size="1.1rem" fw="bold" mb="xs">
@@ -199,6 +204,7 @@ export const TeamMemberCard = ({ data }) => {
                   {data.bio}
                 </Text>
               </ScrollArea>
+              <Space h={"2rem"} />
             </Flex>
           </Modal.Body>
         </Modal.Content>
