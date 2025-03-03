@@ -47,7 +47,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   @media (min-width: $mantine-breakpoint-lg) {
+    text-align: left;
     align-items: flex-start;
   }
 }
