@@ -51,16 +51,23 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
-
+  console.log(publications);
   // TODO: remove this nasty filter stuff, and just retrieve one item from DB
+  console.log("GGEEETTTTTTINNNNNNGggggg");
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
   );
+  console.log(featured);
   const journal = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("journal")
   );
+  console.log(journal);
   const announcement = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("announcement")
+  );
+  console.log(announcement);
+  const card = publications.nodes.filter((publication) =>
+    publication.publicationMeta.postType.includes("link")
   );
 
   useGSAP(() => {
@@ -1386,22 +1393,36 @@ export default function Component(props) {
               </div>
               <div className={styles["box-element-2"]}></div>
             </Grid.Col>
-            {/* <Grid.Col span={{ base: 12, lg: 4 }}>
-              {journal.length ? (
-                <PostCard
-                  gsapName={"gsap-fade"}
-                  category={"journal"}
-                  title={journal[0].title}
-                  link={journal[0].uri}
-                  colour={"var(--mantine-color-brand-4)"}
-                />
-              ) : null}
-            </Grid.Col> */}
-            <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 4 }}>
-              <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
-            </Grid.Col>
+            {journal && journal.length ? (
+              <Grid.Col span={{ base: 12, lg: 4 }}>
+                {journal.length ? (
+                  <PostCard
+                    gsapName={"gsap-fade"}
+                    category={"journal"}
+                    title={journal[0].title}
+                    link={journal[0].uri}
+                    colour={"var(--mantine-color-brand-4)"}
+                  />
+                ) : null}
+              </Grid.Col>
+            ) : (
+              <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 4 }}>
+                <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
+              </Grid.Col>
+            )}
+
             <Grid.Col visibleFrom="lg" span={{ base: 12, lg: 3 }}>
-              <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
+              {card ? (
+                <PostCard
+                  category={"external link"}
+                  title={card[0].title}
+                  link={card[0].publicationMeta.link}
+                  gsapName={"gsap-fade"}
+                  image={cardGrayImage}
+                />
+              ) : (
+                <PostCard gsapName={"gsap-fade"} image={cardGrayImage} />
+              )}
             </Grid.Col>
             <Grid.Col span={{ base: 12, lg: 4 }}>
               {featured ? (
@@ -1515,6 +1536,7 @@ Component.query = gql`
           author
           postType
           announcementLocation
+          link
         }
       }
         

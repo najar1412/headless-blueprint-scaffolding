@@ -32,6 +32,7 @@ const GET_POSTS = gql`
           }
           publicationMeta: publicationMeta {
             postType
+            link
           }
         }
       }
@@ -60,9 +61,7 @@ export default function LoadMorePublications() {
 
   const posts = data.publications.edges
     .filter(
-      (edge) =>
-        !edge.node.publicationMeta.postType.includes("announcement") &&
-        edge.node.title !== "Press Release"
+      (edge) => !edge.node.publicationMeta.postType.includes("announcement")
     )
     .map((edge) => edge.node);
 
@@ -73,7 +72,16 @@ export default function LoadMorePublications() {
       <Stack>
         {posts.map((post) => (
           <Fragment key={post.databaseId}>
-            <Link href={`/thought-leadership/${post.slug}`}>
+            <Link
+              href={
+                post.publicationMeta.postType.includes("link")
+                  ? post.publicationMeta.link
+                  : `/thought-leadership/${post.slug}`
+              }
+              target={
+                post.publicationMeta.postType.includes("link") ? "_blank" : ""
+              }
+            >
               <Group
                 wrap="no-wrap"
                 gap={"2rem"}

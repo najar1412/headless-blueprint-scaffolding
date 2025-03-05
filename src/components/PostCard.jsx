@@ -53,7 +53,7 @@ export const PostCard = ({
           inner: styles["inner-2"],
           fontColour: "var(--mantine-color-brand-0)",
           arrow: styles.arrow,
-          arrowIcon: arrow,
+          arrowIcon: arrowGreen,
         };
     }
   };
@@ -92,7 +92,7 @@ export const PostCard = ({
             </Text>
           ) : null}
           {title ? (
-            <Link href={link}>
+            <Link href={link} target={category === "external link" ? "_blank" : ""}>
               <Text
                 fw={700}
                 c={layout.fontColour}
