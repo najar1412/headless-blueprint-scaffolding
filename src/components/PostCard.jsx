@@ -92,7 +92,7 @@ export const PostCard = ({
             </Text>
           ) : null}
           {title ? (
-            <Link href={link} target={category === "external link" ? "_blank" : ""}>
+            category === "announcement" ? (
               <Text
                 fw={700}
                 c={layout.fontColour}
@@ -105,7 +105,25 @@ export const PostCard = ({
               >
                 {title}
               </Text>
-            </Link>
+            ) : (
+              <Link
+                href={link}
+                target={category === "external link" ? "_blank" : ""}
+              >
+                <Text
+                  fw={700}
+                  c={layout.fontColour}
+                  lineClamp={3}
+                  className={
+                    category === "featured"
+                      ? styles["title-feature"]
+                      : styles["title"]
+                  }
+                >
+                  {title}
+                </Text>
+              </Link>
+            )
           ) : null}
           {footer ? (
             <Text mt="1rem" size="0.6rem" c={layout.fontColour}>
