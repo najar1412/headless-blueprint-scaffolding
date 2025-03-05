@@ -1,5 +1,5 @@
 // TODO: instead of returning all posts and filtering, just query for the first/latest of types featured, journal, announcement
-// TODO: clean up pinned section
+// TODO: thought leadership section: show blank cards if no data.
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
@@ -35,7 +35,6 @@ import GoogleAnalytics from "../components/GoogleAnalytics";
 import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
 
-import placeholderThumbImage from "../assets/placeholder_thumb.jpg";
 import cardGrayImage from "../assets/card_gray.jpg";
 import logoSymbolIcon from "../assets/Nexus_Logomark_4C.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
@@ -51,21 +50,19 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
   const { footer, primaryMenuItems, page, publications } = props.data;
-  console.log(publications);
+
   // TODO: remove this nasty filter stuff, and just retrieve one item from DB
-  console.log("GGEEETTTTTTINNNNNNGggggg");
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
   );
-  console.log(featured);
+
   const journal = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("journal")
   );
-  console.log(journal);
+
   const announcement = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("announcement")
   );
-  console.log(announcement);
   const card = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("link")
   );
