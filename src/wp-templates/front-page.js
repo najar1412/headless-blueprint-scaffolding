@@ -49,7 +49,8 @@ gsap.registerPlugin(ScrollToPlugin);
 
 export default function Component(props) {
   const { title: siteTitle } = props.data.generalSettings;
-  const { footer, primaryMenuItems, page, publications } = props.data;
+  const { footer, primaryMenuItems, page, publications, newsletterForm } =
+    props.data;
 
   // TODO: remove this nasty filter stuff, and just retrieve one item from DB
   const featured = publications.nodes.filter((publication) =>
@@ -1440,7 +1441,7 @@ export default function Component(props) {
         </Section>
       </Container>
 
-      <Footer node={footer} />
+      <Footer node={footer} newsletterForm={newsletterForm} />
     </>
   );
 }
@@ -1536,7 +1537,9 @@ Component.query = gql`
           link
         }
       }
-        
     }
+      newsletterForm: gfForm(id: 1) {
+    title
+  }
   }
 `;

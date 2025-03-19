@@ -1,14 +1,16 @@
 import { useState } from "react";
 
 import { useForm } from "react-hook-form";
-import { Stack, UnstyledButton, Text, Divider } from "@mantine/core";
+import { Stack, UnstyledButton, Text } from "@mantine/core";
 import Image from "next/image";
 
 import styles from "./NewsletterForm.module.css";
 
 import arrow from "../../assets/arrow-tr-blue.svg";
 
-export const NewsletterForm = () => {
+export const NewsletterForm = ({ form }) => {
+  console.log("newsletter");
+  console.log(form);
   const [submitted, setSubmitted] = useState(false);
   const {
     register,

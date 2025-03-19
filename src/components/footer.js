@@ -18,12 +18,11 @@ import styles from "../wp-templates/front-page.module.css";
 
 import arrowUpIcon from "../assets/arrow-up.svg";
 
-export default function Footer(props) {
+export default function Footer({ newsletterForm }) {
   return (
     <>
       <Container
         className={styles["footer-margin"]}
-        // pt={"2rem"}
         pb={"2rem"}
         maw={"unset"}
         w="100%"
@@ -75,7 +74,7 @@ export default function Footer(props) {
               Join our email list to receive news and updates from Nexus Health
               Group.
             </Text>
-            <NewsletterForm />
+            <NewsletterForm form={newsletterForm} />
           </Stack>
           <div
             className={styles["return-to-top"]}
@@ -119,6 +118,9 @@ Footer.fragments = {
       footer: page(id: 35, idType: DATABASE_ID) {
         title
         content
+      }
+      form: gfForm(id: 1) {
+        title
       }
     }
   `,
