@@ -1560,6 +1560,7 @@ Component.query = gql`
       }
     }
     title
+    id
   }
     getInTouchForm: gfForm(id: 2) {
     formFields {
@@ -1581,6 +1582,7 @@ Component.query = gql`
       }
     }
     title
+    id
   }
   }
 `;
