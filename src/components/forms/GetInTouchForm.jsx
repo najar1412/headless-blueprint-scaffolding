@@ -5,7 +5,9 @@ import { Button, Divider, Stack, Text } from "@mantine/core";
 
 import styles from "./GetInTouchForm.module.css";
 
-export const GetInTouchForm = () => {
+export const GetInTouchForm = ({ form }) => {
+  console.log("GetInTouchForm");
+  console.log(form);
   const [submitted, setSubmitted] = useState(false);
   const {
     register,

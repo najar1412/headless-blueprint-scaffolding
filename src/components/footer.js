@@ -18,7 +18,7 @@ import styles from "../wp-templates/front-page.module.css";
 
 import arrowUpIcon from "../assets/arrow-up.svg";
 
-export default function Footer({ newsletterForm }) {
+export default function Footer({ newsletterForm, getInTouchForm }) {
   return (
     <>
       <Container
@@ -54,7 +54,7 @@ export default function Footer({ newsletterForm }) {
               </Text>
             </Stack>
             <div style={{ paddingLeft: "1rem", paddingRight: "1rem" }}>
-              <GetInTouchForm />
+              <GetInTouchForm form={getInTouchForm} />
             </div>
           </SimpleGrid>
         </Container>
