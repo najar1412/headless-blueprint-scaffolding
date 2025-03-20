@@ -177,10 +177,7 @@ export default function Header({ menuItems, page, frontPage }) {
               {menuItems.map((item) => (
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
-              <Link
-                href="https://www.linkedin.com/company/nexus-health-grp"
-                target="_blank"
-              >
+              <Link href={""} target="_blank">
                 <Image
                   alt="linkedin logo"
                   src={linkedinIcon}

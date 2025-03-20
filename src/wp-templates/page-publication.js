@@ -28,10 +28,13 @@ import facebookIcon from "../assets/facebook.svg";
 import xIcon from "../assets/X_logo_2023_original 1.svg";
 import arrowBlBlueIcon from "../assets/arrow-bl-blue.svg";
 import favicon from "../favicon.png";
+import { GravityFormProvider } from "../hooks/useGravityForms";
 
 export default function PagePublication(props) {
   const { footer, primaryMenuItems, publication: post, page } = props.data;
   const { title: siteTitle } = props.data.generalSettings;
+
+  console.log(props.data);
 
   // Loading state for previews
   if (props.loading) {
@@ -282,8 +285,9 @@ export default function PagePublication(props) {
           </UnstyledButton>
         </Container>
       </Container>
-
-      <Footer node={footer} />
+      <GravityFormProvider>
+        <Footer node={footer} globalOptions={post?.globalFields} />
+      </GravityFormProvider>
     </>
   );
 }
@@ -300,7 +304,19 @@ PagePublication.query = gql`
   ${Header.fragments.entry}
 
   query getPost($databaseId: ID!) {
+    
     publication(id: $databaseId, idType: DATABASE_ID) {
+    globalFields {
+      linkedin
+      getInTouchForm {
+        title
+        copy
+      }
+      newsletterForm {
+        title
+        copy
+      }
+    }
       databaseId
       title
       slug
@@ -315,8 +331,11 @@ PagePublication.query = gql`
         author
         postType
       }
+        
     }
+      
     ...HeaderFragment
     ...${Footer.fragments.entry}
+    
   }
 `;

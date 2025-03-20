@@ -31,6 +31,7 @@ import { TeamMemberCard } from "../components/TeamMemberCard";
 import { Section } from "../components/layout/Section";
 import CustomCursor from "../components/CustomCursor";
 import GoogleAnalytics from "../components/GoogleAnalytics";
+import { GravityFormProvider } from "../hooks/useGravityForms";
 
 import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
@@ -42,7 +43,6 @@ import step1Image from "../assets/step1.png";
 import step2Image from "../assets/step_2.png";
 import step3Image from "../assets/step_3.png";
 import favicon from "../favicon.png";
-import { GravityFormProvider } from "../hooks/useGravityForms";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -58,8 +58,6 @@ export default function Component(props) {
     newsletterForm,
     getInTouchForm,
   } = props.data;
-
-  console.log(props.data);
 
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
@@ -1447,6 +1445,7 @@ export default function Component(props) {
           node={footer}
           newsletterForm={newsletterForm}
           getInTouchForm={getInTouchForm}
+          globalOptions={page.globalFields}
         />
       </GravityFormProvider>
     </>
@@ -1469,6 +1468,17 @@ Component.query = gql`
     ...${Footer.fragments.entry}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
     title
+    globalFields {
+      linkedin
+      getInTouchForm {
+        title
+        copy
+      }
+        newsletterForm {
+        title
+        copy
+        }
+    }
     landing {
       header
       copy

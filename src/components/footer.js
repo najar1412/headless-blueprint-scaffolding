@@ -18,7 +18,12 @@ import styles from "../wp-templates/front-page.module.css";
 
 import arrowUpIcon from "../assets/arrow-up.svg";
 
-export default function Footer({ newsletterForm, getInTouchForm }) {
+export default function Footer({
+  newsletterForm,
+  getInTouchForm,
+  globalOptions,
+}) {
+  console.log(globalOptions);
   return (
     <>
       <Container
@@ -47,10 +52,10 @@ export default function Footer({ newsletterForm, getInTouchForm }) {
           >
             <Stack px={"lg"}>
               <Title order={1} size="3.05rem" c="white">
-                Get in Touch
+                {globalOptions?.getInTouchForm?.title}
               </Title>
               <Text c="white" size="1.2rem" lh="1.5rem" maw={"20rem"}>
-                Together, we can build smarter, more effective access solutions.
+                {globalOptions?.getInTouchForm?.copy}
               </Text>
             </Stack>
             <div style={{ paddingLeft: "1rem", paddingRight: "1rem" }}>
@@ -68,11 +73,10 @@ export default function Footer({ newsletterForm, getInTouchForm }) {
         >
           <Stack className={styles["footer-stack"]}>
             <Title order={3} size="1.25rem" lh="1.5rem">
-              Subscribe to our Newsletter
+              {globalOptions?.newsletterForm?.title}
             </Title>
             <Text maw={"18rem"} fw="500" size="0.78rem" lh={"1.25rem"}>
-              Join our email list to receive news and updates from Nexus Health
-              Group.
+              {globalOptions?.newsletterForm?.copy}
             </Text>
 
             <NewsletterForm form={newsletterForm} />

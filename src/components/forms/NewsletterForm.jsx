@@ -35,7 +35,7 @@ export const NewsletterForm = ({ form }) => {
   const haveFieldErrors = Boolean(data?.submitGfForm?.errors?.length);
   const defaultConfirmation = data?.submitGfForm?.confirmation;
 
-  const formFields = form.formFields?.nodes || [];
+  const formFields = form?.formFields?.nodes || [];
 
   function handleSubmit(event) {
     event.preventDefault();
