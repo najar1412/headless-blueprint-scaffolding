@@ -4,7 +4,12 @@ import styles from "./EmailField.module.css";
 
 const DEFAULT_VALUE = "";
 
-export default function EmailField({ formId, field, fieldErrors }) {
+export default function EmailField({
+  formId,
+  field,
+  fieldErrors,
+  variant = 0,
+}) {
   const { id, type, isRequired, placeholder } = field;
 
   const htmlId = `field_${formId}_${id}`;
@@ -15,7 +20,7 @@ export default function EmailField({ formId, field, fieldErrors }) {
   return (
     <>
       <input
-        className={`gfield gfield-${type} ${styles.input}`.trim()}
+        className={`gfield gfield-${type} ${variant ? styles["input-1"] : styles.input}`.trim()}
         type="email"
         name={String(id)}
         id={htmlId}

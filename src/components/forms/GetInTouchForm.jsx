@@ -79,6 +79,7 @@ export const GetInTouchForm = ({ form }) => {
                 formId={form.id}
                 field={field}
                 fieldErrors={getFieldErrors(Number(field?.id))}
+                variant={1}
               />
             ))}
             <Button

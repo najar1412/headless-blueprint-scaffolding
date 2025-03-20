@@ -18,3 +18,24 @@
   color: var(--mantine-color-brand-0);
   text-transform: capitalize;
 }
+
+.input-1 {
+  color: white;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.input-1::placeholder {
+  color: white;
+  text-transform: capitalize;
+  opacity: 1; /* Firefox */
+}
+
+.input-1::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: white;
+  text-transform: capitalize;
+}
