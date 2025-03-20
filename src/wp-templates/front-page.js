@@ -59,7 +59,9 @@ export default function Component(props) {
     getInTouchForm,
   } = props.data;
 
-  // TODO: remove this nasty filter stuff, and just retrieve one item from DB
+  console.log(props.data);
+
+  // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
   );
@@ -727,7 +729,7 @@ export default function Component(props) {
               }}
             >
               <video
-                src={page.s1.background.node.mediaItemUrl}
+                src={page.landing.background.node.mediaItemUrl}
                 autoPlay
                 muted
                 loop
@@ -751,17 +753,10 @@ export default function Component(props) {
                 <Title
                   maw={"40rem"}
                   fw={600}
-                  className={`${styles.title} gsap-initial`}
-                >
-                  Shaping the future
-                </Title>
-                <Title
-                  maw={"40rem"}
-                  fw={600}
                   mb={"lg"}
                   className={`${styles.title} gsap-initial`}
                 >
-                  of market access
+                  {page.landing.header}
                 </Title>
               </Stack>
 
@@ -772,7 +767,7 @@ export default function Component(props) {
                 fw="500"
                 className={"gsap-initial"}
               >
-                {page.s1.body}
+                {page.landing.copy}
               </Text>
               <Link
                 className={"gsap-initial"}
@@ -793,7 +788,7 @@ export default function Component(props) {
                 >
                   <Group>
                     <Text fw="500" size="1.25rem" lh="2rem">
-                      Discover more
+                      {page.landing.button.label}
                     </Text>
                     <Image alt="arrow" src={arrowBrGreen} />
                   </Group>
@@ -813,14 +808,18 @@ export default function Component(props) {
                 alignItems: "center",
               }}
             >
-              <Eyebrow gsapName={"gsap-fade"} label={"services"} variant={1} />
+              <Eyebrow
+                gsapName={"gsap-fade"}
+                label={page.s2.eyeBrow}
+                variant={1}
+              />
               <Title
                 order={2}
                 mb="2rem"
                 className={`${styles["title-3"]} gsap-fade`}
                 ta={"center"}
               >
-                Science-powered access with future-proof solutions.
+                {page.s2.title}
               </Title>
             </div>
 
@@ -1211,7 +1210,9 @@ export default function Component(props) {
             m={0}
             className={`${styles["section-start"]} ${styles.black}`}
           >
-            <PinnedSection background={page.s1.background.node.mediaItemUrl} />
+            <PinnedSection
+              background={page.landing.background.node.mediaItemUrl}
+            />
           </Container>
         </Container>
 
@@ -1324,20 +1325,15 @@ export default function Component(props) {
         </Section>
 
         <Section label="thought-leadership">
-          <Eyebrow
-            gsapName={"gsap-fade"}
-            label={"thought leadership"}
-            variant={3}
-          />
+          <Eyebrow gsapName={"gsap-fade"} label={page.s6.eyebrow} variant={3} />
           <Grid gutter={"xs"}>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Stack>
                 <Title className={`${styles["title-2"]} gsap-fade`}>
-                  What’s Happening at Nexus Health
+                  {page.s6.title}
                 </Title>
                 <Text fw="500" className={`${styles["copy-2"]} gsap-fade`}>
-                  The future of market access starts here—news, insights, and
-                  expert perspectives.
+                  {page.s6.copy}
                 </Text>
                 {/* <Link
                   href={"thought-leadership"}
@@ -1473,9 +1469,12 @@ Component.query = gql`
     ...${Footer.fragments.entry}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
     title
-    s1 {
-      title
-      body
+    landing {
+      header
+      copy
+      button {
+      label
+      }
       background {
         node {
           mediaItemUrl
@@ -1522,6 +1521,11 @@ Component.query = gql`
         number
         unit
       }
+    }
+      s6 {
+      eyebrow
+      title
+      copy
     }
   }
     
