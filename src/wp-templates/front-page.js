@@ -695,11 +695,10 @@ export default function Component(props) {
   return (
     <>
       <Head>
-        <GoogleAnalytics />
         <title>{siteTitle}</title>
         <link rel="icon" type="image/x-icon" href={favicon.src} />
       </Head>
-
+      <GoogleAnalytics />
       <CustomCursor />
 
       <Header menuItems={primaryMenuItems.nodes} page={page} frontPage />
