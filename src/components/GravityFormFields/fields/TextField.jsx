@@ -2,13 +2,13 @@ import { gql } from "@apollo/client";
 
 import useGravityForm, { ACTION_TYPES } from "../../../hooks/useGravityForms";
 
+import styles from "./TextField.module.css";
+
 export const TEXT_FIELD_FIELDS = gql`
   fragment TextFieldFields on TextField {
     id
-    formId
     label
     description
-    cssClass
     isRequired
     placeholder
   }
@@ -16,31 +16,22 @@ export const TEXT_FIELD_FIELDS = gql`
 
 const DEFAULT_VALUE = "";
 
-export default function TextField({ field, fieldErrors }) {
-  const {
-    id,
-    formId,
-    type,
-    label,
-    description,
-    cssClass,
-    isRequired,
-    placeholder,
-  } = field;
+export default function TextField({ formId, field, fieldErrors }) {
+  const { id, type, label, isRequired, placeholder } = field;
   const htmlId = `field_${formId}_${id}`;
   const { state, dispatch } = useGravityForm();
   const fieldValue = state.find((fieldValue) => fieldValue.id === id);
   const value = fieldValue?.value || DEFAULT_VALUE;
 
   return (
-    <div className={`gfield gfield-${type} ${cssClass}`.trim()}>
-      <label htmlFor={htmlId}>{label}</label>
+    <div className={`gfield gfield-${type}`.trim()}>
       <input
+        className={styles.input}
         type="text"
         name={String(id)}
         id={htmlId}
         required={Boolean(isRequired)}
-        placeholder={placeholder || ""}
+        placeholder={placeholder || label || ""}
         value={value}
         onChange={(event) => {
           dispatch({
@@ -52,7 +43,7 @@ export default function TextField({ field, fieldErrors }) {
           });
         }}
       />
-      {description ? <p className="field-description">{description}</p> : null}
+
       {fieldErrors?.length
         ? fieldErrors.map((fieldError) => (
             <p key={fieldError.id} className="error-message">

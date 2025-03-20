@@ -1,3 +1,5 @@
+// TODO: refactor newsletterform annd getintouch form, too much shared code.
+
 import { useState } from "react";
 
 import { Stack, UnstyledButton, Text } from "@mantine/core";
@@ -33,7 +35,6 @@ export const NewsletterForm = ({ form }) => {
   const haveFieldErrors = Boolean(data?.submitGfForm?.errors?.length);
   const defaultConfirmation = data?.submitGfForm?.confirmation;
 
-  console.log(defaultConfirmation);
   const formFields = form.formFields?.nodes || [];
 
   function handleSubmit(event) {

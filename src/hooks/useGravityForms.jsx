@@ -19,6 +19,10 @@ function reducer(state, action) {
       const { id, nameValues } = action.fieldValue;
       return [...getOtherFieldValues(id), { id, nameValues }];
     }
+    case ACTION_TYPES.updateTextFieldValue: {
+      const { id, value } = action.fieldValue;
+      return [...getOtherFieldValues(id), { id, value }];
+    }
     default:
       throw new Error(
         `Field value update operation not supported: ${action.type}.`

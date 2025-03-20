@@ -18,8 +18,6 @@ import styles from "../wp-templates/front-page.module.css";
 
 import arrowUpIcon from "../assets/arrow-up.svg";
 
-import { GravityFormProvider } from "../hooks/useGravityForms";
-
 export default function Footer({ newsletterForm, getInTouchForm }) {
   return (
     <>
@@ -76,9 +74,8 @@ export default function Footer({ newsletterForm, getInTouchForm }) {
               Join our email list to receive news and updates from Nexus Health
               Group.
             </Text>
-            <GravityFormProvider>
-              <NewsletterForm form={newsletterForm} />
-            </GravityFormProvider>
+
+            <NewsletterForm form={newsletterForm} />
           </Stack>
           <div
             className={styles["return-to-top"]}

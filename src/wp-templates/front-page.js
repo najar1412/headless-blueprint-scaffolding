@@ -42,6 +42,7 @@ import step1Image from "../assets/step1.png";
 import step2Image from "../assets/step_2.png";
 import step3Image from "../assets/step_3.png";
 import favicon from "../favicon.png";
+import { GravityFormProvider } from "../hooks/useGravityForms";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -1446,12 +1447,13 @@ export default function Component(props) {
           </Grid>
         </Section>
       </Container>
-
-      <Footer
-        node={footer}
-        newsletterForm={newsletterForm}
-        getInTouchForm={getInTouchForm}
-      />
+      <GravityFormProvider>
+        <Footer
+          node={footer}
+          newsletterForm={newsletterForm}
+          getInTouchForm={getInTouchForm}
+        />
+      </GravityFormProvider>
     </>
   );
 }
@@ -1548,7 +1550,7 @@ Component.query = gql`
         }
       }
     }
-      newsletterForm: gfForm(id: 1) {
+    newsletterForm: gfForm(id: 1) {
       formFields {
       nodes {
         databaseId
@@ -1559,36 +1561,33 @@ Component.query = gql`
           isRequired
           placeholder
         }
-          ... on TextField {
-          id: databaseId
-          label
-          isRequired
-          placeholder
-        }
       }
     }
     title
     id
   }
-    getInTouchForm: gfForm(id: 2) {
+  getInTouchForm: gfForm(id: 2) {
     formFields {
       nodes {
         databaseId
         type
-        ... on NameField {
+        ... on TextField {
           id: databaseId
           label
           isRequired
-        }
-        ... on EmailField {
-          id: databaseId
-          label
-          isRequired
+          placeholder
         }
         ... on TextField {
           id: databaseId
           label
           isRequired
+          placeholder
+        }
+        ... on EmailField {
+        id: databaseId
+        label
+        isRequired
+        placeholder
         }
       }
     }

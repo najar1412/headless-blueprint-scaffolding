@@ -19,7 +19,7 @@ export default function EmailField({ formId, field, fieldErrors }) {
         type="email"
         name={String(id)}
         id={htmlId}
-        placeholder={placeholder || ""}
+        placeholder={placeholder || label || ""}
         required={Boolean(isRequired)}
         value={value}
         onChange={(event) => {

@@ -1,57 +1,86 @@
 import { useState } from "react";
 
-import { useForm } from "react-hook-form";
 import { Button, Divider, Stack, Text } from "@mantine/core";
+import { useMutation, gql } from "@apollo/client";
 
-import styles from "./GetInTouchForm.module.css";
+import useGravityForm from "../../hooks/useGravityForms";
+import GravityFormsField from "../GravityFormFields/GravityFormsField";
+
+const SUBMIT_FORM = gql`
+  mutation submitForm($formId: ID!, $fieldValues: [FormFieldValuesInput]!) {
+    submitGfForm(input: { id: $formId, fieldValues: $fieldValues }) {
+      errors {
+        id
+        message
+      }
+      confirmation {
+        message
+      }
+    }
+  }
+`;
 
 export const GetInTouchForm = ({ form }) => {
-  const [submitted, setSubmitted] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { state } = useGravityForm();
+  const [submitForm, { data, loading, error }] = useMutation(SUBMIT_FORM);
+  const [success, setSuccess] = useState(false);
 
-  const onSubmit = (data) => {
-    setSubmitted(true);
-  };
+  const haveFieldErrors = Boolean(data?.submitGfForm?.errors?.length);
+  const defaultConfirmation = data?.submitGfForm?.confirmation;
+
+  const formFields = form.formFields?.nodes || [];
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (loading) return;
+    submitForm({
+      variables: {
+        formId: 2,
+        fieldValues: state,
+      },
+    })
+      .catch((error) => {
+        console.error(error);
+        return;
+      })
+      .finally(() => setSuccess(true));
+  }
+
+  function getFieldErrors(id) {
+    if (!haveFieldErrors) return [];
+    return data.submitGfForm.errors.filter((error) => error.id === id);
+  }
 
   return (
     <>
-      {submitted ? (
+      {success ? (
         <Stack justify="center" h={"100%"}>
           <Divider hiddenFrom="md" />
           <Text c="white" fw="bold">
-            Thank you, a member of our team will be in touch!
+            <div
+              dangerouslySetInnerHTML={{ __html: defaultConfirmation?.message }}
+            ></div>
           </Text>
         </Stack>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+          method="post"
+          onSubmit={handleSubmit}
+          style={{
+            width: "100%",
+            opacity: loading ? 0.5 : 1,
+            pointerEvents: loading ? "none" : "auto",
+          }}
+        >
           <Stack>
-            {/* register your input into the hook by invoking the "register" function */}
-            <input
-              className={styles.input}
-              placeholder="name"
-              {...register("name")}
-            />
-
-            {/* include validation with required or other standard HTML validation rules */}
-            <input
-              className={styles.input}
-              placeholder="company"
-              {...register("company")}
-            />
-            <input
-              className={styles.input}
-              placeholder="email"
-              {...register("email")}
-            />
-
-            {/* errors will return when field validation fails  */}
-            {errors.exampleRequired && <span>This field is required</span>}
-
+            {formFields.map((field) => (
+              <GravityFormsField
+                key={field?.id}
+                formId={form.id}
+                field={field}
+                fieldErrors={getFieldErrors(Number(field?.id))}
+              />
+            ))}
             <Button
               ml="auto"
               px="xl"
@@ -63,6 +92,8 @@ export const GetInTouchForm = ({ form }) => {
             >
               Contact
             </Button>
+
+            {error ? <p className="error-message">{error.message}</p> : null}
           </Stack>
         </form>
       )}
