@@ -1554,8 +1554,16 @@ Component.query = gql`
         databaseId
         type
         ... on EmailField {
+          id: databaseId
           label
           isRequired
+          placeholder
+        }
+          ... on TextField {
+          id: databaseId
+          label
+          isRequired
+          placeholder
         }
       }
     }
@@ -1568,14 +1576,17 @@ Component.query = gql`
         databaseId
         type
         ... on NameField {
+          id: databaseId
           label
           isRequired
         }
         ... on EmailField {
+          id: databaseId
           label
           isRequired
         }
         ... on TextField {
+          id: databaseId
           label
           isRequired
         }

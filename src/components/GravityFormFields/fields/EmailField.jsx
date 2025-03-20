@@ -1,29 +1,11 @@
-import { gql } from "@apollo/client";
-
 import useGravityForm, { ACTION_TYPES } from "../../../hooks/useGravityForms";
 
-export const EMAIL_FIELD_FIELDS = gql`
-  fragment EmailFieldFields on EmailField {
-    id
-    formId
-    label
-    isRequired
-  }
-`;
+import styles from "./EmailField.module.css";
 
 const DEFAULT_VALUE = "";
 
-export default function EmailField({ field, fieldErrors }) {
-  const {
-    id,
-    formId,
-    type,
-    label,
-    description,
-    cssClass,
-    isRequired,
-    placeholder,
-  } = field;
+export default function EmailField({ formId, field, fieldErrors }) {
+  const { id, type, isRequired, placeholder } = field;
 
   const htmlId = `field_${formId}_${id}`;
   const { state, dispatch } = useGravityForm();
@@ -31,9 +13,9 @@ export default function EmailField({ field, fieldErrors }) {
   const value = fieldValue?.emailValues?.value || DEFAULT_VALUE;
 
   return (
-    <div className={`gfield gfield-${type} ${cssClass}`.trim()}>
-      <label htmlFor={htmlId}>{label}</label>
+    <>
       <input
+        className={`gfield gfield-${type} ${styles.input}`.trim()}
         type="email"
         name={String(id)}
         id={htmlId}
@@ -52,7 +34,6 @@ export default function EmailField({ field, fieldErrors }) {
           });
         }}
       />
-      {description ? <p className="field-description">{description}</p> : null}
       {fieldErrors?.length
         ? fieldErrors.map((fieldError) => (
             <p key={fieldError.id} className="error-message">
@@ -60,6 +41,6 @@ export default function EmailField({ field, fieldErrors }) {
             </p>
           ))
         : null}
-    </div>
+    </>
   );
 }

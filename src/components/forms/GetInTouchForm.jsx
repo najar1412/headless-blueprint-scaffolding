@@ -6,8 +6,6 @@ import { Button, Divider, Stack, Text } from "@mantine/core";
 import styles from "./GetInTouchForm.module.css";
 
 export const GetInTouchForm = ({ form }) => {
-  console.log("GetInTouchForm");
-  console.log(form);
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -18,11 +16,9 @@ export const GetInTouchForm = ({ form }) => {
 
   const onSubmit = (data) => {
     setSubmitted(true);
-    console.log(data);
   };
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <>
       {submitted ? (
         <Stack justify="center" h={"100%"}>

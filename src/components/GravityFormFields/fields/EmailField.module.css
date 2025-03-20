@@ -1,0 +1,20 @@
+.input {
+  color: var(--mantine-color-brand-0);
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #0a404a;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.input::placeholder {
+  color: var(--mantine-color-brand-0);
+  text-transform: capitalize;
+  opacity: 1; /* Firefox */
+}
+.input::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: var(--mantine-color-brand-0);
+  text-transform: capitalize;
+}
