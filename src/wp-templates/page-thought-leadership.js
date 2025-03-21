@@ -15,7 +15,14 @@ import styles from "./page-thought-leadership.module.css";
 import favicon from "../favicon.png";
 
 export default function PageThoughtLeadership(props) {
-  const { publications, footer, page, primaryMenuItems } = props.data;
+  const {
+    publications,
+    footer,
+    page,
+    primaryMenuItems,
+    newsletterForm,
+    getInTouchForm,
+  } = props.data;
   const { title: siteTitle } = props.data.generalSettings;
 
   // Loading state for previews
@@ -85,7 +92,12 @@ export default function PageThoughtLeadership(props) {
         </Container>
       </Container>
 
-      <Footer node={footer} />
+      <Footer
+        node={footer}
+        globalOptions={page?.globalFields}
+        newsletterForm={newsletterForm}
+        getInTouchForm={getInTouchForm}
+      />
     </>
   );
 }
@@ -108,6 +120,17 @@ PageThoughtLeadership.query = gql`
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      globalFields {
+      linkedin
+      getInTouchForm {
+        title
+        copy
+      }
+        newsletterForm {
+        title
+        copy
+        }
+    }
     }
     
     publications {

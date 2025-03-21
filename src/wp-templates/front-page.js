@@ -59,6 +59,8 @@ export default function Component(props) {
     getInTouchForm,
   } = props.data;
 
+  console.log(props.data);
+
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
@@ -1563,49 +1565,5 @@ Component.query = gql`
         }
       }
     }
-    newsletterForm: gfForm(id: 1) {
-      formFields {
-      nodes {
-        databaseId
-        type
-        ... on EmailField {
-          id: databaseId
-          label
-          isRequired
-          placeholder
-        }
-      }
-    }
-    title
-    id
-  }
-  getInTouchForm: gfForm(id: 2) {
-    formFields {
-      nodes {
-        databaseId
-        type
-        ... on TextField {
-          id: databaseId
-          label
-          isRequired
-          placeholder
-        }
-        ... on TextField {
-          id: databaseId
-          label
-          isRequired
-          placeholder
-        }
-        ... on EmailField {
-        id: databaseId
-        label
-        isRequired
-        placeholder
-        }
-      }
-    }
-    title
-    id
-  }
   }
 `;

@@ -31,7 +31,14 @@ import favicon from "../favicon.png";
 import { GravityFormProvider } from "../hooks/useGravityForms";
 
 export default function PagePublication(props) {
-  const { footer, primaryMenuItems, publication: post, page } = props.data;
+  const {
+    footer,
+    primaryMenuItems,
+    publication: post,
+    page,
+    newsletterForm,
+    getInTouchForm,
+  } = props.data;
   const { title: siteTitle } = props.data.generalSettings;
 
   console.log(props.data);
@@ -286,7 +293,12 @@ export default function PagePublication(props) {
         </Container>
       </Container>
       <GravityFormProvider>
-        <Footer node={footer} globalOptions={post?.globalFields} />
+        <Footer
+          node={footer}
+          globalOptions={post?.globalFields}
+          newsletterForm={newsletterForm}
+          getInTouchForm={getInTouchForm}
+        />
       </GravityFormProvider>
     </>
   );

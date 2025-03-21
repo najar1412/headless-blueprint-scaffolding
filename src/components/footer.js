@@ -23,7 +23,6 @@ export default function Footer({
   getInTouchForm,
   globalOptions,
 }) {
-  console.log(globalOptions);
   return (
     <>
       <Container
@@ -123,6 +122,51 @@ Footer.fragments = {
       footer: page(id: 35, idType: DATABASE_ID) {
         title
         content
+      }
+
+      newsletterForm: gfForm(id: 1) {
+        formFields {
+          nodes {
+            databaseId
+            type
+            ... on EmailField {
+              id: databaseId
+              label
+              isRequired
+              placeholder
+            }
+          }
+        }
+        title
+        id
+      }
+      getInTouchForm: gfForm(id: 2) {
+        formFields {
+          nodes {
+            databaseId
+            type
+            ... on TextField {
+              id: databaseId
+              label
+              isRequired
+              placeholder
+            }
+            ... on TextField {
+              id: databaseId
+              label
+              isRequired
+              placeholder
+            }
+            ... on EmailField {
+              id: databaseId
+              label
+              isRequired
+              placeholder
+            }
+          }
+        }
+        title
+        id
       }
     }
   `,
