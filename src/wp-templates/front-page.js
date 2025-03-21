@@ -1083,7 +1083,7 @@ export default function Component(props) {
           m={0}
           className={`${styles.section}`}
           visibleFrom="lg"
-          style={{ position: "relative", overflowX: "hidden" }}
+          style={{ position: "relative", overflow: "hidden" }}
         >
           <Container
             p={0}
