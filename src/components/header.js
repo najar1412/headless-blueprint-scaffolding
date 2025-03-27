@@ -177,7 +177,11 @@ export default function Header({ menuItems, page, frontPage }) {
               {menuItems.map((item) => (
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
-              <Link href={""} target="_blank">
+              <Link
+                href={page.globalFields.linkedin}
+                target="_blank"
+                style={{ cursor: "pointer" }}
+              >
                 <Image
                   alt="linkedin logo"
                   src={linkedinIcon}

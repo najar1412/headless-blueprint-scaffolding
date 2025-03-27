@@ -35,6 +35,10 @@ export default function PageThoughtLeadership(props) {
       <Head>
         <title>{siteTitle}</title>
         <link rel="icon" type="image/x-icon" href={favicon.src} />
+        <meta
+          name="description"
+          content="Bringing together scientific expertise, strategic insights, and innovative solutions to navigate market access, optimize reimbursement, and accelerate patient access."
+        />
       </Head>
 
       <CustomCursor />

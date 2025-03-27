@@ -65,6 +65,10 @@ export default function PagePublication(props) {
       <Head>
         <title>{siteTitle}</title>
         <link rel="icon" type="image/x-icon" href={favicon.src} />
+        <meta
+          name="description"
+          content="Bringing together scientific expertise, strategic insights, and innovative solutions to navigate market access, optimize reimbursement, and accelerate patient access."
+        />
       </Head>
 
       <CustomCursor />
@@ -92,6 +96,7 @@ export default function PagePublication(props) {
             >
               <Group>
                 <Image
+                alt='design-element'
                   src={arrowBlBlueIcon.src}
                   style={{
                     transform:
@@ -112,6 +117,7 @@ export default function PagePublication(props) {
               <Stack gap={"xs"}>
                 {post.featuredImage ? (
                   <Image
+                  alt='featured image'
                     width={"100%"}
                     mah={"15rem"}
                     src={post.featuredImage.node.sourceUrl}
