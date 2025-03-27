@@ -918,7 +918,7 @@ export default function Component(props) {
             <Stack gap={"4rem"} maw={"32rem"} mx="auto">
               <Stack align="center" className="gsap-group-fade">
                 <Eyebrow
-                  label={"who are we"}
+                  label={page.s3.eyeBrow}
                   variant={2}
                   gsapName={"gsap-fade"}
                 />
@@ -941,7 +941,7 @@ export default function Component(props) {
                   mb={{ base: "0", md: "1.5rem" }}
                   className="gsap-fade"
                 >
-                  Meeting the needs of today and tomorrow
+                  {page.s3.header1}
                 </Title>
                 <Text
                   ta="center"
@@ -976,7 +976,7 @@ export default function Component(props) {
                   mb={{ base: "0", md: "1.5rem" }}
                   className="gsap-fade"
                 >
-                  A strong foundation built in science
+                  {page.s3.header2}
                 </Title>
                 <Text
                   ta={"center"}
@@ -1021,7 +1021,7 @@ export default function Component(props) {
                   fw="400"
                   mb={{ base: "0", md: "1.5rem" }}
                 >
-                  Ability to address all stakeholder types
+                  {page.s3.header3}
                 </Title>
                 <Text
                   ta={"center"}
@@ -1507,6 +1507,10 @@ Component.query = gql`
           }
         }
       }
+    }
+    s3 {
+      eyeBrow
+      header1
     }
     s4 {
       title
