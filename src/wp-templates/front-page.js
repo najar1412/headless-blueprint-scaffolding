@@ -918,7 +918,7 @@ export default function Component(props) {
             <Stack gap={"4rem"} maw={"32rem"} mx="auto">
               <Stack align="center" className="gsap-group-fade">
                 <Eyebrow
-                  label={"who are we"}
+                  label={page.s3.eyeBrow}
                   variant={2}
                   gsapName={"gsap-fade"}
                 />
@@ -1212,6 +1212,7 @@ export default function Component(props) {
           >
             <PinnedSection
               background={page.landing.background.node.mediaItemUrl}
+              page={page}
             />
           </Container>
         </Container>
@@ -1507,6 +1508,9 @@ Component.query = gql`
           }
         }
       }
+    }
+    s3 {
+      eyeBrow
     }
     s4 {
       title

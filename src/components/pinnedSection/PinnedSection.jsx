@@ -9,7 +9,7 @@ import { NexusShape } from "../animated/NexusShape";
 
 import styles from "../../wp-templates/front-page.module.css";
 
-export const PinnedSection = ({ background }) => {
+export const PinnedSection = ({ background, page }) => {
   const container = useRef();
   const shapeSvgRef = useRef();
 
@@ -264,7 +264,7 @@ export const PinnedSection = ({ background }) => {
         >
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Stack>
-              <Eyebrow label={"who are we"} variant={2} />
+              <Eyebrow label={page.s3.eyeBrow} variant={2} />
               <Title c="white" size={"2.3rem"} maw={"25rem"}>
                 Meeting the needs of today and tomorrow
               </Title>
