@@ -179,7 +179,8 @@ export default function Header({ menuItems, page, frontPage }) {
               ))}
               <Link
                 href={
-                  page?.globalFields?.linkedin || "https://www.linkedin.com"
+                  page?.globalFields?.linkedin ||
+                  "https://www.linkedin.com/company/nexus-health-grp"
                 }
                 target="_blank"
                 style={{ cursor: "pointer" }}

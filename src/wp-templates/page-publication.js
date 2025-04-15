@@ -96,7 +96,7 @@ export default function PagePublication(props) {
             >
               <Group>
                 <Image
-                alt='design-element'
+                  alt="design-element"
                   src={arrowBlBlueIcon.src}
                   style={{
                     transform:
@@ -117,7 +117,7 @@ export default function PagePublication(props) {
               <Stack gap={"xs"}>
                 {post.featuredImage ? (
                   <Image
-                  alt='featured image'
+                    alt="featured image"
                     width={"100%"}
                     mah={"15rem"}
                     src={post.featuredImage.node.sourceUrl}
@@ -128,21 +128,27 @@ export default function PagePublication(props) {
                   <Text size="xs" fw={600}>
                     Share this post
                   </Text>
-                  <Image
-                    src={linkedInIcon.src}
-                    alt="linkedIn Icon"
-                    style={{ transform: "scale(1.3)" }}
-                  />
-                  <Image
-                    src={xIcon.src}
-                    alt="x Icon"
-                    style={{ transform: "scale(1.3)" }}
-                  />
-                  <Image
-                    src={facebookIcon.src}
-                    alt="facebook Icon"
-                    style={{ transform: "scale(1.3)" }}
-                  />
+                  <Link href={"https://www.linkedin.com"} target="_blank">
+                    <Image
+                      src={linkedInIcon.src}
+                      alt="linkedIn Icon"
+                      style={{ transform: "scale(1.3)" }}
+                    />
+                  </Link>
+                  <Link href={"https://x.com/"} target="_blank">
+                    <Image
+                      src={xIcon.src}
+                      alt="x Icon"
+                      style={{ transform: "scale(1.3)" }}
+                    />
+                  </Link>
+                  <Link href={"https://www.facebook.com/"} target="_blank">
+                    <Image
+                      src={facebookIcon.src}
+                      alt="facebook Icon"
+                      style={{ transform: "scale(1.3)" }}
+                    />
+                  </Link>
                 </Group>
               </Stack>
             </Grid.Col>
