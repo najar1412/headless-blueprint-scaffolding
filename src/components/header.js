@@ -178,7 +178,9 @@ export default function Header({ menuItems, page, frontPage }) {
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
               <Link
-                href={page.globalFields.linkedin}
+                href={
+                  page?.globalFields?.linkedin || "https://www.linkedin.com"
+                }
                 target="_blank"
                 style={{ cursor: "pointer" }}
               >
