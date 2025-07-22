@@ -59,8 +59,6 @@ export default function Component(props) {
     getInTouchForm,
   } = props.data;
 
-  console.log(props.data);
-
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured")
@@ -844,7 +842,7 @@ export default function Component(props) {
                   >
                     <Image
                       src={card.icon.node.sourceUrl}
-                      alt='card'
+                      alt="card"
                       width="75"
                       height="75"
                       style={{

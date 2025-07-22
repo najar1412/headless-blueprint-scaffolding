@@ -41,8 +41,6 @@ export default function PagePublication(props) {
   } = props.data;
   const { title: siteTitle } = props.data.generalSettings;
 
-  console.log(props.data);
-
   // Loading state for previews
   if (props.loading) {
     return <Loading />;
