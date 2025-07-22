@@ -37,7 +37,7 @@ import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
 
 import cardGrayImage from "../assets/card_gray.jpg";
-import logoSymbolIcon from "../assets/Nexus_Logomark_4C.svg";
+import logoSymbolIcon from "../assets/Nexus Health_Logo Suite_TM_Nexus_Logomark_4C.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import step1Image from "../assets/step1.png";
 import step2Image from "../assets/step_2.png";

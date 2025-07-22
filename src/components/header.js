@@ -11,7 +11,7 @@ import { useGSAP } from "@gsap/react";
 
 import { MobileMenu } from "./MobileMenu";
 
-import logo from "../assets/logo.svg?href";
+import logo from "../assets/Nexus Health_Logo Suite_TM_Nexus_Full Logo_4C.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
 import styles from "./header.module.css";
