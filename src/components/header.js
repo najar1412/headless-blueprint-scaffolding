@@ -178,10 +178,7 @@ export default function Header({ menuItems, page, frontPage }) {
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
               <Link
-                href={
-                  page?.globalFields?.linkedin ||
-                  "https://www.linkedin.com/company/nexus-health-grp"
-                }
+                href={page?.globalFields?.linkedin}
                 target="_blank"
                 style={{ cursor: "pointer" }}
               >
