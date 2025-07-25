@@ -1480,10 +1480,23 @@ Component.query = gql`
         title
         copy
       }
-        newsletterForm {
+      newsletterForm {
         title
         copy
+      }
+      logos {
+        logo {
+          node {
+            sourceUrl
+          }
         }
+        logomark {
+          node {
+            sourceUrl
+          }
+        }
+        text
+      }
     }
     landing {
       header
