@@ -14,7 +14,7 @@
 .logo {
   width: 10rem !important;
   @media (min-width: $mantine-breakpoint-md) {
-    width: 11.55rem !important;
+    width: 13.55rem !important;
   }
 }
 .siteTitle {

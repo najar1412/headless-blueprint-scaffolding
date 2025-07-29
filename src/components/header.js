@@ -11,12 +11,13 @@ import { useGSAP } from "@gsap/react";
 
 import { MobileMenu } from "./MobileMenu";
 
-import logo from "../assets/Nexus Health_Logo Suite_TM_Nexus_Full Logo_4C.svg?href";
+import logo from "../assets/Nexus Health_Lockwood Lockup_07.28.2025_Nexus_Full Logo_4C.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
 import styles from "./header.module.css";
 
 export default function Header({ menuItems, page, frontPage }) {
+  console.log(page);
   const [opened, { toggle, close }] = useDisclosure();
   const router = useRouter();
   const showBurger = useMediaQuery(`(max-width: 75em)`);
