@@ -194,7 +194,11 @@ Footer.fragments = {
                 sourceUrl
               }
             }
-            text
+            animatedLogo {
+              node {
+                sourceUrl
+              }
+            }
           }
         }
       }

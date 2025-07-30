@@ -58,7 +58,6 @@ export default function Component(props) {
     getInTouchForm,
     global,
   } = props.data;
-  console.log(global);
 
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
@@ -1222,6 +1221,7 @@ export default function Component(props) {
             <PinnedSection
               background={page.landing.background.node.mediaItemUrl}
               page={page}
+              logo={global?.globalFields?.logos?.animatedLogo?.node?.sourceUrl}
             />
           </Container>
         </Container>
@@ -1484,30 +1484,6 @@ Component.query = gql`
     ...${Footer.fragments.global}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
     title
-    globalFields {
-      linkedin
-      getInTouchForm {
-        title
-        copy
-      }
-      newsletterForm {
-        title
-        copy
-      }
-      logos {
-        logo {
-          node {
-            sourceUrl
-          }
-        }
-        logomark {
-          node {
-            sourceUrl
-          }
-        }
-        text
-      }
-    }
     landing {
       header
       copy

@@ -9,7 +9,7 @@ import { NexusShape } from "../animated/NexusShape";
 
 import styles from "../../wp-templates/front-page.module.css";
 
-export const PinnedSection = ({ background, page }) => {
+export const PinnedSection = ({ background, page, logo }) => {
   const container = useRef();
   const shapeSvgRef = useRef();
 
@@ -243,7 +243,7 @@ export const PinnedSection = ({ background, page }) => {
           alignItems: "center",
         }}
       >
-        <NexusShape ref={shapeSvgRef} className={styles.hidden} />
+        <NexusShape ref={shapeSvgRef} className={styles.hidden} logo={logo} />
       </div>
 
       <Container
