@@ -11,13 +11,12 @@ import { useGSAP } from "@gsap/react";
 
 import { MobileMenu } from "./MobileMenu";
 
-import logo from "../assets/Nexus Health_Lockwood Lockup_07.28.2025_Nexus_Full Logo_4C.svg?href";
 import linkedinIcon from "../assets/linkedin.svg?href";
 
 import styles from "./header.module.css";
 
-export default function Header({ menuItems, page, frontPage }) {
-  console.log(page);
+export default function Header({ menuItems, page, frontPage, global }) {
+  console.log(global);
   const [opened, { toggle, close }] = useDisclosure();
   const router = useRouter();
   const showBurger = useMediaQuery(`(max-width: 75em)`);
@@ -150,7 +149,7 @@ export default function Header({ menuItems, page, frontPage }) {
             height: "100%",
           }}
         >
-          <Image
+          <img
             onClick={() => {
               close();
               return frontPage
@@ -163,7 +162,7 @@ export default function Header({ menuItems, page, frontPage }) {
             }}
             alt="nexus logo"
             width={"280rem"}
-            src={logo}
+            src={global?.globalFields?.logos?.logo?.node?.sourceUrl}
             className={styles.logo}
             style={{ cursor: "pointer" }}
           />
@@ -179,7 +178,7 @@ export default function Header({ menuItems, page, frontPage }) {
                 <Fragment key={item.label}>{menuItem(item)}</Fragment>
               ))}
               <Link
-                href={page?.globalFields?.linkedin}
+                href={global?.globalFields?.linkedin}
                 target="_blank"
                 style={{ cursor: "pointer" }}
               >

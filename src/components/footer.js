@@ -170,4 +170,34 @@ Footer.fragments = {
       }
     }
   `,
+  global: gql`
+    {
+      global {
+        globalFields {
+          linkedin
+          getInTouchForm {
+            title
+            copy
+          }
+          newsletterForm {
+            title
+            copy
+          }
+          logos {
+            logo {
+              node {
+                sourceUrl
+              }
+            }
+            logomark {
+              node {
+                sourceUrl
+              }
+            }
+            text
+          }
+        }
+      }
+    }
+  `,
 };

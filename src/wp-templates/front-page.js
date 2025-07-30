@@ -37,7 +37,6 @@ import styles from "./front-page.module.css";
 import headerStyles from "../components/header.module.css";
 
 import cardGrayImage from "../assets/card_gray.jpg";
-import logoSymbolIcon from "../assets/Nexus Health_Logo Suite_TM_Nexus_Logomark_4C.svg";
 import arrowBrGreen from "../assets/arrow-br-green.svg";
 import step1Image from "../assets/step1.png";
 import step2Image from "../assets/step_2.png";
@@ -57,7 +56,9 @@ export default function Component(props) {
     publications,
     newsletterForm,
     getInTouchForm,
+    global,
   } = props.data;
+  console.log(global);
 
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
@@ -705,7 +706,12 @@ export default function Component(props) {
       <GoogleAnalytics />
       <CustomCursor />
 
-      <Header menuItems={primaryMenuItems.nodes} page={page} frontPage />
+      <Header
+        menuItems={primaryMenuItems.nodes}
+        page={page}
+        global={global}
+        frontPage
+      />
 
       <Container
         component={"main"}
@@ -1393,7 +1399,10 @@ export default function Component(props) {
           <Grid gutter={"xs"}>
             <Grid.Col visibleFrom="lg" span={1}>
               <div className={styles["box-element-1"]}>
-                <Image alt="nexus logo" src={logoSymbolIcon} />
+                <img
+                  alt="nexus logo"
+                  src={global?.globalFields.logos.logomark.node.sourceUrl}
+                />
               </div>
               <div className={styles["box-element-2"]}></div>
             </Grid.Col>
@@ -1451,7 +1460,7 @@ export default function Component(props) {
           node={footer}
           newsletterForm={newsletterForm}
           getInTouchForm={getInTouchForm}
-          globalOptions={page.globalFields}
+          globalOptions={global.globalFields}
         />
       </GravityFormProvider>
     </>
@@ -1472,6 +1481,7 @@ Component.query = gql`
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
     ...HeaderFragment
     ...${Footer.fragments.entry}
+    ...${Footer.fragments.global}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
     title
     globalFields {

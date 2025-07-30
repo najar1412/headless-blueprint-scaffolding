@@ -38,6 +38,7 @@ export default function PagePublication(props) {
     page,
     newsletterForm,
     getInTouchForm,
+    global,
   } = props.data;
   const { title: siteTitle } = props.data.generalSettings;
 
@@ -73,6 +74,7 @@ export default function PagePublication(props) {
       <Header
         menuItems={primaryMenuItems.nodes}
         page={{ title: "Thought Leadership" }}
+        global={global}
       />
 
       <Container
@@ -260,7 +262,7 @@ export default function PagePublication(props) {
               span={{ base: 4 }}
               style={{ display: "flex", justifyContent: "end" }}
             >
-              {/* <Link href={"#"} style={{ width: "fit-content" }}>
+              <Link href={"#"} style={{ width: "fit-content" }}>
                 <Stack
                   gap={"0.25rem"}
                   className={`${frontPageStyles.link} gsap-fade`}
@@ -284,7 +286,7 @@ export default function PagePublication(props) {
 
                   <div className={`${frontPageStyles["bar-link"]}`} />
                 </Stack>
-              </Link> */}
+              </Link>
             </Grid.Col>
           </Grid>
           <UnstyledButton
@@ -305,7 +307,7 @@ export default function PagePublication(props) {
       <GravityFormProvider>
         <Footer
           node={footer}
-          globalOptions={post?.globalFields}
+          globalOptions={global?.globalFields}
           newsletterForm={newsletterForm}
           getInTouchForm={getInTouchForm}
         />
@@ -328,17 +330,6 @@ PagePublication.query = gql`
   query getPost($databaseId: ID!) {
     
     publication(id: $databaseId, idType: DATABASE_ID) {
-    globalFields {
-      linkedin
-      getInTouchForm {
-        title
-        copy
-      }
-      newsletterForm {
-        title
-        copy
-      }
-    }
       databaseId
       title
       slug
@@ -358,6 +349,7 @@ PagePublication.query = gql`
       
     ...HeaderFragment
     ...${Footer.fragments.entry}
+    ...${Footer.fragments.global}
     
   }
 `;

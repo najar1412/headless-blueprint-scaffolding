@@ -22,6 +22,7 @@ export default function PageThoughtLeadership(props) {
     primaryMenuItems,
     newsletterForm,
     getInTouchForm,
+    global,
   } = props.data;
   const { title: siteTitle } = props.data.generalSettings;
 
@@ -42,7 +43,7 @@ export default function PageThoughtLeadership(props) {
       </Head>
 
       <CustomCursor />
-      <Header menuItems={primaryMenuItems.nodes} page={page} />
+      <Header menuItems={primaryMenuItems.nodes} page={page} global={global} />
 
       <Container
         maw={"unset"}
@@ -98,7 +99,7 @@ export default function PageThoughtLeadership(props) {
 
       <Footer
         node={footer}
-        globalOptions={page?.globalFields}
+        globalOptions={global?.globalFields}
         newsletterForm={newsletterForm}
         getInTouchForm={getInTouchForm}
       />
@@ -120,21 +121,10 @@ PageThoughtLeadership.query = gql`
   query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
     ...HeaderFragment
     ...${Footer.fragments.entry}
-
+...${Footer.fragments.global}
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
-      globalFields {
-      linkedin
-      getInTouchForm {
-        title
-        copy
-      }
-        newsletterForm {
-        title
-        copy
-        }
-    }
     }
     
     publications {

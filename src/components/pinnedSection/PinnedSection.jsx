@@ -101,7 +101,7 @@ export const PinnedSection = ({ background, page }) => {
           "section1"
         )
         .to(
-          [logo, text, allPills],
+          [text, allPills],
           {
             duration: 0.2,
             opacity: 1,
