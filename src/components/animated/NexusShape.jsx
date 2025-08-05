@@ -1,7 +1,5 @@
 import { forwardRef } from "react";
 
-import logo from "../../assets/Nexus Health_Logo Suite_TM_Nexus_Full Logo_KO.svg";
-
 import styles from "./NexusShape.module.css";
 
 export const NexusShape = forwardRef(function (props, ref) {
@@ -107,7 +105,7 @@ export const NexusShape = forwardRef(function (props, ref) {
         ></g>
         <g id="Text">
           <image
-            href={props.logo ? props.logo : logo.src}
+            href={props.logo ? props.logo : null}
             height="200"
             width="310"
             x="120"

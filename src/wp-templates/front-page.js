@@ -1401,7 +1401,7 @@ export default function Component(props) {
               <div className={styles["box-element-1"]}>
                 <img
                   alt="nexus logo"
-                  src={global?.globalFields.logos.logomark.node.sourceUrl}
+                  src={global?.globalFields?.logos?.logomark?.node?.sourceUrl}
                 />
               </div>
               <div className={styles["box-element-2"]}></div>
