@@ -14,4 +14,13 @@ module.exports = withFaust({
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/asembia',
+        destination: 'mailto:caitlin@nexushealthgrp.com',
+        permanent: true,
+      },
+    ];
+  },
 });
