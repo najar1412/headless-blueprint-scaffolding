@@ -104,10 +104,45 @@ export default function Footer({
           }}
         >
           <Divider color="#5A5A5A" w={"100%"} size="xs" />
-          <Text size="0.5rem" mt="1.5rem" c={"#5A5A5A"}>
-            Copyright (c) {new Date().getFullYear()}, Nexus Health Group, All
-            rights reserved.
+
+          <Text size="0.5rem" mt="2rem" c={"#5A5A5A"}>
+            Copyright © 2026 Nexus Health, part of The Lockwood Group. All rights reserved.
           </Text>
+
+          {globalOptions?.footerNav && globalOptions.footerNav.length > 0 && (
+            <nav style={{ marginTop: "1.5rem", marginBottom: "1rem" }}>
+              <ul style={{
+                listStyle: "none",
+                padding: 0,
+                margin: 0,
+                display: "flex",
+                gap: "1.5rem",
+                flexWrap: "wrap"
+              }}>
+                {globalOptions.footerNav.map((item, index) => (
+                  <li key={index}>
+                    <a
+                      href={item.url?.url}
+                      target={item.openInNewTab ? "_blank" : item.url?.target || "_self"}
+                      rel={item.openInNewTab ? "noopener noreferrer" : undefined}
+                      style={{
+                        color: "#5A5A5A",
+                        fontSize: "0.875rem",
+                        textDecoration: "none",
+                        transition: "color 0.2s"
+                      }}
+                      onMouseEnter={(e) => e.target.style.color = "#000"}
+                      onMouseLeave={(e) => e.target.style.color = "#5A5A5A"}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          
         </div>
 
         <Gradient />
@@ -182,6 +217,14 @@ Footer.fragments = {
           newsletterForm {
             title
             copy
+          }
+          footerNav {
+            label
+            url {
+              url
+              target
+            }
+            openInNewTab
           }
           logos {
             logo {
