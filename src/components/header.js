@@ -16,7 +16,6 @@ import linkedinIcon from "../assets/linkedin.svg?href";
 import styles from "./header.module.css";
 
 export default function Header({ menuItems, page, frontPage, global }) {
-  console.log(global);
   const [opened, { toggle, close }] = useDisclosure();
   const router = useRouter();
   const showBurger = useMediaQuery(`(max-width: 75em)`);
