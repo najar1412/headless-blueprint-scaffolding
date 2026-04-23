@@ -13,6 +13,18 @@ export const MobileMenu = ({ opened, close, menuItems, frontPage }) => {
   const isMobile = useMediaQuery(`(max-width: 48em)`);
 
   const menuItem = (item) => {
+    // Special case: Thought Leadership uses WordPress URL
+    if (item.label === "Thought Leadership" && item.uri) {
+      return (
+        <Link href={item.uri} onClick={close} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Text style={{ fontSize: "1.5rem" }}>
+            {item.label}
+          </Text>
+        </Link>
+      );
+    }
+
+    // Default behavior: smooth scroll to anchors
     switch (item.label) {
       case "Contact":
         return (

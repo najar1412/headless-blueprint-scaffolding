@@ -40,11 +40,11 @@ export const FeatureCarousel = ({ items }) => {
         breakpoints={{
           700: {
             spaceBetween: 10,
-            slidesPerView: items.length === 1 ? 2 : 2,
+            slidesPerView: 3,
           },
           900: {
             spaceBetween: 10,
-            slidesPerView: items.length === 1 ? 2 : 0.5,
+            slidesPerView: 3,
           },
         }}
       >

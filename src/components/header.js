@@ -23,6 +23,31 @@ export default function Header({ menuItems, page, frontPage, global }) {
   const container = useRef();
 
   const menuItem = (item) => {
+    // Special case: Thought Leadership uses WordPress URL
+    if (item.label === "Thought Leadership" && item.uri) {
+      return (
+        <Link href={item.uri} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Stack
+            id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
+            gap={0}
+            className={`${styles.link}`}
+            style={{
+              overflow: "hidden",
+              cursor: "pointer",
+            }}
+          >
+            <div
+              className={`${styles["bar-link"]} ${
+                page.title === item.label ? styles["bar-link-show"] : ""
+              }`}
+            />
+            <Text style={{ fontSize: "0.75rem" }}>{item.label}</Text>
+          </Stack>
+        </Link>
+      );
+    }
+
+    // Default behavior: smooth scroll to anchors
     switch (item.label) {
       case "Contact":
         return (
