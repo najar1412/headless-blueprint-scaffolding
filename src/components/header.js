@@ -21,13 +21,41 @@ export default function Header({ menuItems, page, frontPage, global }) {
   const showBurger = useMediaQuery(`(max-width: 75em)`);
   const container = useRef();
 
+  // Debug: Log menu items to see what WordPress is sending
+  console.log('Menu Items from WordPress:', menuItems);
+
+  // Helper function to determine menu item behavior based on WordPress menu type
+  const getMenuItemBehavior = (item) => {
+    // Check if URL starts with http/https (external link)
+    const isExternal = item.uri?.startsWith('http://') || item.uri?.startsWith('https://');
+
+    // Check for badge styling via CSS classes
+    const useBadgeStyle = item.cssClasses?.includes('badge-style');
+
+    // Determine if it's an internal page path (starts with / but not //)
+    const isInternalPage = item.uri?.startsWith('/') && !item.uri?.startsWith('//') && !item.uri?.startsWith('/#');
+
+    // Scroll anchor is anything that's not external or internal page (like #contact)
+    const isScrollAnchor = !isExternal && !isInternalPage;
+
+    return {
+      isExternalLink: isExternal,
+      isInternalPage,
+      isScrollAnchor,
+      useBadgeStyle,
+    };
+  };
+
   const menuItem = (item) => {
-    // Special case: Thought Leadership uses WordPress URL
-    if (item.label === "Thought Leadership" && item.uri) {
+    const behavior = getMenuItemBehavior(item);
+    const itemId = `item-${item.label.toLowerCase().replace(/\s/g, "-")}`;
+
+    // Handle internal pages (Page/Post in WordPress)
+    if (behavior.isInternalPage) {
       return (
         <Link href={item.uri} style={{ textDecoration: 'none', color: 'inherit' }}>
           <Stack
-            id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
+            id={itemId}
             gap={0}
             className={`${styles.link}`}
             style={{
@@ -46,60 +74,17 @@ export default function Header({ menuItems, page, frontPage, global }) {
       );
     }
 
-    // Default behavior: smooth scroll to anchors
-    switch (item.label) {
-      case "Contact":
-        return (
-          <Badge
-            id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
-            onClick={() => {
-              return frontPage
-                ? gsap.to(window, {
-                    ease: "power1.in",
-                    scrollTo: `#${item.label
-                      .toLowerCase()
-                      .replace(/\s/g, "-")}`,
-                    duration: 0.2,
-                  })
-                : router.push(
-                    `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
-                  );
-            }}
-            mt="0.2rem"
-            pt="0.5rem"
-            pb="0.6rem"
-            px="md"
-            color="brand.2"
-            style={{ cursor: "pointer" }}
-          >
-            <Text
-              c="brand.0"
-              fw="600"
-              tt={"capitalize"}
-              style={{ fontSize: "0.75rem" }}
-            >
-              Contact
-            </Text>
-          </Badge>
-        );
-      default:
-        return (
+    // Handle external links (target="_blank" or http/https URLs)
+    if (behavior.isExternalLink) {
+      return (
+        <Link
+          href={item.uri}
+          target={item.target || "_blank"}
+          rel="noopener noreferrer"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
           <Stack
-            id={`item-${item.label.toLowerCase().replace(/\s/g, "-")}`}
-            onClick={() => {
-              return frontPage
-                ? gsap.to(window, {
-                    ease: "power1.in",
-                    scrollTo: {
-                      y: `#${item.label.toLowerCase().replace(/\s/g, "-")}`,
-                      offsetY: item.label === "Thought Leadership" ? -100 : 0,
-                    },
-                    duration: 0.2,
-                  })
-                : router.push(
-                    `/#${item.label.toLowerCase().replace(/\s/g, "-")}`
-                  );
-            }}
+            id={itemId}
             gap={0}
             className={`${styles.link}`}
             style={{
@@ -114,8 +99,75 @@ export default function Header({ menuItems, page, frontPage, global }) {
             />
             <Text style={{ fontSize: "0.75rem" }}>{item.label}</Text>
           </Stack>
-        );
+        </Link>
+      );
     }
+
+    // Handle scroll anchors (custom links with # or no http)
+    // Get the scroll target - use uri if it starts with #, otherwise construct from label
+    const scrollTarget = item.uri?.startsWith('#') ? item.uri : `#${item.label.toLowerCase().replace(/\s/g, "-")}`;
+
+    // Badge style variant (check CSS classes for 'badge-style')
+    if (behavior.useBadgeStyle) {
+      return (
+        <Badge
+          id={itemId}
+          onClick={() => {
+            return frontPage
+              ? gsap.to(window, {
+                  ease: "power1.in",
+                  scrollTo: scrollTarget,
+                  duration: 0.2,
+                })
+              : router.push(`/${scrollTarget}`);
+          }}
+          mt="0.2rem"
+          pt="0.5rem"
+          pb="0.6rem"
+          px="md"
+          color="brand.2"
+          style={{ cursor: "pointer" }}
+        >
+          <Text
+            c="brand.0"
+            fw="600"
+            tt={"capitalize"}
+            style={{ fontSize: "0.75rem" }}
+          >
+            {item.label}
+          </Text>
+        </Badge>
+      );
+    }
+
+    // Default scroll anchor behavior
+    return (
+      <Stack
+        id={itemId}
+        onClick={() => {
+          return frontPage
+            ? gsap.to(window, {
+                ease: "power1.in",
+                scrollTo: scrollTarget,
+                duration: 0.2,
+              })
+            : router.push(`/${scrollTarget}`);
+        }}
+        gap={0}
+        className={`${styles.link}`}
+        style={{
+          overflow: "hidden",
+          cursor: "pointer",
+        }}
+      >
+        <div
+          className={`${styles["bar-link"]} ${
+            page.title === item.label ? styles["bar-link-show"] : ""
+          }`}
+        />
+        <Text style={{ fontSize: "0.75rem" }}>{item.label}</Text>
+      </Stack>
+    );
   };
 
   useGSAP(
