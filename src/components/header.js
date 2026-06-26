@@ -172,7 +172,8 @@ export default function Header({ menuItems, page, frontPage, global }) {
 
   useGSAP(
     () => {
-      const toggleHeader = gsap
+      let toggleHeader;
+      toggleHeader = gsap
         .from(container.current, {
           yPercent: -100,
           paused: true,
