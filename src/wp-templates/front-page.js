@@ -1295,18 +1295,31 @@ export default function Component(props) {
               {page.s4a.title}
             </Title>
             <Grid w="100%" justify="center">
-              {page.s4a.logos?.map((item, index) => (
-                <Grid.Col
-                  key={index}
-                  span={{ base: 6, md: 4, lg: 3 }}
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  {item.url ? (
-                    <Link href={item.url} target="_blank" rel="noopener noreferrer">
+              {page.s4a.logos?.map((item, index) => {
+                const hardcodedUrls = ['https://apsconsulting.com/', 'https://www.stratisgrp.com/'];
+                const logoUrl = hardcodedUrls[index];
+
+                return (
+                  <Grid.Col
+                    key={index}
+                    span={{ base: 6, md: 4, lg: 3 }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    {logoUrl ? (
+                      <Link href={logoUrl} target="_blank" rel="noopener noreferrer">
+                        <Image
+                          src={item.logo.node.sourceUrl}
+                          alt={item.logo.node.altText || ""}
+                          width={200}
+                          height={100}
+                          style={{ objectFit: "contain" }}
+                        />
+                      </Link>
+                    ) : (
                       <Image
                         src={item.logo.node.sourceUrl}
                         alt={item.logo.node.altText || ""}
@@ -1314,18 +1327,10 @@ export default function Component(props) {
                         height={100}
                         style={{ objectFit: "contain" }}
                       />
-                    </Link>
-                  ) : (
-                    <Image
-                      src={item.logo.node.sourceUrl}
-                      alt={item.logo.node.altText || ""}
-                      width={200}
-                      height={100}
-                      style={{ objectFit: "contain" }}
-                    />
-                  )}
-                </Grid.Col>
-              ))}
+                    )}
+                  </Grid.Col>
+                );
+              })}
             </Grid>
           </Stack>
         </Section>
@@ -1615,7 +1620,6 @@ Component.query = gql`
             altText
           }
         }
-        url
       }
     }
     s5 {
