@@ -815,17 +815,14 @@ export default function Component(props) {
                 alignItems: "center",
               }}
             >
-
               {page.s2.eyeBrow && (
-              <Eyebrow
-                gsapName={"gsap-fade"}
-                label={page.s2.eyeBrow}
-                variant={1}
-              />
-            )}
+                <Eyebrow
+                  gsapName={"gsap-fade"}
+                  label={page.s2.eyeBrow}
+                  variant={1}
+                />
+              )}
 
-
-              
               <Title
                 order={2}
                 mb="2rem"
@@ -931,17 +928,14 @@ export default function Component(props) {
           >
             <Stack gap={"4rem"} maw={"32rem"} mx="auto">
               <Stack align="center" className="gsap-group-fade">
-
                 {page.s4.eyeBrow && (
-              <Eyebrow
-                  label={page.s4.eyeBrow}
-                  variant={2}
-                  gsapName={"gsap-fade"}
-                />
-            )}
+                  <Eyebrow
+                    label={page.s4.eyeBrow}
+                    variant={2}
+                    gsapName={"gsap-fade"}
+                  />
+                )}
 
-
-                
                 <img
                   className="gsap-fade"
                   src={step1Image.src}
@@ -1241,6 +1235,8 @@ export default function Component(props) {
         <Section
           label="our-leadership-team"
           bgColor="var(--mantine-color-brand-5)"
+          pt={0}
+          mt={0}
         >
           <Stack
             px={{
@@ -1399,11 +1395,13 @@ export default function Component(props) {
 
         <Section label="thought-leadership">
           {page.s6.eyebrow && (
-              <Eyebrow gsapName={"gsap-fade"} label={page.s6.eyebrow} variant={3} />
-            )}
+            <Eyebrow
+              gsapName={"gsap-fade"}
+              label={page.s6.eyebrow}
+              variant={3}
+            />
+          )}
 
-
-          
           <Grid gutter={"xs"}>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Stack>

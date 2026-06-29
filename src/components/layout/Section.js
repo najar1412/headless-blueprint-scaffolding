@@ -8,6 +8,8 @@ export const Section = ({
   bgColor,
   backgroundElement,
   fullHeight,
+  pt,
+  mt,
 }) => {
   return (
     <Container
@@ -16,6 +18,8 @@ export const Section = ({
       w="100%"
       maw={"unset"}
       bg={bgColor ? bgColor : "white"}
+      {...(pt !== undefined && { pt })}
+      {...(mt !== undefined && { mt })}
       className={`${styles.section} ${styles["section-start"]} ${fullHeight ? styles["full-height-section"] : ""}`}
       style={{
         position: "relative",
