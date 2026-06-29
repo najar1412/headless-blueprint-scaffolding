@@ -21,9 +21,6 @@ export default function Header({ menuItems, page, frontPage, global }) {
   const showBurger = useMediaQuery(`(max-width: 75em)`);
   const container = useRef();
 
-  // Debug: Log menu items to see what WordPress is sending
-  console.log('Menu Items from WordPress:', menuItems);
-
   // Helper function to determine menu item behavior based on WordPress menu type
   const getMenuItemBehavior = (item) => {
     // Check if URL starts with http/https (external link)

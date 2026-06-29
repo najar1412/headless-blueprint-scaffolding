@@ -1235,8 +1235,6 @@ export default function Component(props) {
         <Section
           label="our-leadership-team"
           bgColor="var(--mantine-color-brand-5)"
-          pt={0}
-          mt={0}
         >
           <Stack
             px={{
@@ -1272,7 +1270,7 @@ export default function Component(props) {
           </Stack>
         </Section>
 
-        <Section bgColor="var(--mantine-color-brand-5)">
+        <Section bgColor="var(--mantine-color-brand-5)" pt={0} mt={0}>
           <Stack
             px={{
               base: "0rem",
