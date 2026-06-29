@@ -1305,13 +1305,25 @@ export default function Component(props) {
                     alignItems: "center",
                   }}
                 >
-                  <Image
-                    src={item.logo.node.sourceUrl}
-                    alt={item.logo.node.altText || ""}
-                    width={200}
-                    height={100}
-                    style={{ objectFit: "contain" }}
-                  />
+                  {item.url ? (
+                    <Link href={item.url} target="_blank" rel="noopener noreferrer">
+                      <Image
+                        src={item.logo.node.sourceUrl}
+                        alt={item.logo.node.altText || ""}
+                        width={200}
+                        height={100}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </Link>
+                  ) : (
+                    <Image
+                      src={item.logo.node.sourceUrl}
+                      alt={item.logo.node.altText || ""}
+                      width={200}
+                      height={100}
+                      style={{ objectFit: "contain" }}
+                    />
+                  )}
                 </Grid.Col>
               ))}
             </Grid>
@@ -1603,6 +1615,7 @@ Component.query = gql`
             altText
           }
         }
+        url
       }
     }
     s5 {
