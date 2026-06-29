@@ -81,7 +81,7 @@ export const PinnedSection = ({ background, page, logo }) => {
           {
             ease: "power1.inOut",
           },
-          "section0"
+          "section0",
         )
         .to(
           [allCircles, textEvidence, textScience, textValue, smallCircles],
@@ -90,7 +90,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             opacity: 0,
             ease: "power1.inOut",
           },
-          "section1"
+          "section1",
         )
         .to(
           shapeSvgRef.current,
@@ -98,7 +98,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             x: `-=${container.current.offsetWidth / 2}`,
             ease: "power1.inOut",
           },
-          "section1"
+          "section1",
         )
         .to(
           [text, allPills],
@@ -107,7 +107,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             opacity: 1,
             ease: "power1.inOut",
           },
-          "section1"
+          "section1",
         )
         .to(
           pill1,
@@ -116,7 +116,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             transformOrigin: "center",
             ease: "power1.inOut",
           },
-          "section1"
+          "section1",
         )
         .to(
           pill2,
@@ -125,7 +125,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             transformOrigin: "center",
             ease: "power1.inOut",
           },
-          "section1"
+          "section1",
         )
         .to(
           pill3,
@@ -134,7 +134,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             transformOrigin: "center",
             ease: "power1.inOut",
           },
-          "section1"
+          "section1",
         )
         .to(
           pill1,
@@ -143,7 +143,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             transformOrigin: "center",
             ease: "power1.inOut",
           },
-          "section2"
+          "section2",
         )
         .to(
           pill2,
@@ -152,7 +152,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             transformOrigin: "center",
             ease: "power1.inOut",
           },
-          "section2"
+          "section2",
         )
         .to(
           pill3,
@@ -161,7 +161,7 @@ export const PinnedSection = ({ background, page, logo }) => {
             transformOrigin: "center",
             ease: "power1.inOut",
           },
-          "section2"
+          "section2",
         );
 
       blocks.forEach((block, i) => {
@@ -189,7 +189,7 @@ export const PinnedSection = ({ background, page, logo }) => {
         });
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
@@ -264,7 +264,10 @@ export const PinnedSection = ({ background, page, logo }) => {
         >
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Stack>
-              <Eyebrow label={page.s3.eyeBrow} variant={2} />
+              {page.s3.eyeBrow && (
+                <Eyebrow label={page.s3.eyeBrow} variant={2} />
+              )}
+
               <Title c="white" size={"2.3rem"} maw={"25rem"}>
                 Meeting the needs of today and tomorrow
               </Title>

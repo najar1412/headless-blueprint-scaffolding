@@ -61,18 +61,18 @@ export default function Component(props) {
 
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
-    publication.publicationMeta.postType.includes("featured")
+    publication.publicationMeta.postType.includes("featured"),
   );
 
   const journal = publications.nodes.filter((publication) =>
-    publication.publicationMeta.postType.includes("journal")
+    publication.publicationMeta.postType.includes("journal"),
   );
 
   const announcement = publications.nodes.filter((publication) =>
-    publication.publicationMeta.postType.includes("announcement")
+    publication.publicationMeta.postType.includes("announcement"),
   );
   const card = publications.nodes.filter((publication) =>
-    publication.publicationMeta.postType.includes("link")
+    publication.publicationMeta.postType.includes("link"),
   );
 
   useGSAP(() => {
@@ -105,7 +105,7 @@ export default function Component(props) {
 
         // landing section
         const initialAnimation = gsap.utils.toArray(
-          document.querySelectorAll(".gsap-initial")
+          document.querySelectorAll(".gsap-initial"),
         );
         gsap.set(initialAnimation, {
           opacity: 0,
@@ -169,7 +169,7 @@ export default function Component(props) {
 
               // desktop content
               const desktopComp = section.querySelector(
-                `.${styles["service-grid-desktop"]}`
+                `.${styles["service-grid-desktop"]}`,
               );
               const desktopItems = desktopComp.querySelectorAll(".gsap-fade");
               gsap.set(desktopItems, {
@@ -229,7 +229,7 @@ export default function Component(props) {
 
             if (section.id === "the-nexus-advantage") {
               const numberCountElements = gsap.utils.toArray(
-                section.querySelectorAll('[class*="front-page_numbers"]')
+                section.querySelectorAll('[class*="front-page_numbers"]'),
               );
 
               if (numberCountElements) {
@@ -256,7 +256,7 @@ export default function Component(props) {
 
             if (section.id === "thought-leadership") {
               const cardElements = gsap.utils.toArray(
-                section.querySelectorAll(".gsap-fade")
+                section.querySelectorAll(".gsap-fade"),
               );
 
               gsap.set(cardElements, {
@@ -324,7 +324,7 @@ export default function Component(props) {
             };
 
             const fadeUp = gsap.utils.toArray(
-              section.querySelectorAll(".gsap-fade")
+              section.querySelectorAll(".gsap-fade"),
             );
             gsap.set(fadeUp, {
               opacity: 0,
@@ -391,10 +391,10 @@ export default function Component(props) {
 
               // mobile content
               const mobileComp = section.querySelector(
-                `.${styles["service-grid-mobile"]}`
+                `.${styles["service-grid-mobile"]}`,
               );
               const groups = gsap.utils.toArray(
-                mobileComp.querySelectorAll(".gsap-group-fade")
+                mobileComp.querySelectorAll(".gsap-group-fade"),
               );
               gsap.set(groups, {
                 duration: 2,
@@ -403,10 +403,10 @@ export default function Component(props) {
               });
               groups.forEach((group) => {
                 const titles = gsap.utils.toArray(
-                  group.querySelectorAll(".service-list-header")
+                  group.querySelectorAll(".service-list-header"),
                 );
                 const items = gsap.utils.toArray(
-                  group.querySelectorAll(".service-list-item")
+                  group.querySelectorAll(".service-list-item"),
                 );
                 gsap.set(items, {
                   opacity: 0,
@@ -467,7 +467,7 @@ export default function Component(props) {
             } else if (section.id === "the-nexus-advantage") {
               // the nexus advantage section
               const numberCountElements = gsap.utils.toArray(
-                section.querySelectorAll('[class*="front-page_numbers"]')
+                section.querySelectorAll('[class*="front-page_numbers"]'),
               );
 
               gsap.from(numberCountElements, {
@@ -527,12 +527,12 @@ export default function Component(props) {
             } else {
               if (section.id === "who-we-are-mobile") {
                 const groups = gsap.utils.toArray(
-                  section.querySelectorAll(".gsap-group-fade")
+                  section.querySelectorAll(".gsap-group-fade"),
                 );
 
                 groups.forEach((group) => {
                   const items = gsap.utils.toArray(
-                    group.querySelectorAll(".gsap-fade")
+                    group.querySelectorAll(".gsap-fade"),
                   );
                   gsap.set(items, {
                     opacity: 0,
@@ -650,12 +650,12 @@ export default function Component(props) {
             } else {
               if (section.id === "who-we-are-mobile") {
                 const groups = gsap.utils.toArray(
-                  section.querySelectorAll(".gsap-group-fade")
+                  section.querySelectorAll(".gsap-group-fade"),
                 );
 
                 groups.forEach((group) => {
                   const items = gsap.utils.toArray(
-                    group.querySelectorAll(".gsap-fade")
+                    group.querySelectorAll(".gsap-fade"),
                   );
                   gsap.set(items, {
                     opacity: 0,
@@ -688,7 +688,7 @@ export default function Component(props) {
             }
           });
         }
-      }
+      },
     );
   });
 
@@ -815,11 +815,17 @@ export default function Component(props) {
                 alignItems: "center",
               }}
             >
+
+              {page.s2.eyeBrow && (
               <Eyebrow
                 gsapName={"gsap-fade"}
                 label={page.s2.eyeBrow}
                 variant={1}
               />
+            )}
+
+
+              
               <Title
                 order={2}
                 mb="2rem"
@@ -925,11 +931,17 @@ export default function Component(props) {
           >
             <Stack gap={"4rem"} maw={"32rem"} mx="auto">
               <Stack align="center" className="gsap-group-fade">
-                <Eyebrow
-                  label={page.s3.eyeBrow}
+
+                {page.s4.eyeBrow && (
+              <Eyebrow
+                  label={page.s4.eyeBrow}
                   variant={2}
                   gsapName={"gsap-fade"}
                 />
+            )}
+
+
+                
                 <img
                   className="gsap-fade"
                   src={step1Image.src}
@@ -1237,11 +1249,14 @@ export default function Component(props) {
             }}
             align="center"
           >
-            <Eyebrow
-              gsapName={"gsap-fade"}
-              label={page.s4.eyeBrow}
-              variant={3}
-            />
+            {page.s4.eyeBrow && (
+              <Eyebrow
+                gsapName={"gsap-fade"}
+                label={page.s4.eyeBrow}
+                variant={3}
+              />
+            )}
+
             <Title
               order={2}
               ta="center"
@@ -1255,6 +1270,54 @@ export default function Component(props) {
               {page.s4.leaders.map((leader) => (
                 <Grid.Col span={{ base: 12, md: 6, lg: 3 }}>
                   <TeamMemberCard data={leader} />
+                </Grid.Col>
+              ))}
+            </Grid>
+          </Stack>
+        </Section>
+
+        <Section bgColor="var(--mantine-color-brand-5)">
+          <Stack
+            px={{
+              base: "0rem",
+              md: "4.5rem",
+            }}
+            align="center"
+          >
+            {page.s4a.eyeBrow && (
+              <Eyebrow
+                gsapName={"gsap-fade"}
+                label={page.s4a.eyeBrow}
+                variant={3}
+              />
+            )}
+            <Title
+              order={2}
+              ta="center"
+              size="2.25rem"
+              mb={{ base: "2rem", md: "4rem" }}
+              className={"gsap-fade"}
+            >
+              {page.s4a.title}
+            </Title>
+            <Grid w="100%" justify="center">
+              {page.s4a.logos?.map((item, index) => (
+                <Grid.Col
+                  key={index}
+                  span={{ base: 6, md: 4, lg: 3 }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    src={item.logo.node.sourceUrl}
+                    alt={item.logo.node.altText || ""}
+                    width={200}
+                    height={100}
+                    style={{ objectFit: "contain" }}
+                  />
                 </Grid.Col>
               ))}
             </Grid>
@@ -1335,7 +1398,12 @@ export default function Component(props) {
         </Section>
 
         <Section label="thought-leadership">
-          <Eyebrow gsapName={"gsap-fade"} label={page.s6.eyebrow} variant={3} />
+          {page.s6.eyebrow && (
+              <Eyebrow gsapName={"gsap-fade"} label={page.s6.eyebrow} variant={3} />
+            )}
+
+
+          
           <Grid gutter={"xs"}>
             <Grid.Col span={{ base: 12, lg: 5 }}>
               <Stack>
@@ -1525,6 +1593,18 @@ Component.query = gql`
         headshot {
           node {
             sourceUrl(size: MEDIUM)
+          }
+        }
+      }
+    }
+    s4a {
+      title
+      eyeBrow
+      logos {
+        logo {
+          node {
+            sourceUrl
+            altText
           }
         }
       }
