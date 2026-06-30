@@ -11,4 +11,5 @@ export default setConfig({
   templates,
   plugins: [new RelayStylePaginationPlugin()],
   possibleTypes,
+  useGETForQueries: false
 });
