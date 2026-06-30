@@ -59,8 +59,6 @@ export default function Component(props) {
     global,
   } = props.data;
 
-  console.log(page)
-
   // TODO: remove this nasty filter stuff, and just retrieve one item (latest) from DB
   const featured = publications.nodes.filter((publication) =>
     publication.publicationMeta.postType.includes("featured"),
