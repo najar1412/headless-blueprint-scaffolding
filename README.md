@@ -1,15 +1,12 @@
 # Faust Scaffold
 
-### Pre Reqs
-
-1. backend host - currently using wp-engine headless wordpress
-2. frontend host - currently use netlify
-
 ### Development
+
+#### wp-engine
+
+1. changes to content/schema should be dont in the staging environment on wp-engine, these will be access in the development site as long as .env.local is correct.
 
 #### faustjs
 
-1. set up pre reqs
-2. cp .env.local.sample to .env.local and fill out
-3. making scheme changes in WP requires `npm run generate` this rebuilds possible types for apollo.
-4. after changes to the database, `npm run generate` should be run to re-built types
+1. cp .env.local.sample to .env.local and fill out details (get from wp-engine, wp-admin of staging).
+2. making scheme changes in WP requires `npm run generate` this rebuilds possible types for apollo.
